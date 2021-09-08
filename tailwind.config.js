@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        text: {
+        font: {
           darker: '#1E1E1E',
           dark: '#0F0E0E',
         },
@@ -14,6 +14,9 @@ module.exports = {
           light: '#F3F7F8',
         },
         secondary: {},
+      },
+      fontFamily: {
+        sans: ['Nunito', 'sans-serif'],
       },
     },
   },

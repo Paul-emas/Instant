@@ -5,7 +5,7 @@ const Button = ({ loading, onClick, children }) => {
   return (
     <button
       onClick={onClick}
-      className="bg-primary-base px-7 py-2.5 text-white rounded-md">
+      className="bg-primary-base px-7 py-2.5 text-white font-semibold rounded-md">
       {children}
     </button>
   );
