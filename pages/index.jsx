@@ -1,29 +1,25 @@
-import DownloadButtons from '../components/DownloadButtons';
-import { Navbar } from '../components/layout/Navbar';
+import About from '../components/homepage/About';
+import Banner from '../components/homepage/Banner';
+import Counter from '../components/homepage/Counter';
+import Header from '../components/homepage/Header';
+import Parallax from '../components/homepage/Parallax';
+import Services from '../components/homepage/Services';
+import SocialMedia from '../components/homepage/SocialMedia';
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <header className="min-h-screen bg-primary-light relative top-20 outline-black">
-        <div className="container mx-auto px-10">
-          <div className="grid grid-cols-2 outline-black">
-            <div className="relative pt-56">
-              <div className="max-w-xl outline-black">
-                <h1 className="text-5xl leading-tight text-font-darker">
-                  Buy Electricity at affordable rates with Instant Energy
-                </h1>
-                <p className="text-font-dark text-xl leading-normal mt-6">
-                  Instant Energy deploys patient, value accretive capital
-                  alongside international and local value investors to create.
-                </p>
-                <DownloadButtons />
-              </div>
-            </div>
-            <div className="">Hello</div>
-          </div>
-        </div>
-      </header>
+      <Header />
+      <main>
+        <Parallax />
+        <Counter />
+        <Services title="Our services" />
+        <Parallax type="jeans" />
+        <About />
+        <Services title="Benefits" />
+        <SocialMedia />
+        <Banner />
+      </main>
     </div>
   );
 }

@@ -1,13 +1,29 @@
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import Button from '../Button';
 
-export const Navbar = () => {
+export default function Navbar() {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolling(true);
+      } else {
+        setIsScrolling(false);
+      }
+    };
+  }, [isScrolling]);
+
   return (
-    <div className="bg-primary-light h-20 fixed inset-0">
-      <div className="container mx-auto h-full px-6 lg:px-10">
-        <div className="flex justify-between h-full outline-black items-center">
+    <nav
+      className={`${
+        isScrolling ? 'shadow-lg bg-white' : 'bg-primary-light'
+      } h-20 fixed z-50 inset-0`}>
+      <div className="xl:container mx-auto h-full px-6 lg:px-10">
+        <div className="flex justify-between h-full items-center">
           <Image
             src="/images/logo.png"
             width={181.42}
@@ -28,6 +44,6 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
-};
+}
