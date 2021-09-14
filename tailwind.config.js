@@ -9,6 +9,7 @@ module.exports = {
           darker: '#1E1E1E',
           dark: '#0F0E0E',
           green: '#149852',
+          muted: '#7E7E7E',
         },
         primary: {
           base: '#347F95',
@@ -30,6 +31,9 @@ module.exports = {
       },
       borderColor: {
         base: '#347F95',
+      },
+      fontSize: {
+        heading: '1.75rem',
       },
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],
