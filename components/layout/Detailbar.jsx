@@ -33,7 +33,7 @@ const Detailbar = props => {
       <div className="min-h-screen border-l bg-white">
         <div className="pt-10">
           <div className="h-20">
-            <div className="flex items-center justify-between px-5 outline-black">
+            <div className="flex items-center justify-between px-5">
               <div className="flex items-center">
                 <Image
                   src="/images/profile.jpg"

@@ -40,7 +40,7 @@ const Sidebar = props => {
   return (
     <aside className="w-sidebar">
       <div className="min-h-screen relative pt-10 bg-primary-base">
-        <div className="h-20 outline-black pl-5 2xl:pl-10 pr-5">
+        <div className="h-20 pl-5 2xl:pl-10 pr-5">
           <div className="flex items-center">
             <FontAwesomeIcon icon={faBars} className="text-white text-2xl" />
             <Image
@@ -69,7 +69,7 @@ const Sidebar = props => {
             </button>
           </div>
         </div>
-        <div className="px-3 2xl:px-6 outline-black space-y-2.5 2xl:space-y-5 py-8">
+        <div className="px-3 2xl:px-6 space-y-2.5 2xl:space-y-5 py-8">
           {routes.map(({ name, url, icon }) => {
             const Icon = icon;
             return (
@@ -93,7 +93,7 @@ const Sidebar = props => {
             </span>
           </button> 
           */}
-          <div className="absolute w-full bottom-8 left-0 outline-black">
+          <div className="absolute w-full bottom-8 left-0">
             <div className="px-6">
               <button className="pl-4 w-full rounded-xl text-left py-3.5 text-white hover:bg-primary-hover duration-100">
                 <span className="flex items-center">
