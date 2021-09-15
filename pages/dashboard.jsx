@@ -8,7 +8,7 @@ export default function Dashboard() {
       <div className="flex flex-1">
         <Sidebar />
         <div className="flex min-h-full flex-grow col-span-4 bg-primary-light">
-          <div className="container px-5 2xl:px-7 pt-10">
+          <div className="container px-5 2xl:px-7 pt-5 2xl:pt-10">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-heading font-extrabold">Buy Electricity</h1>

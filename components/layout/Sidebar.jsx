@@ -39,7 +39,7 @@ const Sidebar = props => {
   ];
   return (
     <aside className="w-sidebar">
-      <div className="min-h-screen relative pt-10 bg-primary-base">
+      <div className="min-h-screen relative pt-5 2xl:pt-10 bg-primary-base bg-contain overlay">
         <div className="h-20 pl-5 2xl:pl-10 pr-5">
           <div className="flex items-center">
             <FontAwesomeIcon icon={faBars} className="text-white text-2xl" />
