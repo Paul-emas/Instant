@@ -16,16 +16,23 @@ const Detailbar = props => {
   const flickityOptions = {
     draggable: false,
     initialIndex: 0,
-    // autoPlay: 1500,
+    autoPlay: 3000,
     wrapAround: true,
     freeScroll: true,
     prevNextButtons: true,
     pageDots: true,
   };
 
+  const route = [1, 2, 3, 4];
+
+  let flicty = null;
+
   const next = () => {
-    // flkty.next();
-    // console.log(Flickity.data('.main-carousel'));
+    flicty.flkty.nextButton.element.click();
+  };
+
+  const prev = () => {
+    flicty.flkty.prevButton.element.click();
   };
 
   return (
@@ -95,6 +102,7 @@ const Detailbar = props => {
                 <div className="text-sm text-font-muted flex space-x-4">
                   <FontAwesomeIcon
                     icon={faChevronLeft}
+                    onClick={() => prev()}
                     className="text-xs text-font-muted cursor-pointer"
                   />
                   <FontAwesomeIcon
@@ -108,23 +116,36 @@ const Detailbar = props => {
 
             <Flickity
               className={
-                'carousel mt-5 shadow-none outline-none bg-gray-500 overflow-hidden'
-              } // default ''
-              elementType={'div'} // default 'div'
-              options={flickityOptions} // takes flickity options {}
-              disableImagesLoaded={false} // default false
-              reloadOnUpdate // default false
-              static // default false
+                'carousel mt-5 h-56 shadow-none outline-none overflow-hidden'
+              }
+              elementType={'div'}
+              options={flickityOptions}
+              disableImagesLoaded={false}
+              reloadOnUpdate
+              ref={e => (flicty = e)}
+              static
             >
-              <div className="w-full h-56 rounded-lg bg-primary-dark">
-                <div className="px-6 py-4 w-full h-full outline-white">
-                  <span className="text-gray-500 text-xs font-semibold">
-                    1 of 4
-                  </span>
+              {route.map((el, index) => (
+                <div
+                  key={index}
+                  className="w-full h-52 rounded-lg mr-20 bg-primary-dark"
+                >
+                  <div className="px-6 py-4 w-full h-full outline-white">
+                    <span className="text-gray-500 text-xs font-semibold">
+                      {index + 1} of {route.length}
+                    </span>
+                    <h3 className="text-sm font-semibold text-white mt-3">
+                      Home Applicances
+                    </h3>
+                    <p className="text-gray-500 text-xs text-left pr-3 mt-2">
+                      The best way to start saving on your electricity costs is
+                      to get smart with how you use electricity. Make these 21
+                      no-cost changes in your home and you could save NGN 500 or
+                      more a year.
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="w-full h-56 bg-blue-500"></div>
-              <div className="w-full h-56 bg-red-500"></div>
+              ))}
             </Flickity>
           </div>
         </div>
