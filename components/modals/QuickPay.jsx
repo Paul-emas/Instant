@@ -16,7 +16,9 @@ const QuickPay = props => {
     <div className="bg-white h-h-modal w-w-modal 2xl:w-9/12 ml-auto mt-28 2xl:mt-36 shadow-soft rounded-3xl">
       <div className="pt-8">
         <div>
-          <h2 className="text-2xl px-8 mb-4 text-black font-bold">Quick Buy</h2>
+          <h2 className="text-2xl px-8 mb-4 text-black font-bold">
+            Buy Electricity
+          </h2>
           <div className="flex space-x-10 px-8 font-bold border-b">
             <div className="text-gray-400 py-2 cursor-pointer">Prepaid</div>
             <div className="text-primary-base border-b-2 border-base py-2 cursor-pointer">

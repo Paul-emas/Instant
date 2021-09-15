@@ -16,7 +16,9 @@ module.exports = {
           light: '#F3F7F8',
           lighter: '#379C8B',
           hover: '#2C6E81',
+          dark: '#0E323D',
           active: '#275562',
+          border: '#ffffff5e',
         },
         secondary: {},
         twitter: '#55ACEE',
@@ -25,6 +27,8 @@ module.exports = {
       },
       width: {
         'w-modal': '474px',
+        sidebar: '280px',
+        detailbar: '350px',
       },
       height: {
         'h-modal': '718px',
@@ -34,6 +38,7 @@ module.exports = {
       },
       fontSize: {
         heading: '1.75rem',
+        xxs: '10px',
       },
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],

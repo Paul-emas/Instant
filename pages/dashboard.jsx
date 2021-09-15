@@ -1,21 +1,14 @@
-import React from 'react';
-import Image from 'next/image';
 import Button from '../components/Button';
+import Detailbar from '../components/layout/Detailbar';
+import Sidebar from '../components/layout/Sidebar';
 
 export default function Dashboard() {
   return (
-    <div className="fixed min-h-screen w-full">
-      <div className="grid grid-cols-6">
-        <div className="min-h-screen border-r col-span-1 pt-12 px-5 bg-primary-base">
-          <Image
-            src="/images/logo-light.png"
-            width={181.42}
-            height={34.95}
-            className="object-contain"
-          />
-        </div>
-        <div className="flex min-h-full col-span-4 bg-primary-light">
-          <div className="container xl:px-5 pt-12">
+    <div className="fixed min-h-screen w-full bg-gray-300">
+      <div className="flex flex-1">
+        <Sidebar />
+        <div className="flex min-h-full flex-grow col-span-4 bg-primary-light">
+          <div className="container px-5 2xl:px-7 pt-10">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-heading font-extrabold">Buy Electricity</h1>
@@ -27,7 +20,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="min-h-screen border-l col-span-1 bg-white"></div>
+        <Detailbar />
       </div>
     </div>
   );

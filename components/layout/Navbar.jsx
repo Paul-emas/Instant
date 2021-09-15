@@ -21,13 +21,14 @@ export default function Navbar() {
     <nav
       className={`${
         isScrolling ? 'shadow-lg bg-white' : 'bg-primary-light'
-      } h-20 fixed z-50 inset-0`}>
+      } h-16 fixed z-50 inset-0`}
+    >
       <div className="xl:container mx-auto h-full px-6 lg:px-10">
         <div className="flex justify-between h-full items-center">
           <Image
             src="/images/logo.png"
             width={181.42}
-            height={34.95}
+            height={30.95}
             className="object-contain"
           />
           <div className="flex items-center text-base space-x-12">
