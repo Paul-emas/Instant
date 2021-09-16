@@ -2,7 +2,7 @@ import React from 'react';
 
 const SolarCard = () => {
   return (
-    <div className="py-7 px-3 bg-secondary-yellow mt-5 rounded-xl">
+    <div className="py-7 px-1 bg-secondary-yellow mt-5 rounded-xl">
       <div className="container px-5">
         <div className="flex items-end justify-between">
           <div>
