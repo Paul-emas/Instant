@@ -32,6 +32,10 @@
   font-display: swap;
 }
 
+body {
+  font-family: 'Nunito';
+}
+
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -44,7 +48,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .form-input {
-  @apply mt-2 w-full font-bold py-3.5 px-5 border rounded-md text-base placeholder-gray-400;
+  @apply w-full font-bold border rounded-md text-base placeholder-gray-400;
 }
 
 .btn {
@@ -73,4 +77,35 @@ input[type='number']::-webkit-outer-spin-button {
 
 .carousel-cell.is-selected {
   background: #ed2;
+}
+
+@screen 2xl {
+  .mar {
+    margin-left: 17.5rem !important;
+  }
+  .main {
+    width: calc(100% - 17.5rem) !important;
+  }
+  .main-content {
+    width: calc(100% - 350px) !important;
+  }
+  .w-detailbar {
+    margin-left: -17.5rem !important;
+  }
+}
+
+.mar {
+  margin-left: 14rem;
+}
+
+.main {
+  width: calc(100% - 14rem);
+}
+
+.main-content {
+  width: calc(100% - 288px);
+}
+
+.w-detailbar {
+  margin-left: -14rem;
 }

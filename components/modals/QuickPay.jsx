@@ -11,6 +11,10 @@ const QuickPay = props => {
     formState: { errors },
   } = useForm();
 
+  const onSubmit = data => {
+    console.log(data);
+  };
+
   return (
     <div className="bg-white h-h-modal w-w-modal 2xl:w-9/12 ml-auto mt-28 2xl:mt-36 shadow-soft rounded-3xl">
       <div className="pt-8">
@@ -26,8 +30,9 @@ const QuickPay = props => {
             <div className="text-gray-400 py-2 cursor-pointer">Off grid</div>
           </div>
         </div>
-        <div className="p-8">
+        <form className="p-8" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
+            className="py-3.5 px-5 mt-2"
             type="select"
             id="select"
             placeholder="Enter account number"
@@ -38,6 +43,7 @@ const QuickPay = props => {
             })}
           />
           <FormInput
+            className="py-3.5 px-5 mt-2"
             type="number"
             id="account_no"
             placeholder="Enter account number"
@@ -47,6 +53,7 @@ const QuickPay = props => {
             })}
           />
           <FormInput
+            className="py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
             placeholder="070 3778 6423"
@@ -54,6 +61,7 @@ const QuickPay = props => {
             control={control}
           />
           <FormInput
+            className="py-3.5 px-5 mt-2"
             type="currency"
             id="amount"
             placeholder="Enter account number"
@@ -71,10 +79,12 @@ const QuickPay = props => {
               ?
             </span>
           </div>
-          <button className="btn transform active:translate-y-0 hover:-translate-y-1">
+          <button
+            type="submit"
+            className="btn transform active:translate-y-0 hover:-translate-y-1">
             Proceed to Payment
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

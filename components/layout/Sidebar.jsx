@@ -38,8 +38,8 @@ const Sidebar = props => {
     },
   ];
   return (
-    <aside className="w-sidebar">
-      <div className="min-h-screen relative pt-5 2xl:pt-10 bg-primary-base bg-contain overlay">
+    <aside>
+      <div className="min-h-screen fixed w-56 2xl:w-sidebar left-0 pt-5 2xl:pt-10 bg-primary-base bg-contain overlay">
         <div className="h-20 pl-5 2xl:pl-10 pr-5">
           <div className="flex items-center">
             <FontAwesomeIcon icon={faBars} className="text-white text-2xl" />
@@ -75,8 +75,7 @@ const Sidebar = props => {
             return (
               <button
                 key={name}
-                className="pl-4 w-full rounded-xl text-left py-3.5 text-white hover:bg-primary-hover duration-100"
-              >
+                className="pl-4 w-full rounded-xl text-left py-3.5 text-white hover:bg-primary-hover duration-100">
                 <span className="flex items-center">
                   <Icon />
                   <span className="text-sm font-bold ml-5 mt-1">{name}</span>

@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next -p 6000",
+    "dev": "next -p 2000",
     "build": "next build",
     "start": "next start --port 4567",
     "lint": "next lint"
@@ -19,7 +19,8 @@
     "react-dom": "^17.0.2",
     "react-flickity-component": "^3.6.2",
     "react-hook-form": "^7.15.2",
-    "react-phone-number-input": "^3.1.27"
+    "react-phone-number-input": "^3.1.27",
+    "recharts": "^2.1.2"
   },
   "husky": {
     "hooks": {

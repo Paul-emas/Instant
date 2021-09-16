@@ -10,7 +10,7 @@ const FormInput = forwardRef(
     const As = as;
 
     return (
-      <div className={`${className} mb-4`}>
+      <div className="mb-4">
         <label className="text-gray-400 font-semibold text-sm">{label}</label>
         {type !== 'phone' && type !== 'select' && type !== 'currency' && (
           <As
@@ -18,15 +18,13 @@ const FormInput = forwardRef(
             autoComplete="off"
             ref={ref}
             type={type}
-            className={`${
-              type === 'textarea' ? 'pb-20 block' : ''
-            } form-input focus:border-skin-theme focus:outline-none focus:border-gray-400`}
+            className={`${className} form-input focus:border-skin-theme focus:outline-none focus:border-gray-400`}
             {...props}
           />
         )}
 
         {type === 'phone' && (
-          <div className="form-input focus:outline-none">
+          <div className={`${className} form-input focus:outline-none`}>
             <PhoneInput
               defaultCountry="NG"
               name={label}
@@ -40,16 +38,18 @@ const FormInput = forwardRef(
         {type === 'select' && (
           <select
             {...props}
-            className="form-select form-input focus:border-gray-400 focus:outline-none"
+            className={`${className} form-select form-input focus:border-gray-400 focus:outline-none`}
             placeholder="Regular input">
             {options.map(option => (
-              <option key={option}>{option}</option>
+              <option key={option} value={option}>
+                {option}
+              </option>
             ))}
           </select>
         )}
 
         {type === 'currency' && (
-          <div className="form-input flex">
+          <div className={`${className} form-input flex`}>
             <div className="text capitalize text-primary-base">NGN</div>
             <input
               type="number"

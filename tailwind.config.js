@@ -10,6 +10,7 @@ module.exports = {
           dark: '#0F0E0E',
           green: '#149852',
           muted: '#7E7E7E',
+          grey: '#959595',
         },
         primary: {
           base: '#347F95',
@@ -20,10 +21,12 @@ module.exports = {
           active: '#275562',
           border: '#ffffff5e',
         },
-        secondary: {},
-        twitter: '#55ACEE',
-        linkedin: '#0077B5',
-        youtube: '#FF0000',
+        secondary: {
+          yellow: '#FFF1CF',
+          twitter: '#55ACEE',
+          linkedin: '#0077B5',
+          youtube: '#FF0000',
+        },
       },
       width: {
         'w-modal': '474px',
@@ -32,6 +35,9 @@ module.exports = {
       },
       height: {
         'h-modal': '718px',
+        chart: {
+          default: '359px',
+        },
       },
       borderColor: {
         base: '#347F95',
