@@ -6,7 +6,7 @@ const ContactCard = ({ top }) => {
   return (
     <div
       className={`${
-        top ? 'top-32 2xl:top-40' : null
+        top ? 'top-24 2xl:top-40' : null
       } flex items-center relative`}>
       <div className="bg-primary-base rounded-xl text-center py-2.5 text-white w-10 h-10">
         <FontAwesomeIcon icon={faPhoneAlt} className="text-xl" />

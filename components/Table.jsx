@@ -98,12 +98,12 @@ const Table = () => {
                       </td>
                       <td className="px-6 py-4 border-b whitespace-nowrap text-right text-xs font-medium">
                         {active && (
-                          <span className="px-1.5 inline-flex -mt-4 text-xs leading-5 font-semibold rounded-sm bg-green-100 text-font-green">
+                          <span className="px-2  py-1 inline-flex text-xs leading-5 font-semibold rounded-md bg-green-100 text-font-green">
                             Reciept
                           </span>
                         )}
                         {!active && (
-                          <span className="px-1.5 inline-flex -mt-4 text-xs leading-5 font-semibold rounded-sm bg-red-100 text-red-700">
+                          <span className="px-2 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-md bg-red-100 text-red-700">
                             Retry
                           </span>
                         )}

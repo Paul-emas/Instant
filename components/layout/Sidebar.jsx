@@ -1,4 +1,6 @@
+import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,6 +12,7 @@ import UserIcon from '../../public/svgs/user.svg';
 import LogoutIcon from '../../public/svgs/logout.svg';
 
 const Sidebar = props => {
+  const router = useRouter();
   const routes = [
     {
       name: 'Dashboard',
@@ -73,14 +76,19 @@ const Sidebar = props => {
           {routes.map(({ name, url, icon }) => {
             const Icon = icon;
             return (
-              <button
-                key={name}
-                className="pl-4 w-full rounded-xl text-left py-3.5 text-white hover:bg-primary-hover duration-100">
-                <span className="flex items-center">
-                  <Icon />
-                  <span className="text-sm font-bold ml-5 mt-1">{name}</span>
-                </span>
-              </button>
+              <Link href={url} key={name}>
+                <button
+                  className={`${
+                    url === router.asPath
+                      ? 'text-primary-base bg-white active-icon'
+                      : 'text-white hover:bg-primary-hover'
+                  } pl-4 w-full rounded-xl text-left py-3.5 duration-100`}>
+                  <span className="flex items-center">
+                    <Icon />
+                    <span className="text-sm font-bold ml-5 mt-1">{name}</span>
+                  </span>
+                </button>
+              </Link>
             );
           })}
 

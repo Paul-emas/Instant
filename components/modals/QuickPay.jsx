@@ -16,7 +16,7 @@ const QuickPay = props => {
   };
 
   return (
-    <div className="bg-white h-h-modal w-w-modal 2xl:w-9/12 ml-auto mt-28 2xl:mt-36 shadow-soft rounded-3xl">
+    <div className="bg-white w-w-modal 2xl:h-h-modal 2xl:w-9/12 ml-auto mt-20 2xl:mt-36 shadow-soft rounded-3xl">
       <div className="pt-8">
         <div>
           <h2 className="text-2xl px-8 mb-4 text-black font-bold">
