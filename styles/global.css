@@ -1,44 +1,16 @@
 /* Fonts */
 
-@font-face {
-  font-family: 'Nunito';
-  src: url('/fonts/Nunito/Nunito-Bold.ttf') format('.ttf')
-    url('/fonts/Nunito/Nunito-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('/fonts/Nunito/Nunito-SemiBold.ttf') format('.ttf')
-    url('/fonts/Nunito/Nunito-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('/fonts/Nunito/Nunito-Black.ttf') format('.ttf')
-    url('/fonts/Nunito/Nunito-Black.ttf') format('truetype');
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('/fonts/Nunito/Nunito-Regular.ttf') format('.ttf')
-    url('/fonts/Nunito/Nunito-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-display: swap;
-}
-
-body {
-  font-family: 'Nunito';
-}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap');
 
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+
+.flickity-button {
+  visibility: hidden;
+  width: 0;
+  height: 0;
 }
 
 .PhoneInputInput {

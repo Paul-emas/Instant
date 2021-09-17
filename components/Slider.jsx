@@ -1,9 +1,9 @@
+import Flickity from 'react-flickity-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
-import Flickity from 'react-flickity-component';
 
 const Slider = () => {
   const route = [1, 2, 3, 4];

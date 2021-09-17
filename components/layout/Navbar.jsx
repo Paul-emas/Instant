@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import Button from '../Button';
 
-export default function Navbar() {
+const Navbar = () => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
@@ -21,8 +21,7 @@ export default function Navbar() {
     <nav
       className={`${
         isScrolling ? 'shadow-lg bg-white' : 'bg-primary-light'
-      } h-16 fixed z-50 inset-0`}
-    >
+      } h-16 fixed z-50 inset-0`}>
       <div className="xl:container mx-auto h-full px-6 lg:px-10">
         <div className="flex justify-between h-full items-center">
           <Image
@@ -47,4 +46,6 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navbar;

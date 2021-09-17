@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -46,9 +48,9 @@ module.exports = {
         heading: '1.75rem',
         xxs: '10px',
       },
-      fontFamily: {
-        sans: ['Nunito', 'sans-serif'],
-      },
+    },
+    fontFamily: {
+      sans: ['Nunito', ...defaultTheme.fontFamily.sans],
     },
   },
   variants: {

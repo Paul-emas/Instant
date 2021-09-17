@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,6 +17,14 @@ const ContactCard = ({ top }) => {
       </div>
     </div>
   );
+};
+
+ContactCard.defaultProps = {
+  top: false,
+};
+
+ContactCard.propTypes = {
+  top: PropTypes.bool,
 };
 
 export default ContactCard;
