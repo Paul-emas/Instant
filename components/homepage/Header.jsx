@@ -11,8 +11,8 @@ const Header = () => (
         <div className="flex w-full min-h-screen justify-between">
           <div className="relative w-1/2 pt-52 2xl:pt-72">
             <div className="max-w-xl">
-              <h1 className="text-5xl leading-tight text-font-darker">
-                Buy Electricity at affordable rates with Instant Energy
+              <h1 className="text-6xl leading-tight font-extrabold text-font-darker font-gill">
+                Buy Electricity at affordable rates
               </h1>
               <p className="text-font-dark text-xl leading-normal mt-6">
                 Instant Energy deploys patient, value accretive capital

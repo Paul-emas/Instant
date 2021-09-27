@@ -23,11 +23,10 @@ const QuickPay = props => {
             Buy Electricity
           </h2>
           <div className="flex space-x-10 px-8 font-bold border-b">
-            <div className="text-gray-400 py-2 cursor-pointer">Prepaid</div>
             <div className="text-primary-base border-b-2 border-base py-2 cursor-pointer">
-              Postpaid
+              Prepaid
             </div>
-            <div className="text-gray-400 py-2 cursor-pointer">Off grid</div>
+            <div className="text-gray-400 py-2 cursor-pointer">Postpaid</div>
           </div>
         </div>
         <form className="p-8" onSubmit={handleSubmit(onSubmit)}>
@@ -45,10 +44,10 @@ const QuickPay = props => {
           <FormInput
             className="py-3.5 px-5 mt-2"
             type="number"
-            id="account_no"
-            placeholder="Enter account number"
-            label="Account number"
-            {...register('account_no', {
+            id="meter_no"
+            placeholder="Enter meter number"
+            label="Meter number"
+            {...register('meter_no', {
               required: 'You missed this field',
             })}
           />
@@ -81,7 +80,7 @@ const QuickPay = props => {
           </div>
           <button
             type="submit"
-            className="btn transform active:translate-y-0 hover:-translate-y-1">
+            className="btn transform uppercase active:translate-y-0 hover:-translate-y-1">
             Proceed to Payment
           </button>
         </form>

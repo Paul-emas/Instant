@@ -1,24 +1,24 @@
-import About from '../components/homepage/About';
-import Banner from '../components/homepage/Banner';
-import Counter from '../components/homepage/Counter';
 import Header from '../components/homepage/Header';
-import Parallax from '../components/homepage/Parallax';
-import Services from '../components/homepage/Services';
-import SocialMedia from '../components/homepage/SocialMedia';
+import Partners from '../components/homepage/Partners';
+import UserServices from '../components/homepage/UserServices';
+import BuyElectricity from '../components/homepage/BuyElectricity';
+import Plans from '../components/homepage/Plans';
 
 export default function Home() {
   return (
     <div>
       <Header />
       <main>
-        <Parallax />
-        <Counter />
-        <Services title="Our services" />
-        <Parallax type="jeans" />
-        <About />
-        <Services title="Benefits" />
-        <SocialMedia />
-        <Banner />
+        <Partners />
+        <UserServices />
+        <BuyElectricity />
+        <BuyElectricity
+          title="Never run of power with solar electricity"
+          iconText="Solar electricity"
+          cta="Request Solar"
+          alignRight
+        />
+        <Plans />
       </main>
     </div>
   );

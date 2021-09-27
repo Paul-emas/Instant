@@ -20,10 +20,17 @@ module.exports = {
           lighter: '#379C8B',
           hover: '#2C6E81',
           dark: '#0E323D',
+          darker: '#0D3643',
           active: '#275562',
           border: '#ffffff5e',
         },
         secondary: {
+          lightBlue: '#F1F4F9',
+          blue: '#2F56D8',
+          green: '#149852',
+          lightGreen: '#1498520f',
+          purple: '#722FD8',
+          transparentWhite: '#ffffff1a',
           yellow: '#FFF1CF',
           twitter: '#55ACEE',
           linkedin: '#0077B5',
@@ -34,9 +41,11 @@ module.exports = {
         'w-modal': '474px',
         sidebar: '280px',
         detailbar: '350px',
+        74: '305px',
       },
       height: {
         'h-modal': '718px',
+        562: '562px',
         chart: {
           default: '359px',
         },
@@ -51,6 +60,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+      gill: ['Gill Sans Nova', ...defaultTheme.fontFamily.sans],
     },
   },
   variants: {

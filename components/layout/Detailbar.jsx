@@ -11,7 +11,7 @@ import SocialCard from '../SocialCard';
 const Detailbar = props => {
   return (
     <aside className="w-72 2xl:w-detailbar float-right align-top">
-      <div className="h-full fixed overflow-y-scroll pb-10 2xl:pb-0 overflow-x-hidden border-l bg-white">
+      <div className="h-full fixed overflow-y-auto pb-10 2xl:pb-0 overflow-x-hidden border-l bg-white">
         <div className="pt-5 2xl:pt-10">
           <div className="h-20">
             <div className="flex items-center justify-between px-5">

@@ -2,6 +2,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap');
 
+@font-face {
+  font-family: 'Gill Sans Nova';
+  src: local('Gill Sans Nova Bold'), local('Gill-Sans-Nova-Bold'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-Bold.ttf') format('woff2'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-Bold.woff') format('woff'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -13,14 +23,22 @@ input[type='number']::-webkit-outer-spin-button {
   height: 0;
 }
 
+.PhoneInput {
+  flex-direction: row-reverse;
+}
+
 .PhoneInputInput {
   margin-left: 0.5rem !important;
   outline: none;
   font-weight: bold;
 }
 
+.PhoneInputInput:focus {
+  @apply bg-primary-light;
+}
+
 .form-input {
-  @apply w-full font-bold border rounded-md text-base placeholder-gray-400;
+  @apply w-full font-bold border rounded-lg text-base placeholder-gray-400 focus:bg-primary-light focus:border-primary-base;
 }
 
 .btn {

@@ -5,7 +5,7 @@ const Button = ({ loading, onClick, children }) => {
   return (
     <button
       onClick={onClick}
-      className="bg-primary-base hover:bg-primary-hover scale active:bg-primary-active text-sm px-6 py-2.5 text-white font-medium rounded-md">
+      className="bg-primary-base hover:bg-primary-hover scale active:bg-primary-active text-sm px-6 py-2.5 text-white font-medium rounded-lg">
       {children}
     </button>
   );

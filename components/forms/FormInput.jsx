@@ -11,20 +11,21 @@ const FormInput = forwardRef(
 
     return (
       <div className="mb-4">
-        <label className="text-gray-400 font-semibold text-sm">{label}</label>
+        <label className="text-gray-400 font-bold text-sm label">{label}</label>
         {type !== 'phone' && type !== 'select' && type !== 'currency' && (
           <As
             name={label}
             autoComplete="off"
             ref={ref}
             type={type}
-            className={`${className} form-input focus:border-skin-theme focus:outline-none focus:border-gray-400`}
+            className={`${className} form-input focus:border-skin-theme focus:outline-none`}
             {...props}
           />
         )}
 
         {type === 'phone' && (
-          <div className={`${className} form-input focus:outline-none`}>
+          <div
+            className={`${className} form-input focus-within:bg-primary-light focus-within:border-primary-base focus:outline-none`}>
             <PhoneInput
               defaultCountry="NG"
               name={label}
@@ -49,12 +50,14 @@ const FormInput = forwardRef(
         )}
 
         {type === 'currency' && (
-          <div className={`${className} form-input flex`}>
+          <div
+            className={`${className} form-input flex focus-within:bg-primary-light focus-within:border-primary-base`}>
             <div className="text capitalize text-primary-base">NGN</div>
             <input
+              {...props}
               type="number"
               placeholder="0.00"
-              className="ml-4 focus:outline-none w-full font-bold"
+              className="ml-4 focus:outline-none w-full font-bold focus:bg-primary-light"
             />
           </div>
         )}

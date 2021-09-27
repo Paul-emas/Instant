@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        isScrolling ? 'shadow-lg bg-white' : 'bg-primary-light'
+        isScrolling ? 'border-b bg-white' : 'bg-primary-light'
       } h-16 fixed z-50 inset-0`}>
       <div className="xl:container mx-auto h-full px-6 lg:px-10">
         <div className="flex justify-between h-full items-center">
@@ -30,15 +30,9 @@ const Navbar = () => {
             height={30.95}
             className="object-contain"
           />
-          <div className="flex items-center text-base space-x-12">
+          <div className="flex items-center text-base space-x-5">
             <Link href="/">
-              <a>Available cities</a>
-            </Link>
-            <Link href="/">
-              <a>Become an Agent</a>
-            </Link>
-            <Link href="/">
-              <a>Login</a>
+              <a className="text-primary-darker font-bold">Solar Electricity</a>
             </Link>
             <Button>Get started</Button>
           </div>
