@@ -19,7 +19,7 @@ const QuickPay = props => {
     <div className="bg-white w-w-modal 2xl:h-h-modal 2xl:w-9/12 ml-auto mt-20 2xl:mt-36 shadow-soft rounded-3xl">
       <div className="pt-8">
         <div>
-          <h2 className="text-2xl px-8 mb-4 text-black font-bold">
+          <h2 className="text-2xl px-8 mb-2 2xl:mb-4 text-black font-bold">
             Buy Electricity
           </h2>
           <div className="flex space-x-10 px-8 font-bold border-b">
@@ -29,9 +29,11 @@ const QuickPay = props => {
             <div className="text-gray-400 py-2 cursor-pointer">Postpaid</div>
           </div>
         </div>
-        <form className="p-8" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="px-8 pt-4 pb-8 2xl:p-8"
+          onSubmit={handleSubmit(onSubmit)}>
           <FormInput
-            className="py-3.5 px-5 mt-2"
+            className="py-2.5 2xl:py-3.5 px-5 mt-2"
             type="select"
             id="select"
             placeholder="Enter account number"
@@ -42,7 +44,7 @@ const QuickPay = props => {
             })}
           />
           <FormInput
-            className="py-3.5 px-5 mt-2"
+            className="py-2.5 2xl:py-3.5 px-5 mt-2"
             type="number"
             id="meter_no"
             placeholder="Enter meter number"
@@ -52,7 +54,7 @@ const QuickPay = props => {
             })}
           />
           <FormInput
-            className="py-3.5 px-5 mt-2"
+            className="py-2.5 2xl:py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
             placeholder="070 3778 6423"
@@ -60,7 +62,7 @@ const QuickPay = props => {
             control={control}
           />
           <FormInput
-            className="py-3.5 px-5 mt-2"
+            className="py-2.5 2xl:py-3.5 px-5 mt-2"
             type="currency"
             id="amount"
             placeholder="Enter account number"

@@ -10,7 +10,7 @@ const FormInput = forwardRef(
     const As = as;
 
     return (
-      <div className="mb-4">
+      <div className="mb-2.5 2xl:mb-4">
         <label className="text-gray-400 font-bold text-sm label">{label}</label>
         {type !== 'phone' && type !== 'select' && type !== 'currency' && (
           <As
