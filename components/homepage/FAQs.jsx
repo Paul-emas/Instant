@@ -30,7 +30,7 @@ const FAQs = () => {
   ];
 
   return (
-    <div className="py-24 bg-white">
+    <div className="py-32 bg-white">
       <div className="container px-10 mx-auto">
         <div className="text-center">
           <h1 className="text-5xl font-bold max-w-2xl text-center mx-auto font-gill">
