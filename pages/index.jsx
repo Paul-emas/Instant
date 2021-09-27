@@ -14,7 +14,7 @@ export default function Home() {
     <div>
       <Header />
       <main>
-        <Partners />
+        <Partners bottom />
         <UserServices />
         <BuyElectricity />
         <BuyElectricity
@@ -29,6 +29,7 @@ export default function Home() {
         <FAQs />
         <People />
         <Slider />
+        <Partners />
       </main>
     </div>
   );

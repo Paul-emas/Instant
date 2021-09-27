@@ -14,7 +14,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="py-24 bg-white">
+    <div className="py-24 bg-white border-b">
       <div className="container px-10 mx-auto">
         <div className="max-w-6xl mx-auto overflow-x-visible">
           <Flickity

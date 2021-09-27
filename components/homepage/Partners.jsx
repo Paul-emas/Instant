@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-const Partners = () => {
+const Partners = ({ bottom }) => {
   return (
-    <div className="bg-white py-20 border-b">
+    <div className={`${bottom && 'border-b'}bg-white py-20`}>
       <div className="container mx-auto px-10">
         <h1 className="text-xl text-center font-semibold text-font-dark uppercase font-gill">
           Our partners
