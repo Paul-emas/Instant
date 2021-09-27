@@ -6,6 +6,8 @@ import Plans from '../components/homepage/Plans';
 import Counter from '../components/homepage/Counter';
 import DownloadApp from '../components/homepage/DownloadApp';
 import FAQs from '../components/homepage/FAQs';
+import People from '../components/homepage/People';
+import Slider from '../components/homepage/Slider';
 
 export default function Home() {
   return (
@@ -25,6 +27,8 @@ export default function Home() {
         <Counter />
         <DownloadApp />
         <FAQs />
+        <People />
+        <Slider />
       </main>
     </div>
   );

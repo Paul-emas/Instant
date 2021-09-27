@@ -24,9 +24,23 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Gill Sans Nova';
+  src: local('Gill Sans Nova Book'), local('Gill-Sans-Nova-Book'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-Book.woff2') format('woff2'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-Book.woff') format('woff'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+
+* {
+  outline: none;
 }
 
 .flickity-button {
@@ -43,6 +57,32 @@ input[type='number']::-webkit-outer-spin-button {
   margin-left: 0.5rem !important;
   outline: none;
   font-weight: bold;
+}
+
+/* position dots in carousel */
+.flickity-page-dots {
+  bottom: -40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* white circles */
+.flickity-page-dots .dot {
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+  background: #f3f7f8;
+  border-radius: 50%;
+  margin-top: 7rem;
+  cursor: pointer;
+}
+
+.flickity-page-dots .dot:not(:last-child) {
+  margin-right: 0.25rem;
+}
+/* fill-in selected dot */
+.flickity-page-dots .dot.is-selected {
+  background: #347f95;
 }
 
 .PhoneInputInput:focus {

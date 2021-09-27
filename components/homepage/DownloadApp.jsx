@@ -11,9 +11,9 @@ const DownloadApp = () => {
   return (
     <div className="py-28 bg-primary-light">
       <div className="container px-10 mx-auto">
-        <div className="flex max-w-6xl 2xl:max-w-4xl mx-auto">
+        <div className="flex max-w-4xl mx-auto">
           <div className="w-1/2">
-            <div className="transform scale-110 2xl:scale-125 2xl:ml-6">
+            <div className="transform scale-125 2xl:ml-6">
               <Image
                 src="/images/mobile-mockup.png"
                 width={311.64}
@@ -39,7 +39,7 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-font-darker text-xl font-gill">
+                  <p className="text-font-darker text-xl font-gill font-semibold">
                     Buy Electricity
                   </p>
                   <p className="text-font-darker mt-2 max-w-xs">
@@ -60,7 +60,7 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-gray-400 text-xl font-gill">
+                  <p className="text-gray-400 text-xl font-gill font-semibold">
                     Manage solar Plan
                   </p>
                   <p className="text-gray-400 mt-2 max-w-xs">
@@ -81,7 +81,7 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-gray-400 text-xl font-gill">
+                  <p className="text-gray-400 text-xl font-gill font-semibold">
                     Keep track of your Spending
                   </p>
                   <p className="text-gray-400 mt-2 max-w-xs">

@@ -28,7 +28,10 @@ const Accordion = ({ id, name, ans }) => {
         className={`${
           isActive && 'pb-7'
         } pt-5 border-b duration-300 transition-all`}>
-        <p className={`${isActive && 'h-auto'} w-11/12 overflow-x-hidden h-0`}>
+        <p
+          className={`${
+            isActive ? 'h-auto' : 'h-0'
+          } w-11/12 overflow-x-hidden`}>
           {ans}
         </p>
       </div>

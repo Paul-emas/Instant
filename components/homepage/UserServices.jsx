@@ -11,7 +11,9 @@ const UserServices = () => {
           <div className="max-w-xs">
             <BulbIcon className="mx-auto" />
             <div className="text-center mt-7">
-              <h2 className="font-gill text-xl">Add your meter</h2>
+              <h2 className="font-gill text-xl font-semibold">
+                Add your meter
+              </h2>
               <p className="text-sm px-5 mt-2">
                 Tell us what you like to send and let us know when we can come.
               </p>
@@ -20,7 +22,9 @@ const UserServices = () => {
           <div className="max-w-xs">
             <BulbIcon className="mx-auto" />
             <div className="text-center mt-7">
-              <h2 className="font-gill text-xl">Add your meter</h2>
+              <h2 className="font-gill text-xl font-semibold">
+                Add your meter
+              </h2>
               <p className="text-sm px-5 mt-2">
                 Tell us what you like to send and let us know when we can come.
               </p>
@@ -29,7 +33,9 @@ const UserServices = () => {
           <div className="max-w-xs">
             <BulbIcon className="mx-auto" />
             <div className="text-center mt-7">
-              <h2 className="font-gill text-xl">Add your meter</h2>
+              <h2 className="font-gill text-xl font-semibold">
+                Add your meter
+              </h2>
               <p className="text-sm px-5 mt-2">
                 Tell us what you like to send and let us know when we can come.
               </p>
