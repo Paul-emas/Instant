@@ -55,7 +55,7 @@ const Plans = () => {
             price="900"
           />
         </div>
-        <div className="text-center mt-20">
+        <div className="text-center mt-24">
           <p className="text-primary-darker font-semibold">
             <span>Didn&apos;t find your plan</span>
             <a href="" className="ml-2 text-secondary-blue">

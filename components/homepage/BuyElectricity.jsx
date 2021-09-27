@@ -15,7 +15,9 @@ const BuyElectricity = ({ title, caption, iconText, cta, alignRight }) => {
             <span className="px-3 py-1.5 bg-secondary-green text-white uppercase text-xxs font-bold rounded-3xl">
               {iconText}
             </span>
-            <h1 className="text-5xl font-bold max-w-xl font-gill">{title}</h1>
+            <h1 className="text-5xl font-bold max-w-xl font-gill mt-4">
+              {title}
+            </h1>
             <p className="mt-7">{caption}</p>
             <div className="flex mt-5">
               <div className="w-52">

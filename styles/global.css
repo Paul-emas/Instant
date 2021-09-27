@@ -12,6 +12,18 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Gill Sans Nova';
+  src: local('Gill Sans Nova SemiBold'), local('Gill-Sans-Nova-SemiBold'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-SemiBold.woff2')
+      format('woff2'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-SemiBold.woff') format('woff'),
+    url('../fonts/GillSansNova-Bold/GillSansNova-SemiBold.ttf')
+      format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -102,4 +114,37 @@ input[type='number']::-webkit-outer-spin-button {
 
 .w-detailbar {
   margin-left: -14rem;
+}
+
+.stepper:not(:last-child)::before {
+  position: absolute;
+  content: '';
+  width: 1px;
+  height: 27px;
+  background-color: #9a9a9a78;
+  top: 5rem;
+}
+
+/* Animations */
+.spin {
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

@@ -3,6 +3,9 @@ import Partners from '../components/homepage/Partners';
 import UserServices from '../components/homepage/UserServices';
 import BuyElectricity from '../components/homepage/BuyElectricity';
 import Plans from '../components/homepage/Plans';
+import Counter from '../components/homepage/Counter';
+import DownloadApp from '../components/homepage/DownloadApp';
+import FAQs from '../components/homepage/FAQs';
 
 export default function Home() {
   return (
@@ -19,6 +22,9 @@ export default function Home() {
           alignRight
         />
         <Plans />
+        <Counter />
+        <DownloadApp />
+        <FAQs />
       </main>
     </div>
   );

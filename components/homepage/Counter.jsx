@@ -2,54 +2,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Counter = props => (
-  <section className="py-24 -mt-40">
+  <section className="py-24 bg-white">
     <div className="container mx-auto xl:px-10">
-      <div className="flex justify-between items-center">
-        <div className="max-w-xl">
-          <h1 className="text-5xl leading-tight text-font-darker">
-            Be comfortable as you move around the city anytime, anyday.
-          </h1>
-          <p className="text-font-dark mt-3">
-            Move around at your will in convivence go about your day at ease.
-            Move around at your will in convivence go about your day at ease.
-            Move around at your will in convivence go about your day at ease.
-            Move around at your will in convivence go about your day at ease.
-            Move around at your will in convivence go about your day at ease.
-            Move around at your will in convivence go about your day at ease.
-            Move around at your will in convivence go about your day at ease.
-            Move around at your will in convivence go about your day at ease.{' '}
+      <h1 className="text-5xl font-bold max-w-2xl text-center mx-auto font-gill text-primary-darker">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.
+      </h1>
+      <div className="flex justify-center items-center space-x-10 mt-24">
+        <div className="w-279 h-332 border border-primary-base flex flex-col justify-center items-center rounded-3xl text-center bg-primary-light">
+          <p className="text-5xl font-gill font-medium text-primary-darker">
+            3000
           </p>
+          <span className="text-sm px-12 mt-4 text-font-dark">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          </span>
         </div>
-        <div className="p-5 w-w-modal bg-gradient-to-r from-primary-lighter to-primary-base rounded-lg">
-          <div className="flex justify-between">
-            <div className="w-52 h-52 bg-white rounded-lg text-center flex justify-center items-center">
-              <div>
-                <h2 className="text-6xl text-font-green font-bold">460+</h2>
-                <p className="text-font-dark mt-3">Countries of operation</p>
-              </div>
-            </div>
-            <div className="w-52 h-52 bg-white rounded-lg text-center flex justify-center items-center">
-              <div>
-                <h2 className="text-6xl text-font-green font-bold">20+</h2>
-                <p className="text-font-dark mt-3">Countries of operation</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex mt-5 justify-between">
-            <div className="w-52 h-52 bg-white rounded-lg text-center flex justify-center items-center">
-              <div>
-                <h2 className="text-6xl text-font-green font-bold">100k</h2>
-                <p className="text-font-dark mt-3">Countries of operation</p>
-              </div>
-            </div>
-            <div className="w-52 h-52 bg-white rounded-lg text-center flex justify-center items-center">
-              <div>
-                <h2 className="text-6xl text-font-green font-bold">50+</h2>
-                <p className="text-font-dark mt-3">Countries of operation</p>
-              </div>
-            </div>
-          </div>
+        <div className="w-279 h-332 bg-secondary-lighterGreen border border-secondary-green flex flex-col justify-center items-center rounded-3xl text-center">
+          <p className="text-5xl font-gill font-medium text-primary-darker">
+            460+
+          </p>
+          <span className="text-sm px-12 mt-4 text-font-dark">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          </span>
         </div>
+        <div className="w-279 h-332 bg-secondary-lighterPurple border border-secondary-purple flex flex-col justify-center items-center rounded-3xl text-center">
+          <p className="text-5xl font-gill font-medium text-primary-darker">
+            150k
+          </p>
+          <span className="text-sm px-12 mt-4 text-font-dark">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          </span>
+        </div>
+      </div>
+      <div className="text-center mt-24">
+        <p className="text-primary-darker font-semibold">
+          <span>Need help? talk to our</span>
+          <a href="" className="ml-2 text-primary-base">
+            Customer support
+          </a>
+        </p>
       </div>
     </div>
   </section>
