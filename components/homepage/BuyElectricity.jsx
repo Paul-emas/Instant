@@ -2,7 +2,7 @@ import ShockIcon from '../../public/svgs/shock.svg';
 
 const BuyElectricity = ({ title, caption, iconText, cta, alignRight }) => {
   return (
-    <div className={`${!alignRight && 'bg-secondary-lightGreen'} py-44`}>
+    <div className={`${!alignRight && 'bg-secondary-lightGreen'} py-36`}>
       <div className="container px-10 mx-auto">
         <div
           className={`${
