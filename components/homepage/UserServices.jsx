@@ -2,7 +2,7 @@ import BulbIcon from '../../public/svgs/bulb.svg';
 
 const UserServices = () => {
   return (
-    <div className="py-20">
+    <div className="py-20 border-t">
       <div className="container px-10 mx-auto">
         <h1 className="text-5xl font-bold max-w-xl text-center mx-auto font-gill">
           Easy steps to recharge your meter

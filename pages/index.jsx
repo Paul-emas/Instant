@@ -14,7 +14,7 @@ export default function Home() {
     <div>
       <Header />
       <main>
-        <Partners bottom />
+        <Partners bottom={true} />
         <UserServices />
         <BuyElectricity />
         <BuyElectricity
