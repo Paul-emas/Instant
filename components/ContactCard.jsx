@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 
-const ContactCard = ({ top }) => {
+const ContactCard = ({ top, light }) => {
   return (
     <div
       className={`${
@@ -12,8 +12,18 @@ const ContactCard = ({ top }) => {
         <FontAwesomeIcon icon={faPhoneAlt} className="text-xl" />
       </div>
       <div className="ml-4">
-        <p className="text-sm text-font-darker relative top-1">Need help?</p>
-        <p className="text-lg font-bold text-font-darker">080-1234-5678</p>
+        <p
+          className={`${
+            light ? 'text-gray-400' : 'text-font-darker'
+          } text-xs relative top-1`}>
+          Need help?
+        </p>
+        <p
+          className={`${
+            light ? 'text-white' : 'text-font-darker'
+          } text-lg font-semibold font-gill`}>
+          080-1234-5678
+        </p>
       </div>
     </div>
   );
@@ -21,10 +31,12 @@ const ContactCard = ({ top }) => {
 
 ContactCard.defaultProps = {
   top: false,
+  light: false,
 };
 
 ContactCard.propTypes = {
   top: PropTypes.bool,
+  light: PropTypes.bool,
 };
 
 export default ContactCard;

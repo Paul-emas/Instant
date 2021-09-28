@@ -90,7 +90,7 @@ const DownloadApp = () => {
                   </p>
                 </div>
               </div>
-              <DownloadButtons />
+              <DownloadButtons className="bg-primary-darker hover:bg-primary-darkest" />
             </div>
           </div>
         </div>

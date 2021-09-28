@@ -18,7 +18,7 @@ const Header = () => (
                 Instant Energy deploys patient, value accretive capital
                 alongside international and local value investors to create.
               </p>
-              <DownloadButtons />
+              <DownloadButtons className="bg-primary-darker hover:bg-primary-darkest" />
             </div>
             <ContactCard top />
           </div>

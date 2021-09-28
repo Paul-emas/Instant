@@ -8,6 +8,8 @@ import DownloadApp from '../components/homepage/DownloadApp';
 import FAQs from '../components/homepage/FAQs';
 import People from '../components/homepage/People';
 import Slider from '../components/homepage/Slider';
+import CTA from '../components/homepage/CTA';
+import Footer from '../components/homepage/Footer';
 
 export default function Home() {
   return (
@@ -30,6 +32,8 @@ export default function Home() {
         <People />
         <Slider />
         <Partners />
+        <CTA />
+        <Footer />
       </main>
     </div>
   );
