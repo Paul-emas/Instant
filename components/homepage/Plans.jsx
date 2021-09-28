@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import FormInput from '../forms/FormInput';
 import PlanCards from './PlanCards';
 
-const Plans = () => {
+const Plans = ({ gray }) => {
   const {
     register,
     handleSubmit,
@@ -12,7 +12,7 @@ const Plans = () => {
   } = useForm();
 
   return (
-    <div className="py-20 bg-secondary-lightBlue">
+    <div className={`${gray ? 'bg-gray-100' : 'bg-secondary-lightBlue'} py-20`}>
       <div className="container px-10 mx-auto">
         <h1 className="text-5xl font-bold max-w-xl text-center mx-auto font-gill">
           Choose a solar plan

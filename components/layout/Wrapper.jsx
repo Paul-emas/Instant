@@ -4,11 +4,18 @@ import Sidebar from '../layout/Sidebar';
 
 const Wrapper = ({ children }) => {
   const router = useRouter();
-  const homepage = router.asPath === '/';
+  const inActiveRoutes = ['/', '/solar-power', '/faqs'];
+  let isDefaultRoute = false;
+  inActiveRoutes.forEach(route => {
+    if (route === router.asPath) {
+      isDefaultRoute = true;
+    }
+    return isDefaultRoute;
+  });
 
   return (
     <>
-      {homepage ? (
+      {isDefaultRoute ? (
         <div>{children}</div>
       ) : (
         <div className="h-screen overflow-x-hidden w-full bg-gray-300">

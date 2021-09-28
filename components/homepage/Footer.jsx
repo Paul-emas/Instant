@@ -19,8 +19,8 @@ const Footer = () => {
           <div className="col-span-2">
             <Image
               src="/images/logo-light.png"
-              width={179}
-              height={39}
+              width={185}
+              height={40}
               className="object-contain"
             />
             <p className="mt-5 text-sm max-w-xs pr-20 text-gray-400">

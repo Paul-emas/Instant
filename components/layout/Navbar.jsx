@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,6 +7,7 @@ import Button from '../Button';
 
 const Navbar = () => {
   const [isScrolling, setIsScrolling] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     window.onscroll = () => {
@@ -24,15 +26,23 @@ const Navbar = () => {
       } h-16 fixed z-50 inset-0`}>
       <div className="xl:container mx-auto h-full px-6 lg:px-10">
         <div className="flex justify-between h-full items-center">
-          <Image
-            src="/images/logo.png"
-            width={181.42}
-            height={30.95}
-            className="object-contain"
-          />
+          <Link href="/">
+            <a>
+              <Image
+                src="/images/logo.png"
+                width={185}
+                height={40}
+                className="object-contain"
+              />
+            </a>
+          </Link>
           <div className="flex items-center text-base space-x-5">
-            <Link href="/">
-              <a className="text-primary-darker font-bold">Solar Electricity</a>
+            <Link href={router.asPath === '/' ? '/solar-power' : '/'}>
+              <a className="text-primary-darker font-bold">
+                {router.asPath === '/'
+                  ? 'Solar Electricity'
+                  : 'Buy Electricity'}
+              </a>
             </Link>
             <Button>Get started</Button>
           </div>
