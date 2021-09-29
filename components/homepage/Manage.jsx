@@ -10,14 +10,14 @@ const Manage = () => {
             <h1 className="text-5xl font-gill max-w-md leading-tight font-bold">
               Manage your solar plan using our mobile app
             </h1>
-            <p className="max-w-xl mt-4">
+            <p className="max-w-xl mt-6">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore.
             </p>
             <DownloadButtons
-              captionColor="text-gray-400"
+              captionColor="text-gray-500"
               labelColor="text-primary-darker"
-              className="border-2 border-primary-darker hover:bg-primary-darkest hover:border-primary-darkest icon-dark"
+              className="border-2 border-primary-darker icon-dark"
             />
           </div>
           <MobileMockup className="transform scale-125 mx-auto" />

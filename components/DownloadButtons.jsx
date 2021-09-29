@@ -11,22 +11,22 @@ const DownloadButtons = ({ className, captionColor, labelColor, center }) => (
     <a
       href="/"
       className={`${className} pl-2.5 sm:pl-3 lg:pl-4 py-2.5 rounded-xl inline-flex items-center`}>
-      <AppleIcon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
-      <div className="ml-1 sm:ml-2 mt-0.5  text-left">
-        <p className={`${captionColor} text-xxs lg:text-xs`}>Download on the</p>
+      <PlayStoreIcon className="w-8 h-8 lg:w-10 lg:h-10" />
+      <div className="ml-1 sm:ml-2 mt-0.5 lg:mt-1 text-left">
+        <p className={`${captionColor} text-xxs lg:text-xs`}>Get it on</p>
         <p className={`${labelColor} text-xs lg:text-lg font-semibold`}>
-          App Store
+          Play Store
         </p>
       </div>
     </a>
     <a
       href="/"
       className={`${className} pl-2.5 sm:pl-3 lg:pl-4 py-2.5 rounded-xl inline-flex items-center`}>
-      <PlayStoreIcon className="w-8 h-8 lg:w-10 lg:h-10" />
-      <div className="ml-1 sm:ml-2 mt-0.5 lg:mt-1 text-left">
-        <p className={`${captionColor} text-xxs lg:text-xs`}>Get it on</p>
+      <AppleIcon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
+      <div className="ml-1 sm:ml-2 mt-0.5  text-left">
+        <p className={`${captionColor} text-xxs lg:text-xs`}>Download on the</p>
         <p className={`${labelColor} text-xs lg:text-lg font-semibold`}>
-          Play Store
+          App Store
         </p>
       </div>
     </a>
