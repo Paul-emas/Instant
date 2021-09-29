@@ -85,6 +85,14 @@ input[type='number']::-webkit-outer-spin-button {
   background: #347f95;
 }
 
+.icon-dark svg {
+  fill: #0d3643;
+}
+
+.icon-dark svg path {
+  fill: #0d3643;
+}
+
 .PhoneInputInput:focus {
   @apply bg-primary-light;
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AppleIcon from '../public/svgs/apple.svg';
 import PlayStoreIcon from '../public/svgs/google-play.svg';
 
-const DownloadButtons = ({ className, captionColor, center }) => (
+const DownloadButtons = ({ className, captionColor, labelColor, center }) => (
   <div
     className={`${
       center ? 'mx-auto' : 'lg:ml-0'
@@ -14,7 +14,9 @@ const DownloadButtons = ({ className, captionColor, center }) => (
       <AppleIcon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
       <div className="ml-1 sm:ml-2 mt-0.5  text-left">
         <p className={`${captionColor} text-xxs lg:text-xs`}>Download on the</p>
-        <p className="text-white text-xs lg:text-lg font-semibold">App Store</p>
+        <p className={`${labelColor} text-xs lg:text-lg font-semibold`}>
+          App Store
+        </p>
       </div>
     </a>
     <a
@@ -23,7 +25,7 @@ const DownloadButtons = ({ className, captionColor, center }) => (
       <PlayStoreIcon className="w-8 h-8 lg:w-10 lg:h-10" />
       <div className="ml-1 sm:ml-2 mt-0.5 lg:mt-1 text-left">
         <p className={`${captionColor} text-xxs lg:text-xs`}>Get it on</p>
-        <p className="text-white text-xs lg:text-lg font-semibold">
+        <p className={`${labelColor} text-xs lg:text-lg font-semibold`}>
           Play Store
         </p>
       </div>
@@ -34,12 +36,14 @@ const DownloadButtons = ({ className, captionColor, center }) => (
 DownloadButtons.defaultProps = {
   className: 'bg-primary-darker',
   captionColor: 'text-white',
+  labelColor: 'text-white',
   center: false,
 };
 
 DownloadButtons.propTypes = {
   className: PropTypes.string.isRequired,
   captionColor: PropTypes.string,
+  labelColor: PropTypes.string,
   center: PropTypes.bool,
 };
 

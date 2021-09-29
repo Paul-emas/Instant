@@ -5,6 +5,7 @@ import BannerImage from '../public/svgs/banner.svg';
 import UserServices from '../components/homepage/UserServices';
 import BulbIcon from '../public/svgs/bulb.svg';
 import Plans from '../components/homepage/Plans';
+import Manage from '../components/homepage/Manage';
 
 const solarPower = () => {
   const steps = [
@@ -77,6 +78,7 @@ const solarPower = () => {
       </Header>
       <UserServices title="How to start a solar plan" stepArr={steps} />
       <Plans gray />
+      <Manage />
     </div>
   );
 };
