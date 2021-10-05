@@ -4,7 +4,7 @@ import Sidebar from '../layout/Sidebar';
 
 const Wrapper = ({ children }) => {
   const router = useRouter();
-  const inActiveRoutes = ['/', '/solar-power', '/faqs'];
+  const inActiveRoutes = ['/', '/solar-plans', '/off-grid', '/faqs'];
   let isDefaultRoute = false;
   inActiveRoutes.forEach(route => {
     if (route === router.asPath) {

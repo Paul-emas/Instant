@@ -1,8 +1,8 @@
 import ShockIcon from '../../public/svgs/shock.svg';
 
-const BuyElectricity = ({ title, caption, iconText, cta, alignRight }) => {
+const BuyElectricity = ({ title, caption, iconText, cta, bg, alignRight }) => {
   return (
-    <div className={`${!alignRight && 'bg-secondary-lightGreen'} py-36`}>
+    <div className={`${bg} py-36`}>
       <div className="container px-10 mx-auto">
         <div
           className={`${
@@ -21,7 +21,9 @@ const BuyElectricity = ({ title, caption, iconText, cta, alignRight }) => {
             <p className="mt-7">{caption}</p>
             <div className="flex mt-5">
               <div className="w-52">
-                <button type="submit" className="btn transform uppercase">
+                <button
+                  type="submit"
+                  className="btn bg-primary-base btn-white transform uppercase">
                   {cta}
                 </button>
               </div>
@@ -47,6 +49,7 @@ BuyElectricity.defaultProps = {
   iconText: 'UNITS PURCHASE',
   cta: 'Buy electricity',
   alignRight: false,
+  bg: '',
 };
 
 export default BuyElectricity;

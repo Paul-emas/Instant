@@ -6,8 +6,14 @@ import UserServices from '../components/homepage/UserServices';
 import BulbIcon from '../public/svgs/bulb.svg';
 import Plans from '../components/homepage/Plans';
 import Manage from '../components/homepage/Manage';
+import ChoosePlans from '../components/homepage/ChoosePlans';
+import Counter from '../components/homepage/Counter';
+import People from '../components/homepage/People';
+import Slider from '../components/homepage/Slider';
+import CTA from '../components/homepage/CTA';
+import Footer from '../components/homepage/Footer';
 
-const solarPower = () => {
+export default function solarPlans() {
   const steps = [
     {
       name: 'Start a solar plan',
@@ -79,8 +85,12 @@ const solarPower = () => {
       <UserServices title="How to start a solar plan" stepArr={steps} />
       <Plans gray />
       <Manage />
+      <ChoosePlans />
+      <Counter />
+      <People />
+      <Slider />
+      <CTA />
+      <Footer />
     </div>
   );
-};
-
-export default solarPower;
+}

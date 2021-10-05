@@ -2,7 +2,7 @@ import PeopleGroupIcon from '../../public/svgs/people-group.svg';
 
 const People = () => {
   return (
-    <div className="py-32 bg-primary-base bg-contain overlay">
+    <div className="py-32 bg-primary-base bg-cover overlay">
       <div className="container px-10 mx-auto">
         <div className="max-w-6xl mx-auto text-center">
           <PeopleGroupIcon className="mx-auto" />

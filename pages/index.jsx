@@ -4,7 +4,6 @@ import QuickPay from '../components/modals/QuickPay';
 import Partners from '../components/homepage/Partners';
 import UserServices from '../components/homepage/UserServices';
 import BuyElectricity from '../components/homepage/BuyElectricity';
-import Plans from '../components/homepage/Plans';
 import Counter from '../components/homepage/Counter';
 import DownloadApp from '../components/homepage/DownloadApp';
 import FAQs from '../components/homepage/FAQs';
@@ -55,14 +54,18 @@ export default function Home() {
       <main>
         <Partners />
         <UserServices border />
-        <BuyElectricity />
+        <BuyElectricity bg="bg-secondary-lightGreen" />
         <BuyElectricity
           title="Never run of power with solar electricity"
           iconText="Solar electricity"
           cta="Request Solar"
           alignRight
         />
-        <Plans />
+        <BuyElectricity
+          title="Buy electricity units at Offgrid"
+          cta="Request Demo"
+          bg="bg-secondary-lightBlue"
+        />
         <Counter />
         <DownloadApp />
         <FAQs />

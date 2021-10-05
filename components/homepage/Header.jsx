@@ -1,16 +1,19 @@
 import Navbar from '../layout/Navbar';
 
-const Header = ({ children }) => (
-  <div>
+const Header = ({ children, bg }) => (
+  <>
     <Navbar />
-    <header className="min-h-screen bg-primary-light overflow-hidden">
+    <header
+      className={`${
+        !bg ? 'bg-primary-light' : 'banner'
+      } min-h-screen overflow-hidden`}>
       <div className="xl:container mx-auto px-6 xl:px-10">
         <div className="flex w-full min-h-screen justify-between">
           {children}
         </div>
       </div>
     </header>
-  </div>
+  </>
 );
 
 export default Header;

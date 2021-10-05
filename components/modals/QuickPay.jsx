@@ -82,7 +82,7 @@ const QuickPay = props => {
           </div>
           <button
             type="submit"
-            className="btn transform uppercase active:translate-y-0 hover:-translate-y-1">
+            className="btn bg-primary-base btn-white transform uppercase active:translate-y-0 hover:-translate-y-1">
             Proceed to Payment
           </button>
         </form>

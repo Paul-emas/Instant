@@ -102,7 +102,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .btn {
-  @apply bg-primary-base w-full mt-8 px-7 py-5 duration-300 hover:bg-primary-hover active:bg-primary-active text-center text-white font-semibold rounded-lg;
+  @apply w-full mt-8 px-7 py-5 duration-300 text-center font-semibold rounded-xl;
+}
+
+.btn-white {
+  @apply hover:bg-primary-hover active:bg-primary-active text-white;
 }
 
 .active-icon svg path {
@@ -111,14 +115,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .shadow-soft {
   box-shadow: 0 50px 77px rgb(176 183 195 / 35%);
-}
-
-.woman {
-  background-image: url('../public/images/woman.png');
-}
-
-.jeans {
-  background-image: url('../public/images/jeans.png');
 }
 
 .overlay {
@@ -195,4 +191,11 @@ input[type='number']::-webkit-outer-spin-button {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: linear-gradient(to bottom, #0d3845cf, #0d3845cf),
+    url('../public/images/banner.png');
 }

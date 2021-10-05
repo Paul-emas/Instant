@@ -36,13 +36,15 @@ const Navbar = () => {
               />
             </a>
           </Link>
-          <div className="flex items-center text-base space-x-5">
-            <Link href={router.asPath === '/' ? '/solar-power' : '/'}>
-              <a className="text-primary-darker font-bold">
-                {router.asPath === '/'
-                  ? 'Solar Electricity'
-                  : 'Buy Electricity'}
-              </a>
+          <div className="flex items-center text-base space-x-8">
+            <Link href="/">
+              <a className="text-primary-darker font-bold">Electricity Units</a>
+            </Link>
+            <Link href="/solar-plans">
+              <a className="text-primary-darker font-bold">Solar Electricity</a>
+            </Link>
+            <Link href="/off-grid">
+              <a className="text-primary-darker font-bold">Offgrid</a>
             </Link>
             <Button>Get started</Button>
           </div>
