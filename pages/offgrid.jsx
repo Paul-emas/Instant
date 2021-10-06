@@ -1,5 +1,11 @@
+import Business from '../components/homepage/Business';
+import Control from '../components/homepage/Control';
 import Header from '../components/homepage/Header';
 import Solution from '../components/homepage/Solution';
+import People from '../components/homepage/People';
+import Slider from '../components/homepage/Slider';
+import CTA from '../components/homepage/CTA';
+import Footer from '../components/homepage/Footer';
 
 export default function offGrid() {
   return (
@@ -30,6 +36,12 @@ export default function offGrid() {
         </div>
       </Header>
       <Solution />
+      <Business />
+      <Control />
+      <People />
+      <Slider />
+      <CTA />
+      <Footer />
     </div>
   );
 }

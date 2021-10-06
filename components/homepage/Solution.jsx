@@ -2,7 +2,7 @@ import DashBoardIcon from '../../public/svgs/dashboard-banner.svg';
 
 const Solution = () => {
   return (
-    <div className="py-24 flex items-center bg-white">
+    <div className="py-32 flex items-center bg-white">
       <div className="container mx-auto px-10">
         <h1 className="text-5xl font-bold max-w-xl text-center mx-auto font-gill">
           Our Solution
