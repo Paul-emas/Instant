@@ -37,17 +37,17 @@ const Footer = () => {
                 <h2 className="text-white font-gill font-semibold">Products</h2>
                 <div className="flex flex-col space-y-8 mt-10">
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
                       Buy Electricity
                     </a>
                   </Link>
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
                       Become an Agent
                     </a>
                   </Link>
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
                       Available Cities
                     </a>
                   </Link>
@@ -57,15 +57,17 @@ const Footer = () => {
                 <h2 className="text-white font-gill font-semibold">Company</h2>
                 <div className="flex flex-col space-y-8 mt-10">
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">Home</a>
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
+                      Home
+                    </a>
                   </Link>
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
                       About us
                     </a>
                   </Link>
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
                       Contact us
                     </a>
                   </Link>
@@ -75,17 +77,19 @@ const Footer = () => {
                 <h2 className="text-white font-gill font-semibold">Legal</h2>
                 <div className="flex flex-col space-y-8 mt-10">
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
                       Privacy Policy
                     </a>
                   </Link>
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
                       Terms of use
                     </a>
                   </Link>
                   <Link href="">
-                    <a className="text-sm text-gray-400 font-semibold">FAQs</a>
+                    <a className="text-sm hover:text-primary-base text-gray-400 font-semibold">
+                      FAQs
+                    </a>
                   </Link>
                 </div>
               </div>
