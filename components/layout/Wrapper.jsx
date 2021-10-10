@@ -4,18 +4,30 @@ import Sidebar from '../layout/Sidebar';
 
 const Wrapper = ({ children }) => {
   const router = useRouter();
-  const inActiveRoutes = ['/', '/solar-plans', '/offgrid', '/faqs'];
-  let isDefaultRoute = false;
+  const token = false;
+  let isRouteProtected = false;
+  const inActiveRoutes = [
+    '/solar-plans',
+    '/offgrid',
+    '/auth/sign-in',
+    '/auth/sign-up',
+    '/auth/otp/pin',
+    '/auth/otp/generate',
+    '/auth/otp/forgot',
+    '/faqs',
+  ];
   inActiveRoutes.forEach(route => {
-    if (route === router.asPath) {
-      isDefaultRoute = true;
+    if (router.asPath.includes(route) || router.asPath === '/') {
+      isRouteProtected = true;
     }
-    return isDefaultRoute;
+    return isRouteProtected;
   });
+
+  console.log(isRouteProtected);
 
   return (
     <>
-      {isDefaultRoute ? (
+      {isRouteProtected ? (
         <div>{children}</div>
       ) : (
         <div className="h-screen overflow-x-hidden w-full bg-gray-300">

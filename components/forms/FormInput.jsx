@@ -1,6 +1,8 @@
 import { forwardRef } from 'react';
 import 'react-phone-number-input/style.css';
-import PhoneInput from 'react-phone-number-input/react-hook-form';
+import PhoneInput, {
+  isValidPhoneNumber,
+} from 'react-phone-number-input/react-hook-form';
 
 const FormInput = forwardRef(
   (
@@ -25,10 +27,11 @@ const FormInput = forwardRef(
 
         {type === 'phone' && (
           <div
-            className={`${className} form-input focus-within:bg-primary-light focus-within:border-primary-base focus:outline-none`}>
+            className={`${className} form-input focus-within:bg-primary-light focus-within:border-primary-base focus:outline-none`}
+          >
             <PhoneInput
               defaultCountry="NG"
-              name={label}
+              name={type}
               control={control}
               rules={{ required: true }}
               {...props}
@@ -40,7 +43,8 @@ const FormInput = forwardRef(
           <select
             {...props}
             className={`${className} form-select form-input focus:border-gray-400 focus:outline-none`}
-            placeholder="Regular input">
+            placeholder="Regular input"
+          >
             {options.map(option => (
               <option key={option} value={option}>
                 {option}
@@ -51,7 +55,8 @@ const FormInput = forwardRef(
 
         {type === 'currency' && (
           <div
-            className={`${className} form-input flex focus-within:bg-primary-light focus-within:border-primary-base`}>
+            className={`${className} form-input flex focus-within:bg-primary-light focus-within:border-primary-base`}
+          >
             <div className="text capitalize text-primary-base">NGN</div>
             <input
               {...props}

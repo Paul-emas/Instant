@@ -46,6 +46,7 @@ module.exports = {
         'w-modal': '474px',
         sidebar: '280px',
         detailbar: '350px',
+        auth: '460.44px',
         74: '305px',
         279: '279px',
       },
@@ -63,6 +64,7 @@ module.exports = {
       fontSize: {
         heading: '1.75rem',
         xxs: '10px',
+        '32xl': '32px',
       },
     },
     fontFamily: {

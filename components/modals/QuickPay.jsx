@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import FormInput from '../forms/FormInput';
+import PrimaryButton from '../Buttons/PrimaryButton';
 
 const QuickPay = props => {
   const {
@@ -31,7 +32,8 @@ const QuickPay = props => {
         </div>
         <form
           className="px-8 pt-4 pb-8 2xl:p-8"
-          onSubmit={handleSubmit(onSubmit)}>
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <FormInput
             className="py-2.5 2xl:py-3.5 px-5 mt-2"
             type="select"
@@ -80,11 +82,7 @@ const QuickPay = props => {
               ?
             </span>
           </div>
-          <button
-            type="submit"
-            className="btn bg-primary-base btn-white transform uppercase active:translate-y-0 hover:-translate-y-1">
-            Proceed to Payment
-          </button>
+          <PrimaryButton>Proceed to Payment</PrimaryButton>
         </form>
       </div>
     </div>
