@@ -6,9 +6,21 @@ import ContactCard from '../ContactCard';
 
 const AuthWrapper = ({ title, caption, icon, children }) => {
   return (
-    <div className="fixed w-full bg-white">
-      <div className="grid grid-cols-2">
-        <div className="bg-primary-darker justify-center h-screen">
+    <div className="lg:fixed py-8 lg:py-0 w-full bg-white">
+      <div className="flex lg:hidden justify-center mb-10">
+        <Link href="/">
+          <a>
+            <Image
+              src="/images/logo.png"
+              width={185}
+              height={40}
+              className="object-contain mx-auto"
+            />
+          </a>
+        </Link>
+      </div>
+      <div className="grid lg:grid-cols-2">
+        <div className="bg-primary-darker hidden lg:block justify-center h-screen">
           <div className="max-w-md mx-auto 2xl:py-16">
             <div className="justify-center hidden 2xl:flex">
               <Link href="/">
@@ -53,7 +65,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
             </div>
           </div>
         </div>
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="min-h-screen flex lg:items-center justify-center">
           {children}
         </div>
       </div>

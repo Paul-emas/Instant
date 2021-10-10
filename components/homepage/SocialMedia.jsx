@@ -22,7 +22,8 @@ const SocialMedia = () => {
         <div className="flex justify-center space-x-5 mt-10">
           <a
             href=""
-            className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-white rounded-full">
+            className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-white rounded-full"
+          >
             <FontAwesomeIcon
               icon={faInstagram}
               className="text-3xl text-gray-800 mt-1.5 lg:mt-3"
@@ -30,7 +31,8 @@ const SocialMedia = () => {
           </a>
           <a
             href=""
-            className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-secondary-twitter rounded-full">
+            className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-secondary-twitter rounded-full"
+          >
             <FontAwesomeIcon
               icon={faTwitter}
               className="text-3xl text-white mt-1.5 lg:mt-3"
@@ -38,7 +40,8 @@ const SocialMedia = () => {
           </a>
           <a
             href=""
-            className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-secondary-linkedin rounded-full">
+            className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-secondary-linkedin rounded-full"
+          >
             <FontAwesomeIcon
               icon={faLinkedinIn}
               className="text-3xl text-white mt-1.5 lg:mt-3"
@@ -46,10 +49,11 @@ const SocialMedia = () => {
           </a>
           <a
             href=""
-            className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-secondary-youtube rounded-full">
+            className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-secondary-youtube rounded-full"
+          >
             <FontAwesomeIcon
               icon={faYoutube}
-              className="text-3xl text-white mt-1.5 lg:mt-3"
+              className="text-3xl text-white ml-0.5 mt-1.5 lg:mt-3"
             />
           </a>
         </div>

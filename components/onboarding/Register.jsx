@@ -32,9 +32,9 @@ const Register = () => {
 
   return (
     <Fragment>
-      <div className="w-auth">
+      <div className="w-full px-5 md:w-auth">
         <h1 className="text-32xl font-bold text-center">Create an account</h1>
-        <p className="text-gray-700 mt-3 text-center">
+        <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Enter your phone number to continue
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
@@ -90,7 +90,9 @@ const Register = () => {
         <div className="text-blue text-gray-500 mt-5">
           Already a user?{' '}
           <Link href="/auth/sign-in">
-            <a className="text-primary-base font-bold">Login</a>
+            <a className="text-primary-base font-bold text-sm lg:text-base">
+              Login
+            </a>
           </Link>
         </div>
       </div>

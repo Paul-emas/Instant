@@ -31,11 +31,11 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div className="w-auth">
+      <div className="w-full px-5 md:w-auth">
         <h1 className="text-32xl font-bold text-center">
           Welcome to Instant Energy
         </h1>
-        <p className="text-gray-700 mt-3 text-center">
+        <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Sign in to Instant Energy
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
@@ -63,7 +63,9 @@ const Login = () => {
         <div className="text-blue text-gray-500 mt-5">
           Dont have an account?{' '}
           <Link href="/auth/sign-up">
-            <a className="text-primary-base font-bold">Register</a>
+            <a className="text-primary-base font-bold text-sm lg:text-base">
+              Register
+            </a>
           </Link>
         </div>
         <div className="mt-20">

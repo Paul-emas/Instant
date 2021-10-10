@@ -23,9 +23,9 @@ const CreatePin = () => {
 
   return (
     <Fragment>
-      <div className="w-auth">
+      <div className="w-full px-5 md:w-auth">
         <h1 className="text-32xl font-bold text-center">Enter your PIN</h1>
-        <p className="text-gray-700 mt-3 text-center">
+        <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Your 4-digit access code
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
@@ -61,7 +61,9 @@ const CreatePin = () => {
         </form>
         <div className="text-center mt-10">
           <Link href="/auth/forgot">
-            <a className="text-primary-base font-bold">Forgot Pin</a>
+            <a className="text-primary-base font-bold text-sm lg:text-base">
+              Forgot Pin
+            </a>
           </Link>
         </div>
       </div>

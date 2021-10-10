@@ -12,7 +12,8 @@ const SocialCard = () => (
     <div className="flex justify-center space-x-5 mt-5">
       <a
         href=""
-        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-twitter rounded-full">
+        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-twitter rounded-full"
+      >
         <FontAwesomeIcon
           icon={faTwitter}
           className="text-xl text-white mt-1.5 lg:mt-2.5"
@@ -20,7 +21,8 @@ const SocialCard = () => (
       </a>
       <a
         href=""
-        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-white border rounded-full">
+        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-white lg:border rounded-full"
+      >
         <FontAwesomeIcon
           icon={faInstagram}
           className="text-2xl mt-1.5 lg:mt-2"
@@ -28,7 +30,8 @@ const SocialCard = () => (
       </a>
       <a
         href=""
-        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-linkedin rounded-full">
+        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-linkedin rounded-full"
+      >
         <FontAwesomeIcon
           icon={faLinkedinIn}
           className="text-xl text-white mt-1.5 lg:mt-2.5"
@@ -36,7 +39,8 @@ const SocialCard = () => (
       </a>
       <a
         href=""
-        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-youtube rounded-full">
+        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-youtube rounded-full"
+      >
         <FontAwesomeIcon
           icon={faYoutube}
           className="text-xl text-white mt-1.5 lg:mt-2.5"
