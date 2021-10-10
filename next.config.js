@@ -6,4 +6,10 @@ module.exports = {
     });
     return config;
   },
+  compilerOptions: {
+    baseUrl: '.',
+    paths: {
+      '@/components/*': ['components/*'],
+    },
+  },
 };
