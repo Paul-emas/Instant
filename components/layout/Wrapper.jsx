@@ -23,8 +23,6 @@ const Wrapper = ({ children }) => {
     return isRouteProtected;
   });
 
-  console.log(isRouteProtected);
-
   return (
     <>
       {isRouteProtected ? (
