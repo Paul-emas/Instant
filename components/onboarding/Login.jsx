@@ -1,14 +1,18 @@
 import { Fragment, useState } from 'react';
 import Link from 'next/link';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { isValidPhoneNumber } from 'react-phone-number-input';
+import { useGlobalContext } from '../../hooks/useGlobalContext';
+import useDispatcher from '../../hooks/useDispatcher';
 
 import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import SocialCard from '../SocialCard';
-import ErrorMessage from '../forms/ErrorMessage';
 
 const Login = () => {
+  const { user } = useGlobalContext();
+  const { setUserAccount, setIsLoggedIn } = useDispatcher();
+
   const {
     handleSubmit,
     control,
@@ -19,7 +23,8 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = data => {
-    setIsLoading(true);
+    console.log(user);
+    // setUserAccount({ me: { name: 'Paul Emas' } });
   };
 
   const ValidateMobileNo = number => {
@@ -40,7 +45,7 @@ const Login = () => {
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
-            className="py-2.5 2xl:py-3.5 px-5 mt-2"
+            className="py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
             control={control}
@@ -60,12 +65,10 @@ const Login = () => {
             Continue
           </PrimaryButton>
         </form>
-        <div className="text-blue text-gray-500 mt-5">
+        <div className="text-blue text-sm lg:text-base text-gray-500 mt-5">
           Dont have an account?{' '}
           <Link href="/auth/sign-up">
-            <a className="text-primary-base font-bold text-sm lg:text-base">
-              Register
-            </a>
+            <a className="text-primary-base font-bold">Register</a>
           </Link>
         </div>
         <div className="mt-20">

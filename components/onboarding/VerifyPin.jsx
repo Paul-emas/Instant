@@ -34,17 +34,11 @@ const VerifyPin = () => {
             placeholder="Enter pin"
             label="Pin"
             pattern="[0-9]{4}"
-            maxlength="4"
+            maxLength="4"
             {...register('pin', {
               required: 'You missed this field',
             })}
-          >
-            {isValid && (
-              <div className="mt-2 text-sm font-bold text-red-500 capitalize">
-                Enter a valid Phone Number
-              </div>
-            )}
-          </FormInput>
+          />
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>

@@ -36,7 +36,7 @@ const CreatePin = () => {
             placeholder="Enter pin"
             label="Create pin"
             pattern="[0-9]{4}"
-            maxlength="4"
+            maxLength="4"
             {...register('pin', {
               required: 'You missed this field',
             })}
@@ -48,7 +48,7 @@ const CreatePin = () => {
             placeholder="Confirm your pin"
             label="Confirm pin"
             pattern="[0-9]{4}"
-            maxlength="4"
+            maxLength="4"
             {...register('confirm_pin', {
               validate: value => value === watch('pin') || 'Invalid pin',
             })}

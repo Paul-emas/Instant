@@ -37,7 +37,7 @@ const ForgotPin = () => {
             placeholder="Enter pin"
             label="Pin"
             pattern="[0-9]{4}"
-            maxlength="4"
+            maxLength="4"
             {...register('pin', {
               required: 'You missed this field',
             })}

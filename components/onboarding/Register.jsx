@@ -39,7 +39,7 @@ const Register = () => {
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
-            className="py-3.5 px-5 mt-4"
+            className="py-3.5 px-5 mt-2"
             type="text"
             id="name"
             placeholder="Enter your Full Name"
@@ -49,7 +49,7 @@ const Register = () => {
             })}
           />
           <FormInput
-            className="py-3.5 px-5 mt-4"
+            className="py-3.5 px-5 mt-2"
             type="email"
             id="email"
             placeholder="Enter your Email Address"
@@ -59,7 +59,7 @@ const Register = () => {
             })}
           />
           <FormInput
-            className="py-3.5 px-5 mt-4"
+            className="py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
             control={control}
@@ -70,13 +70,25 @@ const Register = () => {
             }}
           >
             {isValid && (
-              <div className="mt-4 text-sm font-bold text-red-500 capitalize">
+              <div className="mt-2 text-sm font-bold text-red-500 capitalize">
                 Enter a valid Phone Number
               </div>
             )}
           </FormInput>
           <FormInput
-            className="py-3.5 px-5 mt-4"
+            className="py-3.5 px-5 mt-2"
+            type="password"
+            id="pin"
+            placeholder="Enter pin"
+            label="Pin"
+            pattern="[0-9]{4}"
+            maxLength="4"
+            {...register('pin', {
+              required: 'You missed this field',
+            })}
+          />
+          <FormInput
+            className="py-3.5 px-5 mt-2"
             type="text"
             id="referral_no"
             placeholder="Referral Code"
@@ -87,12 +99,10 @@ const Register = () => {
             Create account
           </PrimaryButton>
         </form>
-        <div className="text-blue text-gray-500 mt-5">
+        <div className="text-blue text-sm lg:text-base text-gray-500 mt-5">
           Already a user?{' '}
           <Link href="/auth/sign-in">
-            <a className="text-primary-base font-bold text-sm lg:text-base">
-              Login
-            </a>
+            <a className="text-primary-base font-bold">Login</a>
           </Link>
         </div>
       </div>
