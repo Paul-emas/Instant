@@ -1,6 +1,8 @@
 import 'tailwindcss/tailwind.css';
 import { useForm, FormProvider } from 'react-hook-form';
-import useSWR, { SWRConfig } from 'swr';
+import { SWRConfig } from 'swr';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import Wrapper from '../components/layout/Wrapper';
 import '../styles/global.css';
@@ -20,6 +22,7 @@ function MyApp({ Component, pageProps }) {
       >
         <FormProvider {...methods}>
           <Wrapper>
+            <ToastContainer />
             <Component {...pageProps} />
           </Wrapper>
         </FormProvider>

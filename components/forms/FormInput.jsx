@@ -1,8 +1,6 @@
 import { forwardRef } from 'react';
 import 'react-phone-number-input/style.css';
-import PhoneInput, {
-  isValidPhoneNumber,
-} from 'react-phone-number-input/react-hook-form';
+import PhoneInput from 'react-phone-number-input/react-hook-form';
 
 const FormInput = forwardRef(
   (
@@ -17,7 +15,6 @@ const FormInput = forwardRef(
         {type !== 'phone' && type !== 'select' && type !== 'currency' && (
           <As
             name={label}
-            autoComplete="off"
             ref={ref}
             type={type}
             className={`${className} form-input focus:border-skin-theme focus:outline-none`}
@@ -33,6 +30,7 @@ const FormInput = forwardRef(
               defaultCountry="NG"
               name={type}
               control={control}
+              autoComplete="off"
               rules={{ required: true }}
               {...props}
             />

@@ -1,36 +1,61 @@
 import { Fragment, useState } from 'react';
 import Link from 'next/link';
+import { useSessionStorage } from 'react-use';
 import { useForm } from 'react-hook-form';
 import { isValidPhoneNumber } from 'react-phone-number-input';
-import { useGlobalContext } from '../../hooks/useGlobalContext';
+import { formatPhoneNo } from '../forms/utils';
 import useDispatcher from '../../hooks/useDispatcher';
+import { checkUserValidation } from '../../api';
 
 import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import SocialCard from '../SocialCard';
+import router from 'next/router';
 
 const Login = () => {
-  const { user } = useGlobalContext();
-  const { setUserAccount, setIsLoggedIn } = useDispatcher();
-
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm();
-
-  const [isValid, setIsValid] = useState(false);
+  const { setUserPhoneNo, setUserAnonymousToken } = useDispatcher();
+  const { handleSubmit, control } = useForm();
   const [isLoading, setIsLoading] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+  const [authPhone, setAuthPhone] = useSessionStorage('authPhone', null);
 
-  const onSubmit = data => {
-    console.log(user);
-    // setUserAccount({ me: { name: 'Paul Emas' } });
+  const onSubmit = async formData => {
+    if (formData) {
+      setIsLoading(true);
+      const { phone } = formData;
+      const { countryCode, number } = formatPhoneNo(phone);
+      const payload = {
+        phone: {
+          number,
+          code: countryCode,
+          value: phone,
+        },
+      };
+      const { data, error } = await checkUserValidation(payload);
+      if (error) {
+        setIsLoading(false);
+        setUserPhoneNo({ authPhone: payload });
+        router.push('/auth/sign-up');
+      }
+      if (data) {
+        setIsLoading(false);
+        const { isPin } = data;
+        if (isPin) {
+          setUserPhoneNo({ authPhone: payload });
+          setAuthPhone(payload);
+          router.push('/auth/otp/pin');
+        } else {
+          const { authorization } = data;
+          setUserAnonymousToken({ anonymousToken: authorization });
+          router.push('/auth/otp/create');
+        }
+      }
+    }
   };
 
   const ValidateMobileNo = number => {
     if (number) {
       isValidPhoneNumber(number) ? setIsValid(false) : setIsValid(true);
-      console.log(isValid);
     }
   };
 

@@ -1,13 +1,24 @@
+import { useEffect } from 'react';
+import router from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import cookie from 'js-cookie';
 
 import DownloadButtons from '../DownloadButtons';
 import ContactCard from '../ContactCard';
 
 const AuthWrapper = ({ title, caption, icon, children }) => {
+  const token = cookie.get('token');
+
+  useEffect(() => {
+    if (token) {
+      router.replace('/dashboard');
+    }
+  }, [token]);
+
   return (
-    <div className="lg:fixed py-8 lg:py-0 w-full bg-white">
-      <div className="flex lg:hidden justify-center mb-10">
+    <div className="py-8 lg:py-0 w-full h-screen bg-primary-darker overflow-hidden">
+      <div className="flex lg:hidden justify-center mb-10 lg:mb-0">
         <Link href="/">
           <a>
             <Image
@@ -19,8 +30,8 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
           </a>
         </Link>
       </div>
-      <div className="grid lg:grid-cols-2">
-        <div className="bg-primary-darker hidden lg:block justify-center h-screen">
+      <div className="flex">
+        <div className="bg-primary-darker hidden lg:block justify-center h-screen w-1/2">
           <div className="max-w-md mx-auto 2xl:py-16">
             <div className="justify-center hidden 2xl:flex">
               <Link href="/">
@@ -65,7 +76,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
             </div>
           </div>
         </div>
-        <div className="min-h-screen flex lg:items-center justify-center">
+        <div className="bg-white flex lg:items-center w-1/2 justify-center xl:py-10 2xl:py-0 overflow-y-auto">
           {children}
         </div>
       </div>

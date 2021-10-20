@@ -2,7 +2,9 @@ import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSessionStorage } from 'react-use';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import cookie from 'js-cookie';
 
 import DashboardIcon from '../../public/svgs/dashboard.svg';
 import LockIcon from '../../public/svgs/lock.svg';
@@ -13,6 +15,7 @@ import LogoutIcon from '../../public/svgs/logout.svg';
 
 const Sidebar = props => {
   const router = useRouter();
+  const [, setAuthPhone] = useSessionStorage('authPhone');
   const routes = [
     {
       name: 'Dashboard',
@@ -40,6 +43,13 @@ const Sidebar = props => {
       icon: UserIcon,
     },
   ];
+
+  const signOut = () => {
+    cookie.remove('token');
+    setAuthPhone(null);
+    router.push('/');
+  };
+
   return (
     <aside>
       <div className="min-h-screen fixed w-56 2xl:w-sidebar left-0 pt-5 2xl:pt-10 bg-primary-base bg-contain overlay">
@@ -82,7 +92,8 @@ const Sidebar = props => {
                     url === router.asPath
                       ? 'text-primary-base bg-white active-icon'
                       : 'text-white hover:bg-primary-hover'
-                  } pl-4 w-full rounded-xl text-left py-3.5 duration-100`}>
+                  } pl-4 w-full rounded-xl text-left py-3.5 duration-100`}
+                >
                   <span className="flex items-center">
                     <Icon />
                     <span className="text-sm font-bold ml-5 mt-1">{name}</span>
@@ -102,7 +113,10 @@ const Sidebar = props => {
           */}
           <div className="absolute w-full bottom-8 left-0">
             <div className="px-6">
-              <button className="pl-4 w-full rounded-xl text-left py-3.5 text-white hover:bg-primary-hover duration-100">
+              <button
+                onClick={signOut}
+                className="pl-4 w-full rounded-xl text-left py-3.5 text-white hover:bg-primary-hover duration-100"
+              >
                 <span className="flex items-center">
                   <LogoutIcon />
                   <span className="text-sm font-bold ml-5 mt-1">Logout</span>

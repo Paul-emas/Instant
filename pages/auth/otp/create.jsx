@@ -2,7 +2,7 @@ import DashboardIcon from '../../../public/svgs/coins.svg';
 import AuthWrapper from '../../../components/layout/AuthWrapper';
 import CreatePin from '../../../components/onboarding/CreatePin';
 
-export default function GeneratePin() {
+export default function Create() {
   return (
     <AuthWrapper
       title="Manage your solar plan using our mobile app"

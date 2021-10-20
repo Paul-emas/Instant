@@ -1,6 +1,10 @@
 import { useGlobalContext } from './useGlobalContext';
 
-import { setIsLoggedIn } from '../context/dispatchers/auth.dispatch';
+import {
+  setIsLoggedIn,
+  setUserPhoneNo,
+  setUserAnonymousToken,
+} from '../context/dispatchers/auth.dispatch';
 import { setUserAccount } from '../context/dispatchers/user.dispatch';
 
 export default function useDispatcher() {
@@ -8,6 +12,8 @@ export default function useDispatcher() {
 
   return {
     setIsLoggedIn: value => setIsLoggedIn(value, authDispatch),
+    setUserPhoneNo: value => setUserPhoneNo(value, authDispatch),
+    setUserAnonymousToken: value => setUserAnonymousToken(value, authDispatch),
     setUserAccount: value => setUserAccount(value, userDispatch),
   };
 }

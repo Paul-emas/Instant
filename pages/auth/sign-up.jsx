@@ -11,7 +11,7 @@ export default function SignUp() {
         <DashboardIcon
           width="396.795"
           height="294.331"
-          className="-mt-2.5 2xl:mt-10 -mb-16 2xl:-mb-10 mx-auto transform scale-90 2xl:scale-100"
+          className="-mt-2.5 2xl:mt-10 -mb-14 2xl:-mb-10 mx-auto transform scale-90 2xl:scale-100"
         />
       )}
     >

@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import SolarCard from '../components/ads/SolarCard';
 import Button from '../components/Button';
 import Chart from '../components/Chart';
