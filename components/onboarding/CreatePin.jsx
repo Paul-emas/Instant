@@ -17,14 +17,6 @@ const CreatePin = () => {
     auth: { anonymousToken },
   } = useGlobalContext();
 
-  if (!authPhone) {
-    authPhone = useSessionStorage('authPhone')[0];
-  }
-
-  useEffect(() => {
-    authPhone === null && router.replace('/auth/sign-in');
-  }, [authPhone]);
-
   const {
     register,
     watch,
