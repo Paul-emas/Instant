@@ -69,7 +69,6 @@ const VerifyPin = () => {
             value={pin}
             placeholder="Enter pin"
             label="Pin"
-            pattern="[0-9]{6}"
             maxLength="6"
             {...register('pin', {
               required: 'You missed this field',
