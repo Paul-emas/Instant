@@ -67,7 +67,6 @@ const VerifyPin = () => {
             type="password"
             id="pin"
             value={pin}
-            defaultValue={pin}
             placeholder="Enter pin"
             label="Pin"
             maxLength="6"
