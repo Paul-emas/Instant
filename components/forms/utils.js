@@ -1,9 +1,10 @@
 import { formatPhoneNumber, parsePhoneNumber } from 'react-phone-number-input';
 
 export const validate = e => {
-  const re = /^[0-9\b]+$/;
+  console.log(e.key);
+  const regex = new RegExp(/^[0-9]*\.?[0-9]*$/);
   const value = e.target.value;
-  if (value === '' || re.test(value)) {
+  if (value === '' || regex.test(value)) {
     return true;
   }
 };
