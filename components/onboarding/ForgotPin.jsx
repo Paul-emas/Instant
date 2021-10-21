@@ -1,18 +1,10 @@
 import { Fragment, useState } from 'react';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
 
-import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
+import { validate } from '../forms/utils';
 
 const ForgotPin = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const [isValid, setIsValid] = useState(false);
+  const [pin, setPin] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = data => {
@@ -29,25 +21,21 @@ const ForgotPin = () => {
             +2347037786423
           </span>
         </p>
-        <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
-          <FormInput
-            className="py-3.5 px-5 mt-4"
-            type="password"
-            id="pin"
-            placeholder="Enter pin"
-            label="Pin"
-            pattern="[0-9]{4}"
-            maxLength="4"
-            {...register('pin', {
-              required: 'You missed this field',
-            })}
-          >
-            {isValid && (
-              <div className="mt-2 text-sm font-bold text-red-500 capitalize">
-                Enter a valid Phone Number
-              </div>
-            )}
-          </FormInput>
+        <form className="mt-10" onSubmit={onSubmit}>
+          <div className="mb-2.5 2xl:mb-4">
+            <label className="text-gray-400 font-bold text-sm label">
+              Enter Pin
+            </label>
+            <input
+              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
+              type="password"
+              id="forgot_pin"
+              value={pin}
+              placeholder="Enter pin"
+              maxLength="6"
+              onChange={e => validate(e) && setPin(e.target.value)}
+            />
+          </div>
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>

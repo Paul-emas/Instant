@@ -25,9 +25,11 @@ const CreatePin = () => {
   } = useForm();
 
   const [pin, setPin] = useState('');
+  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async formData => {
+    console.log(pin);
     if (formData && anonymousToken) {
       setIsLoading(true);
       const { pin } = formData;
@@ -60,35 +62,42 @@ const CreatePin = () => {
           Your 6-digit access code
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
-          <FormInput
-            className="py-3.5 px-5 mt-4"
-            type="password"
-            id="pin"
-            value={pin}
-            defaultValue={pin}
-            placeholder="Enter pin"
-            label="Create pin"
-            pattern="[0-9]{6}"
-            maxLength="6"
-            {...register('pin', {
-              required: 'You missed this field',
-              onChange: e => validate(e) && setPin(e.target.value),
-            })}
-          />
-          <FormInput
-            className="py-3.5 px-5 mt-4"
-            type="password"
-            id="confirm_pin"
-            placeholder="Confirm your pin"
-            label="Confirm pin"
-            pattern="[0-9]{6}"
-            maxLength="6"
-            {...register('confirm_pin', {
-              validate: value => value === watch('pin') || 'Pin dont match',
-            })}
-          >
-            <ErrorMessage errors={errors} name="confirm_pin" />
-          </FormInput>
+          <div className="mb-2.5 2xl:mb-4">
+            <label className="text-gray-400 font-bold text-sm label">
+              Enter Pin
+            </label>
+            <input
+              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
+              type="password"
+              id="create_pin"
+              value={pin}
+              placeholder="Enter pin"
+              maxLength="6"
+              onChange={e => validate(e) && setPin(e.target.value)}
+            />
+          </div>
+          <div className="mb-2.5 2xl:mb-4">
+            <label className="text-gray-400 font-bold text-sm label">
+              Confirm pin
+            </label>
+            <input
+              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
+              type="password"
+              id="confirm_pin"
+              placeholder="Enter pin"
+              maxLength="6"
+              onChange={e =>
+                pin !== e.target.value
+                  ? setError('Pin doesnt Match')
+                  : setError(null)
+              }
+            />
+            {error && (
+              <div className="mt-2 text-sm font-bold text-red-500 capitalize">
+                {error}
+              </div>
+            )}
+          </div>
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>

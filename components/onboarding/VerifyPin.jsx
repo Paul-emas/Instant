@@ -2,7 +2,6 @@ import { Fragment, useEffect, useState } from 'react';
 import router from 'next/router';
 import Link from 'next/link';
 import { useSessionStorage } from 'react-use';
-import { useForm } from 'react-hook-form';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { logIn } from '../../api';
 import { validate } from '../forms/utils';
@@ -10,7 +9,6 @@ import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 
 import useDispatcher from '../../hooks/useDispatcher';
-import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 const VerifyPin = () => {
@@ -18,7 +16,6 @@ const VerifyPin = () => {
     auth: { authPhone },
   } = useGlobalContext();
   const { setUserAccount } = useDispatcher();
-  const { register, handleSubmit } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [pin, setPin] = useState('');
 
@@ -62,16 +59,20 @@ const VerifyPin = () => {
           Your 6-digit access code
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
-          <label className="text-gray-400 font-bold text-sm label">Pin</label>
-          <input
-            className="py-3.5 px-5 mt-4 form-input focus:border-skin-theme focus:outline-none"
-            type="password"
-            id="pin"
-            value={pin}
-            placeholder="Enter pin"
-            maxLength="6"
-            onChange={e => validate(e) && setPin(e.target.value)}
-          />
+          <div className="mb-2.5 2xl:mb-4">
+            <label className="text-gray-400 font-bold text-sm label">
+              Enter Pin
+            </label>
+            <input
+              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
+              type="password"
+              id="pin"
+              value={pin}
+              placeholder="Enter pin"
+              maxLength="6"
+              onChange={e => validate(e) && setPin(e.target.value)}
+            />
+          </div>
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>

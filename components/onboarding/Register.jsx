@@ -40,7 +40,7 @@ const Register = () => {
     if (formData) {
       setIsLoading(true);
       let selectedNumber;
-      const { name, email, phone, pin, referral_no } = formData;
+      const { name, email, phone, referral_no } = formData;
       const { countryCode, countryAbb, number } = formatPhoneNo(phone);
       const seletedCountry = countries.find(({ code }) => code === countryAbb);
 
@@ -82,6 +82,7 @@ const Register = () => {
     }
   };
 
+  console.log(pin);
   const ValidateMobileNo = number => {
     if (number) {
       isValidPhoneNumber(number) ? setIsValid(false) : setIsValid(true);
@@ -138,21 +139,20 @@ const Register = () => {
               </div>
             )}
           </FormInput>
-          <FormInput
-            className="py-3.5 px-5 mt-4"
-            type="password"
-            id="pin"
-            value={pin}
-            defaultValue={pin}
-            placeholder="Enter pin"
-            label="Pin"
-            pattern="[0-9]{6}"
-            maxLength="6"
-            {...register('pin', {
-              required: 'You missed this field',
-              onChange: e => validate(e) && setPin(e.target.value),
-            })}
-          />
+          <div className="mb-2.5 2xl:mb-4">
+            <label className="text-gray-400 font-bold text-sm label">
+              Enter Pin
+            </label>
+            <input
+              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
+              type="password"
+              id="register_pin"
+              value={pin}
+              placeholder="Enter pin"
+              maxLength="6"
+              onChange={e => validate(e) && setPin(e.target.value)}
+            />
+          </div>
           <FormInput
             className="py-3.5 px-5 mt-2"
             type="text"
