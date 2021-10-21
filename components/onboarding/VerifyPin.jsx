@@ -67,12 +67,13 @@ const VerifyPin = () => {
             type="password"
             id="pin"
             value={pin}
+            defaultValue={pin}
             placeholder="Enter pin"
             label="Pin"
             maxLength="6"
             {...register('pin', {
               required: 'You missed this field',
-              onChange: e => setPin(e.target.value),
+              onChange: e => validate(e) && setPin(e.target.value),
             })}
           />
           <PrimaryButton disabled={isLoading} loading={isLoading}>

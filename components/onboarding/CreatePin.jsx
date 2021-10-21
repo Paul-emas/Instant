@@ -65,6 +65,7 @@ const CreatePin = () => {
             type="password"
             id="pin"
             value={pin}
+            defaultValue={pin}
             placeholder="Enter pin"
             label="Create pin"
             pattern="[0-9]{6}"
