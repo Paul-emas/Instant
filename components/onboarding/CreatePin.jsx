@@ -1,28 +1,17 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 import router from 'next/router';
 import Link from 'next/link';
-import { useSessionStorage } from 'react-use';
-import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { createUserAuthPin } from '../../api';
 
-import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
-import ErrorMessage from '../forms/ErrorMessage';
 import { validate } from '../forms/utils';
 
 const CreatePin = () => {
   let {
     auth: { anonymousToken },
   } = useGlobalContext();
-
-  const {
-    register,
-    watch,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
   const [pin, setPin] = useState('');
   const [error, setError] = useState(null);

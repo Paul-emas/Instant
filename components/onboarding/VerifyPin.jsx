@@ -58,7 +58,7 @@ const VerifyPin = () => {
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Your 6-digit access code
         </p>
-        <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
+        <form className="mt-10" onSubmit={onSubmit}>
           <div className="mb-2.5 2xl:mb-4">
             <label className="text-gray-400 font-bold text-sm label">
               Enter Pin

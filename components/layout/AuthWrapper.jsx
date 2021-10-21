@@ -17,7 +17,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
   }, [token]);
 
   return (
-    <div className="py-8 lg:py-0 w-full h-screen overflow-hidden">
+    <div className="py-8 lg:py-0 w-full lg:h-screen overflow-hidden">
       <div className="flex lg:hidden justify-center mb-10 lg:mb-0">
         <Link href="/">
           <a>
