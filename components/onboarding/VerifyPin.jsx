@@ -72,7 +72,7 @@ const VerifyPin = () => {
             maxLength="6"
             {...register('pin', {
               required: 'You missed this field',
-              onChange: e => validate(e) && setPin(e.target.value),
+              onChange: e => setPin(e.target.value),
             })}
           />
           <PrimaryButton disabled={isLoading} loading={isLoading}>
