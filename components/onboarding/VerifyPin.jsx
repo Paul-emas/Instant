@@ -62,18 +62,15 @@ const VerifyPin = () => {
           Your 6-digit access code
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
-          <FormInput
-            className="py-3.5 px-5 mt-4"
+          <label className="text-gray-400 font-bold text-sm label">Pin</label>
+          <input
+            className="py-3.5 px-5 mt-4 form-input focus:border-skin-theme focus:outline-none"
             type="password"
             id="pin"
             value={pin}
             placeholder="Enter pin"
-            label="Pin"
             maxLength="6"
-            {...register('pin', {
-              required: 'You missed this field',
-              onChange: e => validate(e) && setPin(e.target.value),
-            })}
+            onChange={e => validate(e) && setPin(e.target.value)}
           />
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
