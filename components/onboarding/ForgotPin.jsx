@@ -4,11 +4,11 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 import PinInput from '../forms/PinInput';
 
 const ForgotPin = e => {
-  e.preventDefault();
   const [pin, setPin] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = data => {
+  const onSubmit = e => {
+    e.preventDefault();
     setIsLoading(true);
   };
 
