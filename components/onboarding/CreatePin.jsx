@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { createUserAuthPin } from '../../api';
-
 import PrimaryButton from '../Buttons/PrimaryButton';
 import PinInput from '../forms/PinInput';
 import ErrorAlert from '../forms/ErrorAlert';
@@ -37,6 +36,7 @@ const CreatePin = () => {
       if (status === 200) {
         setIsLoading(false);
         router.push('/auth/otp/pin');
+        toast.success('Successfully created pin! Proceed to Login.');
       }
     }
   };
