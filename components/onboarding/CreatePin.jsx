@@ -6,7 +6,8 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { createUserAuthPin } from '../../api';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
-import { validate } from '../forms/utils';
+import PinInput from '../forms/PinInput';
+import ErrorAlert from '../forms/ErrorAlert';
 
 const CreatePin = () => {
   let {
@@ -15,13 +16,13 @@ const CreatePin = () => {
 
   const [pin, setPin] = useState('');
   const [error, setError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async formData => {
-    console.log(pin);
-    if (formData && anonymousToken) {
+  const onSubmit = async e => {
+    if (anonymousToken) {
+      e.preventDefault();
       setIsLoading(true);
-      const { pin } = formData;
       const { status, error } = await createUserAuthPin(
         { pin },
         anonymousToken,
@@ -29,10 +30,9 @@ const CreatePin = () => {
 
       if (error) {
         setIsLoading(false);
-        toast(error.message);
+        setErrorMessage(error.data.errors[0].message);
+        return;
       }
-
-      console.log(status);
 
       if (status === 200) {
         setIsLoading(false);
@@ -50,21 +50,16 @@ const CreatePin = () => {
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Your 6-digit access code
         </p>
+        {errorMessage && (
+          <ErrorAlert error={errorMessage} setError={setErrorMessage} />
+        )}
         <form className="mt-10" onSubmit={onSubmit}>
-          <div className="mb-2.5 2xl:mb-4">
-            <label className="text-gray-400 font-bold text-sm label">
-              Enter Pin
-            </label>
-            <input
-              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
-              type="password"
-              id="create_pin"
-              value={pin}
-              placeholder="Enter pin"
-              maxLength="6"
-              onChange={e => validate(e) && setPin(e.target.value)}
-            />
-          </div>
+          <PinInput
+            label="Enter Pin"
+            placeholder="Enter new pin"
+            pin={pin}
+            setPin={setPin}
+          />
           <div className="mb-2.5 2xl:mb-4">
             <label className="text-gray-400 font-bold text-sm label">
               Confirm pin
@@ -73,7 +68,7 @@ const CreatePin = () => {
               className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
               type="password"
               id="confirm_pin"
-              placeholder="Enter pin"
+              placeholder="Confirm pin"
               maxLength="6"
               onChange={e =>
                 pin !== e.target.value

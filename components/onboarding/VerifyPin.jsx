@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { useSessionStorage } from 'react-use';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { logIn } from '../../api';
-import { validate } from '../forms/utils';
 import cookie from 'js-cookie';
-import { toast } from 'react-toastify';
 
 import useDispatcher from '../../hooks/useDispatcher';
 import PrimaryButton from '../Buttons/PrimaryButton';
+import PinInput from '../forms/PinInput';
+import ErrorAlert from '../forms/ErrorAlert';
 
 const VerifyPin = () => {
   let {
@@ -17,6 +17,7 @@ const VerifyPin = () => {
   } = useGlobalContext();
   const { setUserAccount } = useDispatcher();
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [pin, setPin] = useState('');
 
   if (!authPhone) {
@@ -27,17 +28,19 @@ const VerifyPin = () => {
     authPhone === null && router.replace('/auth/sign-in');
   }, [authPhone]);
 
-  const onSubmit = async () => {
-    if (pin && authPhone) {
+  const onSubmit = async e => {
+    e.preventDefault();
+    if (authPhone) {
       setIsLoading(true);
       const payload = {
         ...authPhone,
         pin: pin,
       };
       const { data, error } = await logIn(payload);
+
       if (error) {
         setIsLoading(false);
-        toast.error(error.message);
+        setErrorMessage(error.data.errors[0].message);
         return;
       }
 
@@ -58,21 +61,16 @@ const VerifyPin = () => {
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Your 6-digit access code
         </p>
+        {errorMessage && (
+          <ErrorAlert error={errorMessage} setError={setErrorMessage} />
+        )}
         <form className="mt-10" onSubmit={onSubmit}>
-          <div className="mb-2.5 2xl:mb-4">
-            <label className="text-gray-400 font-bold text-sm label">
-              Enter Pin
-            </label>
-            <input
-              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
-              type="password"
-              id="pin"
-              value={pin}
-              placeholder="Enter pin"
-              maxLength="6"
-              onChange={e => validate(e) && setPin(e.target.value)}
-            />
-          </div>
+          <PinInput
+            label="Enter Pin"
+            placeholder="Enter pin"
+            pin={pin}
+            setPin={setPin}
+          />
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>

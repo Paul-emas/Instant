@@ -1,9 +1,10 @@
 import { Fragment, useState } from 'react';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
-import { validate } from '../forms/utils';
+import PinInput from '../forms/PinInput';
 
-const ForgotPin = () => {
+const ForgotPin = e => {
+  e.preventDefault();
   const [pin, setPin] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,20 +23,12 @@ const ForgotPin = () => {
           </span>
         </p>
         <form className="mt-10" onSubmit={onSubmit}>
-          <div className="mb-2.5 2xl:mb-4">
-            <label className="text-gray-400 font-bold text-sm label">
-              Enter Pin
-            </label>
-            <input
-              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
-              type="password"
-              id="forgot_pin"
-              value={pin}
-              placeholder="Enter pin"
-              maxLength="6"
-              onChange={e => validate(e) && setPin(e.target.value)}
-            />
-          </div>
+          <PinInput
+            label="Enter Pin"
+            placeholder="Enter pin"
+            pin={pin}
+            setPin={setPin}
+          />
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>

@@ -54,7 +54,7 @@ UserServices.defaultProps = {
 UserServices.propTypes = {
   title: PropTypes.string,
   stepArr: PropTypes.array,
-  border: PropTypes.string,
+  border: PropTypes.bool,
 };
 
 export default UserServices;

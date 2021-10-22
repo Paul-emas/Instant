@@ -7,21 +7,18 @@ import { isValidPhoneNumber } from 'react-phone-number-input';
 import cookie from 'js-cookie';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import useDispatcher from '../../hooks/useDispatcher';
-import { formatPhoneNo, validate } from '../forms/utils';
+import { formatPhoneNo } from '../forms/utils';
 import { signUp } from '../../api';
 
 import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
-import ErrorMessage from '../forms/ErrorMessage';
 import countries from '../../utils/countries.json';
+import PinInput from '../forms/PinInput';
+import ErrorAlert from '../forms/ErrorAlert';
 
 const Register = () => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, control } = useForm();
+  const [errorMessage, setErrorMessage] = useState(null);
 
   let {
     auth: { authPhone },
@@ -70,6 +67,8 @@ const Register = () => {
 
       if (error) {
         setIsLoading(false);
+        setErrorMessage(error.data.errors[0].message);
+        return;
       }
 
       if (data) {
@@ -82,7 +81,6 @@ const Register = () => {
     }
   };
 
-  console.log(pin);
   const ValidateMobileNo = number => {
     if (number) {
       isValidPhoneNumber(number) ? setIsValid(false) : setIsValid(true);
@@ -96,6 +94,9 @@ const Register = () => {
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Enter your phone number to continue
         </p>
+        {errorMessage && (
+          <ErrorAlert error={errorMessage} setError={setErrorMessage} />
+        )}
         <form
           className="mt-10"
           onSubmit={handleSubmit(onSubmit)}
@@ -139,20 +140,12 @@ const Register = () => {
               </div>
             )}
           </FormInput>
-          <div className="mb-2.5 2xl:mb-4">
-            <label className="text-gray-400 font-bold text-sm label">
-              Enter Pin
-            </label>
-            <input
-              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
-              type="password"
-              id="register_pin"
-              value={pin}
-              placeholder="Enter pin"
-              maxLength="6"
-              onChange={e => validate(e) && setPin(e.target.value)}
-            />
-          </div>
+          <PinInput
+            label="Enter Pin"
+            placeholder="Enter 6 digit pin"
+            pin={pin}
+            setPin={setPin}
+          />
           <FormInput
             className="py-3.5 px-5 mt-2"
             type="text"

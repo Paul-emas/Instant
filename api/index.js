@@ -8,7 +8,7 @@ export async function logIn(payload) {
     const { data } = response.data;
     return { data };
   } catch (error) {
-    if (error.message) return { error };
+    if (error.response) return { error: error.response.data };
   }
 }
 
@@ -18,7 +18,7 @@ export async function signUp(payload) {
     const { data } = response.data;
     return { data };
   } catch (error) {
-    if (error.message) return { error };
+    if (error.response) return { error: error.response.data };
   }
 }
 
