@@ -197,7 +197,7 @@ input[type='number']::-webkit-outer-spin-button {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: linear-gradient(to bottom, #0d3845cf, #0d3845cf),
-    url('../public/images/banner.png');
+    url('../public/images/banner.webp');
 }
 
 .loading {

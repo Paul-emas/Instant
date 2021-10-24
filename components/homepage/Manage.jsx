@@ -25,10 +25,11 @@ const Manage = () => {
           <div>
             <div className="transform scale-125">
               <Image
-                src="/images/mobile-mockup.png"
+                src="/images/mobile-mockup.webp"
                 width={311.64}
                 height={626.17}
                 className="object-cover"
+                priority={true}
               />
             </div>
           </div>

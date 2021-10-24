@@ -14,7 +14,7 @@ const PrimaryButton = ({ loading, className, disabled, children }) => {
       } ${className} btn h-14 lg:h-16 bg-primary-base btn-white transform uppercase`}
     >
       {loading ? (
-        <FontAwesomeIcon icon={faBolt} className="text-2xl loading" />
+        <FontAwesomeIcon icon={faBolt} className="w-7 h-7 mx-auto loading" />
       ) : (
         <span>{children}</span>
       )}

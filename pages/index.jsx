@@ -17,7 +17,7 @@ import ContactCard from '../components/ContactCard';
 export default function Home() {
   return (
     <div>
-      {/* <Head>
+      <Head>
         <title>Instant Energy - Buy Electricity Units in Nigeria</title>
         <meta
           name="description"
@@ -26,11 +26,11 @@ export default function Home() {
         <meta
           property="og:description"
           content="Instant Energy - Buy Electrical Units in Nigeria"
-        /> */}
-      {/* <meta property="og:url" content="http://farfill.co.uk/" /> */}
-      {/* <meta property="og:type" content="website" /> */}
-      {/* <link rel="icon" href="/favicon.ico" /> */}
-      {/* </Head> */}
+        />
+        {/* <meta property="og:url" content="http://farfill.co.uk/" /> */}
+        <meta property="og:type" content="website" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header>
         <div className="relative w-1/2 pt-52 2xl:pt-72">
           <div className="max-w-xl">

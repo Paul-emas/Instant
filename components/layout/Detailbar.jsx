@@ -18,8 +18,8 @@ const Detailbar = props => {
               <div className="flex items-center">
                 <Image
                   src="/images/profile.jpg"
-                  width={56}
-                  height={56}
+                  width={47.62}
+                  height={47.62}
                   className="object-cover rounded-full"
                 />
                 <div className="ml-5">

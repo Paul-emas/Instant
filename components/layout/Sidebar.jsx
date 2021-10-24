@@ -52,16 +52,24 @@ const Sidebar = props => {
 
   return (
     <aside>
-      <div className="min-h-screen fixed w-56 2xl:w-sidebar left-0 pt-5 2xl:pt-10 bg-primary-base bg-contain overlay">
+      <div className="min-h-screen fixed w-56 2xl:w-sidebar left-0 pt-5 2xl:pt-10 bg-primary-base bg-contain">
         <div className="h-20 pl-5 2xl:pl-10 pr-5">
           <div className="flex items-center">
-            <FontAwesomeIcon icon={faBars} className="text-white text-2xl" />
-            <Image
-              src="/images/logo-light.png"
-              width={181.42}
-              height={34.95}
-              className="object-contain ml-3"
+            <FontAwesomeIcon
+              icon={faBars}
+              className="text-white text-2xl -mt-1 cursor-pointer w-7 h-7"
             />
+            <Link href="/">
+              <a>
+                <Image
+                  src="/images/logo-light.png"
+                  width={181.42}
+                  height={34.95}
+                  className="object-contain ml-3"
+                  priority={true}
+                />
+              </a>
+            </Link>
           </div>
         </div>
         <div className="border-b border-t border-primary-border pl-5 2xl:pl-10 pr-5 2xl:pr-6">
@@ -102,15 +110,6 @@ const Sidebar = props => {
               </Link>
             );
           })}
-
-          {/* <button className="pl-4 bg-white w-full rounded-lg text-left h-12 text-primary-base">
-            <span className="flex items-center">
-              {/* <FontAwesomeIcon icon={faChartPie} className="text-xl mr-3" /> 
-              <DashboardIcon className="mr-3" />
-              <span className="text-sm font-bold mt-1">Dashboard</span>
-            </span>
-          </button> 
-          */}
           <div className="absolute w-full bottom-8 left-0">
             <div className="px-6">
               <button

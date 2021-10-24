@@ -13,7 +13,7 @@ const Table = () => {
             Your Transcations
           </h3>
         </div>
-        <button className="text-font-dark bg-gray-200 px-2.5 ml-auto rounded-md text-xs font-semibold scale">
+        <button className="text-font-dark bg-gray-200 hover:bg-gray-300 px-3 ml-auto rounded-lg text-xs font-semibold scale">
           See all
         </button>
       </div>
@@ -25,27 +25,32 @@ const Table = () => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider">
+                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider"
+                  >
                     Transaction Information
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider">
+                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider"
+                  >
                     Meter number
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider">
+                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider"
+                  >
                     Reference number
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider">
+                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider"
+                  >
                     Amount (NGN) Status
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider">
+                    className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider"
+                  >
                     Status
                   </th>
                 </tr>
@@ -60,7 +65,8 @@ const Table = () => {
                           <div
                             className={`${
                               active ? 'bg-font-green' : 'bg-red-600'
-                            } w-11 h-11 rounded-sm`}>
+                            } w-11 h-11 rounded-sm`}
+                          >
                             <ArrowIcon className="mx-auto my-2.5" />
                           </div>
                           <div className="ml-8">
@@ -98,12 +104,12 @@ const Table = () => {
                       </td>
                       <td className="px-6 py-4 border-b whitespace-nowrap text-right text-xs font-medium">
                         {active && (
-                          <span className="px-2  py-1 inline-flex text-xs leading-5 font-semibold rounded-md bg-green-100 text-font-green">
+                          <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg bg-green-100 text-font-green">
                             Reciept
                           </span>
                         )}
                         {!active && (
-                          <span className="px-2 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-md bg-red-100 text-red-700">
+                          <span className="px-3 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-lg bg-red-100 text-red-700">
                             Retry
                           </span>
                         )}

@@ -19,7 +19,7 @@ const ReferCard = () => {
         </div>
       </div>
       <div className="mt-5 bg-primary-light p-5 rounded-lg">
-        <ReferIcon />
+        <ReferIcon width="100%" height={175} />
       </div>
       <p className="text-xs mt-5">
         Tell others about instant energy and get real cash in your wallet when

@@ -15,10 +15,11 @@ const DownloadApp = () => {
           <div className="w-1/2">
             <div className="transform scale-125 2xl:ml-6">
               <Image
-                src="/images/mobile-mockup.png"
+                src="/images/mobile-mockup.webp"
                 width={311.64}
                 height={626.17}
                 className="object-cover"
+                priority={true}
               />
             </div>
           </div>
@@ -33,7 +34,8 @@ const DownloadApp = () => {
                     className={`${
                       active &&
                       'border-secondary-tealGreen border-dashed border-2 rounded-full w-full h-full absolute spin'
-                    }`}></div>
+                    }`}
+                  ></div>
                   <div className="w-12 h-12 bg-secondary-tealGreen rounded-full">
                     <BulbIcon className="mx-auto my-3" />
                   </div>
@@ -54,7 +56,8 @@ const DownloadApp = () => {
                     className={`${
                       active &&
                       'border-secondary-yellowLight border-dashed border-2 rounded-full w-full h-full absolute spin'
-                    }`}></div>
+                    }`}
+                  ></div>
                   <div className="w-12 h-12 bg-secondary-yellowLight rounded-full">
                     <SunIcon className="mx-auto my-3" />
                   </div>
@@ -75,7 +78,8 @@ const DownloadApp = () => {
                     className={`${
                       active &&
                       'border-secondary-blue border-dashed border-2 rounded-full w-full h-full absolute spin'
-                    }`}></div>
+                    }`}
+                  ></div>
                   <div className="w-12 h-12 bg-secondary-blue rounded-full">
                     <SunIcon className="mx-auto my-3" />
                   </div>

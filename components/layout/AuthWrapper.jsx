@@ -22,7 +22,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
         <Link href="/">
           <a>
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               width={185}
               height={40}
               className="object-contain mx-auto"

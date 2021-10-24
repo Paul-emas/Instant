@@ -1,7 +1,8 @@
 import Head from 'next/head';
+import Image from 'next/image';
+
 import Header from '../components/homepage/Header';
 import ContactCard from '../components/ContactCard';
-import BannerImage from '../public/svgs/banner.svg';
 import UserServices from '../components/homepage/UserServices';
 import BulbIcon from '../public/svgs/bulb.svg';
 import Plans from '../components/homepage/Plans';
@@ -49,7 +50,7 @@ export default function solarPlans() {
         />
         {/* <meta property="og:url" content="localhost:3000" /> */}
         <meta property="og:type" content="website" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header>
         <div className="relative w-1/2 pt-52 2xl:pt-72">
@@ -64,12 +65,14 @@ export default function solarPlans() {
             <div className="px-2.5 lg:px-0 grid grid-cols-2 gap-x-5 sm:max-w-sm lg:max-w-md mt-8 lg:mt-10">
               <a
                 href="/"
-                className="py-5 rounded-xl uppercase bg-primary-base border-2  border-primary-base text-white text-center text-sm font-bold">
+                className="py-5 rounded-xl uppercase bg-primary-base border-2  border-primary-base text-white text-center text-sm font-bold"
+              >
                 Request solar
               </a>
               <a
                 href="/"
-                className="py-5 rounded-xl uppercase border-2 border-primary-darker bg-primary-light text-primary-darker text-center text-sm font-bold">
+                className="py-5 rounded-xl uppercase border-2 border-primary-darker bg-primary-light text-primary-darker text-center text-sm font-bold"
+              >
                 Learn more
               </a>
             </div>
@@ -78,8 +81,15 @@ export default function solarPlans() {
             <ContactCard />
           </div>
         </div>
-        <div className="w-1/2 pb-36 2xl:pb-10">
-          <BannerImage className="relative top-36 2xl:top-56 transform 2xl:scale-125 2xl:ml-16" />
+        <div className="w-1/2 pb-36 2xl:pb-10 relative top-14 left-24 xl:left-16 scale-125 2xl:scale-150">
+          <div>
+            <Image
+              src="/images/banner-2.webp"
+              layout="fill"
+              className="object-contain transform"
+              priority={true}
+            />
+          </div>
         </div>
       </Header>
       <UserServices title="How to start a solar plan" stepArr={steps} />

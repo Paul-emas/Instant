@@ -10,12 +10,18 @@ const ContactCard = ({ top, light, iconLight }) => {
       } flex items-center relative`}
     >
       {!iconLight ? (
-        <div className="bg-primary-base rounded-full text-center py-2.5 text-white w-10 h-10">
-          <FontAwesomeIcon icon={faPhoneAlt} className="text-xl" />
+        <div className="bg-primary-base rounded-full text-center py-3 text-white w-10 h-10">
+          <FontAwesomeIcon
+            icon={faPhoneAlt}
+            className="text-xl w-4 h-4 mx-auto"
+          />
         </div>
       ) : (
-        <div className="bg-white rounded-full text-center py-2.5 text-primary-base w-10 h-10">
-          <FontAwesomeIcon icon={faPhoneAlt} className="text-xl" />
+        <div className="bg-white rounded-full text-center py-3 text-primary-base w-10 h-10">
+          <FontAwesomeIcon
+            icon={faPhoneAlt}
+            className="text-xl w-4 h-4 mx-auto"
+          />
         </div>
       )}
       <div className="ml-4">
