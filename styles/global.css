@@ -61,15 +61,26 @@ input[type='number']::-webkit-outer-spin-button {
 
 /* position dots in carousel */
 .flickity-page-dots {
-  bottom: -40px;
+  bottom: -10px;
   display: flex;
+  margin-top: -5rem;
   justify-content: center;
+}
+
+@screen lg {
+  .flickity-page-dots {
+    bottom: -40px;
+  }
+  .flickity-page-dots .dot {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 /* white circles */
 .flickity-page-dots .dot {
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   opacity: 1;
   background: #f3f7f8;
   border-radius: 50%;
@@ -98,11 +109,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .form-input {
-  @apply w-full font-bold border rounded-lg text-base placeholder-gray-400 focus:bg-primary-light focus:border-primary-base;
+  @apply w-full font-bold border rounded-lg text-sm lg:text-base placeholder-gray-400 focus:bg-primary-light focus:border-primary-base;
 }
 
 .btn {
-  @apply w-full mt-8 px-7 py-4 lg:py-5 duration-300 text-center font-semibold rounded-xl;
+  @apply w-full mt-8 px-5 lg:px-7 py-3.5 lg:py-4 xl:py-5 duration-300 text-center font-semibold rounded-xl;
 }
 
 .btn-white {

@@ -30,25 +30,25 @@ const FAQs = () => {
   ];
 
   return (
-    <div className="py-32 bg-white">
-      <div className="container px-10 mx-auto">
+    <div className="py-16 lg:py-32 bg-white">
+      <div className="container px-4 lg:px-10 mx-auto">
         <div className="text-center">
-          <h1 className="text-5xl font-bold max-w-2xl text-center mx-auto font-gill">
+          <h1 className="text-2xl lg:text-5xl font-bold max-w-2xl text-center mx-auto font-gill">
             Instant Energy FAQs
           </h1>
-          <p className="mt-6 max-w-3xl mx-auto">
+          <p className="mt-6 text-sm lg:text-base max-w-3xl mx-auto">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua.
           </p>
         </div>
-        <div className="mt-24 max-w-6xl 2xl:max-w-5xl mx-auto">
+        <div className="mt-12 lg:mt-24 max-w-6xl 2xl:max-w-5xl mx-auto">
           {questions.map((question, index) => (
             <Accordion {...question} key={index} />
           ))}
         </div>
-        <div className="text-center mt-24">
-          <p className="text-primary-darker font-semibold">
+        <div className="text-center mt-8 lg:mt-24">
+          <p className="text-primary-darker text-sm lg:text-base font-semibold">
             <span>Need help? talk to our</span>
             <a href="" className="ml-2 text-primary-base">
               Customer support

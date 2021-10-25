@@ -11,7 +11,7 @@ const PrimaryButton = ({ loading, className, disabled, children }) => {
         disabled
           ? 'opacity-70 pointer-events-none'
           : 'active:translate-y-0 hover:-translate-y-1'
-      } ${className} btn h-14 lg:h-16 bg-primary-base btn-white transform uppercase`}
+      } ${className} btn h-14 lg:h-16 text-sm lg:text-base bg-primary-base btn-white transform uppercase`}
     >
       {loading ? (
         <FontAwesomeIcon icon={faBolt} className="w-7 h-7 mx-auto loading" />

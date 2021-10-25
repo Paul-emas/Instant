@@ -32,12 +32,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header>
-        <div className="relative w-1/2 pt-52 2xl:pt-72">
-          <div className="max-w-xl">
-            <h1 className="text-6xl leading-tight font-extrabold text-font-darker font-gill">
+        <div className="relative lg:w-1/2 pt-36 lg:pt-52 2xl:pt-72">
+          <div className="max-w-xl text-center lg:text-left">
+            <h1 className="text-4xl lg:text-6xl leading-tight font-extrabold text-font-darker font-gill">
               Buy Electricity at affordable rates
             </h1>
-            <p className="text-font-dark text-xl leading-normal mt-6">
+            <p className="text-font-dark text-sm lg:text-xl leading-normal mt-6">
               Instant Energy deploys patient, value accretive capital alongside
               international and local value investors to create.
             </p>
@@ -47,7 +47,7 @@ export default function Home() {
             <ContactCard />
           </div>
         </div>
-        <div className="w-1/2 pb-16 2xl:pb-10">
+        <div className="lg:w-1/2 pb-16 2xl:pb-10">
           <QuickPay />
         </div>
       </Header>
@@ -73,7 +73,8 @@ export default function Home() {
         <Slider />
         <Partners />
         <CTA />
-        <Footer />
+        {/* 
+        <Footer /> */}
       </main>
     </div>
   );

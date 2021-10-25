@@ -1,36 +1,45 @@
 import ShockIcon from '../../public/svgs/shock.svg';
+import ShockIcon2 from '../../public/svgs/shock-sm.svg';
 
 const BuyElectricity = ({ title, caption, iconText, cta, bg, alignRight }) => {
   return (
-    <div className={`${bg} py-36`}>
-      <div className="container px-10 mx-auto">
+    <div className={`${bg} py-16 lg:py-36`}>
+      <div className="container px-4 lg:px-10 mx-auto">
         <div
           className={`${
             alignRight && 'flex-row-reverse'
-          } flex justify-center max-w-6xl 2xl:max-w-5xl mx-auto`}>
-          <div className="w-1/2">
-            <ShockIcon className={`${alignRight && 'right-0 float-right'}`} />
+          } lg:flex justify-center max-w-6xl 2xl:max-w-5xl mx-auto`}
+        >
+          <div className="lg:w-1/2">
+            <ShockIcon
+              className={`${
+                alignRight && 'right-0 float-right'
+              } hidden lg:block`}
+            />
+            <ShockIcon2 className="lg:hidden block mx-auto" />
           </div>
-          <div className="w-1/2">
-            <span className="px-3 py-1.5 bg-secondary-green text-white uppercase text-xxs font-bold rounded-3xl">
+          <div className="lg:w-1/2 text-center lg:text-left mt-5">
+            <span className="px-3 py-1.5 bg-secondary-green  text-white uppercase hidden lg:inline text-xxs font-bold rounded-3xl">
               {iconText}
             </span>
-            <h1 className="text-5xl font-bold max-w-xl font-gill mt-4">
+            <h1 className="text-2xl lg:text-5xl font-bold max-w-xl font-gill mt-4">
               {title}
             </h1>
-            <p className="mt-7">{caption}</p>
-            <div className="flex mt-5">
-              <div className="w-52">
+            <p className="text-sm lg:text-base mt-7">{caption}</p>
+            <div className="flex px-5 lg:px-0 lg:mt-5">
+              <div className="mx-auto lg:mx-0 lg:w-52">
                 <button
                   type="submit"
-                  className="btn bg-primary-base btn-white transform uppercase">
+                  className="btn text-xs lg:text-base bg-primary-base btn-white transform uppercase"
+                >
                   {cta}
                 </button>
               </div>
-              <div className=" mt-8">
+              <div className="mt-8">
                 <button
                   type="submit"
-                  className="px-10 font-semibold text-primary-darker text-left py-5 w-full transform uppercase">
+                  className="px-10 text-xs lg:text-base font-semibold text-primary-darker text-left py-4 lg:py-5 w-full transform uppercase"
+                >
                   Learn more
                 </button>
               </div>

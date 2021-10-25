@@ -24,31 +24,54 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        isScrolling ? 'border-b bg-white' : 'bg-primary-light'
-      } h-16 fixed z-50 inset-0`}
+        isScrolling
+          ? 'border-b bg-white h-14 lg:h-16'
+          : 'bg-primary-light h-24 lg:h-16'
+      }   fixed transition-all z-50 inset-0`}
     >
-      <div className="xl:container mx-auto h-full px-6 lg:px-10">
+      <div className="xl:container mx-auto h-full px-4 lg:px-10">
         <div className="flex justify-between h-full items-center">
-          <Link href="/">
-            <a>
-              <Image
-                src="/images/logo.webp"
-                width={185}
-                height={40}
-                className="object-contain"
-                priority={true}
-              />
-            </a>
-          </Link>
-          <div className="flex items-center text-base space-x-8">
+          <div className="hidden lg:block">
             <Link href="/">
-              <a className="text-primary-darker font-bold">Electricity Units</a>
+              <a>
+                <Image
+                  src="/images/logo.webp"
+                  width={185}
+                  height={40}
+                  className="object-contain"
+                  priority={true}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className="block lg:hidden mt-1">
+            <Link href="/">
+              <a>
+                <Image
+                  src="/images/logo-mobile.png"
+                  width={122.13}
+                  height={35.23}
+                  className="object-contain"
+                  priority={true}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 lg:flex items-center text-base space-x-2 lg:space-x-8">
+            <Link href="/">
+              <a className="hidden lg:block text-primary-darker font-bold">
+                Electricity Units
+              </a>
             </Link>
             <Link href="/solar-plans">
-              <a className="text-primary-darker font-bold">Solar Electricity</a>
+              <a className="text-primary-darker text-xs lg:text-base font-bold">
+                Solar Electricity
+              </a>
             </Link>
             <Link href="/offgrid">
-              <a className="text-primary-darker font-bold">Offgrid</a>
+              <a className="hidden lg:block text-primary-darker font-bold">
+                Offgrid
+              </a>
             </Link>
             <Link href={token ? '/dashboard' : '/auth/sign-in'}>
               <Button>{token ? 'My Dashboard' : 'Get started'}</Button>

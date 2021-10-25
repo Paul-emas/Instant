@@ -9,11 +9,11 @@ const DownloadApp = () => {
   const [active, setActive] = useState(true);
 
   return (
-    <div className="py-28 bg-primary-light">
+    <div className="py-16 lg:py-28 bg-primary-light">
       <div className="container px-10 mx-auto">
-        <div className="flex max-w-4xl mx-auto">
-          <div className="w-1/2">
-            <div className="transform scale-125 2xl:ml-6">
+        <div className="lg:flex max-w-4xl mx-auto">
+          <div className="lg:w-1/2">
+            <div className="transform lg:scale-125 2xl:ml-6">
               <Image
                 src="/images/mobile-mockup.webp"
                 width={311.64}
@@ -23,8 +23,8 @@ const DownloadApp = () => {
               />
             </div>
           </div>
-          <div className="w-1/2">
-            <h1 className="text-5xl font-bold max-w-md font-gill text-primary-darker">
+          <div className="lg:w-1/2">
+            <h1 className="text-5xl font-bold max-w-md font-gill hidden lg:block text-primary-darker">
               Download our mobile app
             </h1>
             <div className="mt-12">
@@ -33,7 +33,7 @@ const DownloadApp = () => {
                   <div
                     className={`${
                       active &&
-                      'border-secondary-tealGreen border-dashed border-2 rounded-full w-full h-full absolute spin'
+                      'border-secondary-tealGreen border-dashed border-2 rounded-full w-16 h-16 absolute spin'
                     }`}
                   ></div>
                   <div className="w-12 h-12 bg-secondary-tealGreen rounded-full">
@@ -41,10 +41,10 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-font-darker text-xl font-gill font-semibold">
+                  <p className="text-font-darker lg:text-xl font-gill font-semibold">
                     Buy Electricity
                   </p>
-                  <p className="text-font-darker mt-2 max-w-xs">
+                  <p className="text-font-darker mt-2 text-xs lg:text-base max-w-xs">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                     sed.
                   </p>
@@ -55,7 +55,7 @@ const DownloadApp = () => {
                   <div
                     className={`${
                       active &&
-                      'border-secondary-yellowLight border-dashed border-2 rounded-full w-full h-full absolute spin'
+                      'border-secondary-yellowLight border-dashed border-2 rounded-full w-16 h-16 absolute spin'
                     }`}
                   ></div>
                   <div className="w-12 h-12 bg-secondary-yellowLight rounded-full">
@@ -63,10 +63,10 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-gray-400 text-xl font-gill font-semibold">
+                  <p className="text-gray-400 lg:text-xl font-gill font-semibold">
                     Manage solar Plan
                   </p>
-                  <p className="text-gray-400 mt-2 max-w-xs">
+                  <p className="text-gray-400 mt-2 text-xs lg:text-base max-w-xs">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                     sed.
                   </p>
@@ -77,7 +77,7 @@ const DownloadApp = () => {
                   <div
                     className={`${
                       active &&
-                      'border-secondary-blue border-dashed border-2 rounded-full w-full h-full absolute spin'
+                      'border-secondary-blue border-dashed border-2 rounded-full w-16 h-16 absolute spin'
                     }`}
                   ></div>
                   <div className="w-12 h-12 bg-secondary-blue rounded-full">
@@ -85,10 +85,10 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-gray-400 text-xl font-gill font-semibold">
+                  <p className="text-gray-400 lg:text-xl font-gill font-semibold">
                     Keep track of your Spending
                   </p>
-                  <p className="text-gray-400 mt-2 max-w-xs">
+                  <p className="text-gray-400 mt-2 text-xs lg:text-base max-w-xs">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                     sed.
                   </p>

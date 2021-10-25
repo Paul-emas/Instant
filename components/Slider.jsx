@@ -29,7 +29,7 @@ const Slider = () => {
 
   return (
     <div className="pt-7 px-5">
-      <div className="flex justify-between items-center">
+      <div className="lg:flex justify-between items-center">
         <h2 className="text-lg font-bold text-font-darker">
           Tips to save Electricty
         </h2>
@@ -57,11 +57,13 @@ const Slider = () => {
         disableImagesLoaded={false}
         reloadOnUpdate
         ref={e => (flicty = e)}
-        static>
+        static
+      >
         {route.map((el, index) => (
           <div
             key={index}
-            className="w-full h-52 rounded-lg mr-20 bg-primary-dark">
+            className="w-full h-52 rounded-lg mr-20 bg-primary-dark"
+          >
             <div className="px-6 py-4 w-full h-full outline-white">
               <span className="text-gray-500 text-xs font-semibold">
                 {index + 1} of {route.length}

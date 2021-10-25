@@ -17,7 +17,14 @@ const PageLoader = () => {
   return (
     <div className="fixed w-full min-h-screen flex items-center justify-center bg-primary-light">
       <div className="relative">
-        <div className="rounded-full w-20 h-20 relative overflow-hidden logo">
+        <div className="rounded-full w-20 h-20 hidden lg:block relative overflow-hidden logo">
+          <Image
+            src="/images/logo-circle.png"
+            layout="fill"
+            className="object-cover"
+          />
+        </div>
+        <div className="rounded-full w-14 h-14 lg:hidden block relative overflow-hidden logo">
           <Image
             src="/images/logo-circle.png"
             layout="fill"

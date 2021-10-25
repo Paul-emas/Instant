@@ -49,11 +49,13 @@ module.exports = {
         auth: '460.44px',
         74: '305px',
         279: '279px',
+        257: '257px',
       },
       height: {
         'h-modal': '718px',
         562: '562px',
         332: '332px',
+        274: '274px',
         chart: {
           default: '359px',
         },

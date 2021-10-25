@@ -6,9 +6,10 @@ const Header = ({ children, bg }) => (
     <header
       className={`${
         !bg ? 'bg-primary-light' : 'banner'
-      } min-h-screen overflow-hidden`}>
-      <div className="xl:container mx-auto px-6 xl:px-10">
-        <div className="flex w-full min-h-screen justify-between">
+      } lg:min-h-screen overflow-hidden`}
+    >
+      <div className="xl:container mx-auto px-3 xl:px-10">
+        <div className="lg:flex w-full min-h-screen justify-between">
           {children}
         </div>
       </div>

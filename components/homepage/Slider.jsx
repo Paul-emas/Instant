@@ -15,15 +15,16 @@ const Slider = () => {
 
   return (
     <div className="py-24 bg-white border-b">
-      <div className="container px-10 mx-auto">
+      <div className="container px-4 lg:px-10 mx-auto">
         <div className="max-w-6xl mx-auto overflow-x-visible">
           <Flickity
-            className={'carousel-home p-1 px-20 overflow-x-hidden'}
+            className={'carousel-home p-1 lg:px-20 overflow-x-hidden'}
             elementType={'div'}
             options={flickityOptions}
             disableImagesLoaded={false}
             reloadOnUpdate
-            static>
+            static
+          >
             {slides.map((slide, index) => (
               <SliderCard key={index} />
             ))}
