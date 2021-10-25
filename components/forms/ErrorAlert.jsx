@@ -7,7 +7,7 @@ const ErrorAlert = ({ error, setError }) => {
       <span className="px-2">{error}</span>
       <FontAwesomeIcon
         icon={faTimesCircle}
-        className="text-xl ml-auto cursor-pointer"
+        className="text-xl w-7 h-7 ml-auto cursor-pointer"
         onClick={() => setError(null)}
       />
     </div>

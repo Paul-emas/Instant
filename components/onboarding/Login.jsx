@@ -20,7 +20,7 @@ const Login = () => {
   const [authPhone, setAuthPhone] = useSessionStorage('authPhone', null);
 
   const onSubmit = async formData => {
-    if (formData) {
+    if (formData && !isValid) {
       setIsLoading(true);
       const { phone } = formData;
       const { countryCode, number } = formatPhoneNo(phone);
@@ -61,7 +61,7 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div className="w-full px-5 md:w-auth">
+      <div className="w-full md:max-w-lg px-5 md:w-auth">
         <h1 className="text-32xl font-bold text-center">
           Welcome to Instant Energy
         </h1>

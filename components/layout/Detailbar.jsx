@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';

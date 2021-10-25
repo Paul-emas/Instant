@@ -103,7 +103,7 @@ const Footer = () => {
               >
                 <FontAwesomeIcon
                   icon={faTwitter}
-                  className="text-xl text-6 h-6 mx-auto text-white mt-1.5 lg:mt-2"
+                  className="text-xl w-6 h-6 mx-auto text-white mt-1.5 lg:mt-2"
                 />
               </a>
               <a
