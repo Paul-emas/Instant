@@ -13,7 +13,7 @@ const DownloadApp = () => {
       <div className="container px-10 mx-auto">
         <div className="lg:flex max-w-4xl mx-auto">
           <div className="lg:w-1/2">
-            <div className="transform lg:scale-125 2xl:ml-6">
+            <div className="flex justify-center lg:block transform lg:scale-125 2xl:ml-6">
               <Image
                 src="/images/mobile-mockup.webp"
                 width={311.64}

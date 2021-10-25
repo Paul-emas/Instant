@@ -48,7 +48,7 @@ const Navbar = () => {
             <Link href="/">
               <a>
                 <Image
-                  src="/images/logo-mobile.png"
+                  src="/images/logo.webp"
                   width={122.13}
                   height={35.23}
                   className="object-contain"
