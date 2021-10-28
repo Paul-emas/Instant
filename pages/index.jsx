@@ -33,21 +33,23 @@ export default function Home() {
       </Head>
       <Header>
         <div className="relative lg:w-1/2 pt-36 lg:pt-52 2xl:pt-72">
-          <div className="max-w-xl text-center lg:text-left">
-            <h1 className="text-4xl lg:text-6xl leading-tight font-extrabold text-font-darker font-gill">
+          <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight md:leading-tight font-extrabold text-font-darker font-gill">
               Buy Electricity at affordable rates
             </h1>
             <p className="text-font-dark text-sm lg:text-xl leading-normal mt-6">
               Instant Energy deploys patient, value accretive capital alongside
               international and local value investors to create.
             </p>
-            <DownloadButtons className="bg-primary-darker hover:bg-primary-darkest" />
+            <div className="max-w-sm mx-auto lg:mx-0 lg:max-w-full">
+              <DownloadButtons className="bg-primary-darker hover:bg-primary-darkest" />
+            </div>
           </div>
           <div className="mt-32 2xl:mt-44">
             <ContactCard />
           </div>
         </div>
-        <div className="lg:w-1/2 pb-16 2xl:pb-10">
+        <div className="md:max-w-lg lg:max-w-full mx-auto lg:w-1/2 pb-16 2xl:pb-10">
           <QuickPay />
         </div>
       </Header>

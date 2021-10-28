@@ -27,7 +27,7 @@ const DownloadApp = () => {
             <h1 className="text-5xl font-bold max-w-md font-gill hidden lg:block text-primary-darker">
               Download our mobile app
             </h1>
-            <div className="mt-12">
+            <div className="mt-12 md:max-w-sm lg:max-w-full mx-auto">
               <div className="flex">
                 <div className="rounded-full w-16 h-16 flex justify-center items-center relative stepper">
                   <div

@@ -33,13 +33,13 @@ const SliderCard = () => {
         <div className="lg:w-1/2">
           <QuoteIcon className="hidden lg:block" />
           <QuoteIcon2 className="block lg:hidden mx-auto mt-8" />
-          <p className="lg:text-2xl text-center lg:text-left font-gill max-w-md mt-6 lg:mt-12">
+          <p className="lg:text-2xl text-center lg:text-left font-gill max-w-md mx-auto lg:mx-0 mt-6 lg:mt-12">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
             et ea rebum. Stet clita kasd gubergren, no sea.
           </p>
-          <div className="flex items-center justify-center mt-6 lg:mt-12">
+          <div className="flex items-center justify-center lg:justify-start mt-6 lg:mt-12">
             <a
               href=""
               className="w-8 h-8 lg:w-14 lg:h-14 text-center bg-secondary-twitter rounded-full"

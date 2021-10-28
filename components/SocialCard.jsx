@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SocialCard = ({ follow = true, center = false }) => (
+const SocialCard = ({ follow = true, center = true }) => (
   <div className="mt-5 px-5">
     {follow && (
       <p className="text-base text-center">Follow us on social media</p>

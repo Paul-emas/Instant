@@ -5,11 +5,11 @@ import BulbIcon2 from '../../public/svgs/bulb-2.svg';
 const UserServices = ({ title, stepArr, border }) => {
   return (
     <div className={`${border && 'border-t'} py-10 lg:py-20`}>
-      <div className="container px-10 mx-auto">
+      <div className="container px-4 lg:px-10 mx-auto">
         <h1 className="text-xl lg:text-5xl font-bold max-w-xs lg:max-w-xl text-center mx-auto font-gill">
           {title}
         </h1>
-        <div className="lg:flex justify-center mt-16 lg:mt-24">
+        <div className="md:flex justify-center mt-16 lg:mt-24">
           {stepArr.map(({ name, caption, icon }, index) => {
             const Icon = icon;
             return (

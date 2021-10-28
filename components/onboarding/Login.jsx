@@ -70,7 +70,7 @@ const Login = () => {
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
-            className="py-3 px-5 mt-2"
+            className="py-3 lg:py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
             control={control}

@@ -9,12 +9,7 @@ const DashboardWrapper = ({ children }) => {
       router.replace('/auth/sign-in');
     }
   }, [token]);
-  return (
-    <>
-      <h1>Hello</h1>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default DashboardWrapper;
