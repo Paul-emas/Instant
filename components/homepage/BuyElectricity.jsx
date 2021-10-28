@@ -26,8 +26,8 @@ const BuyElectricity = ({ title, caption, iconText, cta, bg, alignRight }) => {
               {title}
             </h1>
             <p className="text-sm lg:text-base mt-7">{caption}</p>
-            <div className="flex px-5 lg:px-0 lg:mt-5 max-w-sm lg:max-w-full mx-auto lg:mx-0">
-              <div className="lg:w-52">
+            <div className="flex px-5 lg:px-0 lg:mt-5 md:max-w-sm lg:max-w-full mx-auto lg:mx-0">
+              <div className="mx-auto lg:mx-0 lg:w-52">
                 <button
                   type="submit"
                   className="btn text-xs lg:text-base bg-primary-base btn-white transform uppercase"
@@ -35,7 +35,7 @@ const BuyElectricity = ({ title, caption, iconText, cta, bg, alignRight }) => {
                   {cta}
                 </button>
               </div>
-              <div className="relative -left-3 lg:-left-0 mt-8">
+              <div className="relative -left-10 lg:-left-0 mt-8">
                 <button
                   type="submit"
                   className="px-10 text-xs lg:text-base font-semibold text-primary-darker text-left py-4 lg:py-5 w-full transform uppercase"

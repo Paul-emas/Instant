@@ -6,14 +6,17 @@ const UserServices = ({ title, stepArr, border }) => {
   return (
     <div className={`${border && 'border-t'} py-10 lg:py-20`}>
       <div className="container px-4 lg:px-10 mx-auto">
-        <h1 className="text-xl lg:text-5xl font-bold max-w-xs lg:max-w-xl text-center mx-auto font-gill">
+        <h1 className="text-xl lg:text-5xl font-bold md:max-w-xs lg:max-w-xl text-center mx-auto font-gill">
           {title}
         </h1>
         <div className="md:flex justify-center mt-16 lg:mt-24">
           {stepArr.map(({ name, caption, icon }, index) => {
             const Icon = icon;
             return (
-              <div key={index} className="max-w-xs mb-10 lg:mb-0">
+              <div
+                key={index}
+                className="max-w-xs mx-auto lg:mx-0 mb-10 lg:mb-0"
+              >
                 <Icon
                   className="mx-auto hidden lg:block"
                   width="191.139"

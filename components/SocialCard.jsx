@@ -22,7 +22,7 @@ const SocialCard = ({ follow = true, center = true }) => (
       >
         <FontAwesomeIcon
           icon={faTwitter}
-          className="text-xl w-6 h-6 mx-auto text-white mt-1 lg:mt-2"
+          className="text-xl w-5 h-5 lg:w-6 lg:h-6 mx-auto text-white mt-1.5 lg:mt-2"
         />
       </a>
       <a
@@ -31,7 +31,7 @@ const SocialCard = ({ follow = true, center = true }) => (
       >
         <FontAwesomeIcon
           icon={faInstagram}
-          className="text-2xl w-6 h-6 mx-auto mt-1 lg:mt-2"
+          className="text-2xl w-5 h-5 lg:w-6 lg:h-6 mx-auto mt-1.5 lg:mt-2"
         />
       </a>
       <a
@@ -40,7 +40,7 @@ const SocialCard = ({ follow = true, center = true }) => (
       >
         <FontAwesomeIcon
           icon={faLinkedinIn}
-          className="text-xl w-6 h-6 mx-auto text-white mt-1 lg:mt-2"
+          className="text-xl w-5 h-5 lg:w-6 lg:h-6 mx-auto text-white mt-1.5 lg:mt-2"
         />
       </a>
       <a
@@ -49,7 +49,7 @@ const SocialCard = ({ follow = true, center = true }) => (
       >
         <FontAwesomeIcon
           icon={faYoutube}
-          className="text-xl w-6 h-6 mx-auto text-white mt-1 lg:mt-2"
+          className="text-xl w-5 h-5 lg:w-6 lg:h-6 mx-auto text-white mt-1.5 lg:mt-2"
         />
       </a>
     </div>
