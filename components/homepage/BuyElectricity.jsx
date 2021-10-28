@@ -35,7 +35,7 @@ const BuyElectricity = ({ title, caption, iconText, cta, bg, alignRight }) => {
                   {cta}
                 </button>
               </div>
-              <div className="mt-8">
+              <div className="relative -left-3 lg:-left-0 mt-8">
                 <button
                   type="submit"
                   className="px-10 text-xs lg:text-base font-semibold text-primary-darker text-left py-4 lg:py-5 w-full transform uppercase"

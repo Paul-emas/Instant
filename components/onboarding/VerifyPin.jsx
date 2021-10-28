@@ -30,7 +30,7 @@ const VerifyPin = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    if (authPhone) {
+    if (authPhone && pin.length === 6) {
       setIsLoading(true);
       const payload = {
         ...authPhone,

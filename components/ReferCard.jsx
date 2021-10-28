@@ -9,11 +9,11 @@ const ReferCard = () => {
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-bold text-font-darker">Refer and Earn</h2>
         <div>
-          <p className="text-sm text-font-muted">
+          <p className="text-sm flex text-font-muted">
             <span>Leo4245567</span>
             <FontAwesomeIcon
               icon={faCopy}
-              className="text-xs ml-1 relative -top-0.5 text-font-muted cursor-pointer"
+              className="text-xs ml-1 w-3 h-3 relative text-font-muted cursor-pointer"
             />
           </p>
         </div>

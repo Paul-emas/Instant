@@ -31,7 +31,7 @@ const Detailbar = props => {
               </div>
               <FontAwesomeIcon
                 icon={faEllipsisH}
-                className="text-xl text-font-muted cursor-pointer"
+                className="text-xl w-5 h-5 text-font-muted cursor-pointer"
               />
             </div>
           </div>

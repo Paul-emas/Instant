@@ -73,8 +73,7 @@ export default function Home() {
         <Slider />
         <Partners />
         <CTA />
-        {/* 
-        <Footer /> */}
+        <Footer />
       </main>
     </div>
   );

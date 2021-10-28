@@ -10,14 +10,14 @@ const ContactCard = ({ top, light, iconLight }) => {
       } hidden lg:flex items-center relative`}
     >
       {!iconLight ? (
-        <div className="bg-primary-base rounded-full text-center py-3 text-white w-10 h-10">
+        <div className="bg-primary-base rounded-full text-center flex items-center text-white w-10 h-10">
           <FontAwesomeIcon
             icon={faPhoneAlt}
             className="text-xl w-4 h-4 mx-auto"
           />
         </div>
       ) : (
-        <div className="bg-white rounded-full text-center py-3 text-primary-base w-10 h-10">
+        <div className="bg-white rounded-full text-center flex items-center text-primary-base w-10 h-10">
           <FontAwesomeIcon
             icon={faPhoneAlt}
             className="text-xl w-4 h-4 mx-auto"
