@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSessionStorage } from 'react-use';
 import { useForm } from 'react-hook-form';
@@ -11,6 +11,7 @@ import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import SocialCard from '../SocialCard';
 import router from 'next/router';
+import gsap from 'gsap';
 
 const Login = () => {
   const { setUserPhoneNo, setUserAnonymousToken } = useDispatcher();
@@ -61,7 +62,7 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div className="w-full md:max-w-lg px-5 md:w-auth">
+      <div className="fadeIn w-full mx-auto xl:py-20 2xl:py-40 md:max-w-lg px-5 md:w-auth">
         <h1 className="text-32xl font-bold text-center">
           Welcome to Instant Energy
         </h1>

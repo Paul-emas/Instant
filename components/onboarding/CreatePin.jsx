@@ -43,7 +43,7 @@ const CreatePin = () => {
 
   return (
     <Fragment>
-      <div className="w-full px-5 md:w-auth">
+      <div className="fadeIn w-full px-5 mx-auto xl:py-28 2xl:py-44 md:w-auth">
         <h1 className="text-32xl font-bold text-center">
           Create your login PIN
         </h1>

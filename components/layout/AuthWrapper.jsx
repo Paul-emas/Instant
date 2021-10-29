@@ -6,6 +6,7 @@ import cookie from 'js-cookie';
 
 import DownloadButtons from '../DownloadButtons';
 import ContactCard from '../ContactCard';
+import gsap from 'gsap';
 
 const AuthWrapper = ({ title, caption, icon, children }) => {
   const token = cookie.get('token');
@@ -16,8 +17,37 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
     }
   }, [token]);
 
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.fadeIn',
+      },
+    });
+    tl.fromTo(
+      '.fade',
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+      },
+    );
+    tl.from(
+      '.fadeIn',
+      {
+        y: 50,
+        autoAlpha: 0,
+      },
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.1,
+      },
+    );
+  }, []);
+
   return (
-    <div className="py-8 lg:py-0 w-full lg:h-screen overflow-hidden">
+    <div className="py-8 lg:py-0 w-full xl:h-screen overflow-hidden">
       <div className="flex lg:hidden justify-center mb-10 lg:mb-0">
         <Link href="/">
           <a>
@@ -31,7 +61,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
         </Link>
       </div>
       <div className="grid lg:grid-cols-2">
-        <div className="bg-primary-darker hidden lg:block justify-center h-screen">
+        <div className="bg-primary-darker hidden lg:block justify-center xl:h-screen overlay">
           <div className="max-w-md mx-auto 2xl:py-16">
             <div className="justify-center hidden 2xl:flex">
               <Link href="/">
@@ -57,7 +87,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
                 </a>
               </Link>
             </div>
-            {icon()}
+            <div className="fade">{icon()}</div>
             <div className="mt-5">
               <h1 className="text-3xl 2xl:text-4xl font-gill font-bold text-center text-white">
                 {title}
@@ -76,7 +106,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
             </div>
           </div>
         </div>
-        <div className="bg-white flex lg:items-center justify-center xl:py-10 2xl:py-0 overflow-y-auto">
+        <div className="bg-white lg:py-10 xl:h-screen justify-center overflow-y-auto">
           {children}
         </div>
       </div>

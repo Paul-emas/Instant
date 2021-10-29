@@ -2,6 +2,7 @@ import SolarCard from '../components/ads/SolarCard';
 import Button from '../components/Button';
 import Chart from '../components/Chart';
 import Table from '../components/Table';
+import ReferBox from '../components/ReferBox';
 
 export default function Dashboard() {
   return (
@@ -13,9 +14,16 @@ export default function Dashboard() {
             Never have interrupted power supply, making life easy.
           </p>
         </div>
-        <Button>Buy Electricity</Button>
+        <Button>BUY ELECTRICITY</Button>
       </div>
-      <Chart />
+      <div className="grid lg:space-x-5 lg:grid-cols-6">
+        <div className="lg:col-span-4">
+          <Chart />
+        </div>
+        <div className="lg:col-span-2">
+          <ReferBox />
+        </div>
+      </div>
       <SolarCard />
       <Table />
     </div>

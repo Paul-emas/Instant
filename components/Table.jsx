@@ -1,7 +1,7 @@
 import { faSort } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import ArrowIcon from '../public/svgs/arrows.svg';
+import BulbIcon from '../public/svgs/bulb-dashed.svg';
 
 const Table = () => {
   const data = [1, 0, 3, 2, 5, 6];
@@ -65,9 +65,9 @@ const Table = () => {
                           <div
                             className={`${
                               active ? 'bg-font-green' : 'bg-red-600'
-                            } w-11 h-11 rounded-sm`}
+                            } w-11 h-11 rounded-xl`}
                           >
-                            <ArrowIcon className="mx-auto my-2.5" />
+                            <BulbIcon className="mx-auto my-2.5" />
                           </div>
                           <div className="ml-8">
                             <div>

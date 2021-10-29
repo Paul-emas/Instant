@@ -140,35 +140,21 @@ input[type='number']::-webkit-outer-spin-button {
   background: #ed2;
 }
 
-@screen 2xl {
-  .mar {
-    margin-left: 17.5rem !important;
-  }
-  .main {
-    width: calc(100% - 17.5rem) !important;
-  }
-  .main-content {
-    width: calc(100% - 350px) !important;
-  }
-  .w-detailbar {
-    margin-left: -17.5rem !important;
-  }
-}
-
-.mar {
-  margin-left: 14rem;
-}
-
-.main {
-  width: calc(100% - 14rem);
-}
-
 .main-content {
-  width: calc(100% - 288px);
+  width: 100%;
 }
 
-.w-detailbar {
-  margin-left: -14rem;
+@screen xl {
+  .main-content {
+    width: 100%;
+    padding-left: 224px;
+  }
+}
+
+@screen 2xl {
+  .main-content {
+    padding-left: 280px;
+  }
 }
 
 .stepper:not(:last-child)::before {

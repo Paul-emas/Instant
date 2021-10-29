@@ -14,7 +14,7 @@ const ForgotPin = e => {
 
   return (
     <Fragment>
-      <div className="w-full px-5 md:w-auth">
+      <div className="fadeIn w-full px-5 mx-auto xl:py-32 2xl:py-56 md:w-auth">
         <h1 className="text-32xl font-bold text-center">Enter OTP</h1>
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           An OTP has been set to{' '}

@@ -10,6 +10,7 @@ const PinInput = ({ label, pin, placeholder, setPin, props }) => {
         type="password"
         value={pin}
         maxLength="6"
+        autoComplete="off"
         minLength="6"
         placeholder={placeholder}
         {...props}
