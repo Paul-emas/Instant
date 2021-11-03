@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 import Wrapper from '../components/layout/Wrapper';
+import '../styles/fonts.css';
 import '../styles/global.css';
 import { Provider } from '../context/Provider';
 

@@ -1,6 +1,3 @@
-import { faSort } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import BulbIcon from '../public/svgs/bulb-dashed.svg';
 
 const Table = () => {

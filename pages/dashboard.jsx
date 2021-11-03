@@ -18,7 +18,7 @@ export default function Dashboard() {
       </div>
       <div className="grid lg:space-x-5 lg:grid-cols-6">
         <div className="lg:col-span-4">
-          <Chart />
+          <Chart title="Electricity units purchased" />
         </div>
         <div className="lg:col-span-2">
           <ReferBox />

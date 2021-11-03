@@ -1,46 +1,53 @@
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSessionStorage } from 'react-use';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import cookie from 'js-cookie';
 
 import DashboardIcon from '../../public/svgs/dashboard.svg';
-import LockIcon from '../../public/svgs/lock.svg';
+import SunIcon from '../../public/svgs/sun-sb.svg';
 import MeterIcon from '../../public/svgs/meter.svg';
 import PaymentIcon from '../../public/svgs/payment.svg';
 import UserIcon from '../../public/svgs/user.svg';
 import LogoutIcon from '../../public/svgs/logout.svg';
+import WalletIcon from '../../public/svgs/wallet-sm.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHome,
+  faMeteor,
+  faMoneyBillWave,
+  faSun,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = props => {
   const router = useRouter();
-  const [, setAuthPhone] = useSessionStorage('authPhone');
+  const [phone, setAuthPhone] = useSessionStorage('authPhone');
   const routes = [
     {
-      name: 'Dashboard',
+      name: 'Home',
       url: '/dashboard',
-      icon: DashboardIcon,
+      icon: faHome,
     },
     {
       name: 'Solar Electricity',
       url: '/solar',
-      icon: LockIcon,
+      icon: faSun,
     },
     {
       name: 'My metres',
       url: '/meters',
-      icon: MeterIcon,
+      icon: faMeteor,
     },
     {
       name: 'Payments',
       url: '/payments/history',
-      icon: PaymentIcon,
+      icon: faMoneyBillWave,
     },
     {
       name: 'Profile',
       url: '/settings/profile',
-      icon: UserIcon,
+      icon: faUser,
     },
   ];
 
@@ -55,61 +62,56 @@ const Sidebar = props => {
       <div className="min-h-screen -left-full lg:left-0 fixed w-56 2xl:w-sidebar pt-5 2xl:pt-10 bg-primary-base bg-contain">
         <div className="h-20 pl-5 2xl:pl-10 pr-5">
           <div className="flex items-center">
-            <FontAwesomeIcon
-              icon={faBars}
-              className="text-white text-2xl -mt-1 cursor-pointer w-7 h-7"
-            />
             <Link href="/">
               <a>
                 <Image
                   src="/images/logo-light.png"
-                  width={181.42}
-                  height={34.95}
-                  className="object-contain ml-3"
+                  width={193.42}
+                  height={42}
+                  className="object-cover"
                   priority={true}
                 />
               </a>
             </Link>
           </div>
         </div>
-        <div className="border-b border-t border-primary-border pl-5 2xl:pl-10 pr-5 2xl:pr-6">
+        <div className="border-b border-t border-primary-border pl-5 2xl:pl-10 pr-3 2xl:pr-6">
           <div className="flex items-center justify-between py-6">
-            <div>
-              <div className="text-xs flex items-center text-primary-border">
-                <span>Wallet balance</span>
-                <div className="w-4 h-4 bg-white ml-2 rounded-full text-primary-base flex items-center justify-center text-xxs font-bold">
-                  <p className="pt-0.5">?</p>
-                </div>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 flex justify-center items-center bg-white bg-opacity-20  scale rounded-lg text-white">
+                <WalletIcon />
               </div>
-              <h2 className="text-white font-bold text-xl mt-1.5">
-                NGN : <span>32, 032</span>
-              </h2>
+              <div className="relative top-0.5">
+                <div className="text-xxs flex items-center text-primary-label">
+                  <span>Your IE wallet</span>
+                </div>
+                <p className="text-white font-gill font-semibold -mt-1">
+                  &#x20A6; : <span>0.00</span>
+                </p>
+              </div>
             </div>
-            <button className="w-7 h-7 bg-white hover:bg-gray-100 scale rounded-md cursor-pointer text-primary-base font-light text-center text-2xl">
-              <span className="relative -top-0.5">+</span>
+            <button className="w-fund 2xl:w-24 h-8 text-xxs 2xl:text-xs bg-white bg-opacity-20 hover:bg-primary-hover active:bg-primary-active rounded-lg cursor-pointer text-white font-light text-center">
+              Fund wallet
             </button>
           </div>
         </div>
         <div className="px-3 2xl:px-6 space-y-2.5 2xl:space-y-5 py-8">
-          {routes.map(({ name, url, icon }) => {
-            const Icon = icon;
-            return (
-              <Link href={url} key={name}>
-                <button
-                  className={`${
-                    url === router.asPath
-                      ? 'text-primary-base bg-white active-icon'
-                      : 'text-white hover:bg-primary-hover'
-                  } pl-4 w-full rounded-xl text-left py-3.5 duration-100`}
-                >
-                  <span className="flex items-center">
-                    <Icon />
-                    <span className="text-sm font-bold ml-5 mt-1">{name}</span>
-                  </span>
-                </button>
-              </Link>
-            );
-          })}
+          {routes.map(({ name, url, icon }) => (
+            <Link href={url} key={name}>
+              <button
+                className={`${
+                  url === router.asPath
+                    ? 'text-primary-base bg-white active-icon'
+                    : 'text-white hover:bg-primary-hover'
+                } pl-6 w-full rounded-xl text-left py-4 font-gill duration-100`}
+              >
+                <span className="flex items-center">
+                  <FontAwesomeIcon icon={icon} />
+                  <span className="text-sm font-semibold ml-5">{name}</span>
+                </span>
+              </button>
+            </Link>
+          ))}
           <div className="absolute w-full bottom-8 left-0">
             <div className="px-6">
               <button

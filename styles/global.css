@@ -1,39 +1,3 @@
-/* Fonts */
-
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap');
-
-@font-face {
-  font-family: 'Gill Sans Nova';
-  src: local('Gill Sans Nova Bold'), local('Gill-Sans-Nova-Bold'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-Bold.ttf') format('woff2'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-Bold.woff') format('woff'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gill Sans Nova';
-  src: local('Gill Sans Nova SemiBold'), local('Gill-Sans-Nova-SemiBold'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-SemiBold.woff2')
-      format('woff2'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-SemiBold.woff') format('woff'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-SemiBold.ttf')
-      format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Gill Sans Nova';
-  src: local('Gill Sans Nova Book'), local('Gill-Sans-Nova-Book'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-Book.woff2') format('woff2'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-Book.woff') format('woff'),
-    url('../fonts/GillSansNova-Bold/GillSansNova-Book.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -120,8 +84,9 @@ input[type='number']::-webkit-outer-spin-button {
   @apply hover:bg-primary-hover active:bg-primary-active text-white;
 }
 
-.active-icon svg path {
+.active-icon svg > path {
   fill: #347f95 !important;
+  stroke: #347f95 !important;
 }
 
 .shadow-soft {
@@ -153,7 +118,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 @screen 2xl {
   .main-content {
-    padding-left: 280px;
+    padding-left: 300px;
   }
 }
 

@@ -66,10 +66,10 @@ const Wrapper = ({ children }) => {
       {pageLoading && <PageLoader />}
       {!isRouteProtected && !pageLoading && <div>{children}</div>}
       {token && isRouteProtected && !pageLoading && (
-        <div className="h-screen overflow-x-hidden w-full bg-gray-300">
+        <div className="min-h-screen w-full bg-gray-300">
           <div className="min-h-screen">
             <Sidebar />
-            <div className="overflow-x-hidden p-0 bg-primary-light">
+            <div className="p-0 pb-8 bg-primary-light">
               {/* <Detailbar /> */}
               <main className="min-h-screen main-content">
                 <div className="px-5 2xl:px-7">{children}</div>
