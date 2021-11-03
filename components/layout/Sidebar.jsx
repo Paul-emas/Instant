@@ -106,7 +106,7 @@ const Sidebar = props => {
                 } pl-6 w-full rounded-xl text-left py-4 font-gill duration-100`}
               >
                 <span className="flex items-center">
-                  <FontAwesomeIcon icon={icon} />
+                  <FontAwesomeIcon icon={icon} className="w-5 h-5" />
                   <span className="text-sm font-semibold ml-5">{name}</span>
                 </span>
               </button>
