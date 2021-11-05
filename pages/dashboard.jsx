@@ -5,6 +5,12 @@ import Table from '../components/Table';
 import ReferBox from '../components/ReferBox';
 
 export default function Dashboard() {
+  const tableProps = {
+    iconType: 'bulb',
+    title: 'Your Transcations',
+    viewAll: true,
+  };
+
   return (
     <div className="pt-5 2xl:pt-10">
       <div className="flex items-center justify-between">
@@ -25,7 +31,7 @@ export default function Dashboard() {
         </div>
       </div>
       <SolarCard />
-      <Table />
+      <Table {...tableProps} />
     </div>
   );
 }

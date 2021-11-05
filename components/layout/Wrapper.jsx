@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 
-import Detailbar from '../layout/Detailbar';
 import Sidebar from '../layout/Sidebar';
 import PageLoader from '../PageLoader';
 

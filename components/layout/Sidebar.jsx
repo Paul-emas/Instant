@@ -4,11 +4,6 @@ import Link from 'next/link';
 import { useSessionStorage } from 'react-use';
 import cookie from 'js-cookie';
 
-import DashboardIcon from '../../public/svgs/dashboard.svg';
-import SunIcon from '../../public/svgs/sun-sb.svg';
-import MeterIcon from '../../public/svgs/meter.svg';
-import PaymentIcon from '../../public/svgs/payment.svg';
-import UserIcon from '../../public/svgs/user.svg';
 import LogoutIcon from '../../public/svgs/logout.svg';
 import WalletIcon from '../../public/svgs/wallet-sm.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

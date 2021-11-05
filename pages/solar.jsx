@@ -1,9 +1,16 @@
 import Button from '../components/Button';
 import Chart from '../components/Chart';
 import SolarAmountCard from '../components/solar/SolarAmountCard';
+import SolarPanelStatus from '../components/solar/SolarPanelStatus';
 import SolarPaymentCard from '../components/solar/SolarPaymentCard';
+import Table from '../components/Table';
 
 export default function Solar() {
+  const tableProps = {
+    iconType: 'sun',
+    title: 'Your monthly billings',
+    titleLabel: 'Montly plan',
+  };
   return (
     <div className="pt-5 2xl:pt-10">
       <div className="flex items-center justify-between">
@@ -24,6 +31,8 @@ export default function Solar() {
           <Chart title="Consumption Chart" />
         </div>
       </div>
+      <SolarPanelStatus />
+      <Table {...tableProps} />
     </div>
   );
 }

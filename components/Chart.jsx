@@ -25,7 +25,9 @@ const Chart = ({ title }) => {
   return (
     <div className="h-96 w-full py-5 rounded-xl mt-10 bg-white">
       <div className="lg:flex w-full justify-between px-5 mb-2">
-        <h2 className="text-xl font-bold text-font-darker">{title}</h2>
+        <h2 className="text-xl font-bold text-font-darker font-gill">
+          {title}
+        </h2>
         <form className="mt-2 lg:mt-0" onClick={handleSubmit(onSubmit)}>
           <FormInput
             type="select"
