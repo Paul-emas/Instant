@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSessionStorage } from 'react-use';
 import { useForm } from 'react-hook-form';
-import { isValidPhoneNumber } from 'react-phone-number-input';
+import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import { formatPhoneNo } from '../forms/utils';
 import useDispatcher from '../../hooks/useDispatcher';
 import { checkUserValidation } from '../../api';
@@ -11,7 +11,6 @@ import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import SocialCard from '../SocialCard';
 import router from 'next/router';
-import gsap from 'gsap';
 
 const Login = () => {
   const { setUserPhoneNo, setUserAnonymousToken } = useDispatcher();

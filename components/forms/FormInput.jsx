@@ -44,11 +44,17 @@ const FormInput = forwardRef(
             {...props}
             className={`${className} form-select form-input focus:border-gray-400 focus:outline-none`}
             placeholder="Regular input"
+            ref={ref}
           >
             {options.map(option => (
-              <option key={option} value={option}>
-                {option}
-              </option>
+              <>
+                <option value="" disabled selected hidden>
+                  Select your location
+                </option>
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              </>
             ))}
           </select>
         )}
@@ -62,6 +68,7 @@ const FormInput = forwardRef(
               {...props}
               type="number"
               placeholder="0.00"
+              ref={ref}
               className="ml-4 focus:outline-none w-full font-bold focus:bg-primary-light"
             />
           </div>

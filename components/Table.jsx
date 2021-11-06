@@ -82,13 +82,13 @@ const Table = ({ title, iconType, viewAll, titleLabel }) => {
                           <div
                             className={`${
                               active ? 'bg-font-green' : 'bg-red-600'
-                            } w-11 h-11 rounded-xl`}
+                            } w-12 h-12 rounded-2xl`}
                           >
                             {iconType === 'bulb' && (
-                              <BulbIcon className="mx-auto my-2.5" />
+                              <BulbIcon className="mx-auto my-3" />
                             )}
                             {iconType === 'sun' && (
-                              <SunIcon className="mx-auto my-2.5" />
+                              <SunIcon className="mx-auto my-3" />
                             )}
                           </div>
                           <div className="ml-8">

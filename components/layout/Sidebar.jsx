@@ -85,7 +85,7 @@ const Sidebar = props => {
                 </p>
               </div>
             </div>
-            <button className="w-fund 2xl:w-24 h-8 text-xxs 2xl:text-xs bg-white bg-opacity-20 hover:bg-primary-hover active:bg-primary-active rounded-lg cursor-pointer text-white font-light text-center">
+            <button className="w-fund 2xl:w-24 h-8 text-xxs 2xl:text-xs bg-white font-semibold rounded-lg cursor-pointer text-gray-800 hover:text-white text-center">
               Fund wallet
             </button>
           </div>

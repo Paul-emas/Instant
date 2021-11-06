@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import cookie from 'js-cookie';
@@ -7,9 +7,12 @@ import cookie from 'js-cookie';
 import DownloadButtons from '../DownloadButtons';
 import ContactCard from '../ContactCard';
 import gsap from 'gsap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 const AuthWrapper = ({ title, caption, icon, children }) => {
   const token = cookie.get('token');
+  const router = useRouter();
 
   useEffect(() => {
     if (token) {
@@ -45,6 +48,10 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
     );
     tl.duration(0.4).play();
   }, []);
+
+  const goBack = () => {
+    router.back();
+  };
 
   return (
     <div className="py-8 lg:py-0 w-full xl:h-screen overflow-hidden">
@@ -106,7 +113,14 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
             </div>
           </div>
         </div>
-        <div className="bg-white lg:py-10 xl:h-screen justify-center overflow-y-auto">
+        <div className="bg-white relative lg:py-10 xl:h-screen justify-center overflow-y-auto">
+          <button
+            onClick={goBack}
+            className="px-3 py-2 rounded-lg w-28 justify-center text-sm font-semibold bg-primary-light hover:opacity-80 flex items-center absolute left-20"
+          >
+            <FontAwesomeIcon icon={faChevronLeft} className="w-5 h-5 mr-3" />
+            <span>Go back</span>
+          </button>
           {children}
         </div>
       </div>

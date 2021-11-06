@@ -42,7 +42,7 @@ export default function Home() {
               international and local value investors to create.
             </p>
             <div className="max-w-sm mx-auto lg:mx-0 lg:max-w-full">
-              <DownloadButtons className="bg-primary-darker hover:bg-primary-darkest" />
+              <DownloadButtons className="bg-primary-base hover:bg-primary-hover" />
             </div>
           </div>
           <div className="mt-32 2xl:mt-44">
