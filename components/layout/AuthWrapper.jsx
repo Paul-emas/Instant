@@ -35,15 +35,15 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
     tl.from(
       '.fadeIn',
       {
-        y: 50,
+        scale: 0.8,
         autoAlpha: 0,
       },
       {
-        y: 0,
+        scale: 1,
         autoAlpha: 1,
-        duration: 0.1,
       },
     );
+    tl.duration(0.4).play();
   }, []);
 
   return (
