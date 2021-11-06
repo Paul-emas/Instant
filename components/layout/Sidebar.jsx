@@ -54,7 +54,7 @@ const Sidebar = props => {
 
   return (
     <aside>
-      <div className="min-h-screen -left-full lg:left-0 fixed w-56 2xl:w-sidebar pt-5 2xl:pt-10 bg-primary-base bg-contain">
+      <div className="min-h-screen -left-full lg:left-0 fixed w-60 2xl:w-sidebar pt-5 2xl:pt-10 bg-primary-base bg-contain">
         <div className="h-20 pl-5 2xl:pl-10 pr-5">
           <div className="flex items-center">
             <Link href="/">

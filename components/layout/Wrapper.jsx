@@ -69,7 +69,6 @@ const Wrapper = ({ children }) => {
           <div className="min-h-screen">
             <Sidebar />
             <div className="p-0 pb-8 bg-primary-light">
-              {/* <Detailbar /> */}
               <main className="min-h-screen main-content">
                 <div className="px-5 2xl:px-7">{children}</div>
               </main>
