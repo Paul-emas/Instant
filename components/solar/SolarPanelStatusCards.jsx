@@ -1,7 +1,4 @@
-import {
-  faBatteryHalf,
-  faChargingStation,
-} from '@fortawesome/free-solid-svg-icons';
+import { faChargingStation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 
