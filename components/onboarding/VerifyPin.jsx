@@ -46,8 +46,8 @@ const VerifyPin = () => {
 
       if (data) {
         setIsLoading(false);
-        const { account, authorization } = data;
-        setUserAccount({ user: { account } });
+        const { user, authorization } = data;
+        setUserAccount({ me: user });
         cookie.set('token', authorization);
         router.push('/dashboard');
       }

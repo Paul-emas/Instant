@@ -35,10 +35,10 @@ const PrepaidForm = ({}) => {
         id="select"
         placeholder="Enter account number"
         label="State of residence"
-        errors={errors}
+        error={errors.select ?? false}
         options={['Lagos State', 'whats up']}
         {...register('select', {
-          required: 'You missed this field',
+          required: true,
         })}
       />
       <FormInput
@@ -48,8 +48,9 @@ const PrepaidForm = ({}) => {
         errors={errors}
         placeholder="Enter meter number"
         label="Meter number"
+        error={errors.meter_no ?? false}
         {...register('meter_no', {
-          required: 'You missed this field',
+          required: true,
         })}
       />
       <FormInput
@@ -60,16 +61,11 @@ const PrepaidForm = ({}) => {
         placeholder="070 3778 6423"
         label="Phone number"
         control={control}
+        error={isValid}
         onChange={e => {
           ValidateMobileNo(e);
         }}
-      >
-        {isValid && (
-          <div className="mt-2 text-sm font-bold text-red-500 capitalize">
-            Enter a valid Phone Number
-          </div>
-        )}
-      </FormInput>
+      />
       <FormInput
         className="py-3 2xl:py-3.5 px-5 mt-2"
         type="currency"
@@ -77,8 +73,9 @@ const PrepaidForm = ({}) => {
         errors={errors}
         placeholder="Enter account number"
         label="How much will you like to purchase?"
+        error={errors.amount ?? false}
         {...register('amount', {
-          required: 'You missed this field',
+          required: true,
         })}
       />
       <div className="flex items-end">

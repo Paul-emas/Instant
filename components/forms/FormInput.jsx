@@ -4,10 +4,23 @@ import PhoneInput from 'react-phone-number-input/react-hook-form';
 
 const FormInput = forwardRef(
   (
-    { as, type, label, control, options, children, className, ...props },
+    { as, type, label, error, control, options, children, className, ...props },
     ref,
   ) => {
     const As = as;
+
+    const errorStyles =
+      type !== 'phone' && type !== 'currency'
+        ? `${
+            error
+              ? 'border-red-600 focus:border-red-600 focus:outline-none'
+              : 'focus:bg-primary-light focus:border-primary-base focus:border-skin-theme focus:outline-none'
+          }`
+        : `${
+            error
+              ? 'border-red-600 focus:border-red-600 focus:outline-none'
+              : 'focus-within:bg-primary-light focus-within:border-primary-base focus:outline-none '
+          }`;
 
     return (
       <div className="mb-2.5 2xl:mb-4">
@@ -19,14 +32,16 @@ const FormInput = forwardRef(
             name={label}
             ref={ref}
             type={type}
-            className={`${className} form-input focus:border-skin-theme focus:outline-none`}
+            className={`${className} ${errorStyles} form-input`}
             {...props}
           />
         )}
 
         {type === 'phone' && (
           <div
-            className={`${className} form-input focus-within:bg-primary-light focus-within:border-primary-base focus:outline-none`}
+            className={`${className} ${errorStyles} ${
+              error && 'phone_error'
+            } form-input`}
           >
             <PhoneInput
               defaultCountry="NG"
@@ -42,7 +57,7 @@ const FormInput = forwardRef(
         {type === 'select' && (
           <select
             {...props}
-            className={`${className} form-select form-input focus:border-gray-400 focus:outline-none`}
+            className={`${className} ${errorStyles} form-select form-input`}
             placeholder="Regular input"
             ref={ref}
           >
@@ -60,16 +75,16 @@ const FormInput = forwardRef(
         )}
 
         {type === 'currency' && (
-          <div
-            className={`${className} form-input flex focus-within:bg-primary-light focus-within:border-primary-base`}
-          >
+          <div className={`${className} ${errorStyles} form-input flex`}>
             <div className="text capitalize text-primary-base">NGN</div>
             <input
               {...props}
               type="number"
               placeholder="0.00"
               ref={ref}
-              className="ml-4 focus:outline-none w-full font-bold focus:bg-primary-light"
+              className={`${
+                error ? 'focus:bg-white' : 'focus:bg-primary-light'
+              } ml-4 focus:outline-none w-full font-bold`}
             />
           </div>
         )}

@@ -25,7 +25,7 @@ const Plans = ({ gray }) => {
             placeholder="Enter account number"
             options={['Bill Monthly', 'whats up']}
             {...register('package', {
-              required: 'You missed this field',
+              required: true,
             })}
           />
         </div>

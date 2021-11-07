@@ -3,8 +3,9 @@ import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import { useSessionStorage } from 'react-use';
 import { useForm } from 'react-hook-form';
-import { isValidPhoneNumber } from 'react-phone-number-input';
+import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import cookie from 'js-cookie';
+import isEmail from 'is-email';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import useDispatcher from '../../hooks/useDispatcher';
 import { formatPhoneNo } from '../forms/utils';
@@ -17,7 +18,12 @@ import PinInput from '../forms/PinInput';
 import ErrorAlert from '../forms/ErrorAlert';
 
 const Register = () => {
-  const { register, handleSubmit, control } = useForm();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
   const [errorMessage, setErrorMessage] = useState(null);
 
   let {
@@ -108,8 +114,10 @@ const Register = () => {
             id="name"
             placeholder="Enter your Full Name"
             label="Full name"
+            error={errors.name && true}
             {...register('name', {
-              required: 'You missed this field',
+              required: true,
+              minLength: 3,
             })}
           />
           <FormInput
@@ -118,8 +126,10 @@ const Register = () => {
             id="email"
             placeholder="Enter your Email Address"
             label="Email address"
+            error={errors.email && true}
             {...register('email', {
-              required: 'You missed this field',
+              required: true,
+              validate: value => isEmail(value),
             })}
           />
           <FormInput
@@ -129,17 +139,12 @@ const Register = () => {
             control={control}
             placeholder="070 3778 6423"
             label="Phone number"
+            error={isValid}
             defaultValue={authPhone ? authPhone.phone.value : ''}
             onChange={e => {
               ValidateMobileNo(e);
             }}
-          >
-            {isValid && (
-              <div className="mt-2 text-sm font-bold text-red-500 capitalize">
-                Enter a valid Phone Number
-              </div>
-            )}
-          </FormInput>
+          />
           <PinInput
             label="Enter Pin"
             placeholder="Enter 6 digit pin"

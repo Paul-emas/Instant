@@ -54,7 +54,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
   };
 
   return (
-    <div className="py-8 lg:py-0 w-full xl:h-screen overflow-hidden">
+    <div className="py-8 lg:py-0 w-full lg:h-screen overflow-hidden">
       <div className="flex lg:hidden justify-center mb-10 lg:mb-0">
         <Link href="/">
           <a>
@@ -68,7 +68,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
         </Link>
       </div>
       <div className="grid lg:grid-cols-2">
-        <div className="bg-primary-darker hidden lg:block justify-center xl:h-screen overlay">
+        <div className="bg-primary-darker hidden lg:block justify-center lg:h-screen overlay">
           <div className="max-w-md mx-auto 2xl:py-16">
             <div className="justify-center hidden 2xl:flex">
               <Link href="/">

@@ -52,7 +52,7 @@ SolarPanelStatusCards.defaultProps = {
 
 SolarPanelStatusCards.propTypes = {
   label: PropTypes.string,
-  online: PropTypes.string,
+  online: PropTypes.bool,
   caption: PropTypes.string,
   isCharging: PropTypes.bool,
   Icon: PropTypes.element,

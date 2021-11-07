@@ -19,6 +19,7 @@
     "eslint-plugin-react": "^7.25.1",
     "flickity": "^2.2.2",
     "gsap": "^3.8.0",
+    "is-email": "^1.0.2",
     "js-cookie": "^3.0.1",
     "next": "latest",
     "react": "^17.0.2",

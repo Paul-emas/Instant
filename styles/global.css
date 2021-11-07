@@ -68,12 +68,16 @@ input[type='number']::-webkit-outer-spin-button {
   fill: #0d3643;
 }
 
+.phone_error .PhoneInputInput:focus {
+  background: #fff !important;
+}
+
 .PhoneInputInput:focus {
   @apply bg-primary-light;
 }
 
 .form-input {
-  @apply w-full font-bold border rounded-lg text-sm lg:text-base placeholder-gray-400 focus:bg-primary-light focus:border-primary-base;
+  @apply w-full font-bold border rounded-lg text-sm lg:text-base placeholder-gray-400;
 }
 
 .btn {

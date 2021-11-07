@@ -23,6 +23,7 @@ const PageLoader = () => {
               src="/images/logo-circle.png"
               layout="fill"
               className="object-cover"
+              priority={true}
             />
           </div>
           <div className="rounded-full w-14 h-14 lg:hidden block relative overflow-hidden">

@@ -17,7 +17,7 @@ const Login = () => {
   const { handleSubmit, control } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
-  const [authPhone, setAuthPhone] = useSessionStorage('authPhone', null);
+  const [authPhone, setAuthPhone] = useSessionStorage('authPhone');
 
   const onSubmit = async formData => {
     if (formData && !isValid) {
@@ -61,7 +61,7 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div className="fadeIn w-full mx-auto xl:py-20 2xl:py-40 md:max-w-lg px-5 md:w-auth">
+      <div className="fadeIn w-full mx-auto xl:py-36 2xl:py-44 md:max-w-lg px-5 md:w-auth">
         <h1 className="text-32xl font-bold text-center">
           Welcome to Instant Energy
         </h1>
@@ -76,16 +76,11 @@ const Login = () => {
             control={control}
             placeholder="070 3778 6423"
             label="Phone number"
+            error={isValid}
             onChange={e => {
               ValidateMobileNo(e);
             }}
-          >
-            {isValid && (
-              <div className="mt-2 text-sm font-bold text-red-500 capitalize">
-                Enter a valid Phone Number
-              </div>
-            )}
-          </FormInput>
+          />
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>
