@@ -69,7 +69,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
       </div>
       <div className="grid lg:grid-cols-2">
         <div className="bg-primary-darker hidden lg:block justify-center lg:h-screen overlay">
-          <div className="max-w-md mx-auto 2xl:py-16">
+          <div className="max-w-md mx-auto py-3 2xl:py-20">
             <div className="justify-center hidden 2xl:flex">
               <Link href="/">
                 <a>
@@ -113,10 +113,10 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
             </div>
           </div>
         </div>
-        <div className="bg-white relative lg:py-10 xl:h-screen justify-center overflow-y-auto">
+        <div className="bg-white relative lg:py-10 xl:h-screen justify-center lg:overflow-y-auto">
           <button
             onClick={goBack}
-            className="py-2.5 rounded-lg w-28 justify-center text-sm font-semibold bg-primary-light hover:opacity-80 flex absolute items-center left-20"
+            className="py-2.5 rounded-lg w-28 justify-center text-sm font-semibold bg-primary-light hover:opacity-80 flex relative items-center -top-20 -mt-2.5 lg:top-10 lg:mt-0 left-10 2xl:left-20"
           >
             <FontAwesomeIcon icon={faChevronLeft} className="w-5 h-5 mr-2" />
             <span className="mt-0.5">Go back</span>

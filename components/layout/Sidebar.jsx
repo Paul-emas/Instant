@@ -129,7 +129,7 @@ const Sidebar = props => {
                   <>
                     <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
                     <div className="ml-3 mt-0.5 w-28 font-bold">
-                      <div className="h-3 w-full rounded-sm bg-gray-200"></div>
+                      <div className="h-3 w-4/5 2xl:w-full rounded-sm bg-gray-200"></div>
                       <div className="h-2.5 w-1/2 mt-1 rounded-sm bg-gray-200"></div>
                     </div>
                   </>
