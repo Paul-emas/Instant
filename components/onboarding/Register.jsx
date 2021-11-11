@@ -109,7 +109,7 @@ const Register = () => {
           autoComplete="off"
         >
           <FormInput
-            className="py-3.5 px-5 mt-2"
+            className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
             type="text"
             id="name"
             placeholder="Enter your Full Name"
@@ -121,7 +121,7 @@ const Register = () => {
             })}
           />
           <FormInput
-            className="py-3.5 px-5 mt-2"
+            className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
             type="email"
             id="email"
             placeholder="Enter your Email Address"
@@ -133,7 +133,7 @@ const Register = () => {
             })}
           />
           <FormInput
-            className="py-3.5 px-5 mt-2"
+            className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
             control={control}
@@ -152,7 +152,7 @@ const Register = () => {
             setPin={setPin}
           />
           <FormInput
-            className="py-3.5 px-5 mt-2"
+            className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
             type="text"
             id="referral_no"
             placeholder="Referral Code"

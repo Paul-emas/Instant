@@ -22,7 +22,7 @@ const PinInput = ({ label, pin, placeholder, setPin, props }) => {
     <div className="mb-2.5 2xl:mb-4">
       <label className="text-gray-400 font-bold text-sm label">{label}</label>
       <input
-        className={`${errorStyles} py-3.5 px-5 mt-2 form-input`}
+        className={`${errorStyles} py-2.5 2xl:py-3.5 px-5 mt-2 form-input`}
         type="password"
         value={pin}
         maxLength="6"

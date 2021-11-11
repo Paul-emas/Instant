@@ -34,7 +34,7 @@ export default function Home() {
       <Header>
         <div className="relative lg:w-1/2 pt-36 lg:pt-52 2xl:pt-72">
           <div className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight md:leading-tight font-extrabold text-font-darker font-gill">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight xl:leading-tight 2xl:leading-tight font-extrabold text-font-darker font-gill">
               Buy Electricity at affordable rates
             </h1>
             <p className="text-font-dark text-sm lg:text-xl leading-normal mt-6">

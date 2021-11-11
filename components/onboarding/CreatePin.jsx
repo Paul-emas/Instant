@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { createUserAuthPin } from '../../api';
+import PinInput from 'react-pin-input';
+
 import PrimaryButton from '../Buttons/PrimaryButton';
-import PinInput from '../forms/PinInput';
 import ErrorAlert from '../forms/ErrorAlert';
 
 const CreatePin = () => {
@@ -53,35 +54,21 @@ const CreatePin = () => {
         {errorMessage && (
           <ErrorAlert error={errorMessage} setError={setErrorMessage} />
         )}
-        <form className="mt-10" onSubmit={onSubmit}>
+        <form className="mt-10 flex items-center flex-col" onSubmit={onSubmit}>
           <PinInput
-            label="Enter Pin"
-            placeholder="Enter new pin"
-            pin={pin}
-            setPin={setPin}
+            length={6}
+            secret
+            onChange={value => setPin(value)}
+            type="numeric"
+            className="hidden"
+            inputStyle={{
+              borderBottom: `${
+                errorMessage ? '2px solid red' : '2px solid #737373'
+              }`,
+            }}
+            inputMode="number"
+            autoSelect={true}
           />
-          <div className="mb-2.5 2xl:mb-4">
-            <label className="text-gray-400 font-bold text-sm label">
-              Confirm pin
-            </label>
-            <input
-              className="py-3.5 px-5 mt-2 form-input focus:border-skin-theme focus:outline-none"
-              type="password"
-              id="confirm_pin"
-              placeholder="Confirm pin"
-              maxLength="6"
-              onChange={e =>
-                pin !== e.target.value
-                  ? setError('Pin doesnt Match')
-                  : setError(null)
-              }
-            />
-            {error && (
-              <div className="mt-2 text-sm font-bold text-red-500 capitalize">
-                {error}
-              </div>
-            )}
-          </div>
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>

@@ -75,7 +75,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-      gill: ['Gill Sans Nova', ...defaultTheme.fontFamily.sans],
+      gill: ['Red Hat Display', ...defaultTheme.fontFamily.sans],
     },
   },
   variants: {

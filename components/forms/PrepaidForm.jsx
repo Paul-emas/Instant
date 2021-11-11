@@ -30,7 +30,7 @@ const PrepaidForm = ({}) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormInput
-        className="py-3 2xl:py-3.5 px-5 mt-2"
+        className="py-2.5 2xl:py-3.5 px-5 mt-2"
         type="select"
         id="select"
         placeholder="Enter account number"
@@ -42,7 +42,7 @@ const PrepaidForm = ({}) => {
         })}
       />
       <FormInput
-        className="py-3 2xl:py-3.5 px-5 mt-2"
+        className="py-2.5 2xl:py-3.5 px-5 mt-2"
         type="number"
         id="meter_no"
         errors={errors}
@@ -54,7 +54,7 @@ const PrepaidForm = ({}) => {
         })}
       />
       <FormInput
-        className="py-3 2xl:py-3.5 px-5 mt-2"
+        className="py-2.5 2xl:py-3.5 px-5 mt-2"
         type="phone"
         id="phone"
         errors={errors}
@@ -67,7 +67,7 @@ const PrepaidForm = ({}) => {
         }}
       />
       <FormInput
-        className="py-3 2xl:py-3.5 px-5 mt-2"
+        className="py-2.5 2xl:py-3.5 px-5 mt-2"
         type="currency"
         id="amount"
         errors={errors}

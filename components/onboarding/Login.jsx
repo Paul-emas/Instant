@@ -1,4 +1,5 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
+import router from 'next/router';
 import Link from 'next/link';
 import { useSessionStorage } from 'react-use';
 import { useForm } from 'react-hook-form';
@@ -10,7 +11,6 @@ import { checkUserValidation } from '../../api';
 import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import SocialCard from '../SocialCard';
-import router from 'next/router';
 
 const Login = () => {
   const { setUserPhoneNo, setUserAnonymousToken } = useDispatcher();
@@ -70,7 +70,7 @@ const Login = () => {
         </p>
         <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
-            className="py-3 lg:py-3.5 px-5 mt-2"
+            className="py-2.5 2xl:py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
             control={control}

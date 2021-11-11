@@ -27,6 +27,7 @@
     "react-flickity-component": "^3.6.2",
     "react-hook-form": "^7.15.2",
     "react-phone-number-input": "^3.1.27",
+    "react-pin-input": "^1.0.1",
     "react-toastify": "^8.0.3",
     "react-use": "^17.3.1",
     "recharts": "^2.1.2",

@@ -3,12 +3,12 @@ import router from 'next/router';
 import Link from 'next/link';
 import { useSessionStorage } from 'react-use';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
+import PinInput from 'react-pin-input';
 import { logIn } from '../../api';
 import cookie from 'js-cookie';
 
 import useDispatcher from '../../hooks/useDispatcher';
 import PrimaryButton from '../Buttons/PrimaryButton';
-import PinInput from '../forms/PinInput';
 import ErrorAlert from '../forms/ErrorAlert';
 
 const VerifyPin = () => {
@@ -25,7 +25,7 @@ const VerifyPin = () => {
   }
 
   useEffect(() => {
-    authPhone === null && router.replace('/auth/sign-in');
+    typeof authPhone === undefined && router.replace('/auth/sign-in');
   }, [authPhone]);
 
   const onSubmit = async e => {
@@ -64,12 +64,20 @@ const VerifyPin = () => {
         {errorMessage && (
           <ErrorAlert error={errorMessage} setError={setErrorMessage} />
         )}
-        <form className="mt-10" onSubmit={onSubmit}>
+        <form className="mt-10 flex items-center flex-col" onSubmit={onSubmit}>
           <PinInput
-            label="Enter Pin"
-            placeholder="Enter pin"
-            pin={pin}
-            setPin={setPin}
+            length={6}
+            secret
+            onChange={value => setPin(value)}
+            type="numeric"
+            className="hidden"
+            inputStyle={{
+              borderBottom: `${
+                errorMessage ? '2px solid red' : '2px solid #737373'
+              }`,
+            }}
+            inputMode="number"
+            autoSelect={true}
           />
           <PrimaryButton disabled={isLoading} loading={isLoading}>
             Continue

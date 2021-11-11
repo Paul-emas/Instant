@@ -1,5 +1,7 @@
 /* Fonts */
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Red+Hat+Display:wght@300;400;500;600;700;800&display=swap');
+
 @font-face {
   font-family: 'Nunito';
   src: local('Nunito'), local('Nunito'),
@@ -61,5 +63,55 @@
     url('../fonts/GillSansNova-Bold/GillSansNova-Book.woff') format('woff'),
     url('../fonts/GillSansNova-Bold/GillSansNova-Book.ttf') format('truetype');
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: local('Red Hat Display Bold'), local('RedHatDisplay'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Bold.ttf') format('woff2'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Bold.ttf') format('woff'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: local('Red Hat Display Bold'), local('RedHatDisplay'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-SemiBold.ttf') format('woff2'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-SemiBold.ttf') format('woff'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: local('Red Hat Display Bold'), local('RedHatDisplay'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Medium.ttf') format('woff2'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Medium.ttf') format('woff'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: local('Red Hat Display Bold'), local('RedHatDisplay'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Regular.ttf') format('woff2'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Regular.ttf') format('woff'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: local('Red Hat Display Bold'), local('RedHatDisplay'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Light.ttf') format('woff2'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Light.ttf') format('woff'),
+    url('../fonts/RedHatDisplay/RedHatDisplay-Light.ttf') format('truetype');
+  font-weight: 300;
   font-style: normal;
 }
