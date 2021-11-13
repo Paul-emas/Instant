@@ -82,7 +82,7 @@ export default function solarPlans() {
             <ContactCard />
           </div>
         </div>
-        <div className="w-1/2 pt-72 relative ">
+        <div className="w-1/2 pt-40 2xl:pt-72 relative ">
           <div className="transform 2xl:scale-125 flex justify-end relative 2xl:-left-20">
             <SolarIcon />
           </div>
