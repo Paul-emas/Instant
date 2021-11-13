@@ -31,7 +31,7 @@ const Navbar = () => {
     >
       <div className="xl:container mx-auto h-full px-4 lg:px-10">
         <div className="flex justify-between h-full items-center">
-          <div className="hidden lg:block">
+          <div className="hidden lg:block -ml-5">
             <Link href="/">
               <a>
                 <Image

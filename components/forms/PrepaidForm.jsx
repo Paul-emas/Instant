@@ -1,6 +1,8 @@
 import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSessionStorage } from 'react-use';
+import { useGlobalContext } from '../../hooks/useGlobalContext';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
 
@@ -11,6 +13,14 @@ const PrepaidForm = ({}) => {
     control,
     formState: { errors },
   } = useForm();
+
+  let {
+    auth: { authPhone },
+  } = useGlobalContext();
+
+  if (!authPhone) {
+    authPhone = useSessionStorage('authPhone')[0];
+  }
 
   const [isValid, setIsValid] = useState(false);
 
@@ -60,6 +70,7 @@ const PrepaidForm = ({}) => {
         errors={errors}
         placeholder="070 3778 6423"
         label="Phone number"
+        defaultValue={authPhone ? authPhone.phone.value : ''}
         control={control}
         error={isValid}
         onChange={e => {

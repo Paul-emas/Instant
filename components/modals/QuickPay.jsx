@@ -41,14 +41,19 @@ const QuickPay = () => {
     <>
       {!openQuickBuyModal && (
         <div className="reduce">
-          <div className="bg-white w-full lg:w-w-modal 2xl:w-9/12 -mt-20 lg:mt-56 2xl:mt-72 ml-auto shadow-soft rounded-2xl lg:rounded-3xl">
+          <div className="bg-white w-full overflow-hidden lg:w-w-modal 2xl:w-9/12 -mt-20 lg:mt-56 2xl:mt-72 ml-auto shadow-soft rounded-2xl lg:rounded-3xl">
             <div className="lg:pt-8">
               <div>
-                <h2 className="text-xl lg:text-2xl py-5 lg:py-0 text-center px-8 lg:mb-2 2xl:mb-4 text-black font-bold font-gill">
+                <h2 className="text-xl lg:text-4xl py-5 lg:py-0 px-8 lg:mb-2 2xl:mb-5 2xl:leading-snug text-black font-bold font-gill">
                   Buy Electricity, start by entering your phone number
                 </h2>
               </div>
               <QuickPayPhoneInput setOpenQuickBuyModal={setOpenQuickBuyModal} />
+            </div>
+
+            <div className="w-full h-14 text-primary-dark font-medium flex justify-center items-center bg-primary-light mt-7">
+              <span>Dont have an account?</span>
+              <span className="text-primary-base ml-2">Sign up</span>
             </div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 
 import Header from '../components/homepage/Header';
 import ContactCard from '../components/ContactCard';
@@ -13,6 +12,8 @@ import People from '../components/homepage/People';
 import Slider from '../components/homepage/Slider';
 import CTA from '../components/homepage/CTA';
 import Footer from '../components/homepage/Footer';
+
+import SolarIcon from '../public/svgs/solar-house.svg';
 
 export default function solarPlans() {
   const steps = [
@@ -81,14 +82,9 @@ export default function solarPlans() {
             <ContactCard />
           </div>
         </div>
-        <div className="w-1/2 pb-36 2xl:pb-10 relative top-14 left-24 xl:left-16 scale-125 2xl:scale-150">
-          <div>
-            <Image
-              src="/images/banner-2.webp"
-              layout="fill"
-              className="object-contain transform"
-              priority={true}
-            />
+        <div className="w-1/2 pt-72 relative ">
+          <div className="transform 2xl:scale-125 flex justify-end relative 2xl:-left-20">
+            <SolarIcon />
           </div>
         </div>
       </Header>
