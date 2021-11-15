@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react/cjs/react.development';
 import EmptyIcon from '../../public/svgs/empty-state.svg';
 
 const SelectInput = ({
