@@ -4,9 +4,9 @@ const BuyElectricityTab = ({ tabs, activeTab, setActiveTab }) => {
   const animate = () => {
     const tl = gsap.timeline();
     if (activeTab === 'prepaid') {
-      tl.fromTo('.slideUp', { x: 30, autoAlpha: 0 }, { x: 0, autoAlpha: 1 });
+      tl.fromTo('.slideUp', { x: 50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 });
     } else {
-      tl.fromTo('.slideUp', { x: -30, autoAlpha: 0 }, { x: 0, autoAlpha: 1 });
+      tl.fromTo('.slideUp', { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1 });
     }
     tl.duration(0.5).play();
   };

@@ -54,6 +54,7 @@ module.exports = {
         74: '305px',
         279: '279px',
         257: '257px',
+        48: '48rem',
       },
       height: {
         'h-modal': '718px',

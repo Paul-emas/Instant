@@ -46,3 +46,17 @@ export async function createUserAuthPin(pin, token) {
     if (error.message) return { error };
   }
 }
+
+export async function getProviders() {
+  try {
+    const response = await axios.get(`${baseUrl}/provider`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.message) return { error };
+  }
+}

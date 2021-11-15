@@ -3,10 +3,7 @@ import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input/react-hook-form';
 
 const FormInput = forwardRef(
-  (
-    { as, type, label, error, control, options, children, className, ...props },
-    ref,
-  ) => {
+  ({ as, type, label, error, control, children, className, ...props }, ref) => {
     const As = as;
 
     const errorStyles =
@@ -27,7 +24,7 @@ const FormInput = forwardRef(
         <label className="text-gray-400 font-bold text-xs lg:text-sm label">
           {label}
         </label>
-        {type !== 'phone' && type !== 'select' && type !== 'currency' && (
+        {type !== 'phone' && type !== 'currency' && (
           <As
             name={label}
             ref={ref}
@@ -52,26 +49,6 @@ const FormInput = forwardRef(
               {...props}
             />
           </div>
-        )}
-
-        {type === 'select' && (
-          <select
-            {...props}
-            className={`${className} ${errorStyles} form-select form-input`}
-            placeholder="Regular input"
-            ref={ref}
-          >
-            {options.map(option => (
-              <>
-                <option value="" disabled selected hidden>
-                  Select your location
-                </option>
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              </>
-            ))}
-          </select>
         )}
 
         {type === 'currency' && (

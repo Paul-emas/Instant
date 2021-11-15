@@ -1,10 +1,16 @@
-import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import { useState } from 'react';
+import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import { useForm } from 'react-hook-form';
+import { useSessionStorage } from 'react-use';
+import PropTypes from 'prop-types';
+
+import { useGlobalContext } from '../../hooks/useGlobalContext';
+
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
+import SelectInput from './SelectInput';
 
-const PrepaidForm = ({}) => {
+const PostpaidForm = ({ providers }) => {
   const {
     register,
     handleSubmit,
@@ -12,7 +18,16 @@ const PrepaidForm = ({}) => {
     formState: { errors },
   } = useForm();
 
+  let {
+    auth: { authPhone },
+  } = useGlobalContext();
+
+  if (!authPhone) {
+    authPhone = useSessionStorage('authPhone')[0];
+  }
+
   const [isValid, setIsValid] = useState(false);
+  const [selectedProvider, setSelectedProvider] = useState(null);
 
   function onSubmit(data) {
     console.log(data);
@@ -29,27 +44,24 @@ const PrepaidForm = ({}) => {
       className="px-6 lg:px-8 pt-4 pb-8 2xl:p-8"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <FormInput
-        className="py-2.5 2xl:py-3.5 px-5 mt-2"
-        type="select"
-        id="select"
-        placeholder="Enter account number"
+      <SelectInput
+        className="py-1.5 2xl:py-2.5 px-5 mt-2"
         label="State of residence"
+        placeholder="Enter account number"
         error={errors.select ?? false}
-        options={['Lagos State', 'whats up']}
-        {...register('select', {
-          required: true,
-        })}
+        options={providers}
+        selectedProvider={selectedProvider}
+        setSelectedProvider={setSelectedProvider}
       />
       <FormInput
         className="py-2.5 2xl:py-3.5 px-5 mt-2"
         type="number"
-        id="account_no"
+        id="meter_no"
         errors={errors}
-        placeholder="Enter account number"
-        label="Account number"
-        error={errors.account_no ?? false}
-        {...register('account_no', {
+        placeholder="Enter meter number"
+        label="Meter number"
+        error={errors.meter_no ?? false}
+        {...register('meter_no', {
           required: true,
         })}
       />
@@ -60,6 +72,7 @@ const PrepaidForm = ({}) => {
         errors={errors}
         placeholder="070 3778 6423"
         label="Phone number"
+        defaultValue={authPhone ? authPhone.phone.value : ''}
         control={control}
         error={isValid}
         onChange={e => {
@@ -91,4 +104,8 @@ const PrepaidForm = ({}) => {
   );
 };
 
-export default PrepaidForm;
+PostpaidForm.propTypes = {
+  providers: PropTypes.array,
+};
+
+export default PostpaidForm;

@@ -31,7 +31,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header>
-        <div className="relative w-1/2 top-20 2xl:pt-72">
+        <div className="lg:relative lg:w-1/2 max-w-3xl top-20 2xl:pt-72">
           <Image
             src="/images/woman.webp"
             layout="fill"

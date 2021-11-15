@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { useEffect, useState } from 'react';
+import { getProviders } from '../../api';
 import PostPaidForm from '../forms/PostPaidForm';
 import PrepaidForm from '../forms/PrepaidForm';
 import QuickPayPhoneInput from '../forms/QuickPayPhoneInput';
@@ -11,7 +12,8 @@ const QuickPay = () => {
     { id: 1, name: 'postpaid' },
   ];
   const [activeTab, setActiveTab] = useState(tabs[0].name);
-  const [openQuickBuyModal, setOpenQuickBuyModal] = useState(false);
+  const [openQuickBuyModal, setOpenQuickBuyModal] = useState(true);
+  const [providers, setProviders] = useState([]);
 
   const tabProps = {
     tabs,
@@ -19,7 +21,16 @@ const QuickPay = () => {
     setActiveTab,
   };
 
+  async function fetchProviders() {
+    const res = await getProviders();
+    console.log(res.data.docs);
+    if (res.data) {
+      setProviders(res.data.docs);
+    }
+  }
+
   useEffect(() => {
+    fetchProviders();
     const tl = gsap.timeline();
     if (openQuickBuyModal) {
       tl.fromTo(
@@ -41,7 +52,7 @@ const QuickPay = () => {
     <>
       {!openQuickBuyModal && (
         <div className="reduce">
-          <div className="bg-white w-full overflow-hidden lg:w-w-modal 2xl:w-9/12 -mt-20 lg:mt-56 2xl:mt-72 ml-auto shadow-soft rounded-2xl lg:rounded-3xl">
+          <div className="bg-white w-full overflow-hidden lg:w-w-modal 2xl:w-9/12 lg:mt-56 2xl:mt-72 ml-auto shadow-soft rounded-2xl lg:rounded-3xl z-20">
             <div className="lg:pt-8">
               <div>
                 <h2 className="text-xl lg:text-4xl py-5 lg:py-0 px-8 lg:mb-2 2xl:mb-5 2xl:leading-snug text-black font-bold font-gill">
@@ -70,9 +81,11 @@ const QuickPay = () => {
               </div>
               <BuyElectricityTab {...tabProps} />
               <div className="slideUp">
-                {activeTab === 'prepaid' && <PrepaidForm onSubmit={onSubmit} />}
+                {activeTab === 'prepaid' && (
+                  <PrepaidForm providers={providers} />
+                )}
                 {activeTab === 'postpaid' && (
-                  <PostPaidForm onSubmit={onSubmit} />
+                  <PostPaidForm providers={providers} />
                 )}
               </div>
             </div>

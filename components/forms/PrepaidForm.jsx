@@ -1,12 +1,15 @@
-import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import { useState } from 'react';
+import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import { useForm } from 'react-hook-form';
 import { useSessionStorage } from 'react-use';
+import PropTypes from 'prop-types';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
+
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
+import SelectInput from './SelectInput';
 
-const PrepaidForm = ({}) => {
+const PrepaidForm = ({ providers }) => {
   const {
     register,
     handleSubmit,
@@ -23,6 +26,7 @@ const PrepaidForm = ({}) => {
   }
 
   const [isValid, setIsValid] = useState(false);
+  const [selectedProvider, setSelectedProvider] = useState(null);
 
   function onSubmit(data) {
     console.log(data);
@@ -39,17 +43,14 @@ const PrepaidForm = ({}) => {
       className="px-6 lg:px-8 pt-4 pb-8 2xl:p-8"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <FormInput
-        className="py-2.5 2xl:py-3.5 px-5 mt-2"
-        type="select"
-        id="select"
-        placeholder="Enter account number"
+      <SelectInput
+        className="py-1.5 2xl:py-2.5 px-5 mt-2"
         label="State of residence"
+        placeholder="Enter account number"
         error={errors.select ?? false}
-        options={['Lagos State', 'whats up']}
-        {...register('select', {
-          required: true,
-        })}
+        options={providers}
+        selectedProvider={selectedProvider}
+        setSelectedProvider={setSelectedProvider}
       />
       <FormInput
         className="py-2.5 2xl:py-3.5 px-5 mt-2"
@@ -100,6 +101,10 @@ const PrepaidForm = ({}) => {
       <PrimaryButton>Proceed to Payment</PrimaryButton>
     </form>
   );
+};
+
+PrepaidForm.propTypes = {
+  providers: PropTypes.array,
 };
 
 export default PrepaidForm;
