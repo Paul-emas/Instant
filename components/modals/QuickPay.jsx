@@ -12,7 +12,7 @@ const QuickPay = () => {
     { id: 1, name: 'postpaid' },
   ];
   const [activeTab, setActiveTab] = useState(tabs[0].name);
-  const [openQuickBuyModal, setOpenQuickBuyModal] = useState(true);
+  const [openQuickBuyModal, setOpenQuickBuyModal] = useState(false);
   const [providers, setProviders] = useState([]);
 
   const tabProps = {
