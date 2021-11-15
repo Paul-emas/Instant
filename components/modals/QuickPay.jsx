@@ -23,7 +23,7 @@ const QuickPay = () => {
 
   async function fetchProviders() {
     const res = await getProviders();
-    console.log(res.data.docs);
+    console.log();
     if (res.data) {
       setProviders(res.data.docs);
     }
@@ -45,7 +45,7 @@ const QuickPay = () => {
   }, [openQuickBuyModal]);
 
   const onSubmit = data => {
-    console.log(data, 'hello');
+    // console.log(data);
   };
 
   return (
