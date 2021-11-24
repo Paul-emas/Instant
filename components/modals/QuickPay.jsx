@@ -56,9 +56,9 @@ const QuickPay = () => {
         id="box"
         className={`${
           openQuickBuyModal
-            ? 'lg:h-modal-md 2xl:h-modal -mt-20 lg:mt-24 2xl:mt-40'
-            : '2xl:h-modal-sm lg:mt-56 2xl:mt-72'
-        } bg-white w-full overflow-hidden ease lg:w-w-modal 2xl:w-9/12 ml-auto shadow-soft rounded-2xl lg:rounded-3xl z-20`}
+            ? 'lg:h-modal-md 2xl:h-modal -mt-20 lg:top-44 2xl:top-40'
+            : '2xl:h-modal-sm lg:top-56 2xl:top-72'
+        } bg-white w-full overflow-hidden ease lg:w-w-modal 2xl:w-9/12 ml-auto shadow-soft rounded-2xl relative lg:rounded-3xl z-20`}
       >
         <div className="hide">
           <div className="lg:pt-8">
