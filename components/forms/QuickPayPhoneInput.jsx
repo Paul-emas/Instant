@@ -12,10 +12,10 @@ import { formatPhoneNo } from './utils';
 import FormInput from './FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
-const QuickPayPhoneInput = ({ setOpenQuickBuyModal }) => {
+const QuickPayPhoneInput = ({ setActiveTab, setOpenQuickBuyModal }) => {
   const { setUserPhoneNo, setUserAnonymousToken } = useDispatcher();
   const { handleSubmit, control } = useForm();
-  const [authPhone, setAuthPhone] = useSessionStorage('authPhone', null);
+  const [authPhone, setAuthPhone] = useSessionStorage('authPhone');
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,8 +37,10 @@ const QuickPayPhoneInput = ({ setOpenQuickBuyModal }) => {
           value: phone,
         },
       };
+
       const { data, error } = await checkUserValidation(payload);
       if (error) {
+        setActiveTab(0);
         setIsLoading(false);
         setUserPhoneNo({ authPhone: payload });
         setOpenQuickBuyModal(true);
@@ -81,7 +83,11 @@ const QuickPayPhoneInput = ({ setOpenQuickBuyModal }) => {
           ValidateMobileNo(e);
         }}
       />
-      <PrimaryButton disabled={isLoading} loading={isLoading}>
+      <PrimaryButton
+        className="mt-4 mb-4"
+        disabled={isLoading}
+        loading={isLoading}
+      >
         Continue
       </PrimaryButton>
     </form>

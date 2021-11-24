@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import { useForm } from 'react-hook-form';
-import { useSessionStorage } from 'react-use';
 import PropTypes from 'prop-types';
 
 import { useGlobalContext } from '../../hooks/useGlobalContext';
@@ -21,10 +20,6 @@ const PostpaidForm = ({ providers }) => {
   let {
     auth: { authPhone },
   } = useGlobalContext();
-
-  if (!authPhone) {
-    authPhone = useSessionStorage('authPhone')[0];
-  }
 
   const [isValid, setIsValid] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState(null);
@@ -65,20 +60,22 @@ const PostpaidForm = ({ providers }) => {
           required: true,
         })}
       />
-      <FormInput
-        className="py-2.5 2xl:py-3.5 px-5 mt-2"
-        type="phone"
-        id="phone"
-        errors={errors}
-        placeholder="070 3778 6423"
-        label="Phone number"
-        defaultValue={authPhone ? authPhone.phone.value : ''}
-        control={control}
-        error={isValid}
-        onChange={e => {
-          ValidateMobileNo(e);
-        }}
-      />
+      {authPhone && (
+        <FormInput
+          className="py-2.5 2xl:py-3.5 px-5 mt-2"
+          type="phone"
+          id="phone"
+          errors={errors}
+          placeholder="070 3778 6423"
+          label="Phone number"
+          defaultValue={authPhone?.phone?.value}
+          control={control}
+          error={isValid}
+          onChange={e => {
+            ValidateMobileNo(e);
+          }}
+        />
+      )}
       <FormInput
         className="py-2.5 2xl:py-3.5 px-5 mt-2"
         type="currency"
@@ -99,7 +96,7 @@ const PostpaidForm = ({ providers }) => {
           ?
         </span>
       </div>
-      <PrimaryButton>Proceed to Payment</PrimaryButton>
+      <PrimaryButton className="mt-8">Proceed to Payment</PrimaryButton>
     </form>
   );
 };

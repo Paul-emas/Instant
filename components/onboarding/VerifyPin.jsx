@@ -29,7 +29,6 @@ const VerifyPin = () => {
   }, [authPhone]);
 
   const onSubmit = async e => {
-    e.preventDefault();
     if (authPhone && pin.length === 6) {
       setIsLoading(true);
       const payload = {
@@ -53,6 +52,13 @@ const VerifyPin = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (pin?.length === 6) {
+      onSubmit();
+      console.log('i am 6');
+    }
+  }, [pin]);
 
   return (
     <Fragment>
@@ -79,7 +85,11 @@ const VerifyPin = () => {
             inputMode="number"
             autoSelect={true}
           />
-          <PrimaryButton disabled={isLoading} loading={isLoading}>
+          <PrimaryButton
+            className="mt-8"
+            disabled={isLoading}
+            loading={isLoading}
+          >
             Continue
           </PrimaryButton>
         </form>

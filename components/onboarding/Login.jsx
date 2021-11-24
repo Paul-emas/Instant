@@ -81,7 +81,11 @@ const Login = () => {
               ValidateMobileNo(e);
             }}
           />
-          <PrimaryButton disabled={isLoading} loading={isLoading}>
+          <PrimaryButton
+            className="mt-8"
+            disabled={isLoading}
+            loading={isLoading}
+          >
             Continue
           </PrimaryButton>
         </form>

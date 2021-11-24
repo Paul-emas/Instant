@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import { useForm } from 'react-hook-form';
-import { useSessionStorage } from 'react-use';
 import PropTypes from 'prop-types';
+
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
 import SelectInput from './SelectInput';
+import { getAccountToken } from '../../api';
+import { formatPhoneNo } from './utils';
+import { toast } from 'react-toastify';
 
-const PrepaidForm = ({ providers }) => {
+const PrePaid = ({ providers }) => {
   const {
     register,
     handleSubmit,
@@ -21,15 +24,32 @@ const PrepaidForm = ({ providers }) => {
     auth: { authPhone },
   } = useGlobalContext();
 
-  if (!authPhone) {
-    authPhone = useSessionStorage('authPhone')[0];
-  }
-
+  const [isLoading, setIsLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState(null);
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(formData) {
+    if (formData) {
+      // setIsLoading(true);
+      const { phone } = formData;
+      const { countryCode, country, number } = formatPhoneNo(phone);
+      console.log(country);
+      const payload = {
+        phone: {
+          number,
+          code: countryCode,
+          value: phone,
+        },
+        country: country.name,
+      };
+      const { data, error } = await getAccountToken(payload);
+
+      if (error) {
+        toast.error(error.message);
+      } else {
+        const token = data?.authorization;
+      }
+    }
   }
 
   const ValidateMobileNo = number => {
@@ -57,27 +77,29 @@ const PrepaidForm = ({ providers }) => {
         type="number"
         id="meter_no"
         errors={errors}
-        placeholder="Enter meter number"
-        label="Meter number"
+        placeholder="Enter account number"
+        label="Account number"
         error={errors.meter_no ?? false}
-        {...register('meter_no', {
+        {...register('account_no', {
           required: true,
         })}
       />
-      <FormInput
-        className="py-2.5 2xl:py-3.5 px-5 mt-2"
-        type="phone"
-        id="phone"
-        errors={errors}
-        placeholder="070 3778 6423"
-        label="Phone number"
-        defaultValue={authPhone ? authPhone.phone.value : ''}
-        control={control}
-        error={isValid}
-        onChange={e => {
-          ValidateMobileNo(e);
-        }}
-      />
+      {authPhone && (
+        <FormInput
+          className="py-2.5 2xl:py-3.5 px-5 mt-2"
+          type="phone"
+          id="phone"
+          errors={errors}
+          placeholder="070 3778 6423"
+          label="Phone number"
+          defaultValue={authPhone?.phone?.value}
+          control={control}
+          error={isValid}
+          onChange={e => {
+            ValidateMobileNo(e);
+          }}
+        />
+      )}
       <FormInput
         className="py-2.5 2xl:py-3.5 px-5 mt-2"
         type="currency"
@@ -98,13 +120,15 @@ const PrepaidForm = ({ providers }) => {
           ?
         </span>
       </div>
-      <PrimaryButton>Proceed to Payment</PrimaryButton>
+      <PrimaryButton disabled={isLoading} loading={isLoading} className="mt-8">
+        Proceed to Payment
+      </PrimaryButton>
     </form>
   );
 };
 
-PrepaidForm.propTypes = {
+PrePaid.propTypes = {
   providers: PropTypes.array,
 };
 
-export default PrepaidForm;
+export default PrePaid;

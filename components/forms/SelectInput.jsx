@@ -41,12 +41,12 @@ const SelectInput = ({
             <>
               <span className="flex items-center">
                 <img
-                  src={selectedProvider.disco.logo}
+                  src={selectedProvider?.disco?.logo}
                   className="flex-shrink-0 h-8 w-8  rounded-full object-contain"
                 />
                 <span className="ml-3 block truncate">
-                  {selectedProvider.state.name} (
-                  {selectedProvider.disco.shortName})
+                  {selectedProvider?.state?.name} (
+                  {selectedProvider?.disco?.shortName})
                 </span>
               </span>
               <span className="ml-3 mt-2 absolute inset-y-0 right-0 text-gray-500 flex items-center pr-3.5 pointer-events-none">

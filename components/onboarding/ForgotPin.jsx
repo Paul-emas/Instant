@@ -29,7 +29,11 @@ const ForgotPin = e => {
             pin={pin}
             setPin={setPin}
           />
-          <PrimaryButton disabled={isLoading} loading={isLoading}>
+          <PrimaryButton
+            className="mt-8"
+            disabled={isLoading}
+            loading={isLoading}
+          >
             Continue
           </PrimaryButton>
         </form>

@@ -159,7 +159,11 @@ const Register = () => {
             label="Referral code (Optional)"
             {...register('referral_no')}
           />
-          <PrimaryButton disabled={isLoading} loading={isLoading}>
+          <PrimaryButton
+            className="mt-8"
+            disabled={isLoading}
+            loading={isLoading}
+          >
             Create account
           </PrimaryButton>
         </form>

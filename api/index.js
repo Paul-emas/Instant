@@ -60,3 +60,13 @@ export async function getProviders() {
     if (error.message) return { error };
   }
 }
+
+export async function getAccountToken(payload) {
+  try {
+    const response = await axios.post(`${baseUrl}/account/token`, payload);
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}
