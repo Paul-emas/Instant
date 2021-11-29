@@ -4,13 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import cookie from 'js-cookie';
 
-import DownloadButtons from '../DownloadButtons';
 import ContactCard from '../ContactCard';
 import gsap from 'gsap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-const AuthWrapper = ({ title, caption, icon, children }) => {
+const AuthWrapper = ({ title, caption, banner, children }) => {
   const token = cookie.get('token');
   const router = useRouter();
 
@@ -38,7 +37,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
     tl.from(
       '.fadeIn',
       {
-        scale: 0.8,
+        scale: 1.2,
         autoAlpha: 0,
       },
       {
@@ -68,9 +67,12 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
         </Link>
       </div>
       <div className="grid lg:grid-cols-2">
-        <div className="bg-primary-darker hidden lg:block justify-center lg:h-screen overlay">
-          <div className="max-w-md mx-auto py-3 2xl:py-20">
-            <div className="justify-center hidden 2xl:flex">
+        <div
+          className={`${banner} relative hidden bg-primary-darker lg:block justify-center lg:h-screen bg-cover bg-center bg-no-repeat`}
+        >
+          <div className="w-full h-full absolute bg-primary-darker bg-opacity-70 inset-0 z-10"></div>
+          <div className="max-w-md ml-28 py-3 2xl:py-20 absolute z-20">
+            <div className="hidden 2xl:flex">
               <Link href="/">
                 <a>
                   <Image
@@ -82,7 +84,7 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
                 </a>
               </Link>
             </div>
-            <div className="justify-center mt-10 flex 2xl:hidden">
+            <div className="mt-10 flex 2xl:hidden">
               <Link href="/">
                 <a>
                   <Image
@@ -94,21 +96,15 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
                 </a>
               </Link>
             </div>
-            <div className="fade">{icon()}</div>
-            <div className="mt-5">
-              <h1 className="text-3xl 2xl:text-4xl font-gill font-bold text-center text-white">
+            <div className="pt-40 2xl:pt-52">
+              <h1 className="text-4xl 2xl:text-4.5xl font-gill font-bold leading-tight text-white">
                 {title}
               </h1>
-              <p className="text-gray-400 text-center 2xl:text-lg mt-5">
+              <p className="text-gray-400 leading-tight 2xl:text-lg mt-5">
                 {caption}
               </p>
-              <DownloadButtons
-                center
-                captionColor="text-gray-400"
-                className="border-2 border-gray-400 hover:bg-primary-dark hover:border-primary-dark"
-              />
-              <div className="mt-20 2xl:mt-24 flex justify-center">
-                <ContactCard light iconLight />
+              <div className="relative top-48">
+                <ContactCard light />
               </div>
             </div>
           </div>
@@ -116,9 +112,9 @@ const AuthWrapper = ({ title, caption, icon, children }) => {
         <div className="bg-white relative lg:py-10 xl:h-screen justify-center lg:overflow-y-auto">
           <button
             onClick={goBack}
-            className="py-2.5 rounded-lg w-28 justify-center text-sm font-semibold bg-primary-light hover:opacity-80 flex relative items-center -top-20 -mt-2.5 lg:top-10 lg:mt-0 left-10 2xl:left-20"
+            className="py-2.5 rounded-lg w-28 justify-center text-sm font-semibold bg-primary-light hover:opacity-80 flex relative items-center -top-20 mb-20 -mt-2.5 lg:-top-2 lg:mt-0 float-right right-32 z-10"
           >
-            <FontAwesomeIcon icon={faChevronLeft} className="w-5 h-5 mr-2" />
+            <FontAwesomeIcon icon={faChevronLeft} className="w-3 h-3 mr-2" />
             <span className="mt-0.5">Go back</span>
           </button>
           {children}

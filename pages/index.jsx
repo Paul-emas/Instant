@@ -26,13 +26,12 @@ export default function Home() {
           property="og:description"
           content="Instant Energy - Buy Electrical Units in Nigeria"
         />
-        {/* <meta property="og:url" content="http://farfill.co.uk/" /> */}
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header>
-        <div className="lg:relative lg:w-1/2 max-w-3xl top-20 2xl:pt-72">
-          <Image
+        <div className="lg:relative lg:w-1/2 max-w-3xl top-20">
+          <img
             src="/images/woman.webp"
             layout="fill"
             className="object-contain"

@@ -53,10 +53,10 @@ const PostpaidForm = ({ providers }) => {
         type="number"
         id="meter_no"
         errors={errors}
-        placeholder="Enter meter number"
-        label="Meter number"
+        placeholder="Enter account number"
+        label="Account number"
         error={errors.meter_no ?? false}
-        {...register('meter_no', {
+        {...register('account_no', {
           required: true,
         })}
       />

@@ -105,6 +105,18 @@ input[type='number']::-webkit-outer-spin-button {
   background-image: url('../public/images/overlay.png');
 }
 
+.auth-banner-1 {
+  background-image: url('../public/images/auth/banner-1.webp');
+}
+
+.auth-banner-2 {
+  background-image: url('../public/images/auth/banner-2.webp');
+}
+
+.auth-banner-3 {
+  background-image: url('../public/images/auth/banner-3.webp');
+}
+
 .scale {
   @apply duration-100 transition-all transform active:scale-95;
 }

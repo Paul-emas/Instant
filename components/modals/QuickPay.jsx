@@ -6,6 +6,11 @@ import PostPaidForm from '../forms/PostPaidForm';
 import PrepaidForm from '../forms/PrepaidForm';
 import QuickPayPhoneInput from '../forms/QuickPayPhoneInput';
 import BuyElectricityTab from '../tabs/BuyElectricityTab';
+import Modal from '../modals';
+import QuickBuyConfirmDetails from './QuickBuyConfirmDetails';
+import ChangePhone from './ChangePhone';
+import ErrorSuccess from './ErrorSuccess';
+import Receipt from './Receipt';
 
 const QuickPay = () => {
   const tabs = [
@@ -15,6 +20,8 @@ const QuickPay = () => {
   const [activeTab, setActiveTab] = useState(null);
   const [openQuickBuyModal, setOpenQuickBuyModal] = useState(false);
   const [providers, setProviders] = useState([]);
+  const [step, setStep] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
 
   const tabProps = {
     tabs,
@@ -52,6 +59,26 @@ const QuickPay = () => {
 
   return (
     <>
+      {openModal && step === 1 && (
+        <Modal title="Confirm Information" setOpen={setOpenModal}>
+          <QuickBuyConfirmDetails setStep={setStep} />
+        </Modal>
+      )}
+      {openModal && step === 2 && (
+        <Modal goBack={() => setStep(1)} setOpen={setOpenModal}>
+          <ChangePhone />
+        </Modal>
+      )}
+      {openModal && step === 3 && (
+        <Modal border={false} setOpen={setOpenModal}>
+          <ErrorSuccess />
+        </Modal>
+      )}
+      {openModal && step === 4 && (
+        <Modal title="Purchase reciept" setOpen={setOpenModal}>
+          <Receipt />
+        </Modal>
+      )}
       <div
         id="box"
         className={`${

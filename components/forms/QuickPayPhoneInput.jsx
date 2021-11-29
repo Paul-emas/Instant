@@ -84,7 +84,7 @@ const QuickPayPhoneInput = ({ setActiveTab, setOpenQuickBuyModal }) => {
         }}
       />
       <PrimaryButton
-        className="mt-4 mb-4"
+        className="mt-8 mb-10"
         disabled={isLoading}
         loading={isLoading}
       >

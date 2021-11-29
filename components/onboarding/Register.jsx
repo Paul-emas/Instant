@@ -95,8 +95,10 @@ const Register = () => {
 
   return (
     <Fragment>
-      <div className="fadeIn w-full px-5 mx-auto 2xl:py-10 md:w-auth">
-        <h1 className="text-32xl font-bold text-center">Create an account</h1>
+      <div className="fadeIn w-full px-5 mx-auto py-20 md:w-auth">
+        <h1 className="text-32xl font-bold text-center font-gill">
+          Create an account
+        </h1>
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Enter your phone number to continue
         </p>

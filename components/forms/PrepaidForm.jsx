@@ -8,7 +8,7 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
 import SelectInput from './SelectInput';
-import { getAccountToken } from '../../api';
+import { createTranscationToken, getAccountToken } from '../../api';
 import { formatPhoneNo } from './utils';
 import { toast } from 'react-toastify';
 
@@ -30,8 +30,8 @@ const PrePaid = ({ providers }) => {
 
   async function onSubmit(formData) {
     if (formData) {
-      // setIsLoading(true);
-      const { phone } = formData;
+      setIsLoading(true);
+      const { phone, meter, amount } = formData;
       const { countryCode, country, number } = formatPhoneNo(phone);
       console.log(country);
       const payload = {
@@ -42,12 +42,33 @@ const PrePaid = ({ providers }) => {
         },
         country: country.name,
       };
-      const { data, error } = await getAccountToken(payload);
+      const resp = await getAccountToken(payload);
 
-      if (error) {
+      if (resp?.error) {
+        setIsLoading(false);
         toast.error(error.message);
       } else {
-        const token = data?.authorization;
+        const token = resp?.data?.authorization;
+        const payload = {
+          recipient: {
+            number,
+            code: countryCode,
+            value: phone,
+          },
+          provider: selectedProvider._id,
+          meter,
+          country: country.name,
+          amount: Number(amount),
+        };
+        const resp = await createTranscationToken(payload, token);
+
+        if (resp?.error) {
+          setIsLoading(false);
+          toast.error(resp.error.message);
+        } else {
+          setIsLoading(false);
+          console.log(resp?.data);
+        }
       }
     }
   }
@@ -59,71 +80,77 @@ const PrePaid = ({ providers }) => {
   };
 
   return (
-    <form
-      className="px-6 lg:px-8 pt-4 pb-8 2xl:p-8"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <SelectInput
-        className="py-1.5 2xl:py-2.5 px-5 mt-2"
-        label="State of residence"
-        placeholder="Enter account number"
-        error={errors.select ?? false}
-        options={providers}
-        selectedProvider={selectedProvider}
-        setSelectedProvider={setSelectedProvider}
-      />
-      <FormInput
-        className="py-2.5 2xl:py-3.5 px-5 mt-2"
-        type="number"
-        id="meter_no"
-        errors={errors}
-        placeholder="Enter account number"
-        label="Account number"
-        error={errors.meter_no ?? false}
-        {...register('account_no', {
-          required: true,
-        })}
-      />
-      {authPhone && (
+    <>
+      <form
+        className="px-6 lg:px-8 pt-4 pb-8 2xl:p-8"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <SelectInput
+          className="py-1.5 2xl:py-2.5 px-5 mt-2"
+          label="State of residence"
+          placeholder="Enter account number"
+          error={errors.select ?? false}
+          options={providers}
+          selectedProvider={selectedProvider}
+          setSelectedProvider={setSelectedProvider}
+        />
         <FormInput
           className="py-2.5 2xl:py-3.5 px-5 mt-2"
-          type="phone"
-          id="phone"
+          type="number"
+          id="meter"
           errors={errors}
-          placeholder="070 3778 6423"
-          label="Phone number"
-          defaultValue={authPhone?.phone?.value}
-          control={control}
-          error={isValid}
-          onChange={e => {
-            ValidateMobileNo(e);
-          }}
+          placeholder="Enter meter number"
+          label="Meter number"
+          error={errors.meter_no ?? false}
+          {...register('meter', {
+            required: true,
+          })}
         />
-      )}
-      <FormInput
-        className="py-2.5 2xl:py-3.5 px-5 mt-2"
-        type="currency"
-        id="amount"
-        errors={errors}
-        placeholder="Enter account number"
-        label="How much will you like to purchase?"
-        error={errors.amount ?? false}
-        {...register('amount', {
-          required: true,
-        })}
-      />
-      <div className="flex items-end">
-        <p className="text-gray-400 font-semibold text-sm relative top-0.5">
-          Estimated units: <span className="text-primary-base">32.5kw/h</span>
-        </p>
-        <span className="w-5 h-5 bg-blue-600 ml-3 rounded-full text-white py-0.5 text-center text-xs font-bold">
-          ?
-        </span>
-      </div>
-      <PrimaryButton disabled={isLoading} loading={isLoading} className="mt-8">
-        Proceed to Payment
-      </PrimaryButton>
-    </form>
+        {authPhone && (
+          <FormInput
+            className="py-2.5 2xl:py-3.5 px-5 mt-2"
+            type="phone"
+            id="phone"
+            errors={errors}
+            placeholder="070 3778 6423"
+            label="Phone number"
+            defaultValue={authPhone?.phone?.value}
+            control={control}
+            error={isValid}
+            onChange={e => {
+              ValidateMobileNo(e);
+            }}
+          />
+        )}
+        <FormInput
+          className="py-2.5 2xl:py-3.5 px-5 mt-2"
+          type="currency"
+          id="amount"
+          errors={errors}
+          placeholder="Enter account number"
+          label="How much will you like to purchase?"
+          error={errors.amount ?? false}
+          {...register('amount', {
+            required: true,
+          })}
+        />
+        <div className="flex items-end">
+          <p className="text-gray-400 font-semibold text-sm relative top-0.5">
+            Estimated units: <span className="text-primary-base">32.5kw/h</span>
+          </p>
+          <span className="w-5 h-5 bg-blue-600 ml-3 rounded-full text-white py-0.5 text-center text-xs font-bold">
+            ?
+          </span>
+        </div>
+        <PrimaryButton
+          disabled={isLoading}
+          loading={isLoading}
+          className="mt-8"
+        >
+          Proceed to Payment
+        </PrimaryButton>
+      </form>
+    </>
   );
 };
 

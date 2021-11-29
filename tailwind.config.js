@@ -25,6 +25,7 @@ module.exports = {
           active: '#275562',
           border: '#ffffff1f',
           label: '#ffffff5e',
+          gray: '#959595',
         },
         secondary: {
           lightBlue: '#F1F4F9',
@@ -43,10 +44,12 @@ module.exports = {
           twitter: '#55ACEE',
           linkedin: '#0077B5',
           youtube: '#FF0000',
+          modal: '#001319',
         },
       },
       width: {
         'w-modal': '474px',
+        modal: '468px',
         sidebar: '300px',
         detailbar: '350px',
         auth: '460.44px',
@@ -57,7 +60,7 @@ module.exports = {
         48: '48rem',
       },
       height: {
-        'modal-sm': '457px',
+        'modal-sm': '480px',
         'modal-md': '640px',
         modal: '718px',
         562: '562px',
@@ -71,6 +74,8 @@ module.exports = {
         base: '#347F95',
       },
       fontSize: {
+        '2.5xl': '28px',
+        '4.5xl': '40px',
         heading: '1.75rem',
         xxs: '10px',
         '32xl': '32px',

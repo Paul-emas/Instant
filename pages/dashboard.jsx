@@ -1,8 +1,11 @@
+import { useState } from 'react';
+
 import SolarCard from '../components/ads/SolarCard';
 import Button from '../components/Button';
 import Chart from '../components/Chart';
 import Table from '../components/Table';
 import ReferBox from '../components/ReferBox';
+import Tabs from '../components/tabs';
 
 export default function Dashboard() {
   const tableProps = {
@@ -10,6 +13,9 @@ export default function Dashboard() {
     title: 'Your Transcations',
     viewAll: true,
   };
+
+  const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div className="pt-5 2xl:pt-10">
@@ -31,7 +37,13 @@ export default function Dashboard() {
         </div>
       </div>
       <SolarCard />
-      <Table {...tableProps} />
+      <Table {...tableProps}>
+        <Tabs
+          data={tabsData}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      </Table>
     </div>
   );
 }
