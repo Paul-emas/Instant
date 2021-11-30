@@ -1,5 +1,5 @@
 import SuccessIcon from '../../public/svgs/success.svg';
-import ErrorIcon from '../../public/svgs/Error.svg';
+import ErrorIcon from '../../public/svgs/error.svg';
 
 const ErrorSuccess = ({ error }) => {
   return (
