@@ -7,7 +7,7 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
-import SelectInput from './SelectInput';
+import ProviderSelectInput from './ProviderSelectInput';
 
 const PostpaidForm = ({ providers }) => {
   const {
@@ -39,7 +39,7 @@ const PostpaidForm = ({ providers }) => {
       className="px-6 lg:px-8 pt-4 pb-8 2xl:p-8"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <SelectInput
+      <ProviderSelectInput
         className="py-1.5 2xl:py-2.5 px-5 mt-2"
         label="State of residence"
         placeholder="Enter account number"

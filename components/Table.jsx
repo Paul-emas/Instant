@@ -8,7 +8,7 @@ const Table = ({ title, iconType, viewAll, titleLabel, children }) => {
   return (
     <div className="flex flex-col mt-5 bg-white sm:rounded-xl">
       <div className="py-3 px-7 mt-4">
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-start justify-between w-full">
           <h3 className="text-xl font-gill font-semibold text-font-dark flex items-start">
             <span>{title}</span>
             {titleLabel && (

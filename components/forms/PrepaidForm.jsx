@@ -7,7 +7,7 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
-import SelectInput from './SelectInput';
+import ProviderSelectInput from './ProviderSelectInput';
 import { createTranscationToken, getAccountToken } from '../../api';
 import { formatPhoneNo } from './utils';
 import { toast } from 'react-toastify';
@@ -85,7 +85,7 @@ const PrePaid = ({ providers }) => {
         className="px-6 lg:px-8 pt-4 pb-8 2xl:p-8"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <SelectInput
+        <ProviderSelectInput
           className="py-1.5 2xl:py-2.5 px-5 mt-2"
           label="State of residence"
           placeholder="Enter account number"

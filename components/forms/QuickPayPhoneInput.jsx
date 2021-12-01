@@ -75,7 +75,7 @@ const QuickPayPhoneInput = ({ setActiveTab, setOpenQuickBuyModal }) => {
         className="py-2.5 2xl:py-3.5 px-5 mt-2"
         type="phone"
         id="phone"
-        placeholder="070 3778 6423"
+        placeholder="Enter your phone number"
         label="Phone number"
         control={control}
         error={isValid}
@@ -85,10 +85,11 @@ const QuickPayPhoneInput = ({ setActiveTab, setOpenQuickBuyModal }) => {
       />
       <PrimaryButton
         className="mt-8 mb-10"
+        type="large"
         disabled={isLoading}
         loading={isLoading}
       >
-        Continue
+        Buy Electricity
       </PrimaryButton>
     </form>
   );

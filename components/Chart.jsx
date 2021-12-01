@@ -10,11 +10,11 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-import FormInput from '../components/forms/FormInput';
+import SelectInput from '../components/forms/SelectInput';
 
 import { chart_one, chart_two, chart_three } from '../utils/data';
 
-const Chart = ({ title }) => {
+const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
   const { register, handleSubmit } = useForm();
   const [selectedMonthStats, setSelectedMonthStats] = useState(chart_one);
 
@@ -28,15 +28,13 @@ const Chart = ({ title }) => {
         <h2 className="text-xl font-bold text-font-darker font-gill">
           {title}
         </h2>
-        <form className="mt-2 lg:mt-0" onClick={handleSubmit(onSubmit)}>
-          <FormInput
-            type="select"
-            id="month"
-            className="pr-20"
-            options={['1 month', '2 months', '3 months']}
-            {...register('month')}
+        <div className="w-40">
+          <SelectInput
+            selectedOption={selectedMonth}
+            setSelectedOption={setSelectedMonth}
+            options={[{ name: '1 month' }, { name: '2 months' }]}
           />
-        </form>
+        </div>
       </div>
       <ResponsiveContainer width="100%" height="75%">
         <AreaChart

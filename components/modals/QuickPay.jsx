@@ -91,7 +91,7 @@ const QuickPay = () => {
           <div className="lg:pt-8">
             <div className="max-w-md">
               <h2 className="text-xl lg:text-32xl py-5 lg:py-0 px-8 lg:mb-2 2xl:mb-5 leading-tight 2xl:leading-tight text-black font-bold font-gill">
-                Buy Electricity, start by entering your phone number
+                Easy, Smart Energy <br /> Pre-pay instant power solution
               </h2>
             </div>
             <QuickPayPhoneInput

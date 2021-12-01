@@ -81,7 +81,7 @@ const VerifyPin = () => {
             className="hidden"
             inputStyle={{
               borderBottom: `${
-                errorMessage ? '2px solid red' : '2px solid #737373'
+                errorMessage ? '2px solid red' : '2px solid #707070'
               }`,
             }}
             inputMode="number"

@@ -23,6 +23,7 @@ export default function Solar() {
     { name: 'Overdue' },
   ];
   const [activeTab, setActiveTab] = useState(0);
+  const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
 
   return (
     <div className="pt-5 2xl:pt-10">
@@ -41,7 +42,11 @@ export default function Solar() {
           <SolarPaymentCard />
         </div>
         <div className="lg:col-span-4">
-          <Chart title="Consumption Chart" />
+          <Chart
+            title="Consumption Chart"
+            selectedMonth={chartSelectedMonth}
+            setSelectedMonth={setChartSelectedMonth}
+          />
         </div>
       </div>
       <SolarPanelStatus />

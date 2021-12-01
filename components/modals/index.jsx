@@ -7,7 +7,10 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 const Modal = ({ title, open, setOpen, border = true, goBack, children }) => {
   return (
     <div className="w-full min-h-screen top-0 left-0 fixed z-50 overflow-hidden">
-      <div className="w-full min-h-screen bg-secondary-modal bg-opacity-70"></div>
+      <div
+        onClick={() => setOpen(false)}
+        className="w-full min-h-screen bg-secondary-modal bg-opacity-70"
+      ></div>
       <div className="w w-modal pt-5 pb-10 rounded-2xl bg-white absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className={`${border && 'border-b border-gray-100'} text-xl h-14`}>
           <div className="px-8">
