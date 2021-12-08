@@ -36,12 +36,12 @@ const QuickBuyConfirmDetails = ({
       );
       if (resp?.data) {
         setReciept(resp.data);
-        setStep(3);
+        setStep(4);
         setIsLoading(false);
       }
     } else {
       setIsLoading(false);
-      setStep(3);
+      setStep(4);
       setPaymentError({ message: reference?.message });
     }
   };
@@ -50,10 +50,8 @@ const QuickBuyConfirmDetails = ({
     <div>
       <div className="pt-3 pb-6 border-b border-gray-100 px-8">
         <div className="text-center font-bold">
-          <span className="text-sm text-gray-400">Home</span>
-          <div className="font-gill text-2.5xl">
-            {details?.aggregatorReference}
-          </div>
+          <span className="text-sm text-gray-400">Meter No.</span>
+          <div className="font-gill text-2.5xl">{details?.meter?.number}</div>
           <div className="mt-6">
             <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
               <span className="font-semibold">Reference code</span>

@@ -26,7 +26,7 @@ const QuickPay = () => {
   const [userEmail, setUserEmail] = useState('');
   const [paystack, setPayStack] = useState(null);
   const [paymentToken, setPaymentToken] = useState(null);
-  const [reciept, setReciept] = useState(null);
+  const [receipt, setReciept] = useState(null);
 
   const tabProps = {
     tabs,
@@ -82,8 +82,8 @@ const QuickPay = () => {
         </Modal>
       )}
       {openModal && step === 4 && (
-        <Modal title="Purchase reciept" setOpen={setOpenModal}>
-          <Receipt reciept={reciept} />
+        <Modal title="Purchase receipt" setOpen={setOpenModal}>
+          <Receipt receipt={receipt} />
         </Modal>
       )}
       <div

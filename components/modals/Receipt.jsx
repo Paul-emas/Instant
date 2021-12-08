@@ -9,9 +9,29 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Receipt = ({ reciept }) => {
+const Receipt = ({ receipt }) => {
+  function PrintElem(elem) {
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+    mywindow.document.write(
+      '<html><head><title>' + document.title + '</title>',
+    );
+    mywindow.document.write('</head><body >');
+    mywindow.document.write('<h1>' + document.title + '</h1>');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close(); // necessary for IE >= 10
+    mywindow.focus(); // necessary for IE >= 10*/
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
+  }
+
   return (
-    <div className="mt-6 px-8">
+    <div id="reciept" className="mt-6 px-8">
       <div className="flex justify-center">
         <Image
           src="/images/logo.webp"
@@ -23,10 +43,10 @@ const Receipt = ({ reciept }) => {
       </div>
       <div className="mt-6 text-center">
         <p className="text-sm text-primary-gray">Your Electricity Token</p>
-        <div className="text-2xl font-gill">{reciept?.aggregatorReference}</div>
+        <div className="text-2xl font-gill">{receipt?.token}</div>
         <img
-          src={reciept?.meter?.disco?.logo}
-          alt={reciept?.meter?.disco?.shortName}
+          src={receipt?.meter?.disco?.logo}
+          alt={receipt?.meter?.disco?.shortName}
           width={41.5}
           height={48.5}
           className="mx-auto my-4"
@@ -42,33 +62,33 @@ const Receipt = ({ reciept }) => {
             <div className="text-sm font-semibold text-primary-gray">
               Reference code
             </div>
-            <div className="text-sm font-bold">{reciept?.reference}</div>
+            <div className="text-sm font-bold">{receipt?.reference}</div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
               Meter number
             </div>
-            <div className="text-sm font-bold">0143 256 8538</div>
+            <div className="text-sm font-bold">{receipt?.meter?.number}</div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
               Meter name
             </div>
             <div className="text-sm font-bold">
-              {reciept?.meter?.disco?.shortName}
+              {receipt?.meter?.disco?.shortName}
             </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
               Meter address
             </div>
-            <div className="text-sm font-bold">12a Ado Ibrahim Rd</div>
+            <div className="text-sm font-bold">{receipt?.meter?.address}</div>
           </div>
           <div className="flex justify-between items-center">
             <div className="text-sm font-semibold text-primary-gray">
               Units purchased
             </div>
-            <div className="text-sm font-bold">{reciept?.units} kwh</div>
+            <div className="text-sm font-bold">{receipt?.units} kwh</div>
           </div>
         </div>
         <div className="border-b py-4">
@@ -77,25 +97,27 @@ const Receipt = ({ reciept }) => {
               Amount
             </div>
             <div className="text-sm font-bold">
-              {reciept?.country?.currency} {reciept?.gross}
+              {receipt?.country?.currency} {receipt?.amount}
             </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">VAT</div>
             <div className="text-sm font-bold">
-              {reciept?.country?.currency} {reciept?.charge?.vat}
+              {receipt?.country?.currency} {receipt?.charge?.vat}
             </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">Debt</div>
-            <div className="text-sm font-bold">N 10,000.00</div>
+            <div className="text-sm font-bold">
+              {receipt?.country?.currency} {receipt?.outstanding}
+            </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
               Service Charge
             </div>
             <div className="text-sm font-bold">
-              {reciept?.country?.currency} {reciept?.charge?.fee}
+              {receipt?.country?.currency} {receipt?.charge?.fee}
             </div>
           </div>
         </div>
@@ -107,7 +129,10 @@ const Receipt = ({ reciept }) => {
             <div className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full">
               <FontAwesomeIcon icon={faShareAlt} className="w-6 h-6" />
             </div>
-            <div className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full">
+            <div
+              onClick={() => PrintElem('reciept')}
+              className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full"
+            >
               <FontAwesomeIcon icon={faPrint} className="w-6 h-6" />
             </div>
             <div className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full">
