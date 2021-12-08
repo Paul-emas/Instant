@@ -74,7 +74,26 @@ export async function getAccountToken(payload) {
 export async function createTranscationToken(payload, token) {
   try {
     const response = await axios.post(
-      `${baseUrl}/transcation/token/create`,
+      `${baseUrl}/transaction/token/create`,
+      payload,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}
+
+export async function generateTranscationToken(payload, token) {
+  try {
+    const response = await axios.post(
+      `${baseUrl}/transaction/token/generate`,
       payload,
       {
         headers: {

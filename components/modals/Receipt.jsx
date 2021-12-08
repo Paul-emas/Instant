@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { parse } from 'fecha';
 import {
   faFileDownload,
   faPrint,
@@ -8,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Receipt = props => {
+const Receipt = ({ reciept }) => {
   return (
     <div className="mt-6 px-8">
       <div className="flex justify-center">
@@ -22,10 +23,10 @@ const Receipt = props => {
       </div>
       <div className="mt-6 text-center">
         <p className="text-sm text-primary-gray">Your Electricity Token</p>
-        <div className="text-2xl font-gill">1234 2345 6789 2345 6789</div>
+        <div className="text-2xl font-gill">{reciept?.aggregatorReference}</div>
         <img
-          src="https://cdn.vanguardngr.com/wp-content/uploads/2021/05/IE-logo-iE-logo-.png"
-          alt=""
+          src={reciept?.meter?.disco?.logo}
+          alt={reciept?.meter?.disco?.shortName}
           width={41.5}
           height={48.5}
           className="mx-auto my-4"
@@ -41,7 +42,7 @@ const Receipt = props => {
             <div className="text-sm font-semibold text-primary-gray">
               Reference code
             </div>
-            <div className="text-sm font-bold">Fgbh12345687</div>
+            <div className="text-sm font-bold">{reciept?.reference}</div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
@@ -53,7 +54,9 @@ const Receipt = props => {
             <div className="text-sm font-semibold text-primary-gray">
               Meter name
             </div>
-            <div className="text-sm font-bold">Sharon Doyle</div>
+            <div className="text-sm font-bold">
+              {reciept?.meter?.disco?.shortName}
+            </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
@@ -65,7 +68,7 @@ const Receipt = props => {
             <div className="text-sm font-semibold text-primary-gray">
               Units purchased
             </div>
-            <div className="text-sm font-bold">32.5 kwh</div>
+            <div className="text-sm font-bold">{reciept?.units} kwh</div>
           </div>
         </div>
         <div className="border-b py-4">
@@ -73,11 +76,15 @@ const Receipt = props => {
             <div className="text-sm font-semibold text-primary-gray">
               Amount
             </div>
-            <div className="text-sm font-bold">N 10,000.00</div>
+            <div className="text-sm font-bold">
+              {reciept?.country?.currency} {reciept?.gross}
+            </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">VAT</div>
-            <div className="text-sm font-bold">N 10,000.00</div>
+            <div className="text-sm font-bold">
+              {reciept?.country?.currency} {reciept?.charge?.vat}
+            </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">Debt</div>
@@ -87,13 +94,9 @@ const Receipt = props => {
             <div className="text-sm font-semibold text-primary-gray">
               Service Charge
             </div>
-            <div className="text-sm font-bold">N 10,000.00</div>
-          </div>
-          <div className="flex justify-between items-center">
-            <div className="text-sm font-semibold text-primary-gray">
-              Service Charge
+            <div className="text-sm font-bold">
+              {reciept?.country?.currency} {reciept?.charge?.fee}
             </div>
-            <div className="text-xl font-bold font-gill">N 10,000.00</div>
           </div>
         </div>
         <div className="mt-4">

@@ -60,7 +60,7 @@ module.exports = {
         48: '48rem',
       },
       height: {
-        'modal-sm': '480px',
+        'modal-sm': '510px',
         'modal-md': '640px',
         modal: '718px',
         562: '562px',

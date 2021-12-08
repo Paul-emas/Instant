@@ -35,8 +35,6 @@ export default function Home() {
             src="/images/woman.webp"
             layout="fill"
             className="object-contain"
-            quality={100}
-            priority={true}
           />
         </div>
         <div className="md:max-w-lg lg:max-w-full mx-auto lg:w-1/2 pb-16 2xl:pb-10">

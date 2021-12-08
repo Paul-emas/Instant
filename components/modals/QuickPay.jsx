@@ -22,6 +22,11 @@ const QuickPay = () => {
   const [providers, setProviders] = useState([]);
   const [step, setStep] = useState(0);
   const [openModal, setOpenModal] = useState(false);
+  const [confirmDetails, setConfirmDetails] = useState(null);
+  const [userEmail, setUserEmail] = useState('');
+  const [paystack, setPayStack] = useState(null);
+  const [paymentToken, setPaymentToken] = useState(null);
+  const [reciept, setReciept] = useState(null);
 
   const tabProps = {
     tabs,
@@ -53,15 +58,17 @@ const QuickPay = () => {
     tl.duration(0.8).play();
   }, [openQuickBuyModal]);
 
-  const onSubmit = data => {
-    // console.log(data);
-  };
-
   return (
     <>
       {openModal && step === 1 && (
         <Modal title="Confirm Information" setOpen={setOpenModal}>
-          <QuickBuyConfirmDetails setStep={setStep} />
+          <QuickBuyConfirmDetails
+            details={confirmDetails}
+            setStep={setStep}
+            paymentToken={paymentToken}
+            setPayStack={setPayStack}
+            setReciept={setReciept}
+          />
         </Modal>
       )}
       {openModal && step === 2 && (
@@ -71,12 +78,12 @@ const QuickPay = () => {
       )}
       {openModal && step === 3 && (
         <Modal border={false} setOpen={setOpenModal}>
-          <ErrorSuccess />
+          <ErrorSuccess paystack={paystack} next={() => setStep(4)} />
         </Modal>
       )}
       {openModal && step === 4 && (
         <Modal title="Purchase reciept" setOpen={setOpenModal}>
-          <Receipt />
+          <Receipt reciept={reciept} />
         </Modal>
       )}
       <div
@@ -91,10 +98,11 @@ const QuickPay = () => {
           <div className="lg:pt-8">
             <div className="max-w-md">
               <h2 className="text-xl lg:text-32xl py-5 lg:py-0 px-8 lg:mb-2 2xl:mb-5 leading-tight 2xl:leading-tight text-black font-bold font-gill">
-                Easy, Smart Energy <br /> Pre-pay instant power solution
+                Easy, Smart Energy <br /> Pre-pay
               </h2>
             </div>
             <QuickPayPhoneInput
+              setUserEmail={setUserEmail}
               setActiveTab={setActiveTab}
               setOpenQuickBuyModal={setOpenQuickBuyModal}
             />
@@ -114,8 +122,26 @@ const QuickPay = () => {
           </div>
           <BuyElectricityTab {...tabProps} />
           <div className="slideUp">
-            {activeTab === 0 && <PrepaidForm providers={providers} />}
-            {activeTab === 1 && <PostPaidForm providers={providers} />}
+            {activeTab === 0 && (
+              <PrepaidForm
+                providers={providers}
+                setConfirmDetails={setConfirmDetails}
+                setStep={setStep}
+                setOpenModal={setOpenModal}
+                email={userEmail}
+                setPaymentToken={setPaymentToken}
+              />
+            )}
+            {activeTab === 1 && (
+              <PostPaidForm
+                providers={providers}
+                setConfirmDetails={setConfirmDetails}
+                setStep={setStep}
+                setOpenModal={setOpenModal}
+                email={userEmail}
+                setPaymentToken={setPaymentToken}
+              />
+            )}
           </div>
         </div>
       </div>

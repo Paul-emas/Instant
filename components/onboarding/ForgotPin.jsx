@@ -34,9 +34,7 @@ const ForgotPin = e => {
             type="numeric"
             className="hidden"
             inputStyle={{
-              borderBottom: `${
-                errorMessage ? '2px solid red' : '2px solid #707070'
-              }`,
+              border: `${errorMessage ? '2px solid red' : '2px solid #e8e8e8'}`,
             }}
             inputMode="number"
             autoSelect={true}

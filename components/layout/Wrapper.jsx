@@ -49,6 +49,10 @@ const Wrapper = ({ children }) => {
       router.replace('/auth/sign-in');
     }
 
+    if (token && !isRouteProtected) {
+      router.replace('/dashboard');
+    }
+
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
     router.events.on('routeChangeError', handleComplete);

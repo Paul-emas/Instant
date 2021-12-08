@@ -8,6 +8,7 @@ const PrimaryButton = ({
   size = 'large',
   disabled,
   children,
+  onClick,
 }) => {
   let height = '';
   if (size === 'large') {
@@ -21,10 +22,9 @@ const PrimaryButton = ({
     <button
       disabled={disabled}
       type="submit"
+      onClick={onClick}
       className={`${
-        disabled
-          ? 'opacity-70 pointer-events-none'
-          : 'active:translate-y-0 hover:-translate-y-1'
+        disabled ? 'opacity-70 pointer-events-none' : 'active:translate-y-1'
       } ${className} ${height} btn bg-primary-base flex items-center justify-center btn-white transform uppercase`}
     >
       {loading ? (

@@ -1,28 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { usePaystackPayment } from 'react-paystack';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import PrimaryButton from '../Buttons/PrimaryButton';
+import { useGlobalContext } from '../../hooks/useGlobalContext';
+import { generateTranscationToken } from '../../api';
 
-const QuickBuyConfirmDetails = ({ setStep }) => {
+const QuickBuyConfirmDetails = ({
+  details,
+  setStep,
+  paymentToken,
+  setPaymentError,
+  setPayStack,
+  setReciept,
+}) => {
+  let {
+    auth: { authPhone },
+  } = useGlobalContext();
+  const config = {
+    reference: details?.reference,
+    email: details?.account?.email?.value,
+    amount: details?.gross * 100,
+    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUB_KEY,
+  };
+  const initializePayment = usePaystackPayment(config);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSuccess = async reference => {
+    if (reference?.status === 'success') {
+      setPayStack(reference);
+      const resp = await generateTranscationToken(
+        { reference: reference.reference },
+        paymentToken,
+      );
+      if (resp?.data) {
+        setReciept(resp.data);
+        setStep(3);
+        setIsLoading(false);
+      }
+    } else {
+      setIsLoading(false);
+      setStep(3);
+      setPaymentError({ message: reference?.message });
+    }
+  };
+
   return (
     <div>
       <div className="pt-3 pb-6 border-b border-gray-100 px-8">
         <div className="text-center font-bold">
           <span className="text-sm text-gray-400">Home</span>
-          <div className="font-gill text-2.5xl">04172745368</div>
+          <div className="font-gill text-2.5xl">
+            {details?.aggregatorReference}
+          </div>
           <div className="mt-6">
             <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
               <span className="font-semibold">Reference code</span>
-              <span className="font-bold">5B3A427F</span>
+              <span className="font-bold">{details?.reference}</span>
             </div>
             <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
               <span className="font-semibold">Service charge</span>
-              <span className="font-bold">N 10,000</span>
+              <span className="font-bold">
+                {details?.country?.currency} {details?.charge.fee}
+              </span>
             </div>
             <div className="h-10 w-full px-4 text-xs rounded-xl bg-primary-light flex justify-between items-center">
-              <span className="font-semibold">Amount</span>
-              <span className="font-bold">N 1000</span>
+              <span className="font-semibold">Total</span>
+              <span className="font-bold">
+                {details?.country?.currency} {details?.gross}
+              </span>
             </div>
           </div>
         </div>
@@ -42,7 +89,7 @@ const QuickBuyConfirmDetails = ({ setStep }) => {
             <div className="ml-3 h-8">
               <p className="text-xxs font-bold">Recipient phone</p>
               <p className="text-xs mt-0.5 text-primary-base font-semibold">
-                +234 90 3337 6236
+                {authPhone?.phone?.value}
               </p>
             </div>
           </div>
@@ -56,7 +103,17 @@ const QuickBuyConfirmDetails = ({ setStep }) => {
           </div>
         </div>
         <div className="mt-10">
-          <PrimaryButton size="base">Confirm details</PrimaryButton>
+          <PrimaryButton
+            disabled={isLoading}
+            loading={isLoading}
+            onClick={() => {
+              setIsLoading(true);
+              initializePayment(onSuccess);
+            }}
+            size="base"
+          >
+            Confirm details
+          </PrimaryButton>
         </div>
       </div>
     </div>

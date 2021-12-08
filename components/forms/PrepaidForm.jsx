@@ -12,7 +12,14 @@ import { createTranscationToken, getAccountToken } from '../../api';
 import { formatPhoneNo } from './utils';
 import { toast } from 'react-toastify';
 
-const PrePaid = ({ providers }) => {
+const PrePaid = ({
+  email,
+  providers,
+  setConfirmDetails,
+  setStep,
+  setOpenModal,
+  setPaymentToken,
+}) => {
   const {
     register,
     handleSubmit,
@@ -33,22 +40,23 @@ const PrePaid = ({ providers }) => {
       setIsLoading(true);
       const { phone, meter, amount } = formData;
       const { countryCode, country, number } = formatPhoneNo(phone);
-      console.log(country);
       const payload = {
         phone: {
           number,
           code: countryCode,
           value: phone,
         },
+        email,
         country: country.name,
       };
       const resp = await getAccountToken(payload);
 
       if (resp?.error) {
         setIsLoading(false);
-        toast.error(error.message);
+        toast.error(resp?.error?.message);
       } else {
         const token = resp?.data?.authorization;
+        setPaymentToken(token);
         const payload = {
           recipient: {
             number,
@@ -60,14 +68,16 @@ const PrePaid = ({ providers }) => {
           country: country.name,
           amount: Number(amount),
         };
-        const resp = await createTranscationToken(payload, token);
+        const response = await createTranscationToken(payload, token);
 
-        if (resp?.error) {
+        if (response?.error) {
           setIsLoading(false);
-          toast.error(resp.error.message);
         } else {
+          toast.error(response?.error?.message);
           setIsLoading(false);
-          console.log(resp?.data);
+          setConfirmDetails(response?.data);
+          setStep(1);
+          setOpenModal(true);
         }
       }
     }

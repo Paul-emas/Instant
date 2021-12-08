@@ -5,6 +5,8 @@ import Modal from '../index';
 import FormInput from '../../forms/FormInput';
 import { useForm } from 'react-hook-form';
 import PrimaryButton from '../../Buttons/PrimaryButton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 const BuyElectricityModal = ({ open, setOpen }) => {
   const {
@@ -44,6 +46,15 @@ const BuyElectricityModal = ({ open, setOpen }) => {
                 selectedOption={selectedMeter}
                 setSelectedOption={setSelectedMeter}
               />
+              <div className="border-b pb-2 mb-4">
+                <div className="flex items-center text-sm font-bold text-primary-base hover:text-primary-hover cursor-pointer">
+                  <FontAwesomeIcon
+                    icon={faPlusSquare}
+                    className="w-5 h-5 mr-2"
+                  />
+                  <span className="relative top-0.5">Add a new meter</span>
+                </div>
+              </div>
               <FormInput
                 className="py-2.5 px-5 mt-2"
                 type="currency"
@@ -56,6 +67,15 @@ const BuyElectricityModal = ({ open, setOpen }) => {
                   required: true,
                 })}
               />
+              <div className="flex items-center -mt-1">
+                <p className="text-gray-400 font-semibold text-xs relative">
+                  Estimated units:{' '}
+                  <span className="text-primary-base">32.5kw/h</span>
+                </p>
+                <span className="w-5 h-5 transform scale-75 bg-blue-600 ml-2 rounded-full text-white py-0.5 text-center text-xs font-bold">
+                  ?
+                </span>
+              </div>
               <div className="mt-10">
                 <PrimaryButton size="base">Proceed to Payment</PrimaryButton>
               </div>

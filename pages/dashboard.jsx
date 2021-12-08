@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
   const [activeTab, setActiveTab] = useState(0);
-  const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(true);
+  const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
 
   return (
@@ -34,7 +34,9 @@ export default function Dashboard() {
               Never have interrupted power supply, making life easy.
             </p>
           </div>
-          <Button>BUY ELECTRICITY</Button>
+          <Button onClick={() => setOpenBuyElectricityModal(true)}>
+            BUY ELECTRICITY
+          </Button>
         </div>
         <div className="grid lg:space-x-5 lg:grid-cols-6">
           <div className="lg:col-span-4">

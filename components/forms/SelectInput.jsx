@@ -60,7 +60,7 @@ const SelectInput = ({
             openOption ? 'opacity-100 visible' : 'opacity-0 invisible'
           } absolute z-10 mt-1 w-full bg-white shadow-xl max-h-64 rounded-md py-2 text-base overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
         >
-          {options.length &&
+          {options.length > 0 &&
             options.map((option, index) => (
               <li
                 key={index}

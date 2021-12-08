@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import router from 'next/router';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
@@ -15,13 +15,12 @@ const CreatePin = () => {
   } = useGlobalContext();
 
   const [pin, setPin] = useState('');
-  const [error, setError] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async e => {
     if (anonymousToken) {
-      e.preventDefault();
+      e !== undefined && e.preventDefault();
       setIsLoading(true);
       const { status, error } = await createUserAuthPin(
         { pin },
@@ -41,6 +40,12 @@ const CreatePin = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (pin?.length === 6) {
+      onSubmit();
+    }
+  }, [pin]);
 
   return (
     <Fragment>
@@ -62,9 +67,7 @@ const CreatePin = () => {
             type="numeric"
             className="hidden"
             inputStyle={{
-              borderBottom: `${
-                errorMessage ? '2px solid red' : '2px solid #707070'
-              }`,
+              border: `${errorMessage ? '2px solid red' : '2px solid #e8e8e8'}`,
             }}
             inputMode="number"
             autoSelect={true}

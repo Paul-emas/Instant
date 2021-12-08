@@ -29,6 +29,7 @@ const VerifyPin = () => {
   }, [authPhone]);
 
   const onSubmit = async e => {
+    e !== undefined && e.preventDefault();
     if (authPhone && pin.length === 6) {
       setIsLoading(true);
       const payload = {
@@ -56,7 +57,6 @@ const VerifyPin = () => {
   useEffect(() => {
     if (pin?.length === 6) {
       onSubmit();
-      console.log('i am 6');
     }
   }, [pin]);
 
@@ -80,9 +80,7 @@ const VerifyPin = () => {
             type="numeric"
             className="hidden"
             inputStyle={{
-              borderBottom: `${
-                errorMessage ? '2px solid red' : '2px solid #707070'
-              }`,
+              border: `${errorMessage ? '2px solid red' : '2px solid #e8e8e8'}`,
             }}
             inputMode="number"
             autoSelect={true}
