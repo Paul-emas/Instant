@@ -41,6 +41,14 @@ const QuickPay = () => {
     }
   }
 
+  const close = () => {
+    const resp = confirm('Are you sure you want to cancel transcation?');
+    if (resp) {
+      setStep(0);
+      setOpenQuickBuyModal(false);
+    }
+  };
+
   useEffect(() => {
     fetchProviders();
   }, []);
@@ -54,14 +62,18 @@ const QuickPay = () => {
         { autoAlpha: 0 },
         { autoAlpha: 1, display: 'block', delay: 0.4 },
       );
+      tl.duration(0.8).play();
+    } else {
+      tl.to('.show', { autoAlpha: 0, display: 'none', delay: 0.4 });
+      tl.to('.hide', { autoAlpha: 1, display: 'block' });
+      tl.duration(0.01).play();
     }
-    tl.duration(0.8).play();
   }, [openQuickBuyModal]);
 
   return (
     <>
       {openModal && step === 1 && (
-        <Modal title="Confirm Information" setOpen={setOpenModal}>
+        <Modal close={close} title="Confirm Information" setOpen={setOpenModal}>
           <QuickBuyConfirmDetails
             details={confirmDetails}
             setStep={setStep}
@@ -72,8 +84,12 @@ const QuickPay = () => {
         </Modal>
       )}
       {openModal && step === 2 && (
-        <Modal goBack={() => setStep(1)} setOpen={setOpenModal}>
-          <ChangePhone />
+        <Modal
+          close={() => setStep(1)}
+          goBack={() => setStep(1)}
+          setOpen={setOpenModal}
+        >
+          <ChangePhone setStep={setStep} />
         </Modal>
       )}
       {openModal && step === 3 && (
@@ -82,7 +98,14 @@ const QuickPay = () => {
         </Modal>
       )}
       {openModal && step === 4 && (
-        <Modal title="Purchase receipt" setOpen={setOpenModal}>
+        <Modal
+          close={() => {
+            setStep(0);
+            setOpenQuickBuyModal(false);
+          }}
+          title="Purchase receipt"
+          setOpen={setOpenModal}
+        >
           <Receipt receipt={receipt} />
         </Modal>
       )}

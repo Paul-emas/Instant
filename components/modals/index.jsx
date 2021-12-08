@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import gsap from 'gsap';
 
-const Modal = ({ title, open, setOpen, border = true, goBack, children }) => {
+const Modal = ({ title, close, border = true, goBack, children }) => {
   useEffect(() => {
     const tl = gsap.timeline({
       delay: 0.1,
@@ -23,7 +23,9 @@ const Modal = ({ title, open, setOpen, border = true, goBack, children }) => {
   return (
     <div className="w-full min-h-screen top-0 left-0 fixed z-50 overflow-hidden">
       <div
-        onClick={() => setOpen(false)}
+        onClick={() => {
+          close();
+        }}
         className="modal-overlay w-full min-h-screen bg-secondary-modal bg-opacity-70"
       ></div>
       <div className="modal-box w-modal pt-5 pb-10 rounded-2xl bg-white absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -48,7 +50,7 @@ const Modal = ({ title, open, setOpen, border = true, goBack, children }) => {
                 </div>
               )}
               <button
-                onClick={() => setOpen(false)}
+                onClick={() => close()}
                 className={`top-0 float-right right-0 absolute`}
               >
                 <div className="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-50 active:bg-gray-100">

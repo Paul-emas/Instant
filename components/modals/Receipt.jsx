@@ -45,7 +45,7 @@ const Receipt = ({ receipt }) => {
         <p className="text-sm text-primary-gray">Your Electricity Token</p>
         <div className="text-2xl font-gill">{receipt?.token}</div>
         <img
-          src={receipt?.meter?.disco?.logo}
+          src={receipt?.meter?.provider?.disco?.logo}
           alt={receipt?.meter?.disco?.shortName}
           width={41.5}
           height={48.5}
@@ -118,6 +118,12 @@ const Receipt = ({ receipt }) => {
             </div>
             <div className="text-sm font-bold">
               {receipt?.country?.currency} {receipt?.charge?.fee}
+            </div>
+          </div>
+          <div className="flex justify-between items-center mb-3">
+            <div className="text-sm font-semibold text-primary-gray">Total</div>
+            <div className="text-sm font-bold">
+              {receipt?.country?.currency} {receipt?.gross}
             </div>
           </div>
         </div>

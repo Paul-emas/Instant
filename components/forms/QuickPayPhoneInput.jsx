@@ -22,6 +22,7 @@ const QuickPayPhoneInput = ({
   const {
     register,
     handleSubmit,
+    reset,
     control,
     formState: { errors },
   } = useForm();
@@ -58,6 +59,7 @@ const QuickPayPhoneInput = ({
       }
 
       if (data) {
+        reset();
         setIsLoading(false);
         const { isPin } = data;
         if (!cookie.get('token')) {

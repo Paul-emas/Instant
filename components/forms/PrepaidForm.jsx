@@ -24,6 +24,7 @@ const PrePaid = ({
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -73,6 +74,8 @@ const PrePaid = ({
         if (response?.error) {
           setIsLoading(false);
         } else {
+          reset();
+          setSelectedProvider(providers[0]);
           toast.error(response?.error?.message);
           setIsLoading(false);
           setConfirmDetails(response?.data);
