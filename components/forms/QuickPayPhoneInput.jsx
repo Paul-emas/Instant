@@ -40,6 +40,7 @@ const QuickPayPhoneInput = ({
     if (formData && !isValid) {
       setIsLoading(true);
       const { phone, email } = formData;
+      localStorage.setItem('email', email);
       const { countryCode, number } = formatPhoneNo(phone);
       setUserEmail(email);
       const payload = {

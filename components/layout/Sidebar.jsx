@@ -23,6 +23,7 @@ const Sidebar = props => {
   const [phone, setAuthPhone] = useSessionStorage('authPhone');
   const [openLogout, setOpenLogout] = useState(false);
   const { user } = useGlobalContext();
+  console.log(user);
   const routes = [
     {
       name: 'Home',

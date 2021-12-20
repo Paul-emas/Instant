@@ -42,9 +42,9 @@ const ProviderSelectInput = ({
               <span className="flex items-center">
                 <img
                   src={selectedProvider?.disco?.logo}
-                  className="flex-shrink-0 h-8 w-8  rounded-full object-contain"
+                  className="flex-shrink-0 h-8 w-8 rounded-full object-contain"
                 />
-                <span className="ml-3 block truncate">
+                <span className="ml-3 block text-sm truncate">
                   {selectedProvider?.state?.name} (
                   {selectedProvider?.disco?.shortName})
                 </span>
@@ -74,7 +74,7 @@ const ProviderSelectInput = ({
           aria-activedescendant="listbox-option-3"
           className={`${
             openOption ? 'opacity-100 visible' : 'opacity-0 invisible'
-          } absolute z-10 mt-1 w-full bg-white shadow-lg max-h-64 rounded-lg py-2 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
+          } absolute z-10 mt-1 w-full bg-white shadow-lg max-h-64 rounded-lg py-2 text-base ring-opacity-5 overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
         >
           {!options.length && (
             <div className="flex flex-col items-center py-5">

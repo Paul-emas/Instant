@@ -11,13 +11,12 @@ const Modal = ({ title, close, border = true, goBack, children }) => {
       delay: 0.1,
     });
     tl.fromTo('.modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1 });
-    tl.fromTo('.modal-box', { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0 });
-    tl.duration(0.6).play();
-
-    return () => {
-      tl.to('.modal-overlay', { autoAlpha: 0 });
-      tl.to('.modal-box', { autoAlpha: 0, y: 0 });
-    };
+    tl.fromTo(
+      '.modal-box',
+      { autoAlpha: 0, scale: 0.8 },
+      { autoAlpha: 1, scale: 1 },
+    );
+    tl.duration(0.3).play();
   }, []);
 
   return (

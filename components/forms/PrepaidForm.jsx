@@ -24,7 +24,6 @@ const PrePaid = ({
     register,
     handleSubmit,
     control,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -74,7 +73,6 @@ const PrePaid = ({
         if (response?.error) {
           setIsLoading(false);
         } else {
-          reset();
           setSelectedProvider(providers[0]);
           toast.error(response?.error?.message);
           setIsLoading(false);
@@ -94,12 +92,9 @@ const PrePaid = ({
 
   return (
     <>
-      <form
-        className="px-6 lg:px-8 pt-4 pb-8 2xl:p-8"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="px-6 lg:px-8 pt-4" onSubmit={handleSubmit(onSubmit)}>
         <ProviderSelectInput
-          className="py-1.5 2xl:py-2.5 px-5 mt-2"
+          className="px-5 mt-2"
           label="State of residence"
           placeholder="Enter account number"
           error={errors.select ?? false}
@@ -108,7 +103,7 @@ const PrePaid = ({
           setSelectedProvider={setSelectedProvider}
         />
         <FormInput
-          className="py-2.5 2xl:py-3.5 px-5 mt-2"
+          className="py-2.5 px-5 mt-2"
           type="number"
           id="meter"
           errors={errors}
@@ -119,24 +114,22 @@ const PrePaid = ({
             required: true,
           })}
         />
-        {authPhone && (
-          <FormInput
-            className="py-2.5 2xl:py-3.5 px-5 mt-2"
-            type="phone"
-            id="phone"
-            errors={errors}
-            placeholder="070 3778 6423"
-            label="Phone number"
-            defaultValue={authPhone?.phone?.value}
-            control={control}
-            error={isValid}
-            onChange={e => {
-              ValidateMobileNo(e);
-            }}
-          />
-        )}
         <FormInput
-          className="py-2.5 2xl:py-3.5 px-5 mt-2"
+          className="py-2.5 px-5 mt-2"
+          type="phone"
+          id="phone"
+          errors={errors}
+          placeholder="070 3778 6423"
+          label="Phone number"
+          defaultValue={authPhone?.phone?.value}
+          control={control}
+          error={isValid}
+          onChange={e => {
+            ValidateMobileNo(e);
+          }}
+        />
+        <FormInput
+          className="py-2.5 px-5 mt-2"
           type="currency"
           id="amount"
           errors={errors}
@@ -156,6 +149,7 @@ const PrePaid = ({
           </span>
         </div>
         <PrimaryButton
+          size="base"
           disabled={isLoading}
           loading={isLoading}
           className="mt-8"

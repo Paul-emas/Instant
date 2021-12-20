@@ -10,24 +10,12 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Receipt = ({ receipt }) => {
-  function PrintElem(elem) {
-    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
-
-    mywindow.document.write(
-      '<html><head><title>' + document.title + '</title>',
-    );
-    mywindow.document.write('</head><body >');
-    mywindow.document.write('<h1>' + document.title + '</h1>');
-    mywindow.document.write(document.getElementById(elem).innerHTML);
-    mywindow.document.write('</body></html>');
-
-    mywindow.document.close(); // necessary for IE >= 10
-    mywindow.focus(); // necessary for IE >= 10*/
-
-    mywindow.print();
-    mywindow.close();
-
-    return true;
+  function PrintElem() {
+    const printContents = document.getElementById('reciept').innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
   }
 
   return (
@@ -133,16 +121,16 @@ const Receipt = ({ receipt }) => {
           </span>
           <div className="flex justify-center mt-4 space-x-4">
             <div className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full">
-              <FontAwesomeIcon icon={faShareAlt} className="w-6 h-6" />
+              <FontAwesomeIcon icon={faShareAlt} className="w-5 h-5" />
             </div>
             <div
-              onClick={() => PrintElem('reciept')}
+              onClick={() => PrintElem()}
               className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full"
             >
-              <FontAwesomeIcon icon={faPrint} className="w-6 h-6" />
+              <FontAwesomeIcon icon={faPrint} className="w-5 h-5" />
             </div>
             <div className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full">
-              <FontAwesomeIcon icon={faFileDownload} className="w-6 h-6" />
+              <FontAwesomeIcon icon={faFileDownload} className="w-5 h-5" />
             </div>
           </div>
         </div>

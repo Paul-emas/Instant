@@ -8,12 +8,10 @@ import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { generateTranscationToken } from '../../api';
 
 const QuickBuyConfirmDetails = ({
+  setOpen,
   details,
   setStep,
-  paymentToken,
-  setPaymentError,
-  setPayStack,
-  setReciept,
+  onPayStackSuccess,
 }) => {
   let {
     auth: { authPhone },
@@ -26,25 +24,6 @@ const QuickBuyConfirmDetails = ({
   };
   const initializePayment = usePaystackPayment(config);
   const [isLoading, setIsLoading] = useState(false);
-
-  const onSuccess = async reference => {
-    if (reference?.status === 'success') {
-      setPayStack(reference);
-      const resp = await generateTranscationToken(
-        { reference: reference.reference },
-        paymentToken,
-      );
-      if (resp?.data) {
-        setReciept(resp.data);
-        setStep(4);
-        setIsLoading(false);
-      }
-    } else {
-      setIsLoading(false);
-      setStep(4);
-      setPaymentError({ message: reference?.message });
-    }
-  };
 
   return (
     <div>
@@ -78,7 +57,7 @@ const QuickBuyConfirmDetails = ({
         </span>
         <div className="flex items-end justify-between mt-5">
           <div className="flex items-center">
-            <div className="w-8 h-8 bg-secondary-green rounded-lg">
+            <div className="w-8 h-8 bg-secondary-green flex items-center justify-center rounded-lg">
               <FontAwesomeIcon
                 icon={faPhoneAlt}
                 className="w-3 h-3 mx-auto my-2.5 text-white"
@@ -106,7 +85,8 @@ const QuickBuyConfirmDetails = ({
             loading={isLoading}
             onClick={() => {
               setIsLoading(true);
-              initializePayment(onSuccess);
+              initializePayment(onPayStackSuccess);
+              setOpen(false);
             }}
             size="base"
           >
