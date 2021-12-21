@@ -119,8 +119,6 @@ const Sidebar = props => {
                       url === router.asPath
                         ? 'text-primary-base bg-white active-icon'
                         : 'text-white  hover:bg-primary-hover'
-                    } ${
-                      !token ? 'text-opacity-30 cursor-not-allowed' : ''
                     } pl-6 w-full rounded-xl text-left py-4 font-gill duration-100`}
                   >
                     <span className="flex items-center">
