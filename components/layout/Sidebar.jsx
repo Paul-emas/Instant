@@ -23,7 +23,10 @@ const Sidebar = props => {
   const [phone, setAuthPhone] = useSessionStorage('authPhone');
   const [openLogout, setOpenLogout] = useState(false);
   const { user } = useGlobalContext();
+  const token = cookie.get('token');
+
   console.log(user);
+
   const routes = [
     {
       name: 'Home',
@@ -73,7 +76,7 @@ const Sidebar = props => {
         )}
         <div className="h-20 pl-5 2xl:pl-10 pr-5">
           <div className="flex items-center">
-            <Link href="/">
+            <Link href="/dashboard">
               <a>
                 <Image
                   src="/images/logo-light.png"
@@ -108,20 +111,40 @@ const Sidebar = props => {
         </div>
         <div className="px-3 2xl:px-6 space-y-2.5 2xl:space-y-5 py-8">
           {routes.map(({ name, url, icon }, index) => (
-            <Link href={url} key={index}>
-              <button
-                className={`${
-                  url === router.asPath
-                    ? 'text-primary-base bg-white active-icon'
-                    : 'text-white hover:bg-primary-hover'
-                } pl-6 w-full rounded-xl text-left py-4 font-gill duration-100`}
-              >
-                <span className="flex items-center">
-                  <FontAwesomeIcon icon={icon} className="w-5 h-5" />
-                  <span className="text-sm font-semibold ml-5">{name}</span>
-                </span>
-              </button>
-            </Link>
+            <>
+              {token ? (
+                <Link href={url} key={index}>
+                  <button
+                    className={`${
+                      url === router.asPath
+                        ? 'text-primary-base bg-white active-icon'
+                        : 'text-white  hover:bg-primary-hover'
+                    } ${
+                      !token ? 'text-opacity-30 cursor-not-allowed' : ''
+                    } pl-6 w-full rounded-xl text-left py-4 font-gill duration-100`}
+                  >
+                    <span className="flex items-center">
+                      <FontAwesomeIcon icon={icon} className="w-5 h-5" />
+                      <span className="text-sm font-semibold ml-5">{name}</span>
+                    </span>
+                  </button>
+                </Link>
+              ) : (
+                <button
+                  onClick={() => router.push('/auth/sign-up')}
+                  className={`${
+                    url === router.asPath
+                      ? 'text-primary-base bg-white active-icon'
+                      : 'text-white text-opacity-30  hover:bg-primary-hover'
+                  } pl-6 w-full rounded-xl text-left py-4 font-gill duration-100`}
+                >
+                  <span className="flex items-center">
+                    <FontAwesomeIcon icon={icon} className="w-5 h-5" />
+                    <span className="text-sm font-semibold ml-5">{name}</span>
+                  </span>
+                </button>
+              )}
+            </>
           ))}
           <div className="absolute w-full bottom-9 left-0">
             <div className="px-3 2xl:px-6">

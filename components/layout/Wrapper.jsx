@@ -45,13 +45,13 @@ const Wrapper = ({ children }) => {
       window.scrollTo(0, 0);
     };
 
-    if (!token && isRouteProtected) {
-      router.replace('/auth/sign-in');
-    }
+    // if (!token && isRouteProtected) {
+    //   router.replace('/auth/sign-in');
+    // }
 
-    if (token && !isRouteProtected) {
-      router.replace('/dashboard');
-    }
+    // if (token && !isRouteProtected) {
+    //   router.replace('/dashboard');
+    // }
 
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
@@ -68,7 +68,7 @@ const Wrapper = ({ children }) => {
     <>
       {pageLoading && <PageLoader />}
       {!isRouteProtected && !pageLoading && <div>{children}</div>}
-      {token && isRouteProtected && !pageLoading && (
+      {isRouteProtected && !pageLoading && (
         <div className="min-h-screen w-full overflow-hidden bg-gray-300">
           <div className="min-h-screen">
             <Sidebar />

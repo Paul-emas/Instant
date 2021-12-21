@@ -67,11 +67,11 @@ const QuickPayPhoneInput = ({
           if (isPin) {
             setUserPhoneNo({ authPhone: payload });
             setAuthPhone(payload);
-            router.push('/auth/otp/pin');
+            router.push('/dashboard');
           } else {
             const { authorization } = data;
             setUserAnonymousToken({ anonymousToken: authorization });
-            router.push('/auth/otp/create');
+            router.push('/dashboard');
           }
         } else {
           router.push('/dashboard');
