@@ -22,7 +22,6 @@ const QuickPayPhoneInput = ({
   const {
     register,
     handleSubmit,
-    reset,
     control,
     formState: { errors },
   } = useForm();
@@ -52,31 +51,26 @@ const QuickPayPhoneInput = ({
       };
 
       const { data, error } = await checkUserValidation(payload);
-      if (error) {
-        setActiveTab(0);
-        setIsLoading(false);
-        setUserPhoneNo({ authPhone: payload });
-        setOpenQuickBuyModal(true);
-      }
+      // if (error) {
+      //   setActiveTab(0);
+      //   setIsLoading(false);
+      //   setUserPhoneNo({ authPhone: payload });
+      //   setOpenQuickBuyModal(true);
+      // }
 
-      if (data) {
-        reset();
-        setIsLoading(false);
-        const { isPin } = data;
-        if (!cookie.get('token')) {
-          if (isPin) {
-            setUserPhoneNo({ authPhone: payload });
-            setAuthPhone(payload);
-            router.push('/dashboard');
-          } else {
-            const { authorization } = data;
-            setUserAnonymousToken({ anonymousToken: authorization });
-            router.push('/dashboard');
-          }
-        } else {
-          router.push('/dashboard');
-        }
-      }
+      setIsLoading(false);
+      setUserPhoneNo({ authPhone: payload });
+      setAuthPhone(payload);
+      router.push('/dashboard');
+      // if (!cookie.get('token')) {
+      //   if (isPin) {
+
+      //   } else {
+      //     const { authorization } = data;
+      //     setUserAnonymousToken({ anonymousToken: authorization });
+      //     router.push('/dashboard');
+      //   }
+      // }
     }
   };
 
