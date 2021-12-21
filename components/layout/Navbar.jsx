@@ -73,7 +73,7 @@ const Navbar = () => {
                 Offgrid
               </a>
             </Link>
-            <Link href={token ? '/dashboard' : '/auth/sign-in'}>
+            <Link href={token ? '/dashboard' : '/sign-in'}>
               <Button>{token ? 'My Dashboard' : 'Get started'}</Button>
             </Link>
           </div>

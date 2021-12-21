@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSessionStorage } from 'react-use';
 import cookie from 'js-cookie';
 import {
   faCog,
@@ -18,14 +17,12 @@ import WalletIcon from '../../public/svgs/wallet-sm.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 
-const Sidebar = props => {
-  const router = useRouter();
-  const [phone, setAuthPhone] = useSessionStorage('authPhone');
-  const [openLogout, setOpenLogout] = useState(false);
+const Sidebar = () => {
   const { user } = useGlobalContext();
-  const token = cookie.get('token');
+  const router = useRouter();
 
-  console.log(user);
+  const [openLogout, setOpenLogout] = useState(false);
+  const token = cookie.get('token');
 
   const routes = [
     {
@@ -61,7 +58,6 @@ const Sidebar = props => {
 
   const signOut = () => {
     cookie.remove('token');
-    setAuthPhone(null);
     router.push('/');
   };
 
@@ -111,9 +107,9 @@ const Sidebar = props => {
         </div>
         <div className="px-3 2xl:px-6 space-y-2.5 2xl:space-y-5 py-8">
           {routes.map(({ name, url, icon }, index) => (
-            <>
+            <div key={index}>
               {token ? (
-                <Link href={url} key={index}>
+                <Link href={url}>
                   <button
                     className={`${
                       url === router.asPath
@@ -129,7 +125,7 @@ const Sidebar = props => {
                 </Link>
               ) : (
                 <button
-                  onClick={() => router.push('/auth/sign-up')}
+                  onClick={() => router.push('/sign-up')}
                   className={`${
                     url === router.asPath
                       ? 'text-primary-base bg-white active-icon'
@@ -142,7 +138,7 @@ const Sidebar = props => {
                   </span>
                 </button>
               )}
-            </>
+            </div>
           ))}
           <div className="absolute w-full bottom-9 left-0">
             <div className="px-3 2xl:px-6">

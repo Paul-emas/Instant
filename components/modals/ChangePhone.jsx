@@ -1,49 +1,25 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { useForm } from 'react-hook-form';
-import { isValidPhoneNumber } from 'libphonenumber-js/min';
-import { useSessionStorage } from 'react-use';
-import { useGlobalContext } from '../../hooks/useGlobalContext';
-import useDispatcher from '../../hooks/useDispatcher';
-import { formatPhoneNo } from '../forms/utils';
+import { useEffect, useState } from 'react';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from '../forms/FormInput';
 
 const ChangePhone = ({ setStep }) => {
-  let {
-    auth: { authPhone },
-  } = useGlobalContext();
-  const [, setPhone] = useSessionStorage('authPhone', authPhone);
-  const { setUserPhoneNo } = useDispatcher();
-  const { handleSubmit, control } = useForm();
-  const [isValid, setIsValid] = useState(false);
+  const [phone, setPhone] = useState('');
 
-  const ValidateMobileNo = number => {
-    if (number) {
-      isValidPhoneNumber(number) ? setIsValid(false) : setIsValid(true);
+  useEffect(() => {
+    const authPhone = localStorage.getItem('authPhone');
+    if (authPhone) {
+      setPhone(authPhone);
     }
-  };
+  }, []);
 
-  function onSubmit(formData) {
-    if (formData) {
-      const { phone } = formData;
-      const { countryCode, number } = formatPhoneNo(phone);
-      const payload = {
-        phone: {
-          number,
-          code: countryCode,
-          value: phone,
-        },
-      };
-      setPhone(payload);
-      setUserPhoneNo({ authPhone: payload });
-      setStep(1);
-    }
+  function onSubmit() {
+    localStorage.setItem('authPhone', phone);
+    setStep(1);
   }
 
   return (
-    <form className="px-8" onSubmit={handleSubmit(onSubmit)}>
+    <form className="px-8">
       <div className="mt-6">
         <div className="text-center">
           <div className="text-2xl text-primary-darker font-gill">
@@ -58,17 +34,23 @@ const ChangePhone = ({ setStep }) => {
             className="py-2.5 px-5 mt-2"
             type="phone"
             id="phone"
-            defaultValue={authPhone ? authPhone.phone.value : ''}
-            placeholder="070 3778 6423"
             label="Phone number"
-            control={control}
-            error={isValid}
-            onChange={e => {
-              ValidateMobileNo(e);
+            value={phone}
+            isValid={(value, country) => {
+              if (value.match(/12345/)) {
+                return 'Invalid value: ' + value + ', ' + country.name;
+              } else if (value.match(/1234/)) {
+                return false;
+              } else {
+                return true;
+              }
             }}
+            onChange={value => setPhone(value)}
           />
           <div className="mt-10">
-            <PrimaryButton size="base">Confirm details</PrimaryButton>
+            <PrimaryButton onClick={onSubmit} size="base">
+              Confirm details
+            </PrimaryButton>
           </div>
         </div>
       </div>

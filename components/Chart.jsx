@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import {
   Area,
   AreaChart,
@@ -15,7 +14,6 @@ import SelectInput from '../components/forms/SelectInput';
 import { chart_one, chart_two, chart_three } from '../utils/data';
 
 const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
-  const { register, handleSubmit } = useForm();
   const [selectedMonthStats, setSelectedMonthStats] = useState(chart_one);
 
   const onSubmit = data => {
@@ -69,7 +67,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
               return [`${value}`, `Kwh`];
             }}
             labelFormatter={value => {
-              return 'Unit Purchased';
+              return 'Unit Purchased', value;
             }}
           />
           <Area

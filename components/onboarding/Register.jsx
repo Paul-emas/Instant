@@ -1,19 +1,14 @@
 import router from 'next/router';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useSessionStorage } from 'react-use';
 import { useForm } from 'react-hook-form';
-import { isValidPhoneNumber } from 'libphonenumber-js/min';
 import cookie from 'js-cookie';
 import isEmail from 'is-email';
-import { useGlobalContext } from '../../hooks/useGlobalContext';
 import useDispatcher from '../../hooks/useDispatcher';
-import { formatPhoneNo } from '../forms/utils';
 import { signUp } from '../../api';
 
 import FormInput from '../forms/FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
-import countries from '../../utils/countries.json';
 import PinInput from '../forms/PinInput';
 import ErrorAlert from '../forms/ErrorAlert';
 
@@ -25,46 +20,39 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const [errorMessage, setErrorMessage] = useState(null);
-
-  let {
-    auth: { authPhone },
-  } = useGlobalContext();
   const { setUserAccount } = useDispatcher();
 
-  if (!authPhone) {
-    authPhone = useSessionStorage('authPhone')[0];
-  }
-
   const [pin, setPin] = useState('');
-  const [isValid, setIsValid] = useState(false);
+  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const authPhone = localStorage.getItem('authPhone');
+    if (authPhone) {
+      setPhone(authPhone);
+    }
+  }, []);
 
   const onSubmit = async formData => {
     if (formData) {
       setIsLoading(true);
-      let selectedNumber;
-      const { name, email, phone, referral_no } = formData;
-      const { countryCode, countryAbb, number } = formatPhoneNo(phone);
-      const seletedCountry = countries.find(({ code }) => code === countryAbb);
-
-      if (phone !== authPhone?.phone?.value) {
-        selectedNumber = {
-          phone: {
-            number,
-            code: countryCode,
-            value: phone,
-          },
-        };
-      } else {
-        selectedNumber = authPhone;
-      }
+      const { name, email, referral_no } = formData;
+      const formattedPhone = phone.replace(country.countryCode, '');
+      const selectedNumber = {
+        phone: {
+          number: phone,
+          code: country.countryCode,
+          value: formattedPhone,
+        },
+      };
 
       const payload = {
         firstName: name,
         lastName: '',
         email,
         pin,
-        country: seletedCountry.name,
+        country: country.name,
         ...selectedNumber,
         ...(referral_no !== '' && { referral_no }),
       };
@@ -77,6 +65,8 @@ const Register = () => {
         return;
       }
 
+      localStorage.setItem('authPhone', phone);
+
       if (data) {
         setIsLoading(false);
         const { account, authorization } = data;
@@ -84,12 +74,6 @@ const Register = () => {
         cookie.set('token', authorization);
         router.push('/dashboard');
       }
-    }
-  };
-
-  const ValidateMobileNo = number => {
-    if (number) {
-      isValidPhoneNumber(number) ? setIsValid(false) : setIsValid(true);
     }
   };
 
@@ -138,14 +122,19 @@ const Register = () => {
             className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
-            control={control}
-            placeholder="070 3778 6423"
             label="Phone number"
-            error={isValid}
-            defaultValue={authPhone ? authPhone.phone.value : ''}
-            onChange={e => {
-              ValidateMobileNo(e);
+            value={phone}
+            isValid={(value, country) => {
+              if (value.match(/12345/)) {
+                return 'Invalid value: ' + value + ', ' + country.name;
+              } else if (value.match(/1234/)) {
+                return false;
+              } else {
+                setCountry(country);
+                return true;
+              }
             }}
+            onChange={value => setPhone(value)}
           />
           <PinInput
             label="Enter Pin"

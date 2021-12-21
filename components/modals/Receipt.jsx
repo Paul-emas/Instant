@@ -11,11 +11,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Receipt = ({ receipt }) => {
   function PrintElem() {
-    const printContents = document.getElementById('reciept').innerHTML;
-    const originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
+    var data = document.getElementById('reciept').innerHTML;
+    var myWindow = window.open(
+      '',
+      'Instant Energy Recharge Receipt',
+      'height=400,width=600',
+    );
+    myWindow.document.write(
+      '<html><head><title>Instant Energy Recharge Receipt</title>',
+    );
+    myWindow.document.write(
+      `<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">`,
+    );
+    myWindow.document.write('</head><body >');
+    myWindow.document.write(data);
+    myWindow.document.write('</body></html>');
+    myWindow.document.close();
+
+    myWindow.onload = function () {
+      myWindow.focus();
+      myWindow.print();
+    };
   }
 
   return (

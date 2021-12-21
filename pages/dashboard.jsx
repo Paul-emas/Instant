@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import SolarCard from '../components/ads/SolarCard';
 import Button from '../components/Button';
@@ -19,6 +19,15 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState(0);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem('quickbuy')) {
+      setTimeout(() => {
+        setOpenBuyElectricityModal(true);
+        localStorage.removeItem('quickbuy');
+      }, 200);
+    }
+  });
 
   return (
     <>

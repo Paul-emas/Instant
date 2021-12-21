@@ -1,15 +1,11 @@
-import { useState } from 'react';
-import { isValidPhoneNumber } from 'libphonenumber-js/min';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
-
-import { useGlobalContext } from '../../hooks/useGlobalContext';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
 import ProviderSelectInput from './ProviderSelectInput';
 import { createTranscationToken, getAccountToken } from '../../api';
-import { formatPhoneNo } from './utils';
 import { toast } from 'react-toastify';
 
 const PrePaid = ({
@@ -23,34 +19,36 @@ const PrePaid = ({
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm();
 
-  let {
-    auth: { authPhone },
-  } = useGlobalContext();
-
   const [isLoading, setIsLoading] = useState(false);
-  const [isValid, setIsValid] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState(null);
+  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState('');
+
+  useEffect(() => {
+    const authPhone = localStorage.getItem('authPhone');
+    if (authPhone) {
+      setPhone(authPhone);
+    }
+  }, []);
 
   async function onSubmit(formData) {
     if (formData) {
       setIsLoading(true);
-      const { phone, meter, amount } = formData;
-      const { countryCode, country, number } = formatPhoneNo(phone);
+      const { meter, amount } = formData;
+      const formattedPhone = phone.replace(country.countryCode, '');
       const payload = {
         phone: {
-          number,
-          code: countryCode,
-          value: phone,
+          number: phone,
+          code: country.countryCode,
+          value: formattedPhone,
         },
         email,
         country: country.name,
       };
       const resp = await getAccountToken(payload);
-
       if (resp?.error) {
         setIsLoading(false);
         toast.error(resp?.error?.message);
@@ -59,9 +57,9 @@ const PrePaid = ({
         setPaymentToken(token);
         const payload = {
           recipient: {
-            number,
-            code: countryCode,
-            value: phone,
+            number: phone,
+            code: country.countryCode,
+            value: formattedPhone,
           },
           provider: selectedProvider._id,
           meter,
@@ -69,7 +67,6 @@ const PrePaid = ({
           amount: Number(amount),
         };
         const response = await createTranscationToken(payload, token);
-
         if (response?.error) {
           setIsLoading(false);
         } else {
@@ -80,15 +77,10 @@ const PrePaid = ({
           setStep(1);
           setOpenModal(true);
         }
+        localStorage.setItem('authPhone', phone);
       }
     }
   }
-
-  const ValidateMobileNo = number => {
-    if (number) {
-      isValidPhoneNumber(number) ? setIsValid(false) : setIsValid(true);
-    }
-  };
 
   return (
     <>
@@ -118,15 +110,19 @@ const PrePaid = ({
           className="py-2.5 px-5 mt-2"
           type="phone"
           id="phone"
-          errors={errors}
-          placeholder="070 3778 6423"
           label="Phone number"
-          defaultValue={authPhone?.phone?.value}
-          control={control}
-          error={isValid}
-          onChange={e => {
-            ValidateMobileNo(e);
+          value={phone}
+          isValid={(value, country) => {
+            if (value.match(/12345/)) {
+              return 'Invalid value: ' + value + ', ' + country.name;
+            } else if (value.match(/1234/)) {
+              return false;
+            } else {
+              setCountry(country);
+              return true;
+            }
           }}
+          onChange={value => setPhone(value)}
         />
         <FormInput
           className="py-2.5 px-5 mt-2"

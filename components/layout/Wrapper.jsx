@@ -27,6 +27,7 @@ const Wrapper = ({ children }) => {
     }
     return isRouteProtected;
   });
+
   authRoutes.forEach(route => {
     if (router.asPath === route) {
       isAuthRoute = true;

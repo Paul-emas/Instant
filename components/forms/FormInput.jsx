@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import 'react-phone-number-input/style.css';
-import PhoneInput from 'react-phone-number-input/react-hook-form';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 const FormInput = forwardRef(
   ({ as, type, label, error, control, children, className, ...props }, ref) => {
@@ -35,20 +35,22 @@ const FormInput = forwardRef(
         )}
 
         {type === 'phone' && (
-          <div
-            className={`${className} ${errorStyles} ${
-              error && 'phone_error'
-            } form-input`}
-          >
-            <PhoneInput
-              defaultCountry="NG"
-              name={type}
-              control={control}
-              autoComplete="off"
-              rules={{ required: true }}
-              {...props}
-            />
-          </div>
+          <PhoneInput
+            country={'ng'}
+            containerClass={`${className} form-input`}
+            inputStyle={{
+              border: 'none',
+              fontFamily: 'Nunito',
+              fontWeight: '700',
+              fontSize: '16px',
+              height: 'auto',
+            }}
+            countryCodeEditable={false}
+            enableSearch
+            disableSearchIcon={true}
+            dropdownStyle={{ fontWeight: 'normal', fontFamily: 'Nunito' }}
+            {...props}
+          />
         )}
 
         {type === 'currency' && (

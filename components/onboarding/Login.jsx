@@ -1,10 +1,6 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import router from 'next/router';
 import Link from 'next/link';
-import { useSessionStorage } from 'react-use';
-import { useForm } from 'react-hook-form';
-import { isValidPhoneNumber } from 'libphonenumber-js/min';
-import { formatPhoneNo } from '../forms/utils';
 import useDispatcher from '../../hooks/useDispatcher';
 import { checkUserValidation } from '../../api';
 
@@ -14,35 +10,40 @@ import SocialCard from '../SocialCard';
 
 const Login = () => {
   const { setUserPhoneNo, setUserAnonymousToken } = useDispatcher();
-  const { handleSubmit, control } = useForm();
   const [isLoading, setIsLoading] = useState(false);
-  const [isValid, setIsValid] = useState(false);
-  const [authPhone, setAuthPhone] = useSessionStorage('authPhone');
+  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState('');
+
+  useEffect(() => {
+    const authPhone = localStorage.getItem('authPhone');
+    if (authPhone) {
+      setPhone(authPhone);
+    }
+  }, []);
 
   const onSubmit = async formData => {
-    if (formData && !isValid) {
+    if (formData) {
       setIsLoading(true);
-      const { phone } = formData;
-      const { countryCode, number } = formatPhoneNo(phone);
+      const formattedPhone = phone.replace(country.countryCode, '');
       const payload = {
         phone: {
-          number,
-          code: countryCode,
-          value: phone,
+          number: phone,
+          code: country.countryCode,
+          value: formattedPhone,
         },
       };
       const { data, error } = await checkUserValidation(payload);
       if (error) {
         setIsLoading(false);
         setUserPhoneNo({ authPhone: payload });
-        router.push('/auth/sign-up');
+        router.push('/sign-up');
       }
+      localStorage.setItem('authPhone', phone);
       if (data) {
         setIsLoading(false);
         const { isPin } = data;
         if (isPin) {
           setUserPhoneNo({ authPhone: payload });
-          setAuthPhone(payload);
           router.push('/auth/otp/pin');
         } else {
           const { authorization } = data;
@@ -50,12 +51,6 @@ const Login = () => {
           router.push('/auth/otp/create');
         }
       }
-    }
-  };
-
-  const ValidateMobileNo = number => {
-    if (number) {
-      isValidPhoneNumber(number) ? setIsValid(false) : setIsValid(true);
     }
   };
 
@@ -68,21 +63,34 @@ const Login = () => {
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Sign in to Instant Energy
         </p>
-        <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          className="mt-10"
+          onSubmit={e => {
+            e.preventDefault();
+            onSubmit();
+          }}
+        >
           <FormInput
             className="py-2.5 2xl:py-3.5 px-5 mt-2"
             type="phone"
             id="phone"
-            control={control}
-            placeholder="070 3778 6423"
             label="Phone number"
-            error={isValid}
-            onChange={e => {
-              ValidateMobileNo(e);
+            value={phone}
+            isValid={(value, country) => {
+              if (value.match(/12345/)) {
+                return 'Invalid value: ' + value + ', ' + country.name;
+              } else if (value.match(/1234/)) {
+                return false;
+              } else {
+                setCountry(country);
+                return true;
+              }
             }}
+            onChange={value => setPhone(value)}
           />
           <PrimaryButton
             className="mt-8"
+            onClick={onSubmit}
             disabled={isLoading}
             loading={isLoading}
           >
@@ -91,7 +99,7 @@ const Login = () => {
         </form>
         <div className="text-blue text-sm lg:text-base text-gray-500 mt-5">
           Dont have an account?{' '}
-          <Link href="/auth/sign-up">
+          <Link href="/sign-up">
             <a className="text-primary-base font-bold">Register</a>
           </Link>
         </div>

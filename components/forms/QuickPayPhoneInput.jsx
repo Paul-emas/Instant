@@ -1,76 +1,46 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import router from 'next/router';
 import useDispatcher from '../../hooks/useDispatcher';
 import { useForm } from 'react-hook-form';
-import { useSessionStorage } from 'react-use';
-import { isValidPhoneNumber } from 'libphonenumber-js/min';
-import cookie from 'js-cookie';
 import isEmail from 'is-email';
-
-import { checkUserValidation } from '../../api';
-import { formatPhoneNo } from './utils';
 
 import FormInput from './FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
-const QuickPayPhoneInput = ({
-  setUserEmail,
-  setActiveTab,
-  setOpenQuickBuyModal,
-}) => {
-  const { setUserPhoneNo, setUserAnonymousToken } = useDispatcher();
+const QuickPayPhoneInput = () => {
+  const { setUserPhoneNo } = useDispatcher();
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm();
-  const [authPhone, setAuthPhone] = useSessionStorage('authPhone');
-  const [isValid, setIsValid] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const ValidateMobileNo = number => {
-    if (number) {
-      isValidPhoneNumber(number) ? setIsValid(false) : setIsValid(true);
+  const [phone, setPhone] = useState('');
+  const [country, setCountry] = useState('');
+
+  useEffect(() => {
+    const authPhone = localStorage.getItem('authPhone');
+    if (authPhone) {
+      setPhone(authPhone);
     }
-  };
+  }, []);
 
   const onSubmit = async formData => {
-    if (formData && !isValid) {
-      setIsLoading(true);
-      const { phone, email } = formData;
-      localStorage.setItem('email', email);
-      const { countryCode, number } = formatPhoneNo(phone);
-      setUserEmail(email);
+    if (formData && phone.length) {
+      const { email } = formData;
+      const formattedPhone = phone.replace(country.countryCode, '');
       const payload = {
         phone: {
-          number,
-          code: countryCode,
-          value: phone,
+          number: phone,
+          code: country.countryCode,
+          value: formattedPhone,
         },
       };
-
-      const { data, error } = await checkUserValidation(payload);
-      // if (error) {
-      //   setActiveTab(0);
-      //   setIsLoading(false);
-      //   setUserPhoneNo({ authPhone: payload });
-      //   setOpenQuickBuyModal(true);
-      // }
-
-      setIsLoading(false);
+      localStorage.setItem('email', email);
+      localStorage.setItem('authPhone', phone);
+      localStorage.setItem('quickbuy', true);
       setUserPhoneNo({ authPhone: payload });
-      setAuthPhone(payload);
       router.push('/dashboard');
-      // if (!cookie.get('token')) {
-      //   if (isPin) {
-
-      //   } else {
-      //     const { authorization } = data;
-      //     setUserAnonymousToken({ anonymousToken: authorization });
-      //     router.push('/dashboard');
-      //   }
-      // }
     }
   };
 
@@ -80,16 +50,22 @@ const QuickPayPhoneInput = ({
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormInput
-        className="py-2.5 2xl:py-3.5 px-3 mt-2"
+        className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
         type="phone"
         id="phone"
-        placeholder="Enter your phone number"
         label="Phone number"
-        control={control}
-        error={errors.phone || isValid}
-        onChange={e => {
-          ValidateMobileNo(e);
+        value={phone}
+        isValid={(value, country) => {
+          if (value.match(/12345/)) {
+            return 'Invalid value: ' + value + ', ' + country.name;
+          } else if (value.match(/1234/)) {
+            return false;
+          } else {
+            setCountry(country);
+            return true;
+          }
         }}
+        onChange={value => setPhone(value)}
       />
       <FormInput
         className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
@@ -103,12 +79,7 @@ const QuickPayPhoneInput = ({
           validate: value => isEmail(value),
         })}
       />
-      <PrimaryButton
-        className="mt-8 mb-10"
-        type="large"
-        disabled={isLoading}
-        loading={isLoading}
-      >
+      <PrimaryButton className="mt-8 mb-10" type="large">
         Buy Electricity
       </PrimaryButton>
     </form>
