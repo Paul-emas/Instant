@@ -26,7 +26,7 @@ const Table = ({ title, headings, viewAll, titleLabel, tabs, children }) => {
           )}
         </div>
       </div>
-      {tabs()}
+      {tabs && tabs()}
       <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-6 pb-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6">
           <div className="overflow-hidden">
