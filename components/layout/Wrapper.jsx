@@ -8,7 +8,7 @@ import PageLoader from '../PageLoader';
 const Wrapper = ({ children }) => {
   const router = useRouter();
   const token = cookie.get('token');
-  const inActiveRoutes = ['/dashboard', '/solar'];
+  const inActiveRoutes = ['/dashboard', '/meters', '/solar'];
   const [pageLoading, setPageLoading] = useState(false);
   const authRoutes = [
     '/auth/sign-in',

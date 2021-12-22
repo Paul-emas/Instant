@@ -36,7 +36,7 @@ const Sidebar = () => {
       icon: faSun,
     },
     {
-      name: 'My metres',
+      name: 'My Metres',
       url: '/meters',
       icon: faMeteor,
     },

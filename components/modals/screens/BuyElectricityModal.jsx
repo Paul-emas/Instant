@@ -145,6 +145,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
           <div className="modal-overlay w-full min-h-screen bg-secondary-modal bg-opacity-70"></div>
         </div>
       )}
+
       {open && step === 5 && (
         <Modal
           close={() => {

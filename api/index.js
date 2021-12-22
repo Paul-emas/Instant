@@ -1,5 +1,7 @@
 import axios from 'axios';
+import cookie from 'js-cookie';
 
+const authToken = cookie.get('token');
 const baseUrl = process.env.NEXT_PUBLIC_IEAPI_URL;
 
 export async function logIn(payload) {
@@ -102,6 +104,39 @@ export async function generateTranscationToken(payload, token) {
         },
       },
     );
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}
+
+export async function validateNewMeter(meter, providerId) {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/meter/validate/${meter}/${providerId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}
+
+export async function addNewMeter(payload) {
+  try {
+    const response = await axios.post(`${baseUrl}/account/meter`, payload, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
     const { data } = response.data;
     return { data };
   } catch (error) {

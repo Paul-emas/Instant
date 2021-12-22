@@ -10,8 +10,17 @@ import Tabs from '../components/tabs';
 
 export default function Solar() {
   const tableProps = {
-    iconType: 'sun',
     title: 'Your monthly billings',
+    headings: [
+      'Transaction Information',
+      'Date',
+      'Distributor',
+      'Payment Type',
+      'Reference number',
+      'Amount',
+      'Status',
+    ],
+    iconType: 'sun',
     titleLabel: 'Montly plan',
     viewAll: true,
   };
@@ -29,7 +38,7 @@ export default function Solar() {
     <div className="pt-5 2xl:pt-10">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading font-extrabold">Your Solar Plan</h1>
+          <h1 className="text-heading font-bold font-gill">Your Solar Plan</h1>
           <p className="text-md font-medium text-font-muted">
             Always turn off unused appliances
           </p>
