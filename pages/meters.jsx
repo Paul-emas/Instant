@@ -32,6 +32,7 @@ export default function Meters() {
             data={tabsData}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
+            center
           />
         </Table>
       </div>

@@ -2,7 +2,7 @@ import SolarPanelStatusCards from './SolarPanelStatusCards';
 
 import SunIcon from '../../public/svgs/solar-sun.svg';
 import PoleIcon from '../../public/svgs/poles.svg';
-import BatteryIcon from '../../public/svgs/poles.svg';
+import BatteryIcon from '../../public/svgs/battery.svg';
 
 const SolarPanelStatus = () => {
   const statusData = [

@@ -102,6 +102,7 @@ export default function Solar() {
           <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl py-52 relative"></div>
         </>
       )}
+
       {!pageLoading && (
         <>
           <div className="flex items-center justify-between">

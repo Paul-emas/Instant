@@ -1,6 +1,11 @@
-const index = ({ data, activeTab, setActiveTab }) => {
+const index = ({ data, center = false, activeTab, setActiveTab }) => {
+  console.log(center);
   return (
-    <div className="flex justify-center lg:justify-start space-x-10 px-8 font-bold border-b">
+    <div
+      className={`flex ${
+        center ? 'justify-center' : 'justify-start'
+      } space-x-10 px-8 font-bold border-b`}
+    >
       {data?.map(({ name }, ind) => (
         <div
           key={ind}
