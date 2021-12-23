@@ -152,7 +152,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
             setOpen(false);
             setStep(0);
           }}
-          title="Purchase receipt"
+          border={false}
           setOpen={setOpen}
         >
           <Receipt receipt={receipt} />

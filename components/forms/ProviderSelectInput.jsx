@@ -18,7 +18,7 @@ const ProviderSelectInput = ({
   const [openOption, setOpenOptions] = useState(false);
 
   useEffect(() => {
-    if (options.length) {
+    if (options?.length) {
       setSelectedProvider(options[0]);
     }
   }, [options]);

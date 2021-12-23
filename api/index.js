@@ -143,3 +143,18 @@ export async function addNewMeter(payload) {
     if (error.response) return { error: error.response.data };
   }
 }
+
+export async function getUserMeters() {
+  try {
+    const response = await axios.get(`${baseUrl}/meter/me`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}

@@ -1,5 +1,4 @@
 const index = ({ data, center = false, activeTab, setActiveTab }) => {
-  console.log(center);
   return (
     <div
       className={`flex ${
