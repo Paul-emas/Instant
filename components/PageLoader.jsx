@@ -19,11 +19,9 @@ const PageLoader = () => {
         <div className="p-5 relative">
           <div className="logo w-full h-full border-t-4 absolute transform left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-b-4 border-primary-base rounded-full"></div>
           <div className="rounded-full w-16 h-16 hidden lg:block relative overflow-hidden">
-            <Image
+            <img
               src="/images/logo-circle.png"
-              layout="fill"
-              className="object-cover"
-              priority={true}
+              className="object-cover w-16 h-16"
             />
           </div>
           <div className="rounded-full w-14 h-14 lg:hidden block relative overflow-hidden">

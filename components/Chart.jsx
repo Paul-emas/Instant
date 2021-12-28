@@ -73,9 +73,15 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
             stroke="#347F95"
             fillOpacity={0.5}
             strokeWidth={2}
-            dot={{ stroke: '#347F95', strokeWidth: 6 }}
+            dot={{
+              r: 6,
+              stroke: '#347F95',
+              strokeWidth: 1,
+              fill: '#fff',
+              fillOpacity: 2,
+            }}
             activeDot={{
-              r: 10,
+              r: 5,
               stroke: '#347F95',
               strokeWidth: 4,
               fill: '#fff',

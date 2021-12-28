@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,7 +22,12 @@ const Sidebar = () => {
   const router = useRouter();
 
   const [openLogout, setOpenLogout] = useState(false);
-  const token = cookie.get('token');
+  const userToken = cookie.get('token');
+  const [token, setToken] = useState(userToken);
+
+  useEffect(() => {
+    setToken(userToken);
+  }, [userToken]);
 
   const routes = [
     {
@@ -108,7 +113,7 @@ const Sidebar = () => {
         <div className="px-3 2xl:px-6 space-y-2.5 2xl:space-y-5 py-8">
           {routes.map(({ name, url, icon }, index) => (
             <div key={index}>
-              {token ? (
+              {token && (
                 <Link href={url}>
                   <button
                     className={`${
@@ -123,7 +128,8 @@ const Sidebar = () => {
                     </span>
                   </button>
                 </Link>
-              ) : (
+              )}
+              {!token && (
                 <button
                   onClick={() => router.push('/sign-up')}
                   className={`${

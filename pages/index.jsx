@@ -31,11 +31,7 @@ export default function Home() {
       </Head>
       <Header>
         <div className="lg:relative lg:w-1/2 max-w-3xl top-20">
-          <img
-            src="/images/woman.webp"
-            layout="fill"
-            className="object-contain"
-          />
+          <img src="/images/woman.webp" className="object-contain" />
         </div>
         <div className="md:max-w-lg lg:max-w-full mx-auto lg:w-1/2 pb-16 2xl:pb-10">
           <QuickPay />

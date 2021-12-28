@@ -11,6 +11,7 @@ import { getUserMeters } from '../api';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
 
 export default function Meters() {
   const tableProps = {
@@ -111,6 +112,7 @@ export default function Meters() {
             open={openAddMeterModal}
             setOpen={setOpenAddMeterModal}
             selectedMeter={selectedMeter}
+            setSelectedMeter={setSelectedMeter}
           />
           <div className="pt-5 2xl:pt-7">
             <Table {...tableProps}>
@@ -133,7 +135,7 @@ export default function Meters() {
                     </td>
                     <td className="px-6 py-4  whitespace-nowrap">
                       <div className="text-sm text-font-grey">
-                        {item?.createdAt}
+                        {moment(item?.createdAt).utc().format('LLL')}
                       </div>
                     </td>
                     <td className="px-6 py-4  whitespace-nowrap">

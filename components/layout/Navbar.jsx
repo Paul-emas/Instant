@@ -59,22 +59,22 @@ const Navbar = () => {
           </div>
           <div className="grid grid-cols-2 lg:flex items-center text-base space-x-2 lg:space-x-8">
             <Link href="/">
-              <a className="hidden lg:block text-primary-darker font-bold">
+              <a className="hidden lg:block text-primary-darker font-semibold">
                 Electricity Units
               </a>
             </Link>
             <Link href="/solar-plans">
-              <a className="text-primary-darker text-xs lg:text-base font-bold">
+              <a className="text-primary-darker text-xs lg:text-base font-semibold">
                 Solar Electricity
               </a>
             </Link>
             <Link href="/offgrid">
-              <a className="hidden lg:block text-primary-darker font-bold">
+              <a className="hidden lg:block text-primary-darker font-semibold">
                 Offgrid
               </a>
             </Link>
             <Link href={token ? '/dashboard' : '/sign-in'}>
-              <Button>{token ? 'My Dashboard' : 'Get started'}</Button>
+              <Button>{token ? 'My Dashboard' : 'Login'}</Button>
             </Link>
           </div>
         </div>

@@ -11,7 +11,7 @@ import Modal from '..';
 import ProviderSelectInput from '../../forms/ProviderSelectInput';
 import { toast } from 'react-toastify';
 
-const AddMeter = ({ open, setOpen, selectedMeter }) => {
+const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
   const {
     register,
     handleSubmit,
@@ -91,7 +91,10 @@ const AddMeter = ({ open, setOpen, selectedMeter }) => {
         <Modal
           title={`${selectedMeter ? 'Edit Meter' : 'Add New Meter'}`}
           border={false}
-          close={() => setOpen(false)}
+          close={() => {
+            setSelectedMeter(null);
+            setOpen(false);
+          }}
         >
           <BuyElectricityTab
             tabs={tabs}
