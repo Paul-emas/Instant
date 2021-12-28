@@ -56,7 +56,7 @@ export default function solarPlans() {
       <Header>
         <div className="relative w-1/2 pt-52 2xl:pt-72">
           <div className="max-w-xl">
-            <h1 className="text-6xl leading-tight xl:leading-tight 2xl:leading-tight font-extrabold text-font-darker font-gill">
+            <h1 className="text-6xl leading-tight xl:leading-tight 2xl:leading-tight font-extrabold text-font-darker ">
               Never run of power with solar electricity
             </h1>
             <p className="text-font-dark text-xl leading-normal mt-6">

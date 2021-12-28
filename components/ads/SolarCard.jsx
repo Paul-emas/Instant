@@ -4,10 +4,8 @@ const SolarCard = () => {
       <div className="container px-5">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-semibold font-gill">
-              Solar Electricity
-            </h2>
-            <p className="text-font-muted text-sm mt-0.5">
+            <h2 className="text-2xl font-bold">Solar Electricity</h2>
+            <p className="text-font-muted text-sm mt-0.5 font-semibold">
               Never have interrupted power supply, making life easy with work
               and business.
             </p>

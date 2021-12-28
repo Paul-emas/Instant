@@ -32,17 +32,15 @@ const Footer = () => {
             <p className="mt-5 text-xs lg:text-sm max-w-xs px-16 mx-auto text-gray-400">
               Suite 409, Nawa Complex Jahi, Abuja. Nigeria
             </p>
-            <p className="text-white font-gill font-semibold mt-2">
+            <p className="text-white  font-semibold mt-2">
               Info@instantenergy.com
             </p>
-            <p className="text-white font-gill font-semibold mt-2">
-              080-1234-5678
-            </p>
+            <p className="text-white  font-semibold mt-2">080-1234-5678</p>
           </div>
           <div className="col-span-2 px-4 lg:px-0">
             <div className="flex flex-wrap mt-10 lg:mt-0 px-5 lg:px-0 justify-between">
               <div className="w-1/2 lg:w-auto">
-                <h2 className="text-white font-gill font-semibold">Products</h2>
+                <h2 className="text-white  font-semibold">Products</h2>
                 <div className="flex flex-col space-y-4 lg:space-y-8 mt-5 lg:mt-10">
                   <Link href="">
                     <a className="text-xs lg:text-sm hover:text-primary-base text-gray-400 font-semibold">
@@ -62,7 +60,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="w-1/2 lg:w-auto">
-                <h2 className="text-white font-gill font-semibold">Company</h2>
+                <h2 className="text-white  font-semibold">Company</h2>
                 <div className="flex flex-col space-y-4 lg:space-y-8 mt-5 lg:mt-10">
                   <Link href="">
                     <a className="text-xs lg:text-sm hover:text-primary-base text-gray-400 font-semibold">
@@ -82,7 +80,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="col-span-3 w-full lg:w-auto mt-5 lg:mt-0">
-                <h2 className="text-white font-gill font-semibold">Legal</h2>
+                <h2 className="text-white  font-semibold">Legal</h2>
                 <div className="flex flex-col space-y-4 lg:space-y-8 mt-5 lg:mt-10">
                   <Link href="">
                     <a className="text-xs lg:text-sm hover:text-primary-base text-gray-400 font-semibold">
@@ -110,16 +108,14 @@ const Footer = () => {
             <p className="mt-5 text-xs lg:text-sm max-w-xs pl-24 ml-auto text-gray-400">
               Suite 409, Nawa Complex Jahi, Abuja. Nigeria
             </p>
-            <p className="text-white font-gill font-semibold mt-2">
+            <p className="text-white  font-semibold mt-2">
               Info@instantenergy.com
             </p>
-            <p className="text-white font-gill font-semibold mt-2">
-              080-1234-5678
-            </p>
+            <p className="text-white  font-semibold mt-2">080-1234-5678</p>
           </div>
         </div>
         <div className="w-full justify-center mt-10 px-5 lg:px-0 lg:mt-32">
-          <h2 className="text-white font-gill font-semibold mt-2 -mb-2 text-center">
+          <h2 className="text-white  font-semibold mt-2 -mb-2 text-center">
             Download our mobile app
           </h2>
           <DownloadButtons

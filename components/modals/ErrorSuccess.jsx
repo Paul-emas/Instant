@@ -22,7 +22,7 @@ const ErrorSuccess = ({ paystack, error, next }) => {
         {!error ? <SuccessIcon /> : <ErrorIcon />}
       </div>
       <div className="pb-6">
-        <div className="text-2xl mt-6 font-gill">
+        <div className="text-2xl mt-6 ">
           <span>Transcation {!error ? 'Successful' : 'Failed'}</span>
         </div>
         <p className="text-sm text-gray-400 mt-1 max-w-xs mx-auto">

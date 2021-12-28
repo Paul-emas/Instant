@@ -24,7 +24,7 @@ const DownloadApp = () => {
             </div>
           </div>
           <div className="lg:w-1/2">
-            <h1 className="text-5xl font-bold max-w-md font-gill hidden lg:block text-primary-darker">
+            <h1 className="text-5xl font-bold max-w-md  hidden lg:block text-primary-darker">
               Download our mobile app
             </h1>
             <div className="mt-12 md:max-w-sm lg:max-w-full mx-auto">
@@ -41,7 +41,7 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-font-darker lg:text-xl font-gill font-semibold">
+                  <p className="text-font-darker lg:text-xl  font-semibold">
                     Buy Electricity
                   </p>
                   <p className="text-font-darker mt-2 text-xs lg:text-base max-w-xs">
@@ -63,7 +63,7 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-gray-400 lg:text-xl font-gill font-semibold">
+                  <p className="text-gray-400 lg:text-xl  font-semibold">
                     Manage solar Plan
                   </p>
                   <p className="text-gray-400 mt-2 text-xs lg:text-base max-w-xs">
@@ -85,7 +85,7 @@ const DownloadApp = () => {
                   </div>
                 </div>
                 <div className="ml-6">
-                  <p className="text-gray-400 lg:text-xl font-gill font-semibold">
+                  <p className="text-gray-400 lg:text-xl  font-semibold">
                     Keep track of your Spending
                   </p>
                   <p className="text-gray-400 mt-2 text-xs lg:text-base max-w-xs">

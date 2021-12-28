@@ -23,7 +23,7 @@ const People = () => {
               priority={true}
             />
           </div>
-          <h1 className="text-white font-gill font-semibold text-2xl lg:text-6xl lg:mt-4">
+          <h1 className="text-white  font-semibold text-2xl lg:text-6xl lg:mt-4">
             What they say about us
           </h1>
           <p className="text-white text-sm lg:text-base mt-2 lg:mt-6 px-5 lg:px-0 lg:max-w-2xl mx-auto">

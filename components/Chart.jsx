@@ -23,9 +23,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
   return (
     <div className="h-96 w-full py-5 rounded-xl mt-10 bg-white">
       <div className="lg:flex w-full justify-between px-5 mb-2">
-        <h2 className="text-xl font-bold text-font-darker font-gill">
-          {title}
-        </h2>
+        <h2 className="text-xl font-bold text-font-darker ">{title}</h2>
         <div className="w-40">
           <SelectInput
             selectedOption={selectedMonth}
@@ -38,11 +36,11 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
         <AreaChart
           data={selectedMonthStats}
           fontSize={12}
-          fontWeight={'bold'}
+          fontWeight={'semibold'}
           margin={{
             top: 10,
-            right: 30,
-            left: 10,
+            right: 20,
+            left: 40,
             bottom: 0,
           }}
         >
@@ -57,7 +55,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
             </linearGradient>
           </defs>
           <XAxis dataKey="name" tick={{ fill: '#989898' }} />
-          <YAxis tick={{ fill: '#989898' }} />
+          <YAxis tick={{ fill: '#989898' }} orientation="right" />
           <CartesianGrid x="2" vertical={false} strokeDasharray="4" />
           <Tooltip
             wrapperStyle={{ color: 'red', backgroundColor: '#000 !important' }}

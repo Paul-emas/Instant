@@ -17,7 +17,7 @@ const SolarPanelStatusCards = ({
           <div className="text-xs font-semibold text-secondary-label">
             {caption}
           </div>
-          <div className="text-xl -mt-0.5 font-gill font-semibold flex items-center">
+          <div className="text-xl -mt-0.5  font-semibold flex items-center">
             <span>{label}</span>
             {isCharging && (
               <span className="flex items-end space-x-1 text-yellow-400 text-xs ml-2">

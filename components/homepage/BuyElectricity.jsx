@@ -22,7 +22,7 @@ const BuyElectricity = ({ title, caption, iconText, cta, bg, alignRight }) => {
             <span className="px-3 py-1.5 bg-secondary-green  text-white uppercase hidden lg:inline text-xxs font-bold rounded-3xl">
               {iconText}
             </span>
-            <h1 className="text-2xl lg:text-5xl font-bold max-w-xl mx-auto lg:mx-0 font-gill mt-4">
+            <h1 className="text-2xl lg:text-5xl font-bold max-w-xl mx-auto lg:mx-0  mt-4">
               {title}
             </h1>
             <p className="text-sm lg:text-base mt-7">{caption}</p>

@@ -32,7 +32,7 @@ const ChoosePlans = () => {
         <div className="grid grid-cols-2 2xl:space-x-10 2xl:max-w-7xl mx-auto">
           <div className="flex items-center">
             <div>
-              <h1 className="text-5xl text-white font-gill max-w-md leading-tight font-bold">
+              <h1 className="text-5xl text-white  max-w-md leading-tight font-bold">
                 Choose the right solar plan for home, business or enterprise use
               </h1>
               <div className="grid grid-cols-2 gap-x-5 mt-5">

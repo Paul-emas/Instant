@@ -8,7 +8,7 @@ const Manage = () => {
         <div className="grid grid-cols-2 space-x-20 max-w-5xl mx-auto">
           <div className="flex items-center">
             <div>
-              <h1 className="text-5xl font-gill max-w-md leading-tight font-bold">
+              <h1 className="text-5xl  max-w-md leading-tight font-bold">
                 Manage your solar plan using our mobile app
               </h1>
               <p className="max-w-xl mt-6">

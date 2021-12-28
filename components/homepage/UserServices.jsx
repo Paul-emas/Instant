@@ -6,7 +6,7 @@ const UserServices = ({ title, stepArr, border }) => {
   return (
     <div className={`${border && 'border-t'} py-10 lg:py-20`}>
       <div className="container px-4 lg:px-10 mx-auto">
-        <h1 className="text-xl lg:text-5xl font-bold md:max-w-xs lg:max-w-xl text-center mx-auto font-gill">
+        <h1 className="text-xl lg:text-5xl font-bold md:max-w-xs lg:max-w-xl text-center mx-auto ">
           {title}
         </h1>
         <div className="md:flex justify-center mt-16 lg:mt-24">
@@ -25,7 +25,7 @@ const UserServices = ({ title, stepArr, border }) => {
                 />
                 <BulbIcon2 className="mx-auto block lg:hidden" />
                 <div className="text-center mt-7">
-                  <h2 className="font-gill lg:text-xl font-semibold">{name}</h2>
+                  <h2 className=" lg:text-xl font-semibold">{name}</h2>
                   <p className="text-sm px-5 mt-2">{caption}</p>
                 </div>
               </div>

@@ -42,7 +42,7 @@ const Modal = ({ title, close, border = true, goBack, children }) => {
                 </button>
               )}
               {title && (
-                <div className="text-center relative top-1 font-gill">
+                <div className="text-center font-bold relative top-1 ">
                   <span>{title}</span>
                 </div>
               )}

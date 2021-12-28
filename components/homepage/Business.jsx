@@ -23,7 +23,7 @@ const Business = () => {
   return (
     <div className="py-40 bg-primary-dark">
       <div className="container mx-auto px-10">
-        <h1 className="text-5xl font-bold max-w-xl text-center mx-auto font-gill text-white">
+        <h1 className="text-5xl font-bold max-w-xl text-center mx-auto  text-white">
           Built for Home & Businesses big or small
         </h1>
 

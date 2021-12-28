@@ -49,7 +49,7 @@ const Receipt = ({ receipt }) => {
       </div>
       <div className="mt-6 text-center">
         <p className="text-sm text-primary-gray">Your Electricity Token</p>
-        <div className="text-2xl font-gill">{receipt?.token}</div>
+        <div className="text-2xl ">{receipt?.token}</div>
         <img
           src={receipt?.meter?.provider?.disco?.logo}
           alt={receipt?.meter?.disco?.shortName}
@@ -62,31 +62,25 @@ const Receipt = ({ receipt }) => {
             <div className="text-sm font-semibold text-primary-gray">
               Date Issued
             </div>
-            <div className="text-sm font-bold font-gill">
-              12-06-2021: 10: 07
-            </div>
+            <div className="text-sm font-bold ">12-06-2021: 10: 07</div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
               Reference code
             </div>
-            <div className="text-sm font-bold font-gill">
-              {receipt?.reference}
-            </div>
+            <div className="text-sm font-bold ">{receipt?.reference}</div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
               Meter number
             </div>
-            <div className="text-sm font-bold font-gill">
-              {receipt?.meter?.number}
-            </div>
+            <div className="text-sm font-bold ">{receipt?.meter?.number}</div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
               Meter name
             </div>
-            <div className="text-sm font-bold font-gill">
+            <div className="text-sm font-bold ">
               {receipt?.meter?.disco?.shortName}
             </div>
           </div>
@@ -94,17 +88,13 @@ const Receipt = ({ receipt }) => {
             <div className="text-sm font-semibold text-primary-gray">
               Meter address
             </div>
-            <div className="text-sm font-bold font-gill">
-              {receipt?.meter?.address}
-            </div>
+            <div className="text-sm font-bold ">{receipt?.meter?.address}</div>
           </div>
           <div className="flex justify-between items-center">
             <div className="text-sm font-semibold text-primary-gray">
               Units purchased
             </div>
-            <div className="text-sm font-bold font-gill">
-              {receipt?.units} kwh
-            </div>
+            <div className="text-sm font-bold ">{receipt?.units} kwh</div>
           </div>
         </div>
         <div className="py-4">
@@ -112,19 +102,19 @@ const Receipt = ({ receipt }) => {
             <div className="text-sm font-semibold text-primary-gray">
               Amount
             </div>
-            <div className="text-sm font-bold font-gill">
+            <div className="text-sm font-bold ">
               {receipt?.country?.currency} {receipt?.amount}
             </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">VAT</div>
-            <div className="text-sm font-bold font-gill">
+            <div className="text-sm font-bold ">
               {receipt?.country?.currency} {receipt?.charge?.vat}
             </div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">Debt</div>
-            <div className="text-sm font-bold font-gill">
+            <div className="text-sm font-bold ">
               {receipt?.country?.currency} {receipt?.outstanding}
             </div>
           </div>
@@ -132,13 +122,13 @@ const Receipt = ({ receipt }) => {
             <div className="text-sm font-semibold text-primary-gray">
               Service Charge
             </div>
-            <div className="text-sm font-bold font-gill">
+            <div className="text-sm font-bold ">
               {receipt?.country?.currency} {receipt?.charge?.fee}
             </div>
           </div>
           <div className="flex border-t border-b py-4 border-primary-lighter justify-between items-center mb-3">
-            <div className="text-sm font-bold font-gill">Total</div>
-            <div className="text-sm font-bold font-gill">
+            <div className="text-sm font-bold ">Total</div>
+            <div className="text-sm font-bold ">
               {receipt?.country?.currency} {receipt?.gross}
             </div>
           </div>

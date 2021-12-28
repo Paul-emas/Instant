@@ -80,9 +80,7 @@ const Register = () => {
   return (
     <Fragment>
       <div className="fadeIn w-full px-5 mx-auto py-20 md:w-auth">
-        <h1 className="text-32xl font-bold text-center font-gill">
-          Create an account
-        </h1>
+        <h1 className="text-32xl font-bold text-center ">Create an account</h1>
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
           Enter your phone number to continue
         </p>
@@ -160,7 +158,7 @@ const Register = () => {
         </form>
         <div className="text-blue text-sm lg:text-base text-gray-500 mt-5">
           Already a user?{' '}
-          <Link href="/auth/sign-in">
+          <Link href="/sign-in">
             <a className="text-primary-base font-bold">Login</a>
           </Link>
         </div>

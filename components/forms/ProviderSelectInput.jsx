@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCheckCircle,
+  faChevronDown,
+} from '@fortawesome/free-solid-svg-icons';
 import EmptyIcon from '../../public/svgs/empty-state.svg';
 
 const ProviderSelectInput = ({
@@ -25,9 +28,7 @@ const ProviderSelectInput = ({
 
   return (
     <>
-      <label className="text-gray-400 font-bold text-xs lg:text-sm label">
-        {label}
-      </label>
+      <label className="text-gray-400 text-xs lg:text-sm label">{label}</label>
       <div className="mb-4 relative">
         <button
           type="button"
@@ -72,7 +73,7 @@ const ProviderSelectInput = ({
           aria-activedescendant="listbox-option-3"
           className={`${
             openOption ? 'opacity-100 visible' : 'opacity-0 invisible'
-          } absolute z-10 mt-1 w-full bg-white border border-primary-base shadow-lg max-h-64 rounded-lg py-2 text-base ring-opacity-5 overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
+          } absolute z-10 mt-1 w-full bg-white shadow-lg max-h-64 rounded-b-lg py-2 text-base overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
         >
           {!options?.length ? (
             <div className="flex flex-col items-center py-5">
@@ -91,23 +92,24 @@ const ProviderSelectInput = ({
                     setSelectedProvider(option);
                     setOpenOptions(false);
                   }}
-                  className="text-gray-900 hover:bg-primary-light hover:text-primary-base cursor-pointer group select-none relative py-2 pl-5 pr-9 mx-2 rounded-lg"
+                  className="text-gray-900 hover:bg-primary-light  cursor-pointer group select-none relative py-3 pl-5 pr-9 mx-2 rounded-lg"
                   role="option"
                 >
                   <div className="flex items-center">
-                    <img
-                      src={option.disco.logo}
-                      className="flex-shrink-0 h-8 w-8  rounded-full object-contain"
-                    />
-                    <span className="ml-3 block truncate">
+                    <span className="block truncate text-sm font-semibold">
                       {option.state.name}
                     </span>
                   </div>
-                  <span className="text-primary-base  absolute inset-y-0 right-0 flex items-center pr-4">
+                  <span className="absolute inset-y-0 right-0 flex items-center pr-4">
                     {selectedProvider?.state?.name === option.state.name ? (
-                      <FontAwesomeIcon className="h-4 w-4" icon={faCheck} />
+                      <FontAwesomeIcon
+                        className="h-5 w-5 text-secondary-green"
+                        icon={faCheckCircle}
+                      />
                     ) : (
-                      <span>{option.disco.shortName}</span>
+                      <span className="font-bold text-xs">
+                        {option.disco.shortName}
+                      </span>
                     )}
                   </span>
                 </li>

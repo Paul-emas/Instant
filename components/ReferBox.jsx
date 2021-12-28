@@ -1,21 +1,37 @@
 import ReferIcon from '../public/svgs/refer-2.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
+
+import FacebookIcon from '../public/svgs/social/facebook.svg';
+import WhatsappIcon from '../public/svgs/social/whatsapp.svg';
+import InstagramIcon from '../public/svgs/social/instagram.svg';
+import TwitterIcon from '../public/svgs/social/twitter.svg';
 
 const ReferBox = () => {
   return (
     <div className="bg-white w-full h-96 text-center py-5 rounded-xl mt-10">
-      <h1 className="text-2xl font-gill font-semibold mt-3 text-primary-darker">
-        Refer & Earn
-      </h1>
       <ReferIcon className="mt-5 mx-auto" />
-      <p className="text-primary-darker  max-w-sm mx-auto px-10 text-xs 2xl:text-sm mt-5">
+      <div className="text-base font-bold mt-3 text-primary-darker">
+        Refer & Earn
+      </div>
+      <p className="text-gray-400  max-w-sm mx-auto px-10 text-xs 2xl:text-sm mt-1">
         Tell others about instant energy and get real cash in your wallet when
         they buy electricity
       </p>
-      <div className="text-sm flex items-center group hover:text-blue-800 text-secondary-blue justify-center mt-6">
-        <span className="font-bold">Learn more</span>
-        <div className="w-4 h-4 bg-secondary-blue group-hover:bg-blue-800 ml-2 rounded-full text-white flex items-center justify-center text-xxs font-bold">
-          <p className="pt-0.5">?</p>
+      <div className="w-60 mx-auto mt-3 rounded-lg border">
+        <div className="flex justify-center items-center py-3">
+          <div className="border-r text-xl font-bold pr-2">1234 2345 6789</div>
+          <FontAwesomeIcon
+            icon={faCopy}
+            className="w-5 h-5 text-primary-base ml-3 cursor-pointer"
+          />
         </div>
+      </div>
+      <div className="flex justify-center items-center mt-4 space-x-4">
+        <FacebookIcon />
+        <WhatsappIcon />
+        <InstagramIcon />
+        <TwitterIcon />
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const FormInput = forwardRef(
 
     return (
       <div className="mb-2.5 2xl:mb-4">
-        <label className="text-gray-400 font-bold text-xs lg:text-sm label">
+        <label className="text-gray-400 text-xs lg:text-sm label">
           {label}
         </label>
         {type !== 'phone' && type !== 'currency' && (
@@ -40,7 +40,7 @@ const FormInput = forwardRef(
             containerClass={`${className} form-input`}
             inputStyle={{
               border: 'none',
-              fontFamily: 'Nunito',
+              fontFamily: 'Red Hat Display',
               fontWeight: '700',
               fontSize: '16px',
               height: 'auto',
@@ -48,7 +48,10 @@ const FormInput = forwardRef(
             countryCodeEditable={false}
             enableSearch
             disableSearchIcon={true}
-            dropdownStyle={{ fontWeight: 'normal', fontFamily: 'Nunito' }}
+            dropdownStyle={{
+              fontWeight: 'normal',
+              fontFamily: 'Red Hat Display',
+            }}
             {...props}
           />
         )}

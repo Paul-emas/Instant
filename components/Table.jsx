@@ -1,29 +1,28 @@
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Table = ({ title, headings, viewAll, titleLabel, tabs, children }) => {
+const Table = ({
+  title,
+  headings,
+  viewAll,
+  titleLabel,
+  tabs,
+  children,
+  emptyState,
+}) => {
   return (
     <div className="flex flex-col mt-5 bg-white sm:rounded-xl">
       <div className="py-3 px-7 mt-4">
-        <div className="flex items-start justify-between w-full">
-          <h3 className="text-xl font-gill font-semibold text-font-dark flex items-start">
+        <div className="flex items-center justify-between w-full">
+          <h3 className="text-xl font-bold text-font-dark flex items-start">
             <span>{title}</span>
             {titleLabel && (
-              <span className="bg-primary-base text-white px-2.5 py-1 mt-1 rounded-lg h-6 ml-2 flex items-center text-xxs font-sans font-bold">
+              <span className="bg-primary-base text-white px-2.5 py-1 mt-1 rounded-lg h-6 ml-2 flex items-center text-xxs font-sans font-semibold">
                 {titleLabel}
               </span>
             )}
           </h3>
-          {viewAll && (
-            <div>
-              <button className="py-2 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
-                <span className="flex relative items-center justify-center">
-                  <span className="mt-0.5 mr-2">See all</span>
-                  <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
-                </span>
-              </button>
-            </div>
-          )}
+          {viewAll && viewAll()}
         </div>
       </div>
       {tabs && tabs()}
@@ -37,7 +36,7 @@ const Table = ({ title, headings, viewAll, titleLabel, tabs, children }) => {
                     <th
                       key={`${heading}${index}`}
                       scope="col"
-                      className="px-6 py-3 text-left text-xxs font-semibold text-gray-500 tracking-wider"
+                      className="px-6 py-3 text-left text-xs font-semibold text-gray-500 tracking-wider"
                     >
                       {heading}
                     </th>
@@ -49,6 +48,7 @@ const Table = ({ title, headings, viewAll, titleLabel, tabs, children }) => {
           </div>
         </div>
       </div>
+      {emptyState && emptyState()}
     </div>
   );
 };

@@ -8,8 +8,8 @@ import PageLoader from '../PageLoader';
 const Wrapper = ({ children }) => {
   const router = useRouter();
   const token = cookie.get('token');
-  const inActiveRoutes = ['/dashboard', '/meters', '/solar'];
-  const [pageLoading, setPageLoading] = useState(false);
+  const inActiveRoutes = ['/meters', '/solar', '/settings'];
+  const bypassActiveRoutes = ['/dashboard', '/payments'];
   const authRoutes = [
     '/auth/sign-in',
     '/auth/sign-up',
@@ -17,15 +17,24 @@ const Wrapper = ({ children }) => {
     '/auth/otp/pin',
     '/auth/otp/forgot',
   ];
+  const [pageLoading, setPageLoading] = useState(false);
 
   let isRouteProtected = false;
   let isAuthRoute = false;
+  let isRouteBypass = false;
 
   inActiveRoutes.forEach(route => {
     if (router.asPath === route) {
       isRouteProtected = true;
     }
     return isRouteProtected;
+  });
+
+  bypassActiveRoutes.forEach(route => {
+    if (router.asPath === route) {
+      isRouteBypass = true;
+    }
+    return isRouteBypass;
   });
 
   authRoutes.forEach(route => {
@@ -40,19 +49,20 @@ const Wrapper = ({ children }) => {
       url !== router.pathname &&
       !isRouteProtected &&
       !isAuthRoute &&
+      !isRouteBypass &&
       setPageLoading(true);
     const handleComplete = url => {
       url !== router.pathname && setPageLoading(false);
       window.scrollTo(0, 0);
     };
 
-    // if (!token && isRouteProtected) {
-    //   router.replace('/auth/sign-in');
-    // }
+    if (!token && isRouteProtected) {
+      router.replace('/sign-in');
+    }
 
-    // if (token && !isRouteProtected) {
-    //   router.replace('/dashboard');
-    // }
+    if (token && !isRouteProtected && !isRouteBypass) {
+      router.replace('/dashboard');
+    }
 
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
@@ -68,8 +78,10 @@ const Wrapper = ({ children }) => {
   return (
     <>
       {pageLoading && <PageLoader />}
-      {!isRouteProtected && !pageLoading && <div>{children}</div>}
-      {isRouteProtected && !pageLoading && (
+      {!isRouteProtected && !isRouteBypass && !pageLoading && (
+        <div>{children}</div>
+      )}
+      {(isRouteBypass || isRouteProtected) && !pageLoading && (
         <div className="min-h-screen w-full overflow-hidden bg-gray-300">
           <div className="min-h-screen">
             <Sidebar />

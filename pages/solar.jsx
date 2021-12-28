@@ -11,22 +11,33 @@ import SolarSkeleton from '../components/skeletons/SolarSkeleton';
 
 import SunIcon from '../public/svgs/sun.svg';
 import Empty from '../public/svgs/empty-transcation.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Solar() {
-  const headings = [
-    'Transaction Information',
-    'Date',
-    'Distributor',
-    'Payment Type',
-    'Reference number',
-    'Amount',
-    'Status',
-  ];
   const tableProps = {
     title: 'Your monthly billings',
     iconType: 'sun',
     titleLabel: 'Montly plan',
-    viewAll: true,
+    headings: [
+      'Transaction Information',
+      'Date',
+      'Distributor',
+      'Payment Type',
+      'Reference number',
+      'Amount',
+      'Status',
+    ],
+    viewAll: () => (
+      <div>
+        <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
+          <span className="flex relative items-center justify-center">
+            <span className="mr-2">See all</span>
+            <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+          </span>
+        </button>
+      </div>
+    ),
     tabs: () => (
       <>
         <Tabs
@@ -34,25 +45,29 @@ export default function Solar() {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        {data.length <= 0 && (
-          <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-10">
+      </>
+    ),
+    emptyState: () => {
+      if (data.length <= 0 && !pageLoading) {
+        return (
+          <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-24 pb-32">
             <div className="flex flex-col items-center">
               <Empty />
-              <div className="text-base font-gill">
+              <div className="text-base font-bold">
                 Your transactions will appear here
               </div>
               <p className="text-gray-400 text-sm max-w-xs text-center mt-1">
                 An email has been sent to you kindly submit to continue with
                 this application
               </p>
-              <button className="outline-none border-none bg-primary-light text-primary-base font-semibold rounded-lg px-6 text-xs py-2.5 mt-8">
+              <button className="outline-none border-none bg-primary-light text-primary-base font-bold rounded-lg px-6 text-xs py-3 mt-8 uppercase">
                 Request solar
               </button>
             </div>
           </div>
-        )}
-      </>
-    ),
+        );
+      }
+    },
   };
 
   const tabsData = [
@@ -80,9 +95,7 @@ export default function Solar() {
         <>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-heading font-bold font-gill">
-                Your Solar Plan
-              </h1>
+              <h1 className="text-heading font-bold ">Your Solar Plan</h1>
               <p className="text-md font-medium text-font-muted">
                 Always turn off unused appliances
               </p>
@@ -104,7 +117,7 @@ export default function Solar() {
           </div>
           <SolarPanelStatus />
 
-          <Table {...tableProps} headings={data.length > 0 ? headings : null}>
+          <Table {...tableProps}>
             {data?.length > 0 &&
               data.map((el, index) => {
                 const active = index + 1 === el;

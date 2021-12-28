@@ -14,7 +14,7 @@ const Plans = ({ gray }) => {
   return (
     <div className={`${gray ? 'bg-gray-100' : 'bg-secondary-lightBlue'} py-20`}>
       <div className="container px-10 mx-auto">
-        <h1 className="text-5xl font-bold max-w-xl text-center mx-auto font-gill">
+        <h1 className="text-5xl font-bold max-w-xl text-center mx-auto ">
           Choose a solar plan
         </h1>
         <div className="w-44 mx-auto my-5">

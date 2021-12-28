@@ -8,7 +8,7 @@ const CTA = () => {
       <div className="container px-4 lg:px-10 mx-auto">
         <div className="grid lg:grid-cols-2 space-x-10">
           <div className="text-center lg:text-left">
-            <h1 className="text-white text-2xl lg:text-4xl font-gill max-w-xl mx-auto lg:mx-0 font-bold">
+            <h1 className="text-white text-2xl lg:text-4xl  max-w-xl mx-auto lg:mx-0 font-bold">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.
             </h1>
             <p className="text-gray-400 text-sm lg:text-base max-w-xl mx-auto lg:mx-0 mt-4">

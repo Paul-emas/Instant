@@ -42,7 +42,7 @@ const Sidebar = () => {
     },
     {
       name: 'Payments',
-      url: '/payments/history',
+      url: '/payments',
       icon: faMoneyBillWave,
     },
     {
@@ -88,19 +88,19 @@ const Sidebar = () => {
         <div className="border-b border-t border-primary-border pl-5 2xl:pl-10 pr-3 2xl:pr-6">
           <div className="flex items-center justify-between py-6">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 flex justify-center items-center bg-white bg-opacity-20  scale rounded-lg text-white">
+              <div className="w-8 h-8 flex justify-center items-center bg-white bg-opacity-20 scale rounded-lg text-white">
                 <WalletIcon />
               </div>
               <div className="relative top-0.5">
-                <div className="text-xxs flex items-center text-primary-label">
+                <div className="text-xxs flex items-center text-white text-opacity-70">
                   <span>Your IE wallet</span>
                 </div>
-                <p className="text-white font-gill font-semibold -mt-1">
-                  &#x20A6; : <span>0.00</span>
+                <p className="text-white font-bold -mt-1">
+                  <span>&#x20A6;</span> <span className="ml-1">0.00</span>
                 </p>
               </div>
             </div>
-            <button className="w-fund 2xl:w-24 h-8 text-xxs 2xl:text-xs bg-white font-semibold rounded-lg cursor-pointer text-gray-800 hover:bg-gray-100 text-center">
+            <button className="w-fund 2xl:w-24 h-8 text-xxs 2xl:text-xs bg-secondary-green font-semibold rounded-lg cursor-pointer text-white hover:bg-opacity-80 text-center">
               Fund wallet
             </button>
           </div>
@@ -112,14 +112,14 @@ const Sidebar = () => {
                 <Link href={url}>
                   <button
                     className={`${
-                      url === router.asPath
+                      router.asPath === url
                         ? 'text-primary-base bg-white active-icon'
                         : 'text-white  hover:bg-primary-hover'
-                    } pl-6 w-full rounded-xl text-left py-4 font-gill duration-100`}
+                    } pl-6 w-full rounded-xl text-left py-4  duration-100`}
                   >
                     <span className="flex items-center">
                       <FontAwesomeIcon icon={icon} className="w-5 h-5" />
-                      <span className="text-sm font-semibold ml-5">{name}</span>
+                      <span className="text-sm font-bold ml-5">{name}</span>
                     </span>
                   </button>
                 </Link>
@@ -127,20 +127,20 @@ const Sidebar = () => {
                 <button
                   onClick={() => router.push('/sign-up')}
                   className={`${
-                    url === router.asPath
+                    router.asPath === url
                       ? 'text-primary-base bg-white active-icon'
                       : 'text-white text-opacity-30  hover:bg-primary-hover'
-                  } pl-6 w-full rounded-xl text-left py-4 font-gill duration-100`}
+                  } pl-6 w-full rounded-xl text-left py-4  duration-100`}
                 >
                   <span className="flex items-center">
                     <FontAwesomeIcon icon={icon} className="w-5 h-5" />
-                    <span className="text-sm font-semibold ml-5">{name}</span>
+                    <span className="text-sm font-bold ml-5">{name}</span>
                   </span>
                 </button>
               )}
             </div>
           ))}
-          <div className="absolute w-full bottom-9 left-0">
+          <div className="absolute w-full bottom-12 left-0">
             <div className="px-3 2xl:px-6">
               <div className="bg-white py-4 px-5 rounded-xl flex items-center relative">
                 {!user?.me && (
@@ -173,7 +173,7 @@ const Sidebar = () => {
                 {openLogout && (
                   <button
                     onClick={signOut}
-                    className="scaleUp pl-4 absolute w-32 shadow-2xl top-12 hover:border-primary-light scale right-5 bg-white z-10 rounded-xl text-left py-3 font-gill border border-transparent"
+                    className="scaleUp pl-4 absolute w-32 shadow-2xl top-12 hover:border-primary-light scale right-5 bg-white z-10 rounded-xl text-left py-3  border border-transparent"
                   >
                     <span className="flex items-center">
                       <LogoutIcon />

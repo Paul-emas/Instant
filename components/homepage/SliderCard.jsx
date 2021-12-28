@@ -33,7 +33,7 @@ const SliderCard = () => {
         <div className="lg:w-1/2">
           <QuoteIcon className="hidden lg:block" />
           <QuoteIcon2 className="block lg:hidden mx-auto mt-8" />
-          <p className="lg:text-2xl text-center lg:text-left font-gill max-w-md mx-auto lg:mx-0 mt-6 lg:mt-12">
+          <p className="lg:text-2xl text-center lg:text-left  max-w-md mx-auto lg:mx-0 mt-6 lg:mt-12">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
@@ -50,7 +50,7 @@ const SliderCard = () => {
               />
             </a>
             <div className="ml-3">
-              <h2 className="lg:text-2xl -mt-0.5 lg:-mt-0 font-bold font-gill">
+              <h2 className="lg:text-2xl -mt-0.5 lg:-mt-0 font-bold ">
                 Paul Emas
               </h2>
               <div className="flex space-x-1 lg:mt-1">

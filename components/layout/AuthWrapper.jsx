@@ -97,7 +97,7 @@ const AuthWrapper = ({ title, caption, banner, children }) => {
               </Link>
             </div>
             <div className="pt-40 2xl:pt-52">
-              <h1 className="text-4xl 2xl:text-4.5xl font-gill font-bold leading-tight text-white">
+              <h1 className="text-4xl 2xl:text-4.5xl  font-bold leading-tight text-white">
                 {title}
               </h1>
               <p className="text-gray-400 leading-tight 2xl:text-lg mt-5">

@@ -33,7 +33,7 @@ const FAQs = () => {
     <div className="py-16 lg:py-32 bg-white">
       <div className="container px-4 lg:px-10 mx-auto">
         <div className="text-center">
-          <h1 className="text-2xl lg:text-5xl font-bold max-w-2xl text-center mx-auto font-gill">
+          <h1 className="text-2xl lg:text-5xl font-bold max-w-2xl text-center mx-auto ">
             Instant Energy FAQs
           </h1>
           <p className="mt-6 text-sm lg:text-base max-w-3xl mx-auto">
