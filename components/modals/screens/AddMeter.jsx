@@ -10,8 +10,10 @@ import BuyElectricityTab from '../../tabs/BuyElectricityTab';
 import Modal from '..';
 import ProviderSelectInput from '../../forms/ProviderSelectInput';
 import { toast } from 'react-toastify';
+import cookies from 'js-cookie';
 
 const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
+  const token = cookies.get('token');
   const {
     register,
     handleSubmit,
@@ -48,7 +50,11 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
       setIsLoading(true);
       const { label, meter } = formData;
 
-      const response = await validateNewMeter(meter, selectedProvider._id);
+      const response = await validateNewMeter(
+        meter,
+        selectedProvider._id,
+        token,
+      );
 
       const { data, error } = response;
 
@@ -68,7 +74,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
           },
         };
 
-        const resp = await addNewMeter(payload);
+        const resp = await addNewMeter(payload, token);
 
         if (resp?.error) {
           setIsLoading(false);
@@ -159,7 +165,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
                   disabled={isLoading}
                   size="base"
                 >
-                  Add Meter
+                  {selectedMeter ? 'Save' : 'Add Meter'}
                 </PrimaryButton>
               </div>
             </form>

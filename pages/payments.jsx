@@ -19,16 +19,20 @@ export default function Payments() {
       'Amount',
       'Status',
     ],
-    viewAll: () => <Button>Wallet History</Button>,
-    tabs: () => (
-      <Tabs
-        data={tabsData}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        center
-      />
-    ),
-    emptyState: () => {
+    viewAll: function view() {
+      return <Button>Wallet History</Button>;
+    },
+    tabs: function view() {
+      return (
+        <Tabs
+          data={tabsData}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          center
+        />
+      );
+    },
+    emptyState: function view() {
       if (transcations.length <= 0 && !pageLoading) {
         return (
           <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-28 pb-40">

@@ -12,8 +12,10 @@ import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
+import cookies from 'js-cookie';
 
 export default function Meters() {
+  const token = cookies.get('token');
   const tableProps = {
     iconType: 'bulb',
     title: 'Your Meters',
@@ -25,26 +27,30 @@ export default function Meters() {
       'Meter address',
       'Actions',
     ],
-    viewAll: () => (
-      <Button onClick={() => setOpenAddMeterModal(true)}>
-        <span className="uppercase flex items-center">
-          <FontAwesomeIcon
-            icon={faPlus}
-            className="w-3 h-3 text-white text-opacity-70"
-          />{' '}
-          <span className="ml-2">Add new meter</span>
-        </span>
-      </Button>
-    ),
-    tabs: () => (
-      <Tabs
-        data={tabsData}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        center
-      />
-    ),
-    emptyState: () => {
+    viewAll: function view() {
+      return (
+        <Button onClick={() => setOpenAddMeterModal(true)}>
+          <span className="uppercase flex items-center">
+            <FontAwesomeIcon
+              icon={faPlus}
+              className="w-3 h-3 text-white text-opacity-70"
+            />{' '}
+            <span className="ml-2">Add new meter</span>
+          </span>
+        </Button>
+      );
+    },
+    tabs: function view() {
+      return (
+        <Tabs
+          data={tabsData}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          center
+        />
+      );
+    },
+    emptyState: function view() {
       if (meters.length <= 0 && !pageLoading) {
         return (
           <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl py-32 2xl:pt-36 2xl:pb-64">
@@ -86,7 +92,7 @@ export default function Meters() {
   }, []);
 
   async function getMeters() {
-    const resp = await getUserMeters();
+    const resp = await getUserMeters(token);
 
     if (resp?.error) {
       toast.error('Something went wrong');

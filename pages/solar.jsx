@@ -28,26 +28,30 @@ export default function Solar() {
       'Amount',
       'Status',
     ],
-    viewAll: () => (
-      <div>
-        <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
-          <span className="flex relative items-center justify-center">
-            <span className="mr-2">See all</span>
-            <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
-          </span>
-        </button>
-      </div>
-    ),
-    tabs: () => (
-      <>
-        <Tabs
-          data={tabsData}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-      </>
-    ),
-    emptyState: () => {
+    viewAll: function view() {
+      return (
+        <div>
+          <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
+            <span className="flex relative items-center justify-center">
+              <span className="mr-2">See all</span>
+              <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+            </span>
+          </button>
+        </div>
+      );
+    },
+    tabs: function view() {
+      return (
+        <>
+          <Tabs
+            data={tabsData}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+        </>
+      );
+    },
+    emptyState: function view() {
       if (data.length <= 0 && !pageLoading) {
         return (
           <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-24 pb-32">

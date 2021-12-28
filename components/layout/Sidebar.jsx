@@ -115,18 +115,20 @@ const Sidebar = () => {
             <div key={index}>
               {token && (
                 <Link href={url}>
-                  <button
-                    className={`${
-                      router.asPath === url
-                        ? 'text-primary-base bg-white active-icon'
-                        : 'text-white  hover:bg-primary-hover'
-                    } pl-6 w-full rounded-xl text-left py-4  duration-100`}
-                  >
-                    <span className="flex items-center">
-                      <FontAwesomeIcon icon={icon} className="w-5 h-5" />
-                      <span className="text-sm font-bold ml-5">{name}</span>
-                    </span>
-                  </button>
+                  <a>
+                    <button
+                      className={`${
+                        router.asPath === url
+                          ? 'text-primary-base bg-white active-icon'
+                          : 'text-white  hover:bg-primary-hover'
+                      } pl-6 w-full rounded-xl text-left py-4  duration-100`}
+                    >
+                      <span className="flex items-center">
+                        <FontAwesomeIcon icon={icon} className="w-5 h-5" />
+                        <span className="text-sm font-bold ml-5">{name}</span>
+                      </span>
+                    </button>
+                  </a>
                 </Link>
               )}
               {!token && (

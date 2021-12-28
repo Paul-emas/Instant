@@ -28,41 +28,51 @@ export default function Dashboard() {
       'Amount',
       'Status',
     ],
-    viewAll: () => (
-      <div>
-        <Link href="/payments">
-          <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
-            <span className="flex relative items-center justify-center">
-              <span className="mr-2">See all</span>
-              <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
-            </span>
-          </button>
-        </Link>
-      </div>
-    ),
-    tabs: () => (
-      <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />
-    ),
-    emptyState: () => (
-      <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-24 pb-32">
-        <div className="flex flex-col items-center">
-          <Empty />
-          <div className="text-base font-bold">
-            Your transactions will appear here
-          </div>
-          <p className="text-gray-400 text-sm max-w-xs text-center mt-1">
-            An email has been sent to you kindly submit to continue with this
-            application
-          </p>
-          <button
-            onClick={() => setOpenBuyElectricityModal(true)}
-            className="outline-none border-none bg-primary-light text-primary-base font-bold rounded-lg px-6 text-xs py-3 mt-8 uppercase"
-          >
-            Recharge a meter
-          </button>
+    viewAll: function view() {
+      return (
+        <div>
+          <Link href="/payments">
+            <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
+              <span className="flex relative items-center justify-center">
+                <span className="mr-2">See all</span>
+                <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+              </span>
+            </button>
+          </Link>
         </div>
-      </div>
-    ),
+      );
+    },
+    tabs: function view() {
+      return (
+        <Tabs
+          data={tabsData}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      );
+    },
+    emptyState: function view() {
+      return (
+        <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-24 pb-32">
+          <div className="flex flex-col items-center">
+            <Empty />
+            <div className="text-base font-bold">
+              Your transactions will appear here
+            </div>
+            <p className="text-gray-400 text-sm max-w-xs text-center mt-1">
+              An email has been sent to you kindly submit to continue with this
+              application
+            </p>
+            <button
+              onClick={() => setOpenBuyElectricityModal(true)}
+              className="outline-none border-none bg-primary-light text-primary-base font-bold rounded-lg px-6 text-xs py-3 mt-8 uppercase"
+            >
+              Recharge a meter
+            </button>
+          </div>
+        </div>
+      );
+    },
   };
 
   const data = [];

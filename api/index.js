@@ -1,7 +1,4 @@
 import axios from 'axios';
-import cookie from 'js-cookie';
-
-const authToken = cookie.get('token');
 const baseUrl = process.env.NEXT_PUBLIC_IEAPI_URL;
 
 export async function logIn(payload) {
@@ -111,13 +108,13 @@ export async function generateTranscationToken(payload, token) {
   }
 }
 
-export async function validateNewMeter(meter, providerId) {
+export async function validateNewMeter(meter, providerId, token) {
   try {
     const response = await axios.get(
       `${baseUrl}/meter/validate/${meter}/${providerId}`,
       {
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       },
@@ -129,11 +126,11 @@ export async function validateNewMeter(meter, providerId) {
   }
 }
 
-export async function addNewMeter(payload) {
+export async function addNewMeter(payload, token) {
   try {
     const response = await axios.post(`${baseUrl}/account/meter`, payload, {
       headers: {
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     });
@@ -144,11 +141,11 @@ export async function addNewMeter(payload) {
   }
 }
 
-export async function getUserMeters() {
+export async function getUserMeters(token) {
   try {
     const response = await axios.get(`${baseUrl}/meter/me`, {
       headers: {
-        Authorization: `Bearer ${authToken}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     });
