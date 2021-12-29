@@ -100,7 +100,7 @@ const Login = () => {
         <div className="text-blue text-sm lg:text-base text-gray-500 mt-5">
           Dont have an account?{' '}
           <Link href="/sign-up">
-            <a className="text-primary-base font-bold">Register</a>
+            <a className="text-primary-base font-semibold">Register</a>
           </Link>
         </div>
         <div className="mt-20">

@@ -159,7 +159,7 @@ const Register = () => {
         <div className="text-blue text-sm lg:text-base text-gray-500 mt-5">
           Already a user?{' '}
           <Link href="/sign-in">
-            <a className="text-primary-base font-bold">Login</a>
+            <a className="text-primary-base font-semibold">Login</a>
           </Link>
         </div>
       </div>
