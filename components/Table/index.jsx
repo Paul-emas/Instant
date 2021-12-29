@@ -1,6 +1,3 @@
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 const Table = ({
   title,
   headings,
@@ -8,6 +5,7 @@ const Table = ({
   titleLabel,
   tabs,
   children,
+  loading,
   child,
 }) => {
   return (
@@ -28,27 +26,37 @@ const Table = ({
       {tabs && tabs()}
       <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-6">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6">
-          <div className="overflow-hidden">
-            <table className="min-w-full bg-white">
-              <thead>
-                <tr>
-                  {headings?.map((heading, index) => (
-                    <th
-                      key={`${heading}${index}`}
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-semibold text-gray-500 tracking-wider"
-                    >
-                      {heading}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="bg-white">{children}</tbody>
-            </table>
-          </div>
+          {!loading && (
+            <div className="overflow-hidden">
+              <table className="min-w-full bg-white">
+                <thead>
+                  <tr>
+                    {headings?.map((heading, index) => (
+                      <th
+                        key={`${heading}${index}`}
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-semibold text-gray-500 tracking-wider"
+                      >
+                        {heading}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="bg-white">{children}</tbody>
+              </table>
+            </div>
+          )}
+          {loading && (
+            <div className="py-44">
+              <div className="flex items-center flex-col">
+                <div className="loader"></div>
+                <div className="text-base mt-3">Loading data...</div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      {child && child()}
+      {child && !loading && child()}
     </div>
   );
 };

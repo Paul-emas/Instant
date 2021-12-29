@@ -15,6 +15,7 @@ const PostPaid = ({
   setStep,
   setOpenModal,
   setPaymentToken,
+  fetchProviders,
 }) => {
   const {
     register,

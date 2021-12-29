@@ -23,20 +23,28 @@ export default function Payments() {
   }, []);
 
   async function fetchTransactions(currentPage = 0) {
-    const resp = await getUserTransactions(token, currentPage, itemsPerPage);
+    if (token) {
+      setTabelLoading(true);
+      const resp = await getUserTransactions(token, currentPage, itemsPerPage);
 
-    if (resp?.error) {
-      toast.error('Something went wrong');
-      setPageLoading(false);
-    }
+      if (resp?.error) {
+        toast.error('Something went wrong');
+        setPageLoading(false);
+        setTabelLoading(false);
+      }
 
-    if (resp?.data) {
-      const { page, docs, totalDocs, totalPages } = resp?.data;
-      setCurrentPage(page);
-      setTransactions(docs);
-      setPageCount(totalPages);
+      if (resp?.data) {
+        const { page, docs, totalDocs, totalPages } = resp?.data;
+        setCurrentPage(page);
+        setTransactions(docs);
+        setPageCount(totalPages);
+        setPageLoading(false);
+        setTabelLoading(false);
+        setTotalDocs(totalDocs);
+      }
+    } else {
       setPageLoading(false);
-      setTotalDocs(totalDocs);
+      setTabelLoading(false);
     }
   }
 
@@ -49,6 +57,7 @@ export default function Payments() {
   const [itemsPerPage, setItemPerPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
+  const [tableLoading, setTabelLoading] = useState(true);
 
   const tableProps = {
     title: 'Your transactions',
@@ -63,6 +72,7 @@ export default function Payments() {
       'Status',
       'Actions',
     ],
+    loading: tableLoading,
     viewAll: function view() {
       return <Button>Wallet History</Button>;
     },
@@ -211,7 +221,6 @@ export default function Payments() {
                           icon={faDownload}
                           className="w-2.5 h-2.5"
                         />
-                        {/* <span className="ml-1">Receipt</span> */}
                       </button>
                       <button
                         onClick={() => {}}

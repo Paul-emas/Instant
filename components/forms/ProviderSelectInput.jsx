@@ -14,6 +14,7 @@ const ProviderSelectInput = ({
   options,
   selectedProvider,
   setSelectedProvider,
+  retry,
 }) => {
   const errorStyles = error
     ? 'border-red-600 focus:border-red-600 focus:outline-none'
@@ -80,8 +81,17 @@ const ProviderSelectInput = ({
               <EmptyIcon />
               <p className="text-gray-400 text-sm mt-2">No Providers Found</p>
               <p className="text-gray-700 text-xs">
-                This may be due to your location
+                This is a network error try again?
               </p>
+              <button
+                onClick={() => {
+                  retry();
+                  setOpenOptions(false);
+                }}
+                className="bg-primary-base font-semibold text-white rounded-lg px-3 py-1 mt-2"
+              >
+                Retry
+              </button>
             </div>
           ) : null}
           {options?.length

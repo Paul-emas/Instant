@@ -60,7 +60,7 @@ export default function Dashboard() {
         />
       );
     },
-    emptyState: function view() {
+    child: function view() {
       if (transactions.length <= 0) {
         return (
           <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-24 pb-32">
@@ -107,16 +107,20 @@ export default function Dashboard() {
   }, []);
 
   async function fetchTransactions() {
-    const resp = await getUserTransactions(token);
+    if (token) {
+      const resp = await getUserTransactions(token, 0, 10);
 
-    if (resp?.error) {
-      toast.error('Something went wrong');
-      setPageLoading(false);
-    }
+      if (resp?.error) {
+        toast.error('Something went wrong');
+        setPageLoading(false);
+      }
 
-    if (resp?.data) {
-      const { docs } = resp?.data;
-      setTransactions(docs);
+      if (resp?.data) {
+        const { docs } = resp?.data;
+        setTransactions(docs);
+        setPageLoading(false);
+      }
+    } else {
       setPageLoading(false);
     }
   }
@@ -171,7 +175,11 @@ export default function Dashboard() {
                       >
                         <td className="pl-6 py-4  whitespace-nowrap">
                           <div className="flex items-center">
-                            <div className="w-12 h-12 flex items-center rounded-2xl bg-secondary-green">
+                            <div
+                              className={`${
+                                active ? 'bg-secondary-green' : 'bg-red-600'
+                              } w-12 h-12 flex items-center rounded-2xl`}
+                            >
                               <BulbIcon className="mx-auto my-3" />
                             </div>
                             <div className="ml-8">

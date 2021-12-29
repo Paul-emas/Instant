@@ -51,7 +51,7 @@ export default function Solar() {
         </>
       );
     },
-    emptyState: function view() {
+    child: function view() {
       if (data.length <= 0 && !pageLoading) {
         return (
           <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-24 pb-32">

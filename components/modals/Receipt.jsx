@@ -156,7 +156,9 @@ const Receipt = ({ receipt }) => {
             <p className="text-sm">
               New to Instant Energy?{' '}
               <Link href="/auth/sign-up">
-                <a className="font-bold text-primary-base">Create an Account</a>
+                <a className="font-semibold text-primary-base">
+                  Create an Account
+                </a>
               </Link>
             </p>
           </div>

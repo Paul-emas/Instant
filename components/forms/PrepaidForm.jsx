@@ -15,6 +15,7 @@ const PrePaid = ({
   setStep,
   setOpenModal,
   setPaymentToken,
+  fetchProviders,
 }) => {
   const {
     register,
@@ -91,6 +92,7 @@ const PrePaid = ({
           placeholder="Enter account number"
           error={errors.select ?? false}
           options={providers}
+          retry={fetchProviders}
           selectedProvider={selectedProvider}
           setSelectedProvider={setSelectedProvider}
         />

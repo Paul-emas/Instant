@@ -4,8 +4,8 @@ import Table from '../components/Table';
 import AddMeter from '../components/modals/screens/AddMeter';
 import Tabs from '../components/tabs';
 
-import BulbIcon from '../public/svgs/bulb-dashed.svg';
-import Empty from '../public/svgs/empty-transcation.svg';
+import BulbIcon from '../public/svgs/bulb-db.svg';
+import Empty from '../public/svgs/meter-db.svg';
 
 import { getUserMeters } from '../api';
 import { toast } from 'react-toastify';
@@ -16,9 +16,18 @@ import cookies from 'js-cookie';
 
 export default function Meters() {
   const token = cookies.get('token');
+  const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
+  const [activeTab, setActiveTab] = useState(0);
+  const [openAddMeterModal, setOpenAddMeterModal] = useState(false);
+  const [meters, setMeters] = useState([]);
+  const [selectedMeter, setSelectedMeter] = useState(null);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [tableLoading, setTableLoading] = useState(true);
+
   const tableProps = {
     iconType: 'bulb',
     title: 'Your Meters',
+    loading: tableLoading,
     headings: [
       'Meter name',
       'Date added',
@@ -50,13 +59,13 @@ export default function Meters() {
         />
       );
     },
-    emptyState: function view() {
+    child: function view() {
       if (meters.length <= 0 && !pageLoading) {
         return (
           <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl py-32 2xl:pt-36 2xl:pb-64">
             <div className="flex flex-col items-center">
               <Empty />
-              <div className="text-base font-bold">
+              <div className="text-base font-bold mt-2">
                 {`You've not added any meters yet!`}
               </div>
               <p className="text-gray-400 text-sm max-w-xs text-center mt-1">
@@ -80,13 +89,6 @@ export default function Meters() {
     },
   };
 
-  const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
-  const [activeTab, setActiveTab] = useState(0);
-  const [openAddMeterModal, setOpenAddMeterModal] = useState(false);
-  const [meters, setMeters] = useState([]);
-  const [selectedMeter, setSelectedMeter] = useState(null);
-  const [pageLoading, setPageLoading] = useState(true);
-
   useEffect(() => {
     getMeters();
   }, []);
@@ -97,11 +99,13 @@ export default function Meters() {
     if (resp?.error) {
       toast.error('Something went wrong');
       setPageLoading(false);
+      setTableLoading(false);
     }
 
     if (resp?.data) {
       setMeters(resp?.data?.docs);
       setPageLoading(false);
+      setTableLoading(false);
     }
   }
 
@@ -127,7 +131,7 @@ export default function Meters() {
                   <tr className="pl-6 py-4 last:-white" key={`${item}${index}`}>
                     <td className="pl-6 py-4  whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="w-12 h-12 rounded-2xl bg-secondary-green">
+                        <div className="w-12 h-12 rounded-2xl bg-secondary-green flex items-center">
                           <BulbIcon className="mx-auto my-3" />
                         </div>
                         <div className="ml-8">
@@ -170,8 +174,11 @@ export default function Meters() {
                         >
                           Edit info
                         </button>
-                        <button className="py-1.5 px-3 bg-red-50 rounded-lg text-red-600 font-semibold text-xs">
-                          <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
+                        <button className="py-2.5 px-3 bg-red-50 rounded-lg text-red-600 font-semibold text-xs">
+                          <FontAwesomeIcon
+                            icon={faTrash}
+                            className="w-2.5 h-2.5"
+                          />
                         </button>
                       </div>
                     </td>

@@ -34,31 +34,31 @@ const Sidebar = () => {
       name: 'Home',
       url: '/dashboard',
       icon: faHome,
-      open: token ? false : true,
+      open: true,
     },
     {
       name: 'Solar Electricity',
       url: '/solar',
       icon: faSun,
-      open: false,
+      open: token ? true : false,
     },
     {
       name: 'My Metres',
       url: '/meters',
       icon: faMeteor,
-      open: false,
+      open: token ? true : false,
     },
     {
       name: 'Payments',
       url: '/payments',
       icon: faMoneyBillWave,
-      open: token ? false : true,
+      open: true,
     },
     {
       name: 'Settings',
       url: '/settings',
       icon: faCog,
-      open: false,
+      open: token ? true : false,
     },
   ];
 
@@ -121,7 +121,7 @@ const Sidebar = () => {
               <a>
                 <button
                   onClick={() => {
-                    if (token && !open) {
+                    if (open) {
                       router.push(url);
                     } else {
                       router.push('/sign-up');
@@ -132,7 +132,7 @@ const Sidebar = () => {
                       ? 'text-primary-base bg-white active-icon'
                       : 'text-white  hover:bg-primary-hover'
                   } ${
-                    !token && !open ? 'text-opacity-30' : ''
+                    !open ? 'text-opacity-30' : ''
                   }  pl-6 w-full rounded-xl text-left py-4  duration-100`}
                 >
                   <span className="flex items-center">

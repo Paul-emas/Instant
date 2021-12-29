@@ -89,6 +89,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
                   setStep={setStep}
                   setOpenModal={setOpen}
                   email={userEmail}
+                  fetchProviders={fetchProviders}
                   setPaymentToken={setPaymentToken}
                 />
               )}
@@ -99,6 +100,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
                   setStep={setStep}
                   setOpenModal={setOpen}
                   email={userEmail}
+                  fetchProviders={fetchProviders}
                   setPaymentToken={setPaymentToken}
                 />
               )}
