@@ -56,7 +56,7 @@ const Table = ({
           )}
         </div>
       </div>
-      {child && !loading && child()}
+      {child && child()}
     </div>
   );
 };
