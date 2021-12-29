@@ -13,12 +13,12 @@ const SolarAmountCard = props => {
             Premium plan
           </span>
         </div>
-        <p className="text-2xl font-bold mt-2.5">&#x20A6; 135,456.00</p>
+        <p className="text-2xl font-bold mt-2.5">&#x20A6; 0.00</p>
       </div>
       <div className="px-6">
         <div className="w-full h-7 mt-4 rounded-lg overflow-hidden bg-secondary-lighterGreen">
-          <div className="w-1/2 text-xs font-semibold rounded-r-lg flex justify-center items-center bg-secondary-green text-white h-full">
-            48% owned
+          <div className="w-11/12 text-xs font-semibold rounded-r-lg flex justify-center items-center bg-secondary-green text-white h-full">
+            0% owned
           </div>
         </div>
       </div>

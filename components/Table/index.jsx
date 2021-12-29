@@ -8,10 +8,10 @@ const Table = ({
   titleLabel,
   tabs,
   children,
-  emptyState,
+  child,
 }) => {
   return (
-    <div className="flex flex-col mt-5 bg-white sm:rounded-xl">
+    <div className="flex flex-col mt-5 bg-white sm:rounded-xl overflow-hidden">
       <div className="py-3 px-7 mt-4">
         <div className="flex items-center justify-between w-full">
           <h3 className="text-xl font-bold text-font-dark flex items-start">
@@ -26,7 +26,7 @@ const Table = ({
         </div>
       </div>
       {tabs && tabs()}
-      <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-6 pb-8">
+      <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-6">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6">
           <div className="overflow-hidden">
             <table className="min-w-full bg-white">
@@ -48,7 +48,7 @@ const Table = ({
           </div>
         </div>
       </div>
-      {emptyState && emptyState()}
+      {child && child()}
     </div>
   );
 };

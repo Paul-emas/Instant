@@ -6,11 +6,54 @@ import Tabs from '../components/tabs';
 import Empty from '../public/svgs/empty-transcation.svg';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
 import Button from '../components/Button';
+import { getUserTransactions } from '../api';
+import cookies from 'js-cookie';
+import { toast } from 'react-toastify';
+import BulbIcon from '../public/svgs/bulb-db.svg';
+import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload, faRedo } from '@fortawesome/free-solid-svg-icons';
+import Pagination from '../components/Table/Pagination';
 
 export default function Payments() {
+  const token = cookies.get('token');
+
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
+
+  async function fetchTransactions(currentPage = 0) {
+    const resp = await getUserTransactions(token, currentPage, itemsPerPage);
+
+    if (resp?.error) {
+      toast.error('Something went wrong');
+      setPageLoading(false);
+    }
+
+    if (resp?.data) {
+      const { page, docs, totalDocs, totalPages } = resp?.data;
+      setCurrentPage(page);
+      setTransactions(docs);
+      setPageCount(totalPages);
+      setPageLoading(false);
+      setTotalDocs(totalDocs);
+    }
+  }
+
+  const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
+  const [activeTab, setActiveTab] = useState(0);
+  const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
+  const [transactions, setTransactions] = useState([]);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [totalDocs, setTotalDocs] = useState(0);
+  const [itemsPerPage, setItemPerPage] = useState(10);
+  const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+
   const tableProps = {
     title: 'Your transactions',
     headings: [
+      '#',
       'Transaction Information',
       'Date',
       'Distributor',
@@ -18,6 +61,7 @@ export default function Payments() {
       'Reference number',
       'Amount',
       'Status',
+      'Actions',
     ],
     viewAll: function view() {
       return <Button>Wallet History</Button>;
@@ -32,8 +76,8 @@ export default function Payments() {
         />
       );
     },
-    emptyState: function view() {
-      if (transcations.length <= 0 && !pageLoading) {
+    child: function view() {
+      if (transactions.length <= 0 && !pageLoading) {
         return (
           <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-28 pb-40">
             <div className="flex flex-col items-center">
@@ -55,20 +99,18 @@ export default function Payments() {
           </div>
         );
       }
+
+      return (
+        <Pagination
+          items={transactions}
+          totalItems={totalDocs}
+          itemsPerPage={itemsPerPage}
+          pageCount={pageCount}
+          fetch={fetchTransactions}
+        />
+      );
     },
   };
-
-  const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
-  const [activeTab, setActiveTab] = useState(0);
-  const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
-  const [transcations, setTranscations] = useState([]);
-  const [pageLoading, setPageLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setPageLoading(false);
-    }, 2000);
-  });
 
   return (
     <>
@@ -87,7 +129,105 @@ export default function Payments() {
           <div className="pt-10">
             <WalletCard />
           </div>
-          <Table {...tableProps}></Table>
+          <Table {...tableProps}>
+            {transactions.map((item, index) => {
+              const active = item?.status === 'success' ? true : false;
+              return (
+                <tr className="pl-2 py-4 last:-white" key={`${item}${index}`}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-font-grey">
+                      {index + 1 + currentPage * 10}
+                    </div>
+                  </td>
+                  <td className="pl-6 py-4  whitespace-nowrap">
+                    <div className="flex items-center">
+                      <div
+                        className={`${
+                          active ? 'bg-secondary-green' : 'bg-red-600'
+                        } w-12 h-12 flex items-center rounded-2xl`}
+                      >
+                        <BulbIcon className="mx-auto my-3" />
+                      </div>
+                      <div className="ml-8">
+                        <div>
+                          <div className="text-sm font-bold text-font-dark">
+                            Unit Purchased
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4  whitespace-nowrap">
+                    <div className="text-sm text-font-grey">
+                      {moment(item?.createdAt).utc().format('LLL')}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4  whitespace-nowrap">
+                    <div className="text-sm text-font-grey">
+                      {item?.meter?.provider?.disco?.shortName}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4  whitespace-nowrap">
+                    <div className="text-sm text-font-grey">
+                      {item?.meter?.number}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4  whitespace-nowrap">
+                    <div className="text-sm font-bold">{item?.reference}</div>
+                  </td>
+                  <td className="px-6 py-4  whitespace-nowrap">
+                    <div className="text-sm font-bold">
+                      <div className="text-sm  text-font-grey">
+                        <span className="font-semibold">
+                          {item?.country?.currency}
+                        </span>
+                        <span className="text-font-dark ml-1 font-bold">
+                          {item?.amount.toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4  whitespace-nowrap">
+                    <div className="text-sm font-bold">
+                      {active && (
+                        <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg bg-green-100 text-font-green capitalize">
+                          {item?.status}
+                        </span>
+                      )}
+                      {!active && (
+                        <span className="px-3 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-lg bg-red-100 text-red-600 capitalize">
+                          {item?.status}
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4  whitespace-nowrap text-sm text-gray-500">
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => {}}
+                        className="py-1.5 px-3 bg-primary-light active:bg-gray-200 rounded-lg text-gray-700 font-semibold text-xs flex items-center"
+                      >
+                        <FontAwesomeIcon
+                          icon={faDownload}
+                          className="w-2.5 h-2.5"
+                        />
+                        {/* <span className="ml-1">Receipt</span> */}
+                      </button>
+                      <button
+                        onClick={() => {}}
+                        className="py-2.5 px-3 bg-primary-light active:bg-gray-200 rounded-lg font-semibold text-xs flex items-center"
+                      >
+                        <FontAwesomeIcon
+                          icon={faRedo}
+                          className="w-2.5 h-2.5 text-gray-700"
+                        />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </Table>
         </>
       )}
     </>

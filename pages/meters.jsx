@@ -124,7 +124,7 @@ export default function Meters() {
             <Table {...tableProps}>
               {meters.map((item, index) => {
                 return (
-                  <tr className="pl-6 py-4 last:-white" key={index}>
+                  <tr className="pl-6 py-4 last:-white" key={`${item}${index}`}>
                     <td className="pl-6 py-4  whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="w-12 h-12 rounded-2xl bg-secondary-green">

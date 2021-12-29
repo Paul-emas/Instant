@@ -155,3 +155,21 @@ export async function getUserMeters(token) {
     if (error.response) return { error: error.response.data };
   }
 }
+
+export async function getUserTransactions(token, skip, limit) {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/transaction/token/me?skip=${skip}&limit=${limit}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}

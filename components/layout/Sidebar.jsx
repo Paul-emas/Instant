@@ -34,26 +34,31 @@ const Sidebar = () => {
       name: 'Home',
       url: '/dashboard',
       icon: faHome,
+      open: token ? false : true,
     },
     {
       name: 'Solar Electricity',
       url: '/solar',
       icon: faSun,
+      open: false,
     },
     {
       name: 'My Metres',
       url: '/meters',
       icon: faMeteor,
+      open: false,
     },
     {
       name: 'Payments',
       url: '/payments',
       icon: faMoneyBillWave,
+      open: token ? false : true,
     },
     {
       name: 'Settings',
       url: '/settings',
       icon: faCog,
+      open: false,
     },
   ];
 
@@ -111,41 +116,31 @@ const Sidebar = () => {
           </div>
         </div>
         <div className="px-3 2xl:px-6 space-y-2.5 2xl:space-y-5 py-8">
-          {routes.map(({ name, url, icon }, index) => (
+          {routes.map(({ name, url, icon, open }, index) => (
             <div key={index}>
-              {token && (
-                <Link href={url}>
-                  <a>
-                    <button
-                      className={`${
-                        router.asPath === url
-                          ? 'text-primary-base bg-white active-icon'
-                          : 'text-white  hover:bg-primary-hover'
-                      } pl-6 w-full rounded-xl text-left py-4  duration-100`}
-                    >
-                      <span className="flex items-center">
-                        <FontAwesomeIcon icon={icon} className="w-5 h-5" />
-                        <span className="text-sm font-bold ml-5">{name}</span>
-                      </span>
-                    </button>
-                  </a>
-                </Link>
-              )}
-              {!token && (
+              <a>
                 <button
-                  onClick={() => router.push('/sign-up')}
+                  onClick={() => {
+                    if (token && !open) {
+                      router.push(url);
+                    } else {
+                      router.push('/sign-up');
+                    }
+                  }}
                   className={`${
                     router.asPath === url
                       ? 'text-primary-base bg-white active-icon'
-                      : 'text-white text-opacity-30  hover:bg-primary-hover'
-                  } pl-6 w-full rounded-xl text-left py-4  duration-100`}
+                      : 'text-white  hover:bg-primary-hover'
+                  } ${
+                    !token && !open ? 'text-opacity-30' : ''
+                  }  pl-6 w-full rounded-xl text-left py-4  duration-100`}
                 >
                   <span className="flex items-center">
                     <FontAwesomeIcon icon={icon} className="w-5 h-5" />
                     <span className="text-sm font-bold ml-5">{name}</span>
                   </span>
                 </button>
-              )}
+              </a>
             </div>
           ))}
           <div className="absolute w-full bottom-12 left-0">

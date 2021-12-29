@@ -122,7 +122,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
                 className="py-2.5 px-5 mt-2"
                 type="number"
                 id="meter"
-                value={selectedMeter?.meter?.number}
+                value={selectedMeter && selectedMeter?.meter?.number}
                 errors={errors}
                 placeholder="Enter meter number"
                 label="Meter number"
@@ -152,7 +152,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
                 className="py-2.5 px-5 mt-2"
                 id="label"
                 errors={errors}
-                value={selectedMeter?.label}
+                value={selectedMeter && selectedMeter?.label}
                 placeholder="John Doe's Meter"
                 label="Nickname meter (Optional)"
                 {...register('label', {
