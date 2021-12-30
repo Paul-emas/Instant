@@ -122,9 +122,9 @@ export default function Transactions() {
   return (
     <>
       {pageLoading && (
-        <div className="pt-10">
-          <div className="bg-white rounded-3xl w-full py-16"></div>
-          <div className="bg-white w-full min-h-screen rounded-xl mt-5"></div>
+        <div className="pt-5 sm:pt-10">
+          <div className="bg-primary-light sm:bg-white rounded-3xl w-full py-16"></div>
+          <div className="bg-primary-light sm:bg-white w-full min-h-screen rounded-xl mt-5"></div>
         </div>
       )}
       {!pageLoading && (

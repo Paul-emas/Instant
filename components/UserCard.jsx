@@ -12,7 +12,7 @@ import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { useGlobalContext } from '../hooks/useGlobalContext';
 import useDispatcher from '../hooks/useDispatcher';
 
-const UserCard = ({ openLogout, animate }) => {
+const UserCard = ({ openLogout, animate, setOpenNav }) => {
   const token = cookie.get('token');
   const router = useRouter();
   const {
@@ -39,6 +39,7 @@ const UserCard = ({ openLogout, animate }) => {
   const signOut = () => {
     cookie.remove('token');
     router.push('/');
+    setOpenNav(false);
     setUserAccount({ me: null });
   };
 

@@ -64,7 +64,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
   return (
     <aside className="relative">
       <div
-        onClick={() => setOpenNav(!openNav)}
+        onClick={() => setOpenNav(false)}
         className={`${
           openNav ? 'opacity-100 visible' : 'opacity-0 invisible'
         } w-full min-h-screen bg-secondary-modal bg-opacity-70 top-0 left-0 duration-200  z-40 fixed`}
@@ -146,7 +146,11 @@ const Sidebar = ({ openNav, setOpenNav }) => {
             </div>
           ))}
         </div>
-        <UserCard animate={animate} openLogout={openLogout} />
+        <UserCard
+          animate={animate}
+          openLogout={openLogout}
+          setOpenNav={setOpenNav}
+        />
       </div>
     </aside>
   );

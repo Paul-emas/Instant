@@ -1,15 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import cookie from 'js-cookie';
 
 import Button from '../Button';
 
 const Navbar = () => {
   const [isScrolling, setIsScrolling] = useState(false);
-  const router = useRouter();
-  const token = cookie.get('token');
 
   useEffect(() => {
     window.onscroll = () => {
@@ -73,8 +69,8 @@ const Navbar = () => {
                 Offgrid
               </a>
             </Link>
-            <Link href={token ? '/dashboard' : '/sign-in'}>
-              <Button>{token ? 'My Dashboard' : 'Login'}</Button>
+            <Link href="/sign-in">
+              <Button>Login</Button>
             </Link>
           </div>
         </div>
