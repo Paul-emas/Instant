@@ -112,7 +112,7 @@ const AuthWrapper = ({ title, caption, banner, children }) => {
         <div className="bg-white relative lg:py-10 xl:h-screen justify-center lg:overflow-y-auto">
           <button
             onClick={goBack}
-            className="py-2.5 rounded-lg w-28 justify-center text-sm font-semibold bg-primary-light hover:opacity-80 flex relative items-center -top-20 mb-20 -mt-2.5 lg:-top-2 lg:mt-0 float-right right-32 z-10"
+            className="py-2.5 rounded-lg w-28 justify-center text-sm font-semibold bg-primary-light hover:opacity-80 hidden sm:flex relative items-center -top-20 mb-20 -mt-2.5 lg:-top-2 lg:mt-0 float-right right-32 z-10"
           >
             <FontAwesomeIcon icon={faChevronLeft} className="w-3 h-3 mr-2" />
             <span className="mt-0.5">Go back</span>

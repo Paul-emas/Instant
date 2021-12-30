@@ -49,7 +49,7 @@ const Table = ({
             </div>
           )}
           {loading && (
-            <div className="py-44">
+            <div className="py-8 sm:py-44">
               <RequestLoader type="request" />
             </div>
           )}

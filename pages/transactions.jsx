@@ -133,7 +133,7 @@ export default function Transactions() {
             open={openBuyElectricityModal}
             setOpen={setOpenBuyElectricityModal}
           />
-          <div className="pt-10">
+          <div className="pt-5 sm:pt-10">
             <WalletCard />
           </div>
           <Table {...tableProps}>

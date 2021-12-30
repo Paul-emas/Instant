@@ -124,7 +124,7 @@ export default function Meters() {
             selectedMeter={selectedMeter}
             setSelectedMeter={setSelectedMeter}
           />
-          <div className="pt-5 2xl:pt-7">
+          <div className="pt-0 2xl:pt-7">
             <Table {...tableProps}>
               {meters.map((item, index) => {
                 return (

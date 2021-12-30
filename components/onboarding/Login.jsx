@@ -57,7 +57,7 @@ const Login = () => {
   return (
     <Fragment>
       <div className="fadeIn w-full mx-auto xl:pt-28 2xl:pt-44 md:max-w-lg px-5 md:w-auth">
-        <h1 className="text-32xl font-bold text-center ">
+        <h1 className="text-32xl font-bold text-center">
           Welcome to Instant Energy
         </h1>
         <p className="text-gray-700 mt-3 text-sm lg:text-base text-center">
