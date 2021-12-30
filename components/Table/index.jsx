@@ -1,4 +1,5 @@
 import RequestLoader from '../loaders/RequestLoader';
+import { isMobile } from 'react-device-detect';
 
 const Table = ({
   title,
@@ -28,8 +29,8 @@ const Table = ({
       {tabs && tabs()}
       <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-6">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6">
-          {!loading && (
-            <div className="overflow-hidden hidden sm:block">
+          {!loading && !isMobile && (
+            <div className="overflow-hidden">
               <table className="min-w-full bg-white">
                 <thead>
                   <tr>
@@ -48,6 +49,7 @@ const Table = ({
               </table>
             </div>
           )}
+          {!loading && isMobile && <div>{children}</div>}
           {loading && (
             <div className="py-8 sm:py-44">
               <RequestLoader type="request" />

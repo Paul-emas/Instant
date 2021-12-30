@@ -19,6 +19,7 @@ import cookies from 'js-cookie';
 import moment from 'moment';
 import { toast } from 'react-toastify';
 import WalletCard from '../components/WalletCard';
+import { isMobile } from 'react-device-detect';
 
 export default function Dashboard() {
   const token = cookies.get('token');
@@ -163,83 +164,149 @@ export default function Dashboard() {
                 </div>
                 <SolarCard />
                 <Table {...tableProps}>
-                  {transactions.map((item, index) => {
-                    const active = item?.status === 'success' ? true : false;
-                    return (
-                      <tr
-                        className="pl-6 py-4 last:-white"
-                        key={`${item}${index}`}
-                      >
-                        <td className="pl-6 py-4  whitespace-nowrap">
-                          <div className="flex items-center">
-                            <div
-                              className={`${
-                                active ? 'bg-secondary-green' : 'bg-red-600'
-                              } w-12 h-12 flex items-center rounded-2xl`}
-                            >
-                              <BulbIcon className="mx-auto my-3" />
-                            </div>
-                            <div className="ml-8">
-                              <div>
-                                <div className="text-sm font-bold text-font-dark">
-                                  Unit Purchased
+                  {!isMobile &&
+                    transactions.map((item, index) => {
+                      const active = item?.status === 'success' ? true : false;
+                      return (
+                        <tr
+                          className="pl-6 py-4 last:-white"
+                          key={`${item}${index}`}
+                        >
+                          <td className="pl-6 py-4  whitespace-nowrap">
+                            <div className="flex items-center">
+                              <div
+                                className={`${
+                                  active ? 'bg-secondary-green' : 'bg-red-600'
+                                } w-12 h-12 flex items-center rounded-2xl`}
+                              >
+                                <BulbIcon className="mx-auto my-3" />
+                              </div>
+                              <div className="ml-8">
+                                <div>
+                                  <div className="text-sm font-bold text-font-dark">
+                                    Unit Purchased
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4  whitespace-nowrap">
-                          <div className="text-sm text-font-grey">
-                            {moment(item?.createdAt).utc().format('L')}{' '}
-                            <span className="ml-2">
-                              {moment(item?.createdAt).utc().format('LTS')}
-                            </span>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4  whitespace-nowrap">
-                          <div className="text-sm text-font-grey">
-                            {item?.meter?.provider?.disco?.shortName}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4  whitespace-nowrap">
-                          <div className="text-sm text-font-grey">
-                            {item?.meter?.number}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4  whitespace-nowrap">
-                          <div className="text-sm font-bold">
-                            {item?.reference}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4  whitespace-nowrap">
-                          <div className="text-sm font-bold">
-                            <div className="text-sm  text-font-grey">
-                              <span className="font-semibold">
-                                {item?.country?.currency}
-                              </span>
-                              <span className="text-font-dark ml-1 font-bold">
-                                {item?.amount.toLocaleString()}
+                          </td>
+                          <td className="px-6 py-4  whitespace-nowrap">
+                            <div className="text-sm text-font-grey">
+                              {moment(item?.createdAt).utc().format('L')}{' '}
+                              <span className="ml-2">
+                                {moment(item?.createdAt).utc().format('LTS')}
                               </span>
                             </div>
+                          </td>
+                          <td className="px-6 py-4  whitespace-nowrap">
+                            <div className="text-sm text-font-grey">
+                              {item?.meter?.provider?.disco?.shortName}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4  whitespace-nowrap">
+                            <div className="text-sm text-font-grey">
+                              {item?.meter?.number}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4  whitespace-nowrap">
+                            <div className="text-sm font-bold">
+                              {item?.reference}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4  whitespace-nowrap">
+                            <div className="text-sm font-bold">
+                              <div className="text-sm  text-font-grey">
+                                <span className="font-semibold">
+                                  {item?.country?.currency}
+                                </span>
+                                <span className="text-font-dark ml-1 font-bold">
+                                  {item?.amount.toLocaleString()}
+                                </span>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4  whitespace-nowrap">
+                            <div className="text-sm font-bold">
+                              {active && (
+                                <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg bg-green-100 text-font-green capitalize">
+                                  Receipt
+                                </span>
+                              )}
+                              {!active && (
+                                <span className="px-3 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-lg bg-red-100 text-red-600 capitalize">
+                                  Retry
+                                </span>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  {isMobile &&
+                    transactions.slice(0, 2).map((item, index) => {
+                      return (
+                        <div className="px-3 py-4" key={`${item}${index}`}>
+                          <div className="w-full pb-6 border-2 border-gray-200 rounded-xl bg-white">
+                            <div className="flex justify-between items-center py-3 px-4 border-b">
+                              <div className="text-sm text-gray-500 font-semibold">
+                                Ref: {item?.reference}
+                              </div>
+                              <div className="text-sm text-gray-500 font-semibold">
+                                {moment(item?.createdAt).utc().format('L')}{' '}
+                                <span className="ml-1">
+                                  {moment(item?.createdAt).utc().format('LTS')}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="flex justify-between items-center py-3 px-4">
+                              <div className="text-sm font-bold">
+                                Unit purchased
+                              </div>
+                              <div className="text-sm font-semibold">
+                                <span className="font-semibold">
+                                  {item?.country?.currency}
+                                </span>
+                                <span className="text-font-dark ml-1 font-bold">
+                                  {item?.amount.toLocaleString()}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="flex justify-between items-center px-4 -mt-2">
+                              <div className="text-xs font-semibold text-gray-500">
+                                {item?.meter?.number}
+                              </div>
+                              <div className="text-xs text-primary-dark text-opacity-80 font-semibold">
+                                {item?.meter?.provider?.disco?.shortName}
+                              </div>
+                            </div>
+                            <div className="px-4 mt-2">
+                              <div className="flex">
+                                <p className="text-xs py-1 px-3 rounded-md max-w-xs bg-primary-light font-semibold text-primary-base">
+                                  <span className="truncate">
+                                    {item?.meter?.address}
+                                  </span>
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                        </td>
-                        <td className="px-6 py-4  whitespace-nowrap">
-                          <div className="text-sm font-bold">
-                            {active && (
-                              <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg bg-green-100 text-font-green capitalize">
-                                Receipt
-                              </span>
-                            )}
-                            {!active && (
-                              <span className="px-3 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-lg bg-red-100 text-red-600 capitalize">
-                                Retry
-                              </span>
-                            )}
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                        </div>
+                      );
+                    })}
+                  {isMobile && (
+                    <div className="flex justify-center pb-5">
+                      <Link href="/transactions">
+                        <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
+                          <span className="flex relative items-center justify-center">
+                            <span className="mr-2">See all</span>
+                            <FontAwesomeIcon
+                              icon={faChevronRight}
+                              className="w-3 h-3"
+                            />
+                          </span>
+                        </button>
+                      </Link>
+                    </div>
+                  )}
                 </Table>
               </>
             )}

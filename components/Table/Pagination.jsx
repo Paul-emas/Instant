@@ -17,8 +17,8 @@ const Pagination = ({ pageCount, totalItems, itemsPerPage, fetch }) => {
 
   return (
     <>
-      <div className="flex items-center justify-between px-8 py-6 border-t pagination">
-        <div>
+      <div className="flex flex-col-reverse sm:flex-row items-center sm:justify-between px-8 py-6 border-t pagination">
+        <div className="mt-4 sm:mt-0">
           <p className="text-sm text-gray-500">
             Showing <span>{itemOffset + 1}</span> -{' '}
             <span>{endOffset <= totalItems ? endOffset : totalItems}</span> of{' '}

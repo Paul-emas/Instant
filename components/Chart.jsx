@@ -21,7 +21,24 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
     setSelectedMonthStats(chart_three);
   };
 
-  const ranges = ['Hourly', 'Daily', 'Weekly', 'Monthly'];
+  const ranges = [
+    {
+      name: 'Hourly',
+      data: chart_one,
+    },
+    {
+      name: 'Daily',
+      data: chart_two,
+    },
+    {
+      name: 'Weekly',
+      data: chart_three,
+    },
+    {
+      name: 'Monthly',
+      data: chart_one,
+    },
+  ];
 
   return (
     <>
@@ -34,7 +51,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
             <SelectInput
               selectedOption={selectedMonth}
               setSelectedOption={setSelectedMonth}
-              options={[{ name: '1 month' }, { name: '2 months' }]}
+              options={[{ name: '1 month' }, { name: '2 month' }]}
             />
           </div>
         </div>
@@ -170,17 +187,20 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
         </div>
       </div>
       <div className="flex sm:hidden space-x-4 py-6">
-        {ranges.map((range, index) => (
+        {ranges.map(({ name, data }, index) => (
           <div
-            onClick={() => setActiveRange(index)}
-            key={`${range}${index}`}
+            onClick={() => {
+              setActiveRange(index);
+              setSelectedMonthStats(data);
+            }}
+            key={`${name}${index}`}
             className={`${
               activeRange === index
                 ? 'text-primary-base border-primary-base'
                 : 'border-gray-200'
             } py-2 px-4 border  text-sm rounded-lg font-semibold`}
           >
-            {range}
+            {name}
           </div>
         ))}
       </div>
