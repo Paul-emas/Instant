@@ -2,7 +2,7 @@ const index = ({ data, center = false, activeTab, setActiveTab }) => {
   return (
     <div
       className={`flex ${
-        center ? 'justify-center' : 'justify-start'
+        center ? 'justify-center' : 'justify-center sm:justify-start'
       } space-x-10 px-8  border-b`}
     >
       {data?.map(({ name }, ind) => (

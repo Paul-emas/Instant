@@ -257,5 +257,22 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .home-banner {
-  padding-top: 32rem;
+  @apply pt-24;
+}
+
+.sm_shadow {
+  box-shadow: -3px 3px 40px rgba(0, 0, 0, 0.06);
+}
+
+.phone-input {
+  font-size: 14px !important;
+}
+
+@screen sm {
+  .home-banner {
+    padding-top: 32rem;
+  }
+  .sm_shadow {
+    box-shadow: none;
+  }
 }

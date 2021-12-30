@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import Sidebar from '../layout/Sidebar';
 import PageLoader from '../loaders/PageLoader';
+
+import MenuIcon from '../../public/svgs/menu.svg';
 
 const Wrapper = ({ children }) => {
   const router = useRouter();
@@ -18,6 +22,7 @@ const Wrapper = ({ children }) => {
     '/auth/otp/forgot',
   ];
   const [pageLoading, setPageLoading] = useState(false);
+  const [openNav, setOpenNav] = useState(false);
 
   let isRouteProtected = false;
   let isAuthRoute = false;
@@ -80,10 +85,28 @@ const Wrapper = ({ children }) => {
       {(isRouteBypass || isRouteProtected) && !pageLoading && (
         <div className="min-h-screen w-full overflow-hidden bg-gray-300">
           <div className="min-h-screen">
-            <Sidebar />
-            <div className="p-0 pb-8 bg-primary-light">
+            <Sidebar openNav={openNav} setOpenNav={setOpenNav} />
+            <div className="p-0 pb-8 bg-white sm:bg-primary-light">
               <main className="min-h-screen main-content">
-                <div className="px-5 2xl:px-7">{children}</div>
+                <div className="flex sm:hidden justify-between items-center h-14 px-4">
+                  <div className="container mx-auto">
+                    <div className="relative top-1">
+                      <Link href="/">
+                        <a>
+                          <Image
+                            src="/images/logo.webp"
+                            width={140.13}
+                            height={40.23}
+                            className="object-contain"
+                            priority={true}
+                          />
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
+                  <MenuIcon onClick={() => setOpenNav(true)} />
+                </div>
+                <div className="px-4 2xl:px-7">{children}</div>
               </main>
             </div>
           </div>

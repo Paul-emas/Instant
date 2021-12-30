@@ -11,7 +11,7 @@ const SolarPanelStatusCards = ({
   Icon,
 }) => {
   return (
-    <div className="py-6 px-8 bg-white rounded-xl">
+    <div className="py-6 px-8 bg-white rounded-xl sm_shadow">
       <div className="flex justify-between items-center">
         <div>
           <div className="text-xs font-semibold text-secondary-label">

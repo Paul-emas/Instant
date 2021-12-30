@@ -14,7 +14,7 @@ import WalletIcon from '../../public/svgs/wallet-sm.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserCard from '../UserCard';
 
-const Sidebar = () => {
+const Sidebar = ({ openNav, setOpenNav }) => {
   const router = useRouter();
   const [openLogout, setOpenLogout] = useState(false);
   const userToken = cookie.get('token');
@@ -62,8 +62,18 @@ const Sidebar = () => {
   };
 
   return (
-    <aside>
-      <div className="min-h-screen -left-full lg:left-0 fixed w-60 2xl:w-sidebar pt-5 2xl:pt-10 bg-primary-base bg-contain">
+    <aside className="relative">
+      <div
+        onClick={() => setOpenNav(!openNav)}
+        className={`${
+          openNav ? 'opacity-100 visible' : 'opacity-0 invisible'
+        } w-full min-h-screen bg-secondary-modal bg-opacity-70 top-0 left-0 duration-200  z-40 fixed`}
+      ></div>
+      <div
+        className={`${
+          openNav ? 'left-0' : '-left-full lg:left-0'
+        } min-h-screen  fixed w-72 sm:w-60 2xl:w-sidebar pt-5 2xl:pt-10 bg-primary-base bg-contain z-50 ease`}
+      >
         {openLogout && (
           <div
             onClick={() => setOpenLogout(false)}
@@ -113,8 +123,10 @@ const Sidebar = () => {
                   onClick={() => {
                     if (open) {
                       router.push(url);
+                      setOpenNav(false);
                     } else {
                       router.push('/sign-up');
+                      setOpenNav(false);
                     }
                   }}
                   className={`${

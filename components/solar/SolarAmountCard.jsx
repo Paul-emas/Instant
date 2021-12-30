@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SolarAmountCard = props => {
   return (
-    <div className="bg-white rounded-xl mt-10 h-44">
+    <div className="bg-white rounded-xl sm:mt-10 h-44 sm_shadow">
       <div className="pt-5 pb-6 border-b px-6">
         <div className="flex items-center">
           <span className="text-sm text-primary-darker font-semibold">

@@ -6,7 +6,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 const SolarPaymentCard = props => {
   const active = false;
   return (
-    <div className="bg-white rounded-xl mt-8 py-5 flex flex-col justify-center px-10 h-44">
+    <div className="bg-white rounded-xl mt-8 py-5 flex flex-col justify-center px-10 h-44 sm_shadow">
       <div className="pb-2 text-sm font-bold border-b flex justify-between items-center">
         <span className="text-secondary-label font-semibold">Plan</span>
         <span

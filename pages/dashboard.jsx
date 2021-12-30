@@ -10,19 +10,15 @@ import Tabs from '../components/tabs';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
 
 import BulbIcon from '../public/svgs/bulb-db.svg';
-import SunIcon from '../public/svgs/sun.svg';
 import Empty from '../public/svgs/empty-transcation.svg';
 import DashboardSkeleton from '../components/skeletons/DashboardSkeleton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronRight,
-  faDownload,
-  faRedo,
-} from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { getUserTransactions } from '../api';
 import cookies from 'js-cookie';
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import WalletCard from '../components/WalletCard';
 
 export default function Dashboard() {
   const token = cookies.get('token');
@@ -141,7 +137,8 @@ export default function Dashboard() {
           <div className="pt-5 2xl:pt-10">
             {!pageLoading && (
               <>
-                <div className="flex items-center justify-between">
+                <WalletCard className="block sm:hidden" />
+                <div className="hidden sm:flex items-center justify-between">
                   <div>
                     <h1 className="text-heading font-bold ">Buy Electricity</h1>
                     <p className="text-md font-medium text-font-muted">
@@ -155,7 +152,7 @@ export default function Dashboard() {
                 <div className="grid lg:space-x-5 lg:grid-cols-6">
                   <div className="lg:col-span-4">
                     <Chart
-                      title="Electricity units purchased"
+                      title="Units purchased"
                       selectedMonth={chartSelectedMonth}
                       setSelectedMonth={setChartSelectedMonth}
                     />

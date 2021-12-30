@@ -5,6 +5,24 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    screens: {
+      'home-h': { raw: '(min-height: 900px)' },
+      'home-h-small': { raw: '(min-height: 768px)' },
+      xzms: '320px',
+      xzs: '360px',
+      xxzs: '376px',
+      xxs: '415px',
+      xs: '601px',
+      sm: '640px',
+      md: '769px',
+      lg: '1025px',
+      xl: '1280px',
+      '2xl': '1356px',
+      '3xl': '1440px',
+      '3.5xl': '1536px',
+      '4xl': '1920px',
+      '5xl': '2560px',
+    },
     extend: {
       colors: {
         font: {

@@ -97,7 +97,7 @@ export default function Solar() {
 
       {!pageLoading && (
         <>
-          <div className="flex items-center justify-between">
+          <div className="hidden sm:flex items-center justify-between">
             <div>
               <h1 className="text-heading font-bold ">Your Solar Plan</h1>
               <p className="text-md font-medium text-font-muted">

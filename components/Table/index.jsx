@@ -11,9 +11,9 @@ const Table = ({
   child,
 }) => {
   return (
-    <div className="flex flex-col mt-5 bg-white sm:rounded-xl overflow-hidden">
+    <div className="flex flex-col mt-5 bg-white rounded-xl overflow-hidden sm_shadow">
       <div className="py-3 px-7 mt-4">
-        <div className="flex items-center justify-between w-full">
+        <div className="flex items-center justify-center sm:justify-between w-full">
           <h3 className="text-xl font-bold text-font-dark flex items-start">
             <span>{title}</span>
             {titleLabel && (
@@ -22,14 +22,14 @@ const Table = ({
               </span>
             )}
           </h3>
-          {viewAll && viewAll()}
+          <div className="hidden sm:block">{viewAll && viewAll()}</div>
         </div>
       </div>
       {tabs && tabs()}
       <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-6">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6">
           {!loading && (
-            <div className="overflow-hidden">
+            <div className="overflow-hidden hidden sm:block">
               <table className="min-w-full bg-white">
                 <thead>
                   <tr>

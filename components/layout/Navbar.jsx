@@ -49,8 +49,8 @@ const Navbar = () => {
               <a>
                 <Image
                   src="/images/logo.webp"
-                  width={122.13}
-                  height={35.23}
+                  width={140.13}
+                  height={40.23}
                   className="object-contain"
                   priority={true}
                 />

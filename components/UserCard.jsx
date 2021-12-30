@@ -31,7 +31,7 @@ const UserCard = ({ openLogout, animate }) => {
     if (resp?.error) {
       setUserAccount({ me: null });
     }
-    if (resp.data) {
+    if (resp?.data) {
       setUserAccount({ me: resp?.data });
     }
   }
