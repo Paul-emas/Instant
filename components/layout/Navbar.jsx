@@ -27,7 +27,7 @@ const Navbar = () => {
         isScrolling
           ? 'border-b bg-white h-14 lg:h-16'
           : 'bg-primary-light h-24 lg:h-16'
-      }   fixed transition-all z-40 inset-0`}
+      }  fixed transition-all z-40 inset-0`}
     >
       <div className="xl:container mx-auto h-full px-4 lg:px-10">
         <div className="flex justify-between h-full items-center">

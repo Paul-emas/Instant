@@ -4,7 +4,6 @@ import Header from '../components/homepage/Header';
 import QuickPay from '../components/modals/QuickPay';
 import Partners from '../components/homepage/Partners';
 import UserServices from '../components/homepage/UserServices';
-import BuyElectricity from '../components/homepage/BuyElectricity';
 import Counter from '../components/homepage/Counter';
 import DownloadApp from '../components/homepage/DownloadApp';
 import FAQs from '../components/homepage/FAQs';
@@ -12,6 +11,9 @@ import People from '../components/homepage/People';
 import Slider from '../components/homepage/Slider';
 import CTA from '../components/homepage/CTA';
 import Footer from '../components/homepage/Footer';
+import HomeBanners from '../components/homepage/HomeBanners';
+import PaymentPlans from '../components/forms/PaymentPlans';
+import Buy from '../components/homepage/Buy';
 
 export default function Home() {
   return (
@@ -39,26 +41,13 @@ export default function Home() {
       </Header>
       <main>
         <Partners />
-        <UserServices border />
-        <BuyElectricity bg="bg-secondary-lightGreen" />
-        <BuyElectricity
-          title="Never run of power with solar electricity"
-          iconText="Solar electricity"
-          cta="Request Solar"
-          alignRight
-        />
-        <BuyElectricity
-          title="Buy electricity units at Offgrid"
-          cta="Request Demo"
-          bg="bg-secondary-lightBlue"
-        />
+        <UserServices />
+        <HomeBanners />
+        <PaymentPlans />
+        <Buy />
         <Counter />
         <DownloadApp />
-        <FAQs />
-        <People />
-        <Slider />
         <Partners />
-        <CTA />
         <Footer />
       </main>
     </div>

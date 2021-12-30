@@ -26,6 +26,7 @@ module.exports = {
           border: '#ffffff1f',
           label: '#ffffff5e',
           gray: '#959595',
+          lightGray: '#F6F6F6',
         },
         secondary: {
           lightBlue: '#F1F4F9',
@@ -53,6 +54,7 @@ module.exports = {
         sidebar: '300px',
         detailbar: '350px',
         auth: '460.44px',
+        446: '446px',
         fund: '78px',
         74: '305px',
         279: '279px',
@@ -64,7 +66,7 @@ module.exports = {
         'modal-md': '640px',
         modal: '718px',
         562: '562px',
-        332: '332px',
+        282: '282px',
         274: '274px',
         chart: {
           default: '359px',

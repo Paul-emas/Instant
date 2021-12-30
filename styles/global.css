@@ -90,7 +90,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .shadow-soft {
-  box-shadow: 0 50px 77px rgb(176 183 195 / 35%);
+  box-shadow: -3px 3px 40px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-soft-hover:hover {
+  box-shadow: -3px 3px 40px rgba(0, 0, 0, 0.06);
 }
 
 .overlay {
@@ -250,4 +254,8 @@ input[type='number']::-webkit-outer-spin-button {
 .next.disabled a {
   background: #fff !important;
   color: #959595;
+}
+
+.home-banner {
+  padding-top: 32rem;
 }

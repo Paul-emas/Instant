@@ -74,7 +74,7 @@ const ProviderSelectInput = ({
           aria-activedescendant="listbox-option-3"
           className={`${
             openOption ? 'opacity-100 visible' : 'opacity-0 invisible'
-          } absolute z-10 mt-1 w-full bg-white shadow-lg max-h-64 rounded-b-lg py-2 text-base overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
+          } absolute z-10 mt-1 w-full bg-white shadow-soft border border-primary-light max-h-64 rounded-b-lg py-2 text-base overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
         >
           {!options?.length ? (
             <div className="flex flex-col items-center py-5">

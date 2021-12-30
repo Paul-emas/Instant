@@ -34,7 +34,7 @@ const ContactCard = ({ top, light, iconLight }) => {
         </p>
         <p
           className={`${
-            light ? 'text-white' : 'text-font-darker'
+            light ? 'text-black' : 'text-font-darker'
           } text-lg font-semibold `}
         >
           080-1234-5678
