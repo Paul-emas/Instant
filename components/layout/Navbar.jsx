@@ -26,7 +26,7 @@ const Navbar = () => {
       className={`${
         isScrolling
           ? 'border-b bg-white h-14 lg:h-16'
-          : 'bg-primary-light h-24 lg:h-16'
+          : 'bg-primary-light h-16 lg:h-16'
       }  fixed transition-all z-40 inset-0`}
     >
       <div className="xl:container mx-auto h-full px-4 lg:px-10">

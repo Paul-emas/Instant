@@ -79,7 +79,7 @@ const QuickPayPhoneInput = () => {
           validate: value => isEmail(value),
         })}
       />
-      <PrimaryButton className="mt-8 mb-10" type="large">
+      <PrimaryButton className="mt-8 mb-7" type="large">
         Buy Electricity
       </PrimaryButton>
     </form>

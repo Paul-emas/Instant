@@ -3,16 +3,17 @@ import { useState } from 'react';
 
 import BulbIcon from '../../public/svgs/bulb-dashed.svg';
 import SunIcon from '../../public/svgs/sun.svg';
+import MoneyIcon from '../../public/svgs/money-sm.svg';
 
 const DownloadApp = () => {
   const [active, setActive] = useState(true);
 
   return (
-    <div className="py-16 lg:py-32 bg-primary-light">
+    <div className="py-8 lg:py-32 bg-primary-light">
       <div className="container px-10 mx-auto">
-        <div className="lg:flex max-w-4xl mx-auto">
+        <div className="flex flex-col-reverse max-w-4xl mx-auto">
           <div className="lg:w-1/2">
-            <div className="flex justify-center lg:block transform lg:scale-125 2xl:ml-6">
+            <div className="flex justify-center lg:block transform mt-8 sm:mt-0 lg:scale-125 2xl:ml-6">
               <Image
                 src="/images/mobile-mockup.webp"
                 width={311.64}
@@ -41,7 +42,7 @@ const DownloadApp = () => {
                     </div>
                   </div>
                   <div className="ml-6">
-                    <p className="text-font-darker lg:text-xl  font-semibold">
+                    <p className="text-font-darker lg:text-xl  font-bold">
                       Buy Electricity
                     </p>
                     <p className="text-font-darker mt-2 text-xs lg:text-base max-w-xs">
@@ -63,7 +64,7 @@ const DownloadApp = () => {
                     </div>
                   </div>
                   <div className="ml-6">
-                    <p className="text-gray-400 lg:text-xl  font-semibold">
+                    <p className="text-gray-400 lg:text-xl  font-bold">
                       Manage solar Plan
                     </p>
                     <p className="text-gray-400 mt-2 text-xs lg:text-base max-w-xs">
@@ -81,11 +82,11 @@ const DownloadApp = () => {
                       }`}
                     ></div>
                     <div className="w-12 h-12 bg-secondary-blue rounded-full">
-                      <SunIcon className="mx-auto my-3" />
+                      <MoneyIcon className="mx-auto my-3.5" />
                     </div>
                   </div>
                   <div className="ml-6">
-                    <p className="text-gray-400 lg:text-xl  font-semibold">
+                    <p className="text-gray-400 lg:text-xl  font-bold">
                       Keep track of your Spending
                     </p>
                     <p className="text-gray-400 mt-2 text-xs lg:text-base max-w-xs">
