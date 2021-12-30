@@ -6,16 +6,15 @@ import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import PrimaryButton from '../Buttons/PrimaryButton';
 import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { generateTranscationToken } from '../../api';
+import FormInput from '../forms/FormInput';
 
 const QuickBuyConfirmDetails = ({
   setOpen,
   details,
-  setStep,
+  phone,
+  setPhone,
   onPayStackSuccess,
 }) => {
-  let {
-    auth: { authPhone },
-  } = useGlobalContext();
   const config = {
     reference: details?.reference,
     email: details?.account?.email?.value,
@@ -28,22 +27,36 @@ const QuickBuyConfirmDetails = ({
   return (
     <div>
       <div className="pt-3 pb-6 border-b border-gray-100 px-8">
-        <div className="text-center font-bold">
-          <span className="text-sm text-gray-400">Meter No.</span>
-          <div className=" text-2.5xl">{details?.meter?.number}</div>
+        <div className="text-center">
+          <span className="text-sm text-gray-500 font-semibold">
+            Your Meter
+          </span>
+          <div className=" text-2.5xl text-secondary-green font-bold">
+            {details?.meter?.number}
+          </div>
           <div className="mt-6">
             <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
-              <span className="font-semibold">Reference code</span>
+              <span className="font-semibold text-gray-500">
+                Reference code
+              </span>
               <span className="font-bold">{details?.reference}</span>
             </div>
             <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
-              <span className="font-semibold">Service charge</span>
+              <span className="font-semibold text-gray-500">
+                Service charge
+              </span>
               <span className="font-bold">
                 {details?.country?.currency} {details?.charge.fee}
               </span>
             </div>
-            <div className="h-10 w-full px-4 text-xs rounded-xl bg-primary-light flex justify-between items-center">
-              <span className="font-semibold">Total</span>
+            <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
+              <span className="font-semibold text-gray-500">Amount</span>
+              <span className="font-bold">
+                {details?.country?.currency} {details?.amount}
+              </span>
+            </div>
+            <div className="h-10 w-full px-4 text-xs rounded-xl bg-primary-light flex justify-between items-center border border-primary-dark">
+              <span className="font-semibold text-primary-dark">Total</span>
               <span className="font-bold">
                 {details?.country?.currency} {details?.gross}
               </span>
@@ -52,32 +65,26 @@ const QuickBuyConfirmDetails = ({
         </div>
       </div>
       <div className="pt-3 px-8">
-        <span className="text-xs text-gray-400 font-semibold">
+        <FormInput
+          className="py-2.5 px-5 mt-2"
+          type="phone"
+          id="phone"
+          label="Phone number"
+          font="small"
+          value={phone}
+          isValid={(value, country) => {
+            if (value.match(/12345/)) {
+              return 'Invalid value: ' + value + ', ' + country.name;
+            } else if (value.match(/1234/)) {
+              return false;
+            } else {
+              return true;
+            }
+          }}
+          onChange={value => setPhone(value)}
+        />
+        <div className="text-xs -mt-1 text-primary-dark font-semibold">
           Token generated will be sent to this number
-        </span>
-        <div className="flex items-end justify-between mt-5">
-          <div className="flex items-center">
-            <div className="w-8 h-8 bg-secondary-green flex items-center justify-center rounded-lg">
-              <FontAwesomeIcon
-                icon={faPhoneAlt}
-                className="w-3 h-3 mx-auto my-2.5 text-white"
-              />
-            </div>
-            <div className="ml-3 h-8">
-              <p className="text-xxs font-bold">Recipient phone</p>
-              <p className="text-xs mt-0.5 text-primary-base font-semibold">
-                {authPhone?.phone?.value}
-              </p>
-            </div>
-          </div>
-          <div>
-            <button
-              onClick={() => setStep(2)}
-              className="bg-white h-8 text-sm font-semibold px-5 hover:bg-primary-hover hover:border-primary-hover hover:text-white rounded-lg border border-primary-dark text-primary-dark"
-            >
-              Change
-            </button>
-          </div>
         </div>
         <div className="mt-10">
           <PrimaryButton
@@ -85,6 +92,7 @@ const QuickBuyConfirmDetails = ({
             loading={isLoading}
             onClick={() => {
               setIsLoading(true);
+              localStorage.setItem('authPhone', phone);
               initializePayment(onPayStackSuccess);
               setOpen(false);
             }}

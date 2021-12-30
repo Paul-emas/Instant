@@ -3,7 +3,10 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
 const FormInput = forwardRef(
-  ({ as, type, label, error, control, children, className, ...props }, ref) => {
+  (
+    { as, type, label, font, error, control, children, className, ...props },
+    ref,
+  ) => {
     const As = as;
 
     const errorStyles =
@@ -21,7 +24,11 @@ const FormInput = forwardRef(
 
     return (
       <div className="mb-2.5 2xl:mb-4">
-        <label className="text-gray-400 text-xs lg:text-sm label">
+        <label
+          className={`${
+            font === 'small' ? 'text-xs' : 'text-xs sm:text-sm'
+          } text-gray-400 label`}
+        >
           {label}
         </label>
         {type !== 'phone' && type !== 'currency' && (
@@ -42,10 +49,12 @@ const FormInput = forwardRef(
               border: 'none',
               fontFamily: 'Red Hat Display',
               fontWeight: '700',
-              fontSize: '16px',
+              fontSize: `${font === 'small' ? '14px' : '16px'}`,
               height: 'auto',
             }}
-            countryCodeEditable={false}
+            inputClass="phone-input"
+            disableCountryCode
+            placeholder="Enter your phone number"
             enableSearch
             disableSearchIcon={true}
             dropdownStyle={{

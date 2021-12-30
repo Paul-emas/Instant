@@ -16,7 +16,7 @@ import cookies from 'js-cookie';
 
 export default function Meters() {
   const token = cookies.get('token');
-  const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
+  const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
   const [activeTab, setActiveTab] = useState(0);
   const [openAddMeterModal, setOpenAddMeterModal] = useState(false);
   const [meters, setMeters] = useState([]);

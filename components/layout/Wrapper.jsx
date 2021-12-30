@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 import cookie from 'js-cookie';
 
 import Sidebar from '../layout/Sidebar';
-import PageLoader from '../PageLoader';
+import PageLoader from '../loaders/PageLoader';
 
 const Wrapper = ({ children }) => {
   const router = useRouter();
   const token = cookie.get('token');
   const inActiveRoutes = ['/meters', '/solar', '/settings'];
-  const bypassActiveRoutes = ['/dashboard', '/payments'];
+  const bypassActiveRoutes = ['/dashboard', '/transactions'];
   const authRoutes = [
     '/auth/sign-in',
     '/auth/sign-up',
@@ -55,19 +55,15 @@ const Wrapper = ({ children }) => {
       url !== router.pathname && setPageLoading(false);
       window.scrollTo(0, 0);
     };
-
     if (!token && isRouteProtected) {
       router.replace('/sign-in');
     }
-
     if (token && !isRouteProtected && !isRouteBypass) {
       router.replace('/dashboard');
     }
-
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
     router.events.on('routeChangeError', handleComplete);
-
     return () => {
       router.events.off('routeChangeStart', handleStart);
       router.events.off('routeChangeComplete', handleComplete);

@@ -32,6 +32,8 @@ const Receipt = ({ receipt }) => {
     };
   }
 
+  console.log(receipt);
+
   return (
     <div id="reciept" className="-mt-6 px-8">
       <div className="flex justify-center">
@@ -80,9 +82,7 @@ const Receipt = ({ receipt }) => {
             <div className="text-sm font-semibold text-primary-gray">
               Meter name
             </div>
-            <div className="text-sm font-semibold">
-              {receipt?.meter?.disco?.shortName}
-            </div>
+            <div className="text-sm font-semibold">{receipt?.meter?.name}</div>
           </div>
           <div className="flex justify-between items-center mb-3">
             <div className="text-sm font-semibold text-primary-gray">
@@ -155,7 +155,7 @@ const Receipt = ({ receipt }) => {
           <div className="mt-6">
             <p className="text-sm">
               New to Instant Energy?{' '}
-              <Link href="/auth/sign-up">
+              <Link href="/sign-up">
                 <a className="font-semibold text-primary-base">
                   Create an Account
                 </a>

@@ -40,15 +40,6 @@ const PostPaid = ({
   return (
     <>
       <form className="px-6 lg:px-8 pt-4" onSubmit={handleSubmit(onSubmit)}>
-        <ProviderSelectInput
-          className="px-5 mt-2"
-          label="State of residence"
-          placeholder="Enter account number"
-          error={errors.select ?? false}
-          options={providers}
-          selectedProvider={selectedProvider}
-          setSelectedProvider={setSelectedProvider}
-        />
         <FormInput
           className="py-2.5 px-5 mt-2"
           type="number"
@@ -60,6 +51,15 @@ const PostPaid = ({
           {...register('meter', {
             required: true,
           })}
+        />
+        <ProviderSelectInput
+          className="px-5 mt-2"
+          label="State of residence"
+          placeholder="Enter account number"
+          error={errors.select ?? false}
+          options={providers}
+          selectedProvider={selectedProvider}
+          setSelectedProvider={setSelectedProvider}
         />
         <FormInput
           className="py-2.5 px-5 mt-2"

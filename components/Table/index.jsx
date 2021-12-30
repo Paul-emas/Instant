@@ -1,3 +1,5 @@
+import RequestLoader from '../loaders/RequestLoader';
+
 const Table = ({
   title,
   headings,
@@ -48,10 +50,7 @@ const Table = ({
           )}
           {loading && (
             <div className="py-44">
-              <div className="flex items-center flex-col">
-                <div className="loader"></div>
-                <div className="text-base mt-3">Loading data...</div>
-              </div>
+              <RequestLoader type="request" />
             </div>
           )}
         </div>

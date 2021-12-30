@@ -11,11 +11,9 @@ import cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import BulbIcon from '../public/svgs/bulb-db.svg';
 import moment from 'moment';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload, faRedo } from '@fortawesome/free-solid-svg-icons';
 import Pagination from '../components/Table/Pagination';
 
-export default function Payments() {
+export default function Transactions() {
   const token = cookies.get('token');
 
   useEffect(() => {
@@ -48,7 +46,7 @@ export default function Payments() {
     }
   }
 
-  const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
+  const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
   const [activeTab, setActiveTab] = useState(0);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [transactions, setTransactions] = useState([]);
@@ -70,7 +68,6 @@ export default function Payments() {
       'Reference number',
       'Amount',
       'Status',
-      'Actions',
     ],
     loading: tableLoading,
     viewAll: function view() {
@@ -161,7 +158,7 @@ export default function Payments() {
                       <div className="ml-8">
                         <div>
                           <div className="text-sm font-bold text-font-dark">
-                            Unit Purchased
+                            Units Purchased
                           </div>
                         </div>
                       </div>
@@ -169,7 +166,10 @@ export default function Payments() {
                   </td>
                   <td className="px-6 py-4  whitespace-nowrap">
                     <div className="text-sm text-font-grey">
-                      {moment(item?.createdAt).utc().format('LLL')}
+                      {moment(item?.createdAt).utc().format('L')}{' '}
+                      <span className="ml-2">
+                        {moment(item?.createdAt).utc().format('LTS')}
+                      </span>
                     </div>
                   </td>
                   <td className="px-6 py-4  whitespace-nowrap">
@@ -198,40 +198,18 @@ export default function Payments() {
                     </div>
                   </td>
                   <td className="px-6 py-4  whitespace-nowrap">
-                    <div className="text-sm font-bold">
+                    <button className="text-sm font-bold">
                       {active && (
-                        <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg bg-green-100 text-font-green capitalize">
-                          {item?.status}
+                        <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg bg-green-100 text-font-green active:bg-green-200 capitalize">
+                          Receipt
                         </span>
                       )}
                       {!active && (
-                        <span className="px-3 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-lg bg-red-100 text-red-600 capitalize">
-                          {item?.status}
+                        <span className="px-3 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-lg bg-red-100 text-red-600 active:bg-red-200 capitalize">
+                          Retry
                         </span>
                       )}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4  whitespace-nowrap text-sm text-gray-500">
-                    <div className="flex space-x-2">
-                      <button
-                        onClick={() => {}}
-                        className="py-1.5 px-3 bg-primary-light active:bg-gray-200 rounded-lg text-gray-700 font-semibold text-xs flex items-center"
-                      >
-                        <FontAwesomeIcon
-                          icon={faDownload}
-                          className="w-2.5 h-2.5"
-                        />
-                      </button>
-                      <button
-                        onClick={() => {}}
-                        className="py-2.5 px-3 bg-primary-light active:bg-gray-200 rounded-lg font-semibold text-xs flex items-center"
-                      >
-                        <FontAwesomeIcon
-                          icon={faRedo}
-                          className="w-2.5 h-2.5 text-gray-700"
-                        />
-                      </button>
-                    </div>
+                    </button>
                   </td>
                 </tr>
               );

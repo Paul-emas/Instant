@@ -12,17 +12,9 @@ input[type='number']::-webkit-outer-spin-button {
   width: 0;
   height: 0;
 }
-
-.PhoneInput {
-  flex-direction: row-reverse;
+.phone-input::placeholder {
+  font-weight: 600;
 }
-
-.PhoneInputInput {
-  margin-left: 0.5rem !important;
-  outline: none;
-  font-weight: bold;
-}
-
 /* position dots in carousel */
 .flickity-page-dots {
   bottom: -10px;

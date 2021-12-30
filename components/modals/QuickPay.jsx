@@ -1,21 +1,7 @@
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import QuickPayPhoneInput from '../forms/QuickPayPhoneInput';
 
 const QuickPay = () => {
-  const tabs = [
-    { id: 0, name: 'prepaid' },
-    { id: 1, name: 'postpaid' },
-  ];
-  const [activeTab, setActiveTab] = useState(null);
-  const [userEmail, setUserEmail] = useState('');
-
-  const tabProps = {
-    tabs,
-    activeTab,
-    setActiveTab,
-  };
-
   return (
     <>
       <div

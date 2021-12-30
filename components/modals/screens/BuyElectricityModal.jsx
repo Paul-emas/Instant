@@ -8,6 +8,7 @@ import QuickBuyConfirmDetails from '../QuickBuyConfirmDetails';
 import ChangePhone from '../ChangePhone';
 import ErrorSuccess from '../ErrorSuccess';
 import Receipt from '../Receipt';
+import RequestLoader from '../../loaders/RequestLoader';
 
 const BuyElectricityModal = ({ open, setOpen }) => {
   const tabs = [
@@ -23,6 +24,14 @@ const BuyElectricityModal = ({ open, setOpen }) => {
   const [paystack, setPayStack] = useState(null);
   const [paymentToken, setPaymentToken] = useState(null);
   const [receipt, setReciept] = useState(null);
+  const [phone, setPhone] = useState('');
+
+  useEffect(() => {
+    const authPhone = localStorage.getItem('authPhone');
+    if (authPhone) {
+      setPhone(authPhone);
+    }
+  }, []);
 
   useEffect(() => {
     fetchProviders();
@@ -47,7 +56,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
   const onPayStackSuccess = async reference => {
     if (reference?.status === 'success') {
       setOpen(true);
-      setStep(4);
+      setStep(3);
       setPayStack(reference);
       const resp = await generateTranscationToken(
         { reference: reference.reference },
@@ -55,10 +64,10 @@ const BuyElectricityModal = ({ open, setOpen }) => {
       );
       if (resp?.data) {
         setReciept(resp.data);
-        setStep(5);
+        setStep(4);
       }
     } else {
-      setStep(5);
+      setStep(4);
       setPaymentError({ message: reference?.message });
     }
   };
@@ -116,39 +125,27 @@ const BuyElectricityModal = ({ open, setOpen }) => {
             setStep={setStep}
             details={confirmDetails}
             onPayStackSuccess={onPayStackSuccess}
+            phone={phone}
+            setPhone={setPhone}
           />
         </Modal>
       )}
       {open && step === 2 && (
-        <Modal
-          close={() => setStep(1)}
-          goBack={() => setStep(1)}
-          setOpen={setOpen}
-        >
-          <ChangePhone setStep={setStep} />
-        </Modal>
-      )}
-      {open && step === 3 && (
         <Modal border={false} setOpen={setOpen}>
-          <ErrorSuccess paystack={paystack} next={() => setStep(4)} />
+          <ErrorSuccess paystack={paystack} next={() => setStep(3)} />
         </Modal>
       )}
 
-      {open && step === 4 && (
+      {open && step === 3 && (
         <div className="w-full min-h-screen top-0 left-0 fixed z-50 overflow-hidden">
           <div className="absolute w-full h-full flex justify-center items-center z-10">
-            <div className="flex items-center flex-col">
-              <div className="loader"></div>
-              <div className="text-base mt-3 text-white">
-                Generating receipt...
-              </div>
-            </div>
+            <RequestLoader type="payment" />
           </div>
           <div className="modal-overlay w-full min-h-screen bg-secondary-modal bg-opacity-70"></div>
         </div>
       )}
 
-      {open && step === 5 && (
+      {open && step === 4 && (
         <Modal
           close={() => {
             setOpen(false);

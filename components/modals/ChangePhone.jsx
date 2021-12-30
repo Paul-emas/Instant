@@ -4,15 +4,6 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from '../forms/FormInput';
 
 const ChangePhone = ({ setStep }) => {
-  const [phone, setPhone] = useState('');
-
-  useEffect(() => {
-    const authPhone = localStorage.getItem('authPhone');
-    if (authPhone) {
-      setPhone(authPhone);
-    }
-  }, []);
-
   function onSubmit() {
     localStorage.setItem('authPhone', phone);
     setStep(1);

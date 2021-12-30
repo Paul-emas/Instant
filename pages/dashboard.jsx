@@ -32,7 +32,7 @@ export default function Dashboard() {
       'Transaction Information',
       'Date',
       'Distributor',
-      'Payment Type',
+      'Meter number',
       'Reference number',
       'Amount',
       'Status',
@@ -40,7 +40,7 @@ export default function Dashboard() {
     viewAll: function view() {
       return (
         <div>
-          <Link href="/payments">
+          <Link href="/transactions">
             <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
               <span className="flex relative items-center justify-center">
                 <span className="mr-2">See all</span>
@@ -86,7 +86,7 @@ export default function Dashboard() {
     },
   };
 
-  const tabsData = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
+  const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
   const [activeTab, setActiveTab] = useState(0);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
@@ -193,7 +193,10 @@ export default function Dashboard() {
                         </td>
                         <td className="px-6 py-4  whitespace-nowrap">
                           <div className="text-sm text-font-grey">
-                            {moment(item?.createdAt).utc().format('LLL')}
+                            {moment(item?.createdAt).utc().format('L')}{' '}
+                            <span className="ml-2">
+                              {moment(item?.createdAt).utc().format('LTS')}
+                            </span>
                           </div>
                         </td>
                         <td className="px-6 py-4  whitespace-nowrap">
@@ -227,12 +230,12 @@ export default function Dashboard() {
                           <div className="text-sm font-bold">
                             {active && (
                               <span className="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg bg-green-100 text-font-green capitalize">
-                                {item?.status}
+                                Receipt
                               </span>
                             )}
                             {!active && (
                               <span className="px-3 py-1 inline-flex relative text-xs leading-5 font-semibold rounded-lg bg-red-100 text-red-600 capitalize">
-                                {item?.status}
+                                Retry
                               </span>
                             )}
                           </div>

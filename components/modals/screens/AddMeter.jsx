@@ -21,7 +21,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
     formState: { errors },
   } = useForm();
 
-  const tabs = [{ name: 'Prepaid' }, { name: 'PostPaid' }];
+  const tabs = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
 
   const [providers, setProviders] = useState(null);
   const [selectedProvider, setSelectedProvider] = useState(null);
