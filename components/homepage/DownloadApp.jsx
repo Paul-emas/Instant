@@ -11,7 +11,7 @@ const DownloadApp = () => {
   return (
     <div className="py-8 lg:py-32 bg-primary-light">
       <div className="container px-10 mx-auto">
-        <div className="flex flex-col-reverse max-w-4xl mx-auto">
+        <div className="flex flex-col-reverse sm:flex-row max-w-4xl mx-auto">
           <div className="lg:w-1/2">
             <div className="flex justify-center lg:block transform mt-8 sm:mt-0 lg:scale-125 2xl:ml-6">
               <Image
