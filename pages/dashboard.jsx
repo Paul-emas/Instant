@@ -316,7 +316,7 @@ export default function Dashboard() {
               Buy Electricity
             </Button>
           </div>
-          <SolarCard className="block lg:hidden" />
+          {token && <SolarCard className="block lg:hidden" />}
         </>
       )}
     </>
