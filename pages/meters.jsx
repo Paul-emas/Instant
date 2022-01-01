@@ -225,17 +225,19 @@ export default function Meters() {
                 ))}
             </Table>
           </div>
-          <div className="flex sm:hidden justify-center mt-5">
-            <Button onClick={() => setOpenAddMeterModal(true)}>
-              <span className="uppercase flex items-center">
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="w-3 h-3 text-white text-opacity-70"
-                />{' '}
-                <span className="ml-2">Add new meter</span>
-              </span>
-            </Button>
-          </div>
+          {meters.length > 0 && (
+            <div className="flex sm:hidden justify-center mt-5">
+              <Button onClick={() => setOpenAddMeterModal(true)}>
+                <span className="uppercase flex items-center">
+                  <FontAwesomeIcon
+                    icon={faPlus}
+                    className="w-3 h-3 text-white text-opacity-70"
+                  />{' '}
+                  <span className="ml-2">Add new meter</span>
+                </span>
+              </Button>
+            </div>
+          )}
         </>
       )}
     </>

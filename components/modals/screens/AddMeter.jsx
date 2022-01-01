@@ -107,7 +107,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
-          <div className="pt-6 px-8">
+          <div className="pt-6 px-6 lg:px-8">
             <form onSubmit={handleSubmit(onSubmit)}>
               <ProviderSelectInput
                 className="px-5 mt-2"

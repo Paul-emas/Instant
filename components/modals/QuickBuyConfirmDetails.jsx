@@ -26,7 +26,7 @@ const QuickBuyConfirmDetails = ({
 
   return (
     <div>
-      <div className="pt-3 pb-6 border-b border-gray-100 px-8">
+      <div className="pt-3 pb-6 border-b border-gray-100 px-6 lg:px-8">
         <div className="text-center">
           <span className="text-sm text-gray-500 font-semibold">
             Your Meter
