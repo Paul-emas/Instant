@@ -42,7 +42,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
 
   return (
     <>
-      <div className="h-56 mb-10 sm:mb-0 w-full py-5 rounded-xl mt-3 sm:mt-10 bg-white">
+      <div className="h-56 sm:h-96 mb-10 sm:mb-0 w-full py-5 rounded-xl mt-3 sm:mt-10 bg-white">
         <div className="flex w-full justify-between sm:px-5 mb-2">
           <h2 className="text-base sm:text-xl mt-2 sm:mt-0 font-bold text-font-darker ">
             {title}

@@ -162,7 +162,7 @@ export default function Dashboard() {
                     <ReferBox />
                   </div>
                 </div>
-                <SolarCard />
+                <SolarCard className="hidden lg:block" />
                 <Table {...tableProps}>
                   {!isMobile &&
                     transactions.map((item, index) => {
@@ -292,7 +292,7 @@ export default function Dashboard() {
                         </div>
                       );
                     })}
-                  {isMobile && (
+                  {isMobile && transactions.length > 0 && (
                     <div className="flex justify-center pb-5">
                       <Link href="/transactions">
                         <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
@@ -311,6 +311,12 @@ export default function Dashboard() {
               </>
             )}
           </div>
+          <div className="flex sm:hidden justify-center mt-5">
+            <Button onClick={() => setOpenBuyElectricityModal(true)}>
+              Buy Electricity
+            </Button>
+          </div>
+          <SolarCard className="block lg:hidden" />
         </>
       )}
     </>
