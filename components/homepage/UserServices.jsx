@@ -6,7 +6,7 @@ import GuardIcon from '../../public/svgs/guard.svg';
 const UserServices = ({ title, stepArr }) => {
   return (
     <div className="py-10 lg:py-28 bg-white">
-      <div className="container px-4 lg:px-10 mx-auto">
+      <div className="container px-4 sm:px-5 xl:px-10 mx-auto">
         <h1 className="text-xl lg:text-5xl font-bold px-10 sm:px-0 max-w-xs lg:max-w-xl text-center mx-auto text-primary-dark">
           {title}
         </h1>
