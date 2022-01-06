@@ -2,17 +2,16 @@ import { Fragment, useEffect, useState } from 'react';
 import router from 'next/router';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
-import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { createUserAuthPin } from '../../api';
 import PinInput from 'react-pin-input';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import ErrorAlert from '../forms/ErrorAlert';
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
 
 const CreatePin = () => {
-  let {
-    auth: { anonymousToken },
-  } = useGlobalContext();
+  const { anonymousToken } = useSelector(persistSelector);
 
   const [pin, setPin] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
