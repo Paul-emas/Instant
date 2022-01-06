@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
 import router from 'next/router';
-import useDispatcher from '../../hooks/useDispatcher';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import isEmail from 'is-email';
+import {
+  setUserPhone,
+  setUserEmail,
+  setQuickBuy,
+  persistSelector,
+} from '../../slices/persist';
 
 import FormInput from './FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 const QuickPayPhoneInput = () => {
-  const { setUserPhoneNo } = useDispatcher();
+  const dispatch = useDispatch();
+  const { userPhone } = useSelector(persistSelector);
   const {
     register,
     handleSubmit,
@@ -19,11 +26,11 @@ const QuickPayPhoneInput = () => {
   const [country, setCountry] = useState('');
 
   useEffect(() => {
-    const authPhone = localStorage.getItem('authPhone');
-    if (authPhone) {
-      setPhone(authPhone);
+    if (userPhone) {
+      const { phone } = userPhone;
+      setPhone(phone?.number);
     }
-  }, []);
+  }, [userPhone]);
 
   const onSubmit = async formData => {
     if (formData && phone.length) {
@@ -36,10 +43,9 @@ const QuickPayPhoneInput = () => {
           value: formattedPhone,
         },
       };
-      localStorage.setItem('email', email);
-      localStorage.setItem('authPhone', phone);
-      localStorage.setItem('quickbuy', true);
-      setUserPhoneNo({ authPhone: payload });
+      dispatch(setUserPhone(payload));
+      dispatch(setUserEmail(email));
+      dispatch(setQuickBuy(true));
       router.push('/dashboard');
     }
   };

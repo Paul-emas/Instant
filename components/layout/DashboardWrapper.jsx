@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import router from 'next/router';
-import cookie from 'js-cookie';
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
 
 const DashboardWrapper = ({ children }) => {
-  const token = cookie.get('token');
+  const { isLoggedIn, token } = useSelector(persistSelector);
   useEffect(() => {
-    if (!token) {
+    if (!token && !isLoggedIn) {
       router.replace('/auth/sign-in');
     }
   }, [token]);

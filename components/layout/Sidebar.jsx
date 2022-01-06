@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import cookie from 'js-cookie';
 import {
   faCog,
   faHome,
@@ -10,19 +9,18 @@ import {
   faMoneyBillWave,
   faSun,
 } from '@fortawesome/free-solid-svg-icons';
-import WalletIcon from '../../public/svgs/wallet-sm.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
+
+import WalletIcon from '../../public/svgs/wallet-sm.svg';
 import UserCard from '../UserCard';
 
 const Sidebar = ({ openNav, setOpenNav }) => {
   const router = useRouter();
   const [openLogout, setOpenLogout] = useState(false);
-  const userToken = cookie.get('token');
-  const [token, setToken] = useState(userToken);
-
-  useEffect(() => {
-    setToken(userToken);
-  }, [userToken]);
+  const { isLoggedIn } = useSelector(persistSelector);
 
   const routes = [
     {
@@ -35,13 +33,13 @@ const Sidebar = ({ openNav, setOpenNav }) => {
       name: 'Solar Electricity',
       url: '/solar',
       icon: faSun,
-      open: token ? true : false,
+      open: isLoggedIn,
     },
     {
       name: 'Meters',
       url: '/meters',
       icon: faMeteor,
-      open: token ? true : false,
+      open: isLoggedIn,
     },
     {
       name: 'Transactions',
@@ -53,7 +51,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
       name: 'Settings',
       url: '/settings',
       icon: faCog,
-      open: token ? true : false,
+      open: isLoggedIn,
     },
   ];
 

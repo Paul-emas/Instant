@@ -1,6 +1,17 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { isMobile } from 'react-device-detect';
+import { useSelector, useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
+import { persistSelector } from '../slices/persist';
+import { toast } from 'react-toastify';
+import { setUserTransactions, userSelector } from '../slices/user';
+import { getUserTransactions } from '../api';
 
+import BulbIcon from '../public/svgs/bulb-db.svg';
+import Empty from '../public/svgs/empty-transcation.svg';
 import SolarCard from '../components/ads/SolarCard';
 import Button from '../components/Button';
 import Chart from '../components/Chart';
@@ -8,21 +19,21 @@ import Table from '../components/Table';
 import ReferBox from '../components/ReferBox';
 import Tabs from '../components/tabs';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
-
-import BulbIcon from '../public/svgs/bulb-db.svg';
-import Empty from '../public/svgs/empty-transcation.svg';
 import DashboardSkeleton from '../components/skeletons/DashboardSkeleton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { getUserTransactions } from '../api';
-import cookies from 'js-cookie';
-import moment from 'moment';
-import { toast } from 'react-toastify';
+
 import WalletCard from '../components/WalletCard';
-import { isMobile } from 'react-device-detect';
 
 export default function Dashboard() {
-  const token = cookies.get('token');
+  const { userTransactions } = useSelector(userSelector);
+  const { token, quickbuy, isLoggedIn } = useSelector(persistSelector);
+  const dispatch = useDispatch();
+  const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
+  const [activeTab, setActiveTab] = useState(0);
+  const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
+  const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [transactions, setTransactions] = useState([]);
+
   const tableProps = {
     title: 'Your transcations',
     headings: [
@@ -83,28 +94,23 @@ export default function Dashboard() {
     },
   };
 
-  const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
-  const [activeTab, setActiveTab] = useState(0);
-  const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
-  const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
-  const [pageLoading, setPageLoading] = useState(true);
-  const [transactions, setTransactions] = useState([]);
-
   useEffect(() => {
-    if (localStorage.getItem('quickbuy')) {
+    if (!userTransactions) {
+      fetchTransactions();
+    } else {
+      setTransactions(userTransactions?.docs);
+      setPageLoading(false);
+    }
+
+    if (quickbuy) {
       setTimeout(() => {
         setOpenBuyElectricityModal(true);
-        localStorage.removeItem('quickbuy');
       }, 200);
     }
-  });
-
-  useEffect(() => {
-    fetchTransactions();
-  }, []);
+  }, [userTransactions]);
 
   async function fetchTransactions() {
-    if (token) {
+    if (token && isLoggedIn) {
       const resp = await getUserTransactions(token, 0, 10);
 
       if (resp?.error) {
@@ -113,7 +119,8 @@ export default function Dashboard() {
       }
 
       if (resp?.data) {
-        const { docs } = resp?.data;
+        dispatch(setUserTransactions(resp.data));
+        const { docs } = resp.data;
         setTransactions(docs);
         setPageLoading(false);
       }
@@ -316,7 +323,7 @@ export default function Dashboard() {
               Buy Electricity
             </Button>
           </div>
-          {token && <SolarCard className="block lg:hidden" />}
+          {isLoggedIn && <SolarCard className="block lg:hidden" />}
         </>
       )}
     </>

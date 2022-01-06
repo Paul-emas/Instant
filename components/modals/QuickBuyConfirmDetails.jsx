@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { usePaystackPayment } from 'react-paystack';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import PrimaryButton from '../Buttons/PrimaryButton';
-import { useGlobalContext } from '../../hooks/useGlobalContext';
 import { generateTranscationToken } from '../../api';
 import FormInput from '../forms/FormInput';
+import { setUserPhone } from '../../slices/persist';
 
 const QuickBuyConfirmDetails = ({
   setOpen,
@@ -23,6 +21,7 @@ const QuickBuyConfirmDetails = ({
   };
   const initializePayment = usePaystackPayment(config);
   const [isLoading, setIsLoading] = useState(false);
+  const [country, setCountry] = useState('');
 
   return (
     <div>
@@ -78,6 +77,7 @@ const QuickBuyConfirmDetails = ({
             } else if (value.match(/1234/)) {
               return false;
             } else {
+              setCountry(country);
               return true;
             }
           }}
@@ -92,7 +92,15 @@ const QuickBuyConfirmDetails = ({
             loading={isLoading}
             onClick={() => {
               setIsLoading(true);
-              localStorage.setItem('authPhone', phone);
+              dispatch(
+                setUserPhone({
+                  phone: {
+                    number: phone,
+                    code: country.countryCode,
+                    value: phone.replace(country.countryCode, ''),
+                  },
+                }),
+              );
               initializePayment(onPayStackSuccess);
               setOpen(false);
             }}

@@ -37,6 +37,7 @@ const FormInput = forwardRef(
             ref={ref}
             type={type}
             className={`${className} ${errorStyles} form-input`}
+            autoComplete="off"
             {...props}
           />
         )}

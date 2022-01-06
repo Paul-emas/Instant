@@ -2,19 +2,20 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import cookie from 'js-cookie';
 
 import ContactCard from '../ContactCard';
 import gsap from 'gsap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
 
 const AuthWrapper = ({ title, caption, banner, children }) => {
-  const token = cookie.get('token');
+  const { token, isLoggedIn } = useSelector(persistSelector);
   const router = useRouter();
 
   useEffect(() => {
-    if (token) {
+    if (token && isLoggedIn) {
       router.replace('/dashboard');
     }
   }, [token]);

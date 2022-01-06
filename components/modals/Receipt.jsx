@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import cookie from 'js-cookie';
 import { faFileDownload, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
 
 const Receipt = ({ receipt }) => {
-  const token = cookie.get('token');
+  const { isLoggedIn } = useSelector(persistSelector);
 
   function PrintElem() {
     var data = document.getElementById('reciept').innerHTML;
@@ -151,7 +152,7 @@ const Receipt = ({ receipt }) => {
             </div>
           </div>
         </div>
-        {!token && (
+        {!isLoggedIn && (
           <div className="mt-6">
             <p className="text-sm">
               New to Instant Energy?{' '}

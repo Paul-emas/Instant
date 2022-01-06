@@ -16,11 +16,15 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import cookies from 'js-cookie';
 import { isMobile } from 'react-device-detect';
+import { useDispatch, useSelector } from 'react-redux';
+import { persistSelector } from '../slices/persist';
+import { setUserMeter, userSelector } from '../slices/user';
 
 export default function Meters() {
-  const token = cookies.get('token');
+  const dispatch = useDispatch();
+  const { userMeters } = useSelector(userSelector);
+  const { token, isLoggedIn } = useSelector(persistSelector);
   const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
   const [activeTab, setActiveTab] = useState(0);
   const [openAddMeterModal, setOpenAddMeterModal] = useState(false);
@@ -95,23 +99,35 @@ export default function Meters() {
   };
 
   useEffect(() => {
-    getMeters();
+    if (!userMeters) {
+      getMeters();
+    } else {
+      updateMetersState(userMeters);
+    }
   }, []);
 
   async function getMeters() {
-    const resp = await getUserMeters(token);
+    if (token && isLoggedIn) {
+      const resp = await getUserMeters(token);
 
-    if (resp?.error) {
-      toast.error('Something went wrong');
-      setPageLoading(false);
-      setTableLoading(false);
-    }
+      if (resp?.error) {
+        toast.error('Something went wrong');
+        setPageLoading(false);
+        setTableLoading(false);
+      }
 
-    if (resp?.data) {
-      setMeters(resp?.data?.docs);
-      setPageLoading(false);
-      setTableLoading(false);
+      if (resp?.data) {
+        updateMetersState(resp?.data);
+      }
     }
+  }
+
+  function updateMetersState(meters) {
+    dispatch(setUserMeter(meters));
+    const { docs } = meters;
+    setMeters(docs);
+    setPageLoading(false);
+    setTableLoading(false);
   }
 
   return (

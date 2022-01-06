@@ -18,7 +18,7 @@ const SolarSkeleton = () => {
         </div>
       </div>
       <div className="pt-5">
-        <div className="grid sm:grid-cols-4 space-y-6 sm:space-x-6">
+        <div className="grid sm:grid-cols-4 space-y-6 sm:space-y-0 sm:space-x-6">
           <div className="flex justify-center items-center bg-primary-light sm:bg-white rounded-xl h-28 relative"></div>
           <div className="flex justify-center items-center bg-primary-light sm:bg-white rounded-xl h-28 relative"></div>
           <div className="flex justify-center items-center bg-primary-light sm:bg-white rounded-xl h-28 relative"></div>

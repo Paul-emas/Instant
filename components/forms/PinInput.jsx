@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { validate } from './utils';
 
 const PinInput = ({ label, pin, placeholder, setPin, props }) => {
+  const validate = e => {
+    const regex = new RegExp(/^[0-9]*\.?[0-9]*$/);
+    const value = e.target.value;
+    if (value === '' || regex.test(value)) {
+      return true;
+    }
+  };
+
   const [error, setError] = useState(false);
   const errorStyles = `${
     error

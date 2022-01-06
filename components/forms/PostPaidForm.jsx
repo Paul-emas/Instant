@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { persistSelector, setUserPhone } from '../../slices/persist';
+import { createTranscationToken, getAccountToken } from '../../api';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
 import ProviderSelectInput from './ProviderSelectInput';
-import { createTranscationToken, getAccountToken } from '../../api';
-import { toast } from 'react-toastify';
 
 const PostPaid = ({
   email,
-  providers,
   setConfirmDetails,
   setStep,
   setOpenModal,
   setPaymentToken,
-  fetchProviders,
 }) => {
   const {
     register,
@@ -23,19 +23,74 @@ const PostPaid = ({
     formState: { errors },
   } = useForm();
 
+  const dispatch = useDispatch();
+  const { userPhone } = useSelector(persistSelector);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
 
   useEffect(() => {
-    const authPhone = localStorage.getItem('authPhone');
-    if (authPhone) {
-      setPhone(authPhone);
+    if (userPhone) {
+      const { phone } = userPhone;
+      setPhone(phone?.number);
     }
-  }, []);
+  }, [userPhone]);
 
-  async function onSubmit(formData) {}
+  async function onSubmit(formData) {
+    if (formData) {
+      setIsLoading(true);
+      const { meter, amount } = formData;
+      const formattedPhone = phone.replace(country.countryCode, '');
+      const payload = {
+        phone: {
+          number: phone,
+          code: country.countryCode,
+          value: formattedPhone,
+        },
+        email,
+        country: country.name,
+      };
+      const resp = await getAccountToken(payload);
+      if (resp?.error) {
+        setIsLoading(false);
+        toast.error(resp?.error?.message);
+      } else {
+        const token = resp?.data?.authorization;
+        setPaymentToken(token);
+        const payload = {
+          recipient: {
+            number: phone,
+            code: country.countryCode,
+            value: formattedPhone,
+          },
+          provider: selectedProvider._id,
+          meter,
+          country: country.name,
+          amount: Number(amount),
+        };
+        const response = await createTranscationToken(payload, token);
+        if (response?.error) {
+          setIsLoading(false);
+        } else {
+          toast.error(response?.error?.message);
+          setIsLoading(false);
+          setConfirmDetails(response?.data);
+          setStep(1);
+          setOpenModal(true);
+        }
+        dispatch(
+          setUserPhone({
+            phone: {
+              number: phone,
+              code: country.countryCode,
+              value: formattedPhone,
+            },
+          }),
+        );
+      }
+    }
+  }
 
   return (
     <>
@@ -45,8 +100,8 @@ const PostPaid = ({
           type="number"
           id="meter"
           errors={errors}
-          placeholder="Enter meter number"
-          label="Meter number"
+          placeholder="Enter account number"
+          label="Account"
           error={errors.meter_no ?? false}
           {...register('meter', {
             required: true,
@@ -56,8 +111,6 @@ const PostPaid = ({
           className="px-5 mt-2"
           label="State of residence"
           placeholder="Enter account number"
-          error={errors.select ?? false}
-          options={providers}
           selectedProvider={selectedProvider}
           setSelectedProvider={setSelectedProvider}
         />
@@ -112,8 +165,6 @@ const PostPaid = ({
   );
 };
 
-PostPaid.propTypes = {
-  providers: PropTypes.array,
-};
+PostPaid.propTypes = {};
 
 export default PostPaid;

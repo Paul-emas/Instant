@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import cookie from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
+
+import MenuIcon from '../../public/svgs/menu.svg';
 
 import Sidebar from '../layout/Sidebar';
 import PageLoader from '../loaders/PageLoader';
 
-import MenuIcon from '../../public/svgs/menu.svg';
-
 const Wrapper = ({ children }) => {
   const router = useRouter();
-  const token = cookie.get('token');
+  const { isLoggedIn } = useSelector(persistSelector);
   const inActiveRoutes = ['/meters', '/solar', '/settings'];
   const bypassActiveRoutes = ['/dashboard', '/transactions'];
   const authRoutes = [
@@ -60,10 +62,10 @@ const Wrapper = ({ children }) => {
       url !== router.pathname && setPageLoading(false);
       window.scrollTo(0, 0);
     };
-    if (!token && isRouteProtected) {
+    if (!isLoggedIn && isRouteProtected) {
       router.replace('/sign-in');
     }
-    if (token && !isRouteProtected && !isRouteBypass) {
+    if (isLoggedIn && !isRouteProtected && !isRouteBypass) {
       router.replace('/dashboard');
     }
     router.events.on('routeChangeStart', handleStart);

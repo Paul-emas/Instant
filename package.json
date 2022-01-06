@@ -14,6 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@hookform/error-message": "^2.0.0",
+    "@reduxjs/toolkit": "^1.7.1",
     "@tailwindcss/custom-forms": "^0.2.1",
     "axios": "^0.22.0",
     "copy-to-clipboard": "^3.3.1",
@@ -21,7 +22,6 @@
     "flickity": "^2.2.2",
     "gsap": "^3.8.0",
     "is-email": "^1.0.2",
-    "js-cookie": "^3.0.1",
     "moment": "^2.29.1",
     "next": "latest",
     "react": "^17.0.2",
@@ -32,13 +32,13 @@
     "react-paginate": "^8.1.0",
     "react-paystack": "^3.0.5",
     "react-phone-input-2": "^2.14.0",
-    "react-phone-number-input": "^3.1.27",
     "react-pin-input": "^1.0.1",
+    "react-redux": "^7.2.6",
     "react-to-pdf": "^0.0.14",
     "react-toastify": "^8.0.3",
     "react-use": "^17.3.1",
     "recharts": "^2.1.2",
-    "swr": "^1.0.1"
+    "redux-persist": "^6.0.0"
   },
   "husky": {
     "hooks": {

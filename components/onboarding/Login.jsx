@@ -1,7 +1,12 @@
 import { Fragment, useEffect, useState } from 'react';
-import router from 'next/router';
 import Link from 'next/link';
-import useDispatcher from '../../hooks/useDispatcher';
+import router from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  persistSelector,
+  setAnonymousToken,
+  setUserPhone,
+} from '../../slices/persist';
 import { checkUserValidation } from '../../api';
 
 import FormInput from '../forms/FormInput';
@@ -9,17 +14,18 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 import SocialCard from '../SocialCard';
 
 const Login = () => {
-  const { setUserPhoneNo, setUserAnonymousToken } = useDispatcher();
+  const dispatch = useDispatch();
+  const { userPhone } = useSelector(persistSelector);
   const [isLoading, setIsLoading] = useState(false);
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
 
   useEffect(() => {
-    const authPhone = localStorage.getItem('authPhone');
-    if (authPhone) {
-      setPhone(authPhone);
+    if (userPhone) {
+      const { phone } = userPhone;
+      setPhone(phone?.number);
     }
-  }, []);
+  }, [userPhone]);
 
   const onSubmit = async formData => {
     if (formData) {
@@ -32,22 +38,21 @@ const Login = () => {
           value: formattedPhone,
         },
       };
+      dispatch(setUserPhone(payload));
       const { data, error } = await checkUserValidation(payload);
       if (error) {
         setIsLoading(false);
-        setUserPhoneNo({ authPhone: payload });
         router.push('/sign-up');
       }
-      localStorage.setItem('authPhone', phone);
+
       if (data) {
         setIsLoading(false);
         const { isPin } = data;
         if (isPin) {
-          setUserPhoneNo({ authPhone: payload });
           router.push('/auth/otp/pin');
         } else {
           const { authorization } = data;
-          setUserAnonymousToken({ anonymousToken: authorization });
+          dispatch(setAnonymousToken(authorization));
           router.push('/auth/otp/create');
         }
       }

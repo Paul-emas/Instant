@@ -7,22 +7,40 @@ import Empty from '../public/svgs/empty-transcation.svg';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
 import Button from '../components/Button';
 import { getUserTransactions } from '../api';
-import cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import BulbIcon from '../public/svgs/bulb-db.svg';
 import moment from 'moment';
 import Pagination from '../components/Table/Pagination';
 import { isMobile } from 'react-device-detect';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserTransactions, userSelector } from '../slices/user';
+import { persistSelector } from '../slices/persist';
 
 export default function Transactions() {
-  const token = cookies.get('token');
+  const dispatch = useDispatch();
+  const { userTransactions } = useSelector(userSelector);
+  const { token, isLoggedIn } = useSelector(persistSelector);
+  const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
+  const [transactions, setTransactions] = useState([]);
+  const [activeTab, setActiveTab] = useState(0);
+  const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [totalDocs, setTotalDocs] = useState(0);
+  const [itemsPerPage, setItemPerPage] = useState(10);
+  const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [tableLoading, setTabelLoading] = useState(false);
 
   useEffect(() => {
-    fetchTransactions();
-  }, []);
+    if (!userTransactions) {
+      fetchTransactions();
+    } else {
+      updateTransactionState(userTransactions);
+    }
+  }, [userTransactions]);
 
   async function fetchTransactions(currentPage = 0) {
-    if (token) {
+    if (token && isLoggedIn) {
       setTabelLoading(true);
       const resp = await getUserTransactions(token, currentPage, itemsPerPage);
 
@@ -33,13 +51,8 @@ export default function Transactions() {
       }
 
       if (resp?.data) {
-        const { page, docs, totalDocs, totalPages } = resp?.data;
-        setCurrentPage(page);
-        setTransactions(docs);
-        setPageCount(totalPages);
-        setPageLoading(false);
-        setTabelLoading(false);
-        setTotalDocs(totalDocs);
+        pageLoading && dispatch(setUserTransactions(resp.data));
+        updateTransactionState(resp.data);
       }
     } else {
       setPageLoading(false);
@@ -47,16 +60,15 @@ export default function Transactions() {
     }
   }
 
-  const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
-  const [activeTab, setActiveTab] = useState(0);
-  const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
-  const [transactions, setTransactions] = useState([]);
-  const [pageLoading, setPageLoading] = useState(true);
-  const [totalDocs, setTotalDocs] = useState(0);
-  const [itemsPerPage, setItemPerPage] = useState(10);
-  const [pageCount, setPageCount] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [tableLoading, setTabelLoading] = useState(false);
+  const updateTransactionState = transactions => {
+    const { page, docs, totalDocs, totalPages } = transactions;
+    setTransactions(docs);
+    setCurrentPage(page);
+    setPageCount(totalPages);
+    setPageLoading(false);
+    setTabelLoading(false);
+    setTotalDocs(totalDocs);
+  };
 
   const tableProps = {
     title: 'Your transactions',

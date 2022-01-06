@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux';
+import { persistSelector, setUserPhone } from '../../slices/persist';
+import { createTranscationToken, getAccountToken } from '../../api';
 
 import PrimaryButton from '../Buttons/PrimaryButton';
 import FormInput from './FormInput';
 import ProviderSelectInput from './ProviderSelectInput';
-import { createTranscationToken, getAccountToken } from '../../api';
-import { toast } from 'react-toastify';
 
 const PrePaid = ({
   email,
-  providers,
   setConfirmDetails,
   setStep,
   setOpenModal,
   setPaymentToken,
-  fetchProviders,
 }) => {
   const {
     register,
@@ -23,17 +23,19 @@ const PrePaid = ({
     formState: { errors },
   } = useForm();
 
+  const dispatch = useDispatch();
+  const { userPhone } = useSelector(persistSelector);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
 
   useEffect(() => {
-    const authPhone = localStorage.getItem('authPhone');
-    if (authPhone) {
-      setPhone(authPhone);
+    if (userPhone) {
+      const { phone } = userPhone;
+      setPhone(phone?.number);
     }
-  }, []);
+  }, [userPhone]);
 
   async function onSubmit(formData) {
     if (formData) {
@@ -71,14 +73,21 @@ const PrePaid = ({
         if (response?.error) {
           setIsLoading(false);
         } else {
-          setSelectedProvider(providers[0]);
           toast.error(response?.error?.message);
           setIsLoading(false);
           setConfirmDetails(response?.data);
           setStep(1);
           setOpenModal(true);
         }
-        localStorage.setItem('authPhone', phone);
+        dispatch(
+          setUserPhone({
+            phone: {
+              number: phone,
+              code: country.countryCode,
+              value: formattedPhone,
+            },
+          }),
+        );
       }
     }
   }
@@ -102,9 +111,6 @@ const PrePaid = ({
           className="px-5 mt-2"
           label="State of residence"
           placeholder="Enter account number"
-          error={errors.select ?? false}
-          options={providers}
-          retry={fetchProviders}
           selectedProvider={selectedProvider}
           setSelectedProvider={setSelectedProvider}
         />
@@ -159,8 +165,6 @@ const PrePaid = ({
   );
 };
 
-PrePaid.propTypes = {
-  providers: PropTypes.array,
-};
+PrePaid.propTypes = {};
 
 export default PrePaid;

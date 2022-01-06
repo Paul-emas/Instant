@@ -1,46 +1,49 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import cookie from 'js-cookie';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, userSelector } from '../slices/user';
+import { persistSelector, setToken, setIsLoggedIn } from '../slices/persist';
 import { getUserAccount } from '../api';
 
 import LogoutIcon from '../public/svgs/logout.svg';
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
-import { useGlobalContext } from '../hooks/useGlobalContext';
-import useDispatcher from '../hooks/useDispatcher';
 
 const UserCard = ({ openLogout, animate, setOpenNav }) => {
-  const token = cookie.get('token');
   const router = useRouter();
+  const { me } = useSelector(userSelector);
   const {
-    user: { me },
-  } = useGlobalContext();
-  const { setUserAccount } = useDispatcher();
+    token,
+    isLoggedIn,
+    userPhone: { phone },
+  } = useSelector(persistSelector);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!me) {
+    if (!me && isLoggedIn) {
       fetchUser();
     }
-  }, [me]);
+  }, [me, isLoggedIn]);
 
   async function fetchUser() {
     const resp = await getUserAccount(token);
     if (resp?.error) {
-      setUserAccount({ me: null });
+      dispatch(setUser(null));
     }
     if (resp?.data) {
-      setUserAccount({ me: resp?.data });
+      dispatch(setUser(resp?.data));
     }
   }
 
   const signOut = () => {
-    cookie.remove('token');
-    router.push('/');
+    dispatch(setToken(null));
+    dispatch(setUser(null));
+    dispatch(setIsLoggedIn(false));
     setOpenNav(false);
-    setUserAccount({ me: null });
+    router.push('/');
   };
 
   return (
@@ -63,19 +66,17 @@ const UserCard = ({ openLogout, animate, setOpenNav }) => {
                 <p className="text-xs -mb-1.5 truncate">
                   {me?.firstName ?? 'Anonymous'}
                 </p>
-                <Link href="/profile">
-                  <a className="text-primary-base hover:text-primary-hover text-xxs font-semibold">
-                    View Profile
-                  </a>
-                </Link>
+                <span className="text-primary-base hover:text-primary-hover text-xxs font-semibold">
+                  {phone?.number}
+                </span>
               </div>
+              <FontAwesomeIcon
+                icon={faEllipsisH}
+                onClick={animate}
+                className="w-4 h-4 ml-auto text-gray-400 cursor-pointer"
+              />
             </>
           )}
-          <FontAwesomeIcon
-            icon={faEllipsisH}
-            onClick={animate}
-            className="w-4 h-4 ml-auto text-gray-400 cursor-pointer"
-          />
           {openLogout && (
             <button
               onClick={signOut}

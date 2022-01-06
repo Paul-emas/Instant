@@ -1,10 +1,17 @@
-import router from 'next/router';
 import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
+import router from 'next/router';
 import { useForm } from 'react-hook-form';
-import cookie from 'js-cookie';
 import isEmail from 'is-email';
-import useDispatcher from '../../hooks/useDispatcher';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  persistSelector,
+  setIsLoggedIn,
+  setQuickBuy,
+  setToken,
+  setUserPhone,
+} from '../../slices/persist';
+import { setUser } from '../../slices/user';
 import { signUp } from '../../api';
 
 import FormInput from '../forms/FormInput';
@@ -16,11 +23,11 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
   } = useForm();
+  const dispatch = useDispatch();
+  const { userPhone } = useSelector(persistSelector);
   const [errorMessage, setErrorMessage] = useState(null);
-  const { setUserAccount } = useDispatcher();
 
   const [pin, setPin] = useState('');
   const [phone, setPhone] = useState('');
@@ -28,11 +35,11 @@ const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const authPhone = localStorage.getItem('authPhone');
-    if (authPhone) {
-      setPhone(authPhone);
+    if (userPhone) {
+      const { phone } = userPhone;
+      setPhone(phone?.number);
     }
-  }, []);
+  }, [userPhone]);
 
   const onSubmit = async formData => {
     if (formData) {
@@ -59,19 +66,21 @@ const Register = () => {
 
       const { data, error } = await signUp(payload);
 
+      dispatch(setUserPhone(selectedNumber));
+
       if (error) {
         setIsLoading(false);
         setErrorMessage(error.data.errors[0].message);
         return;
       }
 
-      localStorage.setItem('authPhone', phone);
-
       if (data) {
         setIsLoading(false);
         const { account, authorization } = data;
-        setUserAccount({ user: { account } });
-        cookie.set('token', authorization);
+        dispatch(setUser(account));
+        dispatch(setToken(authorization));
+        dispatch(setQuickBuy(false));
+        dispatch(setIsLoggedIn(true));
         router.push('/dashboard');
       }
     }

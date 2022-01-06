@@ -10,20 +10,19 @@ import BuyElectricityTab from '../../tabs/BuyElectricityTab';
 import Modal from '..';
 import ProviderSelectInput from '../../forms/ProviderSelectInput';
 import { toast } from 'react-toastify';
-import cookies from 'js-cookie';
+import { useDispatch, useSelector } from 'react-redux';
+import { persistSelector, setUserPhone } from '../../../slices/persist';
 
 const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
-  const token = cookies.get('token');
+  const dispatch = useDispatch();
+  const { token, userPhone } = useSelector(persistSelector);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-
   const tabs = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
-
-  const [providers, setProviders] = useState(null);
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
@@ -31,19 +30,11 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetchProviders();
-    const authPhone = localStorage.getItem('authPhone');
-    if (authPhone) {
-      setPhone(authPhone);
+    if (userPhone) {
+      const { phone } = userPhone;
+      setPhone(phone?.number);
     }
-  }, []);
-
-  async function fetchProviders() {
-    const res = await getProviders();
-    if (res.data) {
-      setProviders(res.data.docs);
-    }
-  }
+  }, [userPhone]);
 
   async function onSubmit(formData) {
     if (formData) {
@@ -57,6 +48,16 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
       );
 
       const { data, error } = response;
+
+      dispatch(
+        setUserPhone({
+          phone: {
+            number: phone,
+            code: country.countryCode,
+            value: phone,
+          },
+        }),
+      );
 
       if (error) {
         setIsLoading(false);
@@ -112,9 +113,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
               <ProviderSelectInput
                 className="px-5 mt-2"
                 label="State of residence"
-                placeholder="Enter account number"
                 error={errors.select ?? false}
-                options={providers}
                 selectedProvider={selectedProvider}
                 setSelectedProvider={setSelectedProvider}
               />

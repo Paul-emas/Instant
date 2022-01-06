@@ -27,7 +27,11 @@ const Table = ({
         </div>
       </div>
       {tabs && tabs()}
-      <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-6">
+      <div
+        className={`${
+          !loading ? 'overflow-x-auto' : ''
+        } my-2 sm:-mx-6 lg:-mx-6`}
+      >
         <div className="py-2 align-middle inline-block min-w-full sm:px-6">
           {!loading && !isMobile && (
             <div className="overflow-hidden">

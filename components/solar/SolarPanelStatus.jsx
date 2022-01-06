@@ -38,7 +38,7 @@ const SolarPanelStatus = () => {
   ];
   return (
     <div className="pt-5">
-      <div className="grid sm:grid-cols-4 space-y-6 sm:space-x-6">
+      <div className="grid sm:grid-cols-4 space-y-6 sm:space-y-0 sm:space-x-6">
         {statusData.map(item => (
           <SolarPanelStatusCards key={item.label} {...item} />
         ))}

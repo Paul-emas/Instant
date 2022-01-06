@@ -1,33 +1,28 @@
 import 'tailwindcss/tailwind.css';
 import { useForm, FormProvider } from 'react-hook-form';
-import { SWRConfig } from 'swr';
 import { ToastContainer } from 'react-toastify';
+import { Provider } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import Wrapper from '../components/layout/Wrapper';
 import '../styles/fonts.css';
 import '../styles/global.css';
-import { Provider } from '../context/Provider';
+import { store, persistor } from '../store';
 
 function MyApp({ Component, pageProps }) {
   const methods = useForm();
 
   return (
-    <Provider>
-      <SWRConfig
-        value={{
-          refreshInterval: 3000,
-          fetcher: (resource, init) =>
-            axios(resource, init).then(res => res.json()),
-        }}
-      >
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
         <FormProvider {...methods}>
           <Wrapper>
             <ToastContainer />
             <Component {...pageProps} />
           </Wrapper>
         </FormProvider>
-      </SWRConfig>
+      </PersistGate>
     </Provider>
   );
 }

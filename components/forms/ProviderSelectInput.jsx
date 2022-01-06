@@ -5,27 +5,48 @@ import {
   faCheckCircle,
   faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUserProviders, userSelector } from '../../slices/user';
+import { getProviders } from '../../api';
+
 import EmptyIcon from '../../public/svgs/empty-state.svg';
 
 const ProviderSelectInput = ({
   className,
   error,
   label,
-  options,
   selectedProvider,
   setSelectedProvider,
-  retry,
 }) => {
+  const dispatch = useDispatch();
+  const { userProviders } = useSelector(userSelector);
   const errorStyles = error
     ? 'border-red-600 focus:border-red-600 focus:outline-none'
     : 'focus:bg-primary-light focus:border-primary-base focus:border-skin-theme focus:outline-none';
   const [openOption, setOpenOptions] = useState(false);
+  const [providers, setProviders] = useState([]);
 
   useEffect(() => {
-    if (options?.length) {
-      setSelectedProvider(options[0]);
+    if (!userProviders) {
+      fetchProviders();
+    } else {
+      updateProvidersState(userProviders);
     }
-  }, [options]);
+  }, [userProviders]);
+
+  async function fetchProviders() {
+    const resp = await getProviders();
+    if (resp.data) {
+      dispatch(setUserProviders(resp.data));
+      updateProvidersState(resp.data);
+    }
+  }
+
+  function updateProvidersState(providers) {
+    const { docs } = providers;
+    setProviders(docs);
+    setSelectedProvider(docs[0]);
+  }
 
   return (
     <>
@@ -76,7 +97,7 @@ const ProviderSelectInput = ({
             openOption ? 'opacity-100 visible' : 'opacity-0 invisible'
           } absolute z-10 mt-1 w-full bg-white shadow-soft border border-primary-light max-h-64 rounded-b-lg py-2 text-base overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
         >
-          {!options?.length ? (
+          {!providers?.length ? (
             <div className="flex flex-col items-center py-5">
               <EmptyIcon />
               <p className="text-gray-400 text-sm mt-2">No Providers Found</p>
@@ -85,7 +106,7 @@ const ProviderSelectInput = ({
               </p>
               <button
                 onClick={() => {
-                  retry();
+                  fetchProviders();
                   setOpenOptions(false);
                 }}
                 className="bg-primary-base font-semibold text-white rounded-lg px-3 py-1 mt-2"
@@ -94,8 +115,8 @@ const ProviderSelectInput = ({
               </button>
             </div>
           ) : null}
-          {options?.length
-            ? options.map((option, index) => (
+          {providers?.length
+            ? providers.map((option, index) => (
                 <li
                   key={index}
                   onClick={() => {

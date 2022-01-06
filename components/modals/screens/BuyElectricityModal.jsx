@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { userSelector } from '../../../slices/user';
+import { persistSelector } from '../../../slices/persist';
+import { generateTranscationToken } from '../../../api';
+
 import BuyElectricityTab from '../../tabs/BuyElectricityTab';
 import Modal from '../index';
-import { generateTranscationToken, getProviders } from '../../../api';
 import PrePaidForm from '../../forms/PrepaidForm';
 import PostPaid from '../../forms/PostPaidForm';
 import QuickBuyConfirmDetails from '../QuickBuyConfirmDetails';
-import ChangePhone from '../ChangePhone';
 import ErrorSuccess from '../ErrorSuccess';
 import Receipt from '../Receipt';
 import RequestLoader from '../../loaders/RequestLoader';
 
 const BuyElectricityModal = ({ open, setOpen }) => {
+  const { me } = useSelector(userSelector);
+  const { email, userPhone } = useSelector(persistSelector);
   const tabs = [
     { id: 0, name: 'prepaid' },
     { id: 1, name: 'postpaid' },
@@ -18,7 +23,6 @@ const BuyElectricityModal = ({ open, setOpen }) => {
 
   const [step, setStep] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
-  const [providers, setProviders] = useState([]);
   const [confirmDetails, setConfirmDetails] = useState(null);
   const [userEmail, setUserEmail] = useState('');
   const [paystack, setPayStack] = useState(null);
@@ -27,23 +31,19 @@ const BuyElectricityModal = ({ open, setOpen }) => {
   const [phone, setPhone] = useState('');
 
   useEffect(() => {
-    const authPhone = localStorage.getItem('authPhone');
-    if (authPhone) {
-      setPhone(authPhone);
+    if (userPhone) {
+      const { phone } = userPhone;
+      setPhone(phone?.number);
     }
-  }, []);
+  }, [userPhone]);
 
   useEffect(() => {
-    fetchProviders();
-    setUserEmail(localStorage.getItem('email'));
-  }, []);
-
-  async function fetchProviders() {
-    const res = await getProviders();
-    if (res.data) {
-      setProviders(res.data.docs);
+    if (!me) {
+      setUserEmail(email);
+    } else {
+      setUserEmail(me?.email?.value);
     }
-  }
+  }, []);
 
   const close = () => {
     const resp = confirm('Are you sure you want to cancel transcation?');
@@ -93,23 +93,19 @@ const BuyElectricityModal = ({ open, setOpen }) => {
             <div className="slideUp">
               {activeTab === 0 && (
                 <PrePaidForm
-                  providers={providers}
                   setConfirmDetails={setConfirmDetails}
                   setStep={setStep}
                   setOpenModal={setOpen}
                   email={userEmail}
-                  fetchProviders={fetchProviders}
                   setPaymentToken={setPaymentToken}
                 />
               )}
               {activeTab === 1 && (
                 <PostPaid
-                  providers={providers}
                   setConfirmDetails={setConfirmDetails}
                   setStep={setStep}
                   setOpenModal={setOpen}
                   email={userEmail}
-                  fetchProviders={fetchProviders}
                   setPaymentToken={setPaymentToken}
                 />
               )}
