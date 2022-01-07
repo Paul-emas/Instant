@@ -1,7 +1,9 @@
-import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { setInitAuthentication } from '../../slices/user';
 import PrimaryButton from '../Buttons/PrimaryButton';
 
 const Buy = () => {
+  const dispatch = useDispatch();
   return (
     <div className="pb-14 sm:py-20 bg-secondary-lightGreen">
       <div className="container mx-auto px-4 sm:px-10">
@@ -29,9 +31,11 @@ const Buy = () => {
                   </p>
                 </div>
                 <div className="sm:w-56 mt-10 sm:mt-6">
-                  <Link href="/sign-up">
-                    <PrimaryButton>Get Started</PrimaryButton>
-                  </Link>
+                  <PrimaryButton
+                    onClick={() => dispatch(setInitAuthentication('register'))}
+                  >
+                    Get Started
+                  </PrimaryButton>
                 </div>
               </div>
             </div>

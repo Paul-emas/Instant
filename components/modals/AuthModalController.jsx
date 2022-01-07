@@ -16,7 +16,7 @@ export const AuthModalController = () => {
 
   useEffect(() => {
     if (initAuthentication) {
-      setStep('login');
+      setStep(initAuthentication);
     } else {
       close();
     }

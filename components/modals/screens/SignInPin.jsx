@@ -57,6 +57,7 @@ const SignInPin = ({ close, setStep }) => {
         dispatch(setToken(authorization));
         dispatch(setQuickBuy(false));
         dispatch(setIsLoggedIn(true));
+        close();
         router.push('/dashboard');
       }
     }

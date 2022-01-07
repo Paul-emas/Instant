@@ -5,7 +5,7 @@ const initialState = {
   userProviders: null,
   userTransactions: null,
   userMeters: null,
-  initAuthentication: false,
+  initAuthentication: '',
 };
 
 const userSlice = createSlice({

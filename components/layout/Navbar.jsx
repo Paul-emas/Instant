@@ -72,7 +72,7 @@ const Navbar = () => {
                 Offgrid
               </a>
             </Link>
-            <Button onClick={() => dispatch(setInitAuthentication(true))}>
+            <Button onClick={() => dispatch(setInitAuthentication('login'))}>
               Login
             </Button>
           </div>
