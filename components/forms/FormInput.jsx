@@ -26,7 +26,7 @@ const FormInput = forwardRef(
       <div className="mb-2.5 2xl:mb-4">
         <label
           className={`${
-            font === 'small' ? 'text-xs' : 'text-xs sm:text-sm'
+            font === 'small' ? 'text-xs' : 'text-xs'
           } text-gray-400 label`}
         >
           {label}
@@ -50,7 +50,7 @@ const FormInput = forwardRef(
               border: 'none',
               fontFamily: 'Red Hat Display',
               fontWeight: '700',
-              fontSize: `${font === 'small' ? '14px' : '16px'}`,
+              fontSize: `${font === 'small' ? '14px' : '14px'}`,
               height: 'auto',
             }}
             inputClass="phone-input"

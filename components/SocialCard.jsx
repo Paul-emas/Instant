@@ -1,57 +1,18 @@
-import {
-  faInstagram,
-  faTwitter,
-  faLinkedinIn,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FacebookIcon from '../public/svgs/social/facebook.svg';
+import WhatsappIcon from '../public/svgs/social/whatsapp.svg';
+import InstagramIcon from '../public/svgs/social/instagram.svg';
+import TwitterIcon from '../public/svgs/social/twitter.svg';
 
 const SocialCard = ({ follow = true, center = true }) => (
   <div className="mt-5 px-5">
     {follow && (
-      <p className="text-base text-center">Follow us on social media</p>
+      <p className="text-sm text-center">Join our community on social media</p>
     )}
-    <div
-      className={`${
-        center ? 'justify-center' : 'justify-end'
-      } flex space-x-5 mt-5`}
-    >
-      <a
-        href=""
-        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-twitter rounded-full"
-      >
-        <FontAwesomeIcon
-          icon={faTwitter}
-          className="text-xl w-5 h-5 lg:w-6 lg:h-6 mx-auto text-white mt-1.5 lg:mt-2"
-        />
-      </a>
-      <a
-        href=""
-        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-white lg:border rounded-full"
-      >
-        <FontAwesomeIcon
-          icon={faInstagram}
-          className="text-2xl w-5 h-5 lg:w-6 lg:h-6 mx-auto mt-1.5 lg:mt-2"
-        />
-      </a>
-      <a
-        href=""
-        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-linkedin rounded-full"
-      >
-        <FontAwesomeIcon
-          icon={faLinkedinIn}
-          className="text-xl w-5 h-5 lg:w-6 lg:h-6 mx-auto text-white mt-1.5 lg:mt-2"
-        />
-      </a>
-      <a
-        href=""
-        className="w-8 h-8 lg:w-10 lg:h-10 text-center bg-secondary-youtube rounded-full"
-      >
-        <FontAwesomeIcon
-          icon={faYoutube}
-          className="text-xl w-5 h-5 lg:w-6 lg:h-6 mx-auto text-white mt-1.5 lg:mt-2"
-        />
-      </a>
+    <div className="flex justify-center items-center mt-4 space-x-4">
+      <FacebookIcon />
+      <WhatsappIcon />
+      <InstagramIcon />
+      <TwitterIcon />
     </div>
   </div>
 );

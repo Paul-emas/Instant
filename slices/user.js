@@ -5,6 +5,7 @@ const initialState = {
   userProviders: null,
   userTransactions: null,
   userMeters: null,
+  initAuthentication: false,
 };
 
 const userSlice = createSlice({
@@ -23,11 +24,19 @@ const userSlice = createSlice({
     setUserMeter: (state, { payload }) => {
       state.userMeters = payload;
     },
+    setInitAuthentication: (state, { payload }) => {
+      state.initAuthentication = payload;
+    },
   },
 });
 
-export const { setUser, setUserProviders, setUserTransactions, setUserMeter } =
-  userSlice.actions;
+export const {
+  setUser,
+  setUserProviders,
+  setUserTransactions,
+  setUserMeter,
+  setInitAuthentication,
+} = userSlice.actions;
 
 export const userSelector = state => state.user;
 

@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { setInitAuthentication } from '../../slices/user';
 
 import Button from '../Button';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
@@ -69,9 +72,9 @@ const Navbar = () => {
                 Offgrid
               </a>
             </Link>
-            <Link href="/sign-in">
-              <Button>Login</Button>
-            </Link>
+            <Button onClick={() => dispatch(setInitAuthentication(true))}>
+              Login
+            </Button>
           </div>
         </div>
       </div>

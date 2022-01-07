@@ -22,7 +22,7 @@ const ChangePhone = ({ setStep }) => {
         </div>
         <div className="mt-6">
           <FormInput
-            className="py-2.5 px-5 mt-2"
+            className="py-2.5 px-4 mt-2"
             type="phone"
             id="phone"
             label="Phone number"

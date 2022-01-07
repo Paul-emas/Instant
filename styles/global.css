@@ -69,7 +69,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .form-input {
-  @apply w-full font-bold border border-gray-200 rounded-lg text-sm lg:text-base placeholder-gray-400 placeholder:font-semibold;
+  @apply w-full font-bold border border-gray-200 rounded-lg text-sm placeholder-gray-400 placeholder:font-semibold;
 }
 
 .btn {
@@ -195,9 +195,9 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0 6px !important;
   text-align: center !important;
   background: transparent;
-  width: 50px !important;
-  height: 50px !important;
-  font-size: 55px !important;
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 40px !important;
   border-radius: 12px !important;
 }
 

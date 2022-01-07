@@ -15,36 +15,36 @@ const DownloadButtons = ({
   <div
     className={`${
       center ? 'mx-auto' : 'lg:ml-0'
-    } px-2.5 lg:px-0 grid grid-cols-2 gap-x-5 sm:max-w-sm lg:max-w-md mt-8 lg:mt-10`}
+    } px-2.5 lg:px-0 grid grid-cols-2 gap-x-5 sm:max-w-sm mt-8 lg:mt-10`}
   >
     <a
       href="/"
-      className={`${className} pl-2.5 sm:pl-3 lg:pl-4 py-2.5 rounded-xl inline-flex items-center`}
+      className={`${className} pl-2.5 sm:pl-3 lg:pl-4 py-1.5 rounded-xl inline-flex items-center`}
     >
       {dark ? (
-        <PlayStoreIcon2 className="w-8 h-8 lg:w-10 lg:h-10" />
+        <PlayStoreIcon2 className="w-7 h-7 sm:w-8 sm:h-8" />
       ) : (
-        <PlayStoreIcon className="w-8 h-8 lg:w-10 lg:h-10" />
+        <PlayStoreIcon className="w-7 h-7 sm:w-8 sm:h-8" />
       )}
       <div className="ml-1 sm:ml-2 mt-0.5 lg:mt-1 text-left">
-        <p className={`${captionColor} text-xxs lg:text-xs`}>Get it on</p>
-        <p className={`${labelColor} text-xs lg:text-lg font-semibold`}>
+        <p className={`${captionColor} text-xxs`}>Get it on</p>
+        <p className={`${labelColor} text-xs lg:text-base font-bold`}>
           Play Store
         </p>
       </div>
     </a>
     <a
       href="/"
-      className={`${className} pl-2.5 sm:pl-3 lg:pl-4 py-2.5 rounded-xl inline-flex items-center`}
+      className={`${className} pl-2.5 sm:pl-3 lg:pl-4 py-1.5 rounded-xl inline-flex items-center`}
     >
       {dark ? (
-        <AppleIcon2 className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
+        <AppleIcon2 className="w-7 h-7 sm:w-8 sm:h-8" />
       ) : (
-        <AppleIcon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10" />
+        <AppleIcon className="w-7 h-7 sm:w-8 sm:h-8" />
       )}
       <div className="ml-1 sm:ml-2 mt-0.5  text-left">
-        <p className={`${captionColor} text-xxs lg:text-xs`}>Download on the</p>
-        <p className={`${labelColor} text-xs lg:text-lg font-semibold`}>
+        <p className={`${captionColor} text-xxs`}>Download on the</p>
+        <p className={`${labelColor} text-xs lg:text-base font-bold`}>
           App Store
         </p>
       </div>
