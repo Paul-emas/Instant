@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import router from 'next/router';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  persistSelector,
-  setIsLoggedIn,
-  setQuickBuy,
-  setToken,
-} from '../../../slices/persist';
-import { setUser } from '../../../slices/user';
-import { signUp } from '../../../api';
+import isEmail from 'is-email';
+import { persistSelector } from '../../../slices/persist';
+import { setInitAuthentication, setRegisterData } from '../../../slices/user';
 
 import Modal from '../index';
 import PrimaryButton from '../../Buttons/PrimaryButton';
@@ -27,10 +20,8 @@ const Register = ({ close, setStep }) => {
   const { userPhone } = useSelector(persistSelector);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const [pin, setPin] = useState('');
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (userPhone) {
@@ -40,48 +31,17 @@ const Register = ({ close, setStep }) => {
   }, [userPhone]);
 
   const onSubmit = async formData => {
-    if (formData) {
-      setIsLoading(true);
-      const { name, email, referral_no } = formData;
-      const formattedPhone = phone.replace(country.countryCode, '');
-      const selectedNumber = {
-        phone: {
-          number: phone,
-          code: country.countryCode,
-          value: formattedPhone,
-        },
-      };
-
-      const payload = {
-        firstName: name,
-        lastName: '',
-        email,
-        pin,
-        country: country.name,
-        ...selectedNumber,
-        ...(referral_no !== '' && { referral_no }),
-      };
-
-      const { data, error } = await signUp(payload);
-
-      dispatch(setUserPhone(selectedNumber));
-
-      if (error) {
-        setIsLoading(false);
-        setErrorMessage(error.data.errors[0].message);
-        return;
-      }
-
-      if (data) {
-        setIsLoading(false);
-        const { account, authorization } = data;
-        dispatch(setUser(account));
-        dispatch(setToken(authorization));
-        dispatch(setQuickBuy(false));
-        dispatch(setIsLoggedIn(true));
-        router.push('/dashboard');
-      }
+    if (!navigator.onLine) {
+      dispatch(setInitAuthentication('offline'));
+      return;
     }
+    const payload = {
+      phone,
+      country,
+      ...formData,
+    };
+    dispatch(setRegisterData(payload));
+    setStep('createPinMessage');
   };
 
   return (
@@ -126,7 +86,7 @@ const Register = ({ close, setStep }) => {
             })}
           />
           <FormInput
-            className="py-2.5 px-4 mt-2"
+            className="py-2 px-4 mt-2"
             type="phone"
             id="phone"
             label="Phone number"
@@ -156,12 +116,7 @@ const Register = ({ close, setStep }) => {
             <strong className="text-black">Privacy Policy</strong> and{' '}
             <strong className="text-black">Terms & Condition</strong>
           </div>
-          <PrimaryButton
-            size="base"
-            className="mt-8"
-            disabled={isLoading}
-            loading={isLoading}
-          >
+          <PrimaryButton size="base" className="mt-8">
             Create account
           </PrimaryButton>
         </form>
@@ -169,7 +124,7 @@ const Register = ({ close, setStep }) => {
           Already a user?{' '}
           <span
             onClick={() => setStep('login')}
-            className="text-primary-base font-semibold"
+            className="text-primary-base cursor-pointer font-semibold hover:text-primary-hover"
           >
             Login
           </span>

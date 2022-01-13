@@ -9,7 +9,7 @@ import {
   setQuickBuy,
   setToken,
 } from '../../../slices/persist';
-import { setUser } from '../../../slices/user';
+import { setInitAuthentication, setUser } from '../../../slices/user';
 import { logIn } from '../../../api';
 
 import Modal from '../index';
@@ -37,6 +37,10 @@ const SignInPin = ({ close, setStep }) => {
   const onSubmit = async e => {
     e !== undefined && e.preventDefault();
     if (userPhone && pin.length === 6) {
+      if (!navigator.onLine) {
+        dispatch(setInitAuthentication('offline'));
+      }
+
       setIsLoading(true);
       const payload = {
         ...userPhone,
@@ -46,7 +50,7 @@ const SignInPin = ({ close, setStep }) => {
 
       if (error) {
         setIsLoading(false);
-        setErrorMessage(error.data.errors[0].message);
+        setErrorMessage('Incorrect pin! Kindly confirm your pin');
         return;
       }
 
@@ -57,6 +61,7 @@ const SignInPin = ({ close, setStep }) => {
         dispatch(setToken(authorization));
         dispatch(setQuickBuy(false));
         dispatch(setIsLoggedIn(true));
+        dispatch(setInitAuthentication(null));
         close();
         router.push('/dashboard');
       }
@@ -72,9 +77,6 @@ const SignInPin = ({ close, setStep }) => {
         <p className="text-gray-700 mt-3 text-sm text-center">
           Your 6-digit access code
         </p>
-        {errorMessage && (
-          <ErrorAlert error={errorMessage} setError={setErrorMessage} />
-        )}
         <form className="mt-10 flex items-center flex-col" onSubmit={onSubmit}>
           <PinInput
             length={6}
@@ -82,9 +84,6 @@ const SignInPin = ({ close, setStep }) => {
             onChange={value => setPin(value)}
             type="numeric"
             className="hidden"
-            inputStyle={{
-              border: `${errorMessage ? '2px solid red' : '2px solid #e8e8e8'}`,
-            }}
             inputMode="number"
             autoSelect={true}
           />
@@ -109,7 +108,11 @@ const SignInPin = ({ close, setStep }) => {
           </button>
         </div>
       </div>
-      <BottomDownload />
+      {errorMessage ? (
+        <ErrorAlert error={errorMessage} setError={setErrorMessage} />
+      ) : (
+        <BottomDownload />
+      )}
     </Modal>
   );
 };

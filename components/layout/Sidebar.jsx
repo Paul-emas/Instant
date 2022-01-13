@@ -65,12 +65,12 @@ const Sidebar = ({ openNav, setOpenNav }) => {
         onClick={() => setOpenNav(false)}
         className={`${
           openNav ? 'opacity-100 visible' : 'opacity-0 invisible'
-        } w-full min-h-screen bg-secondary-modal bg-opacity-70 top-0 left-0 duration-200  z-40 fixed`}
+        } w-full min-h-screen bg-secondary-modal bg-opacity-70 top-0 left-0 duration-200 z-40 fixed`}
       ></div>
       <div
         className={`${
           openNav ? 'left-0' : '-left-full lg:left-0'
-        } min-h-screen  fixed w-72 sm:w-60 2xl:w-sidebar pt-5 2xl:pt-10 bg-primary-base bg-contain z-50 ease`}
+        } min-h-screen  fixed w-72 sm:w-60 2xl:w-sidebar pt-5 2xl:pt-10 bg-primary-base bg-contain z-50 sm:z-10 ease`}
       >
         {openLogout && (
           <div

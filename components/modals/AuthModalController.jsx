@@ -8,8 +8,10 @@ import Login from './screens/Login';
 import Register from './screens/Register';
 import ResetPin from './screens/ResetPin';
 import SignInPin from './screens/SignInPin';
+import CreatePinMessage from './screens/CreatePinMessage';
+import NoInternet from './screens/NoInternet';
 
-export const AuthModalController = () => {
+const AuthModalController = () => {
   const dispatch = useDispatch();
   const { initAuthentication } = useSelector(userSelector);
   const [step, setStep] = useState(null);
@@ -35,14 +37,20 @@ export const AuthModalController = () => {
           {step === 'register' && <Register close={close} setStep={setStep} />}
           {step === 'signIn' && <SignInPin close={close} setStep={setStep} />}
           {step === 'reset' && <ResetPin close={close} setStep={setStep} />}
+          {step === 'createPinMessage' && (
+            <CreatePinMessage close={close} setStep={setStep} />
+          )}
           {step === 'createPin' && (
             <CreatePin close={close} setStep={setStep} />
           )}
           {step === 'confirmPin' && (
             <ConfirmPin close={close} setStep={setStep} />
           )}
+          {step === 'offline' && <NoInternet close={close} />}
         </div>
       )}
     </>
   );
 };
+
+export default AuthModalController;

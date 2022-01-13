@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 import gsap from 'gsap';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
 const ErrorAlert = ({ error, setError }) => {
   useEffect(() => {
@@ -9,23 +9,28 @@ const ErrorAlert = ({ error, setError }) => {
     tl.fromTo(
       '.alert',
       {
-        scaleY: 0,
+        y: 20,
+        autoAlpha: 0,
       },
       {
-        scaleY: 1,
-        ease: 'elastic',
+        y: 0,
+        autoAlpha: 1,
+        ease: 'power3',
       },
     );
   }, []);
 
   return (
-    <div className="alert bg-red-200 capitalize flex items-center justify-center text-red-600 rounded-lg py-2.5 text-center px-4 text-sm mt-4 -mb-6">
-      <span className="px-2">{error}</span>
-      <FontAwesomeIcon
-        icon={faTimesCircle}
-        className="text-xl w-6 h-6 ml-auto cursor-pointer"
-        onClick={() => setError(null)}
-      />
+    <div className="mt-10 px-6 lg:px-8 sm:pb-3 border-t">
+      <div className="alert bg-red-50 capitalize text-red-600 font-semibold rounded-lg py-2.5 px-3 text-xs mt-4 -mb-6">
+        <div className="flex items-center">
+          <FontAwesomeIcon
+            icon={faExclamationCircle}
+            className="w-3 h-3 text-red-600"
+          />
+          <span className="ml-1.5">{error}</span>
+        </div>
+      </div>
     </div>
   );
 };

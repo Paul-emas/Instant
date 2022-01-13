@@ -27,7 +27,12 @@ const ResetPin = ({ close, setStep }) => {
     }
   }, [pin]);
 
-  const onSubmit = async e => {};
+  const onSubmit = async e => {
+    if (!navigator.onLine) {
+      dispatch(setInitAuthentication('offline'));
+      return;
+    }
+  };
 
   return (
     <Modal border={false} close={close}>

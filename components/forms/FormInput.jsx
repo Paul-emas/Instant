@@ -37,7 +37,7 @@ const FormInput = forwardRef(
             ref={ref}
             type={type}
             className={`${className} ${errorStyles} form-input`}
-            autoComplete="off"
+            autoComplete="false"
             {...props}
           />
         )}
@@ -50,7 +50,7 @@ const FormInput = forwardRef(
               border: 'none',
               fontFamily: 'Red Hat Display',
               fontWeight: '700',
-              fontSize: `${font === 'small' ? '14px' : '14px'}`,
+              fontSize: '14px',
               height: 'auto',
             }}
             inputClass="phone-input"
@@ -73,6 +73,7 @@ const FormInput = forwardRef(
               {...props}
               type="number"
               placeholder="0.00"
+              autoComplete="false"
               ref={ref}
               className={`${
                 error ? 'focus:bg-white' : 'focus:bg-primary-light'

@@ -5,9 +5,9 @@ export async function logIn(payload) {
   try {
     const response = await axios.post(`${baseUrl}/account/login`, payload);
     const { data } = response.data;
-    return { data };
+    return { data, status: response.status };
   } catch (error) {
-    if (error.response) return { error: error.response.data };
+    if (error.response) return { error };
   }
 }
 

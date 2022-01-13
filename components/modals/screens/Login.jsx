@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link';
-import router from 'next/router';
 import {
   persistSelector,
   setAnonymousToken,
   setUserPhone,
 } from '../../../slices/persist';
+import { setInitAuthentication } from '../../../slices/user';
 import { checkUserValidation } from '../../../api';
 
 import Modal from '../index';
@@ -30,6 +29,11 @@ const Login = ({ close, setStep }) => {
 
   const onSubmit = async formData => {
     if (formData) {
+      if (!navigator.onLine) {
+        dispatch(setInitAuthentication('offline'));
+        return;
+      }
+
       setIsLoading(true);
       const formattedPhone = phone.replace(country.countryCode, '');
       const payload = {
@@ -39,9 +43,11 @@ const Login = ({ close, setStep }) => {
           value: formattedPhone,
         },
       };
+
       dispatch(setUserPhone(payload));
       const { data, error } = await checkUserValidation(payload);
-      if (error) {
+
+      if (error?.response?.status === 404) {
         setIsLoading(false);
         setStep('register');
       }
@@ -77,7 +83,7 @@ const Login = ({ close, setStep }) => {
           }}
         >
           <FormInput
-            className="py-2.5 px-4 mt-2"
+            className="py-2 px-4 mt-2"
             type="phone"
             id="phone"
             label="Phone number"
@@ -108,7 +114,7 @@ const Login = ({ close, setStep }) => {
           Dont have an account?{' '}
           <span
             onClick={() => setStep('register')}
-            className="text-primary-base font-semibold"
+            className="text-primary-base font-semibold cursor-pointer hover:text-primary-hover"
           >
             Register
           </span>

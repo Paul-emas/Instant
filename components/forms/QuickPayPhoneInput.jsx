@@ -56,7 +56,7 @@ const QuickPayPhoneInput = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormInput
-        className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
+        className="py-2.5 px-5 mt-2"
         type="phone"
         id="phone"
         label="Phone number"
@@ -74,7 +74,7 @@ const QuickPayPhoneInput = () => {
         onChange={value => setPhone(value)}
       />
       <FormInput
-        className="py-2.5 xl:py-2.5 2xl:py-3.5 px-5 mt-2"
+        className="py-2.5 px-5 mt-2"
         type="email"
         id="email"
         placeholder="Enter your Email Address"

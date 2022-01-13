@@ -1,20 +1,14 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Header from '../components/homepage/Header';
 import QuickPay from '../components/modals/QuickPay';
 import Partners from '../components/homepage/Partners';
 import UserServices from '../components/homepage/UserServices';
 import Counter from '../components/homepage/Counter';
 import DownloadApp from '../components/homepage/DownloadApp';
-import FAQs from '../components/homepage/FAQs';
-import People from '../components/homepage/People';
-import Slider from '../components/homepage/Slider';
-import CTA from '../components/homepage/CTA';
 import Footer from '../components/homepage/Footer';
 import HomeBanners from '../components/homepage/HomeBanners';
 import PaymentPlans from '../components/forms/PaymentPlans';
 import Buy from '../components/homepage/Buy';
-import { AuthModalController } from '../components/modals/AuthModalController';
 
 export default function Home() {
   return (
@@ -32,7 +26,6 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AuthModalController />
       <Header>
         <div className="relative lg:w-1/2 max-w-3xl top-16 sm:top-20">
           <img src="/images/woman.webp" className="object-contain" />

@@ -15,11 +15,7 @@ import LogoutIcon from '../public/svgs/logout.svg';
 const UserCard = ({ openLogout, animate, setOpenNav }) => {
   const router = useRouter();
   const { me } = useSelector(userSelector);
-  const {
-    token,
-    isLoggedIn,
-    userPhone: { phone },
-  } = useSelector(persistSelector);
+  const { token, isLoggedIn, userPhone } = useSelector(persistSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -67,7 +63,7 @@ const UserCard = ({ openLogout, animate, setOpenNav }) => {
                   {me?.firstName ?? 'Anonymous'}
                 </p>
                 <span className="text-primary-base hover:text-primary-hover text-xxs font-semibold">
-                  {phone?.number}
+                  {userPhone?.phone?.number}
                 </span>
               </div>
               <FontAwesomeIcon

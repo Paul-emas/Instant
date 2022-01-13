@@ -6,7 +6,14 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import gsap from 'gsap';
 import { isMobile } from 'react-device-detect';
 
-const Modal = ({ title, close, border = true, goBack, children }) => {
+const Modal = ({
+  title,
+  close,
+  border = true,
+  successMessage,
+  goBack,
+  children,
+}) => {
   useEffect(() => {
     const tl = gsap.timeline({
       delay: 0.1,
@@ -36,7 +43,27 @@ const Modal = ({ title, close, border = true, goBack, children }) => {
         '<',
       );
     }
+
+    return () => {
+      tl.kill();
+    };
   }, []);
+
+  useEffect(() => {
+    if (successMessage && !isMobile) {
+      gsap.from('.successAlert', {
+        y: '1000%',
+        autoAlpha: 0,
+        duration: 0.5,
+      });
+    } else {
+      gsap.from('.successAlert', {
+        y: '-1000%',
+        autoAlpha: 0,
+        duration: 0.5,
+      });
+    }
+  }, [successMessage]);
 
   return (
     <div className="w-full min-h-screen top-0 left-0 fixed z-50 overflow-hidden">
@@ -64,7 +91,7 @@ const Modal = ({ title, close, border = true, goBack, children }) => {
                   </button>
                 )}
                 {title && (
-                  <div className="text-center font-bold relative top-1 ">
+                  <div className="text-center font-bold relative top-1">
                     <span>{title}</span>
                   </div>
                 )}
@@ -81,6 +108,17 @@ const Modal = ({ title, close, border = true, goBack, children }) => {
           </div>
           {children}
         </div>
+
+        {successMessage && (
+          <>
+            <div className="successAlert bg-secondary-green absolute z-10 sm:bottom-5 2xl:bottom-10 text-white py-2.5 px-6 text-sm rounded-lg hidden sm:block">
+              {successMessage}
+            </div>
+            <div className="successAlert bg-secondary-green text-center absolute w-full z-10 top-0 text-white py-2.5 px-4 text-sm block sm:hidden">
+              {successMessage}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

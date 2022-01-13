@@ -7,9 +7,9 @@ const DashboardWrapper = ({ children }) => {
   const { isLoggedIn, token } = useSelector(persistSelector);
   useEffect(() => {
     if (!token && !isLoggedIn) {
-      router.replace('/auth/sign-in');
+      router.replace('/');
     }
-  }, [token]);
+  }, [token, isLoggedIn]);
   return <>{children}</>;
 };
 

@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   me: null,
+  registerData: null,
+  authPin: null,
   userProviders: null,
   userTransactions: null,
   userMeters: null,
@@ -14,6 +16,12 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, { payload }) => {
       state.me = payload;
+    },
+    setRegisterData: (state, { payload }) => {
+      state.registerData = payload;
+    },
+    setAuthPin: (state, { payload }) => {
+      state.authPin = payload;
     },
     setUserProviders: (state, { payload }) => {
       state.userProviders = payload;
@@ -32,6 +40,8 @@ const userSlice = createSlice({
 
 export const {
   setUser,
+  setRegisterData,
+  setAuthPin,
   setUserProviders,
   setUserTransactions,
   setUserMeter,
