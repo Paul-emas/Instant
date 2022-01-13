@@ -6,7 +6,7 @@ const PaymentPlans = () => {
       <div className="container mx-auto px-4 sm:px-10">
         <div className="sm:max-w-6xl mx-auto">
           <div className="grid sm:grid-cols-2 space-y-5 sm:space-x-16">
-            <div className="px-5 sm:px-0 text-center">
+            <div className="px-5 sm:px-0 text-center sm:text-left">
               <div className="text-xl sm:text-5xl text-primary-darker font-bold">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitred
               </div>
