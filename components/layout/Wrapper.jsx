@@ -44,8 +44,6 @@ const Wrapper = ({ children }) => {
       window.scrollTo(0, 0);
     };
 
-    console.log(isRouteProtected);
-
     if (!isLoggedIn && isRouteProtected) {
       router.push('/');
       dispatch(setInitAuthentication('login'));

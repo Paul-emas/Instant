@@ -107,7 +107,6 @@ const ConfirmPin = ({ close, setStep }) => {
           setIsLoading(false);
           setSuccessMessage('Successfully created pin!');
           setTimeout(() => setStep('signIn'), 3000);
-          dispatch(setInitAuthentication(null));
         }
       }
     } else {
