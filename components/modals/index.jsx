@@ -72,7 +72,7 @@ const Modal = ({
           onClick={() => close()}
           className="modal-overlay w-full min-h-screen absolute bg-secondary-modal bg-opacity-70"
         ></div>
-        <div className="modal-box w-full xs:w-modal pt-5 pb-10 rounded-t-2xl sm:rounded-2xl bg-white">
+        <div className="modal-box w-full xs:w-modal pt-5 pb-10 rounded-t-2xl sm:rounded-2xl overflow-y-scroll max-h-48 bg-white modal-card">
           <div
             className={`${border && 'border-b border-gray-100'} text-xl h-14`}
           >

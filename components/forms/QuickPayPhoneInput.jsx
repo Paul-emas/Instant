@@ -2,10 +2,8 @@ import { useEffect, useState } from 'react';
 import router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import isEmail from 'is-email';
 import {
   setUserPhone,
-  setUserEmail,
   setQuickBuy,
   persistSelector,
 } from '../../slices/persist';
@@ -17,7 +15,6 @@ const QuickPayPhoneInput = () => {
   const dispatch = useDispatch();
   const { userPhone } = useSelector(persistSelector);
   const {
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -34,7 +31,6 @@ const QuickPayPhoneInput = () => {
 
   const onSubmit = async formData => {
     if (formData && phone.length) {
-      const { email } = formData;
       const formattedPhone = phone.replace(country.countryCode, '');
       const payload = {
         phone: {
@@ -44,7 +40,6 @@ const QuickPayPhoneInput = () => {
         },
       };
       dispatch(setUserPhone(payload));
-      dispatch(setUserEmail(email));
       dispatch(setQuickBuy(true));
       router.push('/dashboard');
     }
@@ -72,18 +67,6 @@ const QuickPayPhoneInput = () => {
           }
         }}
         onChange={value => setPhone(value)}
-      />
-      <FormInput
-        className="py-2.5 px-5 mt-2"
-        type="email"
-        id="email"
-        placeholder="Enter your Email Address"
-        label="Email address"
-        error={errors.email && true}
-        {...register('email', {
-          required: true,
-          validate: value => isEmail(value),
-        })}
       />
       <PrimaryButton className="mt-8 mb-7" type="large">
         Buy Electricity

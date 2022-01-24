@@ -24,7 +24,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
 
   const routes = [
     {
-      name: 'Home',
+      name: 'Buy Electricity',
       url: '/dashboard',
       icon: faHome,
       open: true,

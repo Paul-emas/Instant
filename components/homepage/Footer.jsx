@@ -8,7 +8,7 @@ import SocialCard from '../SocialCard';
 const Footer = () => {
   return (
     <footer className="pt-8 lg:pt-24 bg-primary-lightGray">
-      <div className="container mx-auto px-0 lg:px-10">
+      <div className="container mx-auto px-0 lg:px-14">
         <div className="grid lg:grid-cols-6">
           <div className="col-span-2 text-center pb-5 lg:pb-0 lg:text-left px-4 lg:px-0 border-b border-secondary-lightGreen lg:border-none">
             <Image

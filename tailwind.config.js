@@ -80,7 +80,7 @@ module.exports = {
         48: '48rem',
       },
       height: {
-        'modal-sm': '510px',
+        'modal-sm': '403px',
         'modal-md': '640px',
         modal: '718px',
         562: '562px',

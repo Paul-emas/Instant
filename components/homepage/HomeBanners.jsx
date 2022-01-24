@@ -11,7 +11,7 @@ const HomeBanners = () => {
           className="object-cover banner-image"
         />
       </div>
-      <div className="container mx-auto px-4 2xl:px-10 z-20 relative top-28 sm:top-2">
+      <div className="container mx-auto px-4 2xl:px-14 z-20 relative top-28 sm:top-2">
         <div className="bg-primary-base rounded-xl sm:rounded-t-xl px-10 smpt-10 py-8 sm:pb-16 w-full sm:w-446 ml-auto">
           <div className="text-white font-bold text-lg sm:text-3xl leading-snug max-w-md">
             Keep those family moments going never run out of power

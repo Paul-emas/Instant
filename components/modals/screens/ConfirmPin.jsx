@@ -11,7 +11,11 @@ import {
   setToken,
   setUserPhone,
 } from '../../../slices/persist';
-import { userSelector, setUser } from '../../../slices/user';
+import {
+  userSelector,
+  setUser,
+  setInitAuthentication,
+} from '../../../slices/user';
 import { createUserAuthPin, signUp } from '../../../api';
 
 import Modal from '../index';
@@ -81,6 +85,7 @@ const ConfirmPin = ({ close, setStep }) => {
           dispatch(setToken(authorization));
           dispatch(setQuickBuy(false));
           dispatch(setIsLoggedIn(true));
+          dispatch(setInitAuthentication(null));
           router.push('/dashboard');
         }
       }
@@ -102,6 +107,7 @@ const ConfirmPin = ({ close, setStep }) => {
           setIsLoading(false);
           setSuccessMessage('Successfully created pin!');
           setTimeout(() => setStep('signIn'), 3000);
+          dispatch(setInitAuthentication(null));
         }
       }
     } else {

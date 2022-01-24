@@ -4,7 +4,7 @@ import DownloadButtons from '../DownloadButtons';
 
 const Banner = () => (
   <section className="pt-24">
-    <div className="container mx-auto xl:px-10">
+    <div className="container mx-auto xl:px-14">
       <div className="flex w-full justify-between items-center">
         <div className="">
           <img

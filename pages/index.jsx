@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Header from '../components/homepage/Header';
 import QuickPay from '../components/modals/QuickPay';
 import Partners from '../components/homepage/Partners';
@@ -28,9 +29,16 @@ export default function Home() {
       </Head>
       <Header>
         <div className="relative lg:w-1/2 max-w-3xl top-16 sm:top-20">
-          <img src="/images/woman.webp" className="object-contain" />
+          <Image
+            src="/images/woman.webp"
+            layout="intrinsic"
+            width={738}
+            height={910}
+            className="object-contain"
+            priority
+          />
         </div>
-        <div className="md:max-w-lg lg:max-w-full mx-auto lg:w-1/2 pb-16 2xl:pb-10">
+        <div className="md:max-w-lg lg:max-w-full mx-auto flex items-center lg:w-1/2 pb-16 2xl:pb-10">
           <QuickPay />
         </div>
       </Header>

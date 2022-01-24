@@ -28,9 +28,9 @@ const Navbar = () => {
           : 'bg-primary-light h-16 lg:h-16'
       }  fixed transition-all z-40 inset-0`}
     >
-      <div className="xl:container mx-auto h-full px-4 lg:px-10">
+      <div className="xl:container mx-auto h-full px-4 lg:px-14">
         <div className="flex justify-between h-full items-center">
-          <div className="hidden lg:block -ml-5">
+          <div className="hidden lg:block -ml-3">
             <Link href="/">
               <a>
                 <Image

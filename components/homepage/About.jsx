@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const About = () => (
   <section className="py-24">
-    <div className="container mx-auto xl:px-10">
+    <div className="container mx-auto xl:px-14">
       <div className="flex w-full justify-between items-center">
         <div className="2xl:hidden">
           <Image

@@ -68,6 +68,10 @@ input[type='number']::-webkit-outer-spin-button {
   @apply bg-primary-light;
 }
 
+.modal-card {
+  max-height: 80vh;
+}
+
 .form-input {
   @apply w-full font-bold border border-gray-200 rounded-lg text-sm placeholder-gray-400 placeholder:font-semibold;
 }
