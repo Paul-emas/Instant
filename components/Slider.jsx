@@ -28,29 +28,29 @@ const Slider = () => {
   };
 
   return (
-    <div className="pt-7 px-5">
-      <div className="lg:flex justify-between items-center">
+    <div className="px-5 pt-7">
+      <div className="items-center justify-between lg:flex">
         <h2 className="text-lg font-bold text-font-darker">
           Tips to save Electricty
         </h2>
         <div>
-          <div className="text-sm text-font-muted flex space-x-4">
+          <div className="flex space-x-4 text-sm text-font-muted">
             <FontAwesomeIcon
               icon={faChevronLeft}
               onClick={() => prev()}
-              className="text-xs text-font-muted cursor-pointer"
+              className="cursor-pointer text-xs text-font-muted"
             />
             <FontAwesomeIcon
               icon={faChevronRight}
               onClick={() => next()}
-              className="text-xs text-font-muted cursor-pointer"
+              className="cursor-pointer text-xs text-font-muted"
             />
           </div>
         </div>
       </div>
       <Flickity
         className={
-          'carousel mt-5 h-56 shadow-none outline-none overflow-hidden'
+          'carousel mt-5 h-56 overflow-hidden shadow-none outline-none'
         }
         elementType={'div'}
         options={flickityOptions}
@@ -62,16 +62,16 @@ const Slider = () => {
         {route.map((el, index) => (
           <div
             key={index}
-            className="w-full h-52 rounded-lg mr-20 bg-primary-dark"
+            className="mr-20 h-52 w-full rounded-lg bg-primary-dark"
           >
-            <div className="px-6 py-4 w-full h-full outline-white">
-              <span className="text-gray-500 text-xs font-semibold">
+            <div className="h-full w-full px-6 py-4 outline-white">
+              <span className="text-xs font-semibold text-gray-500">
                 {index + 1} of {route.length}
               </span>
-              <h3 className="text-sm font-semibold text-white mt-3">
+              <h3 className="mt-3 text-sm font-semibold text-white">
                 Home Applicances
               </h3>
-              <p className="text-gray-500 text-xs text-left pr-3 mt-2">
+              <p className="mt-2 pr-3 text-left text-xs text-gray-500">
                 The best way to start saving on your electricity costs is to get
                 smart with how you use electricity. Make these 21 no-cost
                 changes in your home and you could save NGN 500 or more a year.

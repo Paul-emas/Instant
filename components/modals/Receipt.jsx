@@ -57,7 +57,7 @@ const Receipt = ({ receipt }) => {
           className="mx-auto my-4"
         />
         <div className="border-t border-b py-4">
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">
               Date Issued
             </div>
@@ -65,13 +65,13 @@ const Receipt = ({ receipt }) => {
               {moment(receipt?.createdAt).utc().format('LLL')}
             </div>
           </div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">
               Reference code
             </div>
             <div className="text-sm font-semibold">{receipt?.reference}</div>
           </div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">
               Meter number
             </div>
@@ -79,13 +79,13 @@ const Receipt = ({ receipt }) => {
               {receipt?.meter?.number}
             </div>
           </div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">
               Meter name
             </div>
             <div className="text-sm font-semibold">{receipt?.meter?.name}</div>
           </div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">
               Meter address
             </div>
@@ -93,7 +93,7 @@ const Receipt = ({ receipt }) => {
               {receipt?.meter?.address}
             </div>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">
               Units purchased
             </div>
@@ -101,7 +101,7 @@ const Receipt = ({ receipt }) => {
           </div>
         </div>
         <div className="py-4">
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">
               Amount
             </div>
@@ -109,19 +109,19 @@ const Receipt = ({ receipt }) => {
               {receipt?.country?.currency} {receipt?.amount}
             </div>
           </div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">VAT</div>
             <div className="text-sm font-semibold">
               {receipt?.country?.currency} {receipt?.charge?.vat}
             </div>
           </div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">Debt</div>
             <div className="text-sm font-semibold">
               {receipt?.country?.currency} {receipt?.outstanding}
             </div>
           </div>
-          <div className="flex justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">
               Service Charge
             </div>
@@ -129,7 +129,7 @@ const Receipt = ({ receipt }) => {
               {receipt?.country?.currency} {receipt?.charge?.fee}
             </div>
           </div>
-          <div className="flex border-t border-b py-4 border-primary-lighter justify-between items-center mb-3">
+          <div className="mb-3 flex items-center justify-between border-t border-b border-primary-lighter py-4">
             <div className="text-sm font-bold">Total</div>
             <div className="text-sm font-bold">
               {receipt?.country?.currency} {receipt?.gross}
@@ -137,18 +137,18 @@ const Receipt = ({ receipt }) => {
           </div>
         </div>
         <div className="mt-4">
-          <span className="text-xs text-primary-gray font-semibold">
+          <span className="text-xs font-semibold text-primary-gray">
             Thanks for using Instant Energy
           </span>
-          <div className="flex justify-center mt-4 space-x-4">
-            <div className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full">
-              <FontAwesomeIcon icon={faShareAlt} className="w-5 h-5" />
+          <div className="mt-4 flex justify-center space-x-4">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light">
+              <FontAwesomeIcon icon={faShareAlt} className="h-5 w-5" />
             </div>
             <div
               onClick={() => PrintElem()}
-              className="w-10 h-10 flex justify-center items-center bg-primary-light rounded-full"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light"
             >
-              <FontAwesomeIcon icon={faFileDownload} className="w-5 h-5" />
+              <FontAwesomeIcon icon={faFileDownload} className="h-5 w-5" />
             </div>
           </div>
         </div>

@@ -133,11 +133,11 @@ const BuyElectricityModal = ({ open, setOpen }) => {
       )}
 
       {open && step === 3 && (
-        <div className="w-full min-h-screen top-0 left-0 fixed z-50 overflow-hidden">
-          <div className="absolute w-full h-full flex justify-center items-center z-10">
+        <div className="fixed top-0 left-0 z-50 min-h-screen w-full overflow-hidden">
+          <div className="absolute z-10 flex h-full w-full items-center justify-center">
             <RequestLoader type="payment" />
           </div>
-          <div className="modal-overlay w-full min-h-screen bg-secondary-modal bg-opacity-70"></div>
+          <div className="modal-overlay min-h-screen w-full bg-secondary-modal bg-opacity-70"></div>
         </div>
       )}
 

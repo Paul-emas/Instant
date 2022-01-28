@@ -46,11 +46,11 @@ const Register = ({ close, setStep }) => {
 
   return (
     <Modal border={false} close={close}>
-      <div className="px-6 lg:px-8 -mt-4">
-        <h1 className="text-2xl font-bold max-w-xs mx-auto text-center">
+      <div className="-mt-4 px-6 lg:px-8">
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           Create an account
         </h1>
-        <p className="text-gray-700 mt-3 text-sm text-center">
+        <p className="mt-3 text-center text-sm text-gray-700">
           Buy electricity units easily with Instant Energy
         </p>
         {errorMessage && (
@@ -62,7 +62,7 @@ const Register = ({ close, setStep }) => {
           autoComplete="off"
         >
           <FormInput
-            className="py-2.5 px-5 mt-2"
+            className="mt-2 py-2.5 px-5"
             type="text"
             id="name"
             placeholder="Enter your Full Name"
@@ -74,7 +74,7 @@ const Register = ({ close, setStep }) => {
             })}
           />
           <FormInput
-            className="py-2.5 px-5 mt-2"
+            className="mt-2 py-2.5 px-5"
             type="email"
             id="email"
             placeholder="Enter your Email Address"
@@ -86,7 +86,7 @@ const Register = ({ close, setStep }) => {
             })}
           />
           <FormInput
-            className="py-2 px-4 mt-2"
+            className="mt-2 py-2 px-4"
             type="phone"
             id="phone"
             label="Phone number"
@@ -104,14 +104,14 @@ const Register = ({ close, setStep }) => {
             onChange={value => setPhone(value)}
           />
           <FormInput
-            className="py-2.5 px-5 mt-2"
+            className="mt-2 py-2.5 px-5"
             type="text"
             id="referral_no"
             placeholder="Referral Code"
             label="Referral code (Optional)"
             {...register('referral_no')}
           />
-          <div className="mt-2 text-xs pr-10 text-gray-500">
+          <div className="mt-2 pr-10 text-xs text-gray-500">
             By creating an account with Instant Energy, you are agreeing to our{' '}
             <strong className="text-black">Privacy Policy</strong> and{' '}
             <strong className="text-black">Terms & Condition</strong>
@@ -120,11 +120,11 @@ const Register = ({ close, setStep }) => {
             Create account
           </PrimaryButton>
         </form>
-        <div className="text-blue text-sm text-gray-500 mt-3.5">
+        <div className="text-blue mt-3.5 text-sm text-gray-500">
           Already a user?{' '}
           <span
             onClick={() => setStep('login')}
-            className="text-primary-base cursor-pointer font-semibold hover:text-primary-hover"
+            className="cursor-pointer font-semibold text-primary-base hover:text-primary-hover"
           >
             Login
           </span>

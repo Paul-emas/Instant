@@ -12,13 +12,13 @@ const Table = ({
   child,
 }) => {
   return (
-    <div className="flex flex-col mt-5 bg-white rounded-xl overflow-hidden sm_shadow">
-      <div className="py-3 px-7 mt-4">
-        <div className="flex items-center justify-center sm:justify-between w-full">
-          <h3 className="text-xl font-bold text-font-dark flex items-start">
+    <div className="sm_shadow mt-5 flex flex-col overflow-hidden rounded-xl bg-white">
+      <div className="mt-4 py-3 px-7">
+        <div className="flex w-full items-center justify-center sm:justify-between">
+          <h3 className="flex items-start text-xl font-bold text-font-dark">
             <span>{title}</span>
             {titleLabel && (
-              <span className="bg-primary-base text-white px-2.5 py-1 mt-1 rounded-lg h-6 ml-2 flex items-center text-xxs font-sans font-semibold">
+              <span className="mt-1 ml-2 flex h-6 items-center rounded-lg bg-primary-base px-2.5 py-1 font-sans text-xxs font-semibold text-white">
                 {titleLabel}
               </span>
             )}
@@ -32,7 +32,7 @@ const Table = ({
           !loading ? 'overflow-x-auto' : ''
         } my-2 sm:-mx-6 lg:-mx-6`}
       >
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6">
+        <div className="inline-block min-w-full py-2 align-middle sm:px-6">
           {!loading && !isMobile && (
             <div className="overflow-hidden">
               <table className="min-w-full bg-white">
@@ -42,7 +42,7 @@ const Table = ({
                       <th
                         key={`${heading}${index}`}
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-semibold text-gray-500 tracking-wider"
+                        className="px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-500"
                       >
                         {heading}
                       </th>

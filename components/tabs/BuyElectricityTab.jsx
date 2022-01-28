@@ -12,7 +12,7 @@ const BuyElectricityTab = ({ tabs, activeTab, setActiveTab }) => {
   };
 
   return (
-    <div className="flex justify-center px-8  border-b">
+    <div className="flex justify-center border-b  px-8">
       {tabs.map(({ id, name }, index) => (
         <div
           key={id}
@@ -23,8 +23,8 @@ const BuyElectricityTab = ({ tabs, activeTab, setActiveTab }) => {
           className={`${
             activeTab === index
               ? 'active-tab font-bold duration-200'
-              : 'text-gray-400 font-semibold'
-          } text-sm capitalize w-52 text-center  lg:text-base py-2 cursor-pointer border-b-2 border-transparent`}
+              : 'font-semibold text-gray-400'
+          } w-52 cursor-pointer border-b-2 border-transparent  py-2 text-center text-sm capitalize lg:text-base`}
         >
           {name}
         </div>

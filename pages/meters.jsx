@@ -48,10 +48,10 @@ export default function Meters() {
     viewAll: function view() {
       return (
         <Button onClick={() => setOpenAddMeterModal(true)}>
-          <span className="uppercase flex items-center">
+          <span className="flex items-center uppercase">
             <FontAwesomeIcon
               icon={faPlus}
-              className="w-3 h-3 text-white text-opacity-70"
+              className="h-3 w-3 text-white text-opacity-70"
             />{' '}
             <span className="ml-2">Add new meter</span>
           </span>
@@ -71,23 +71,23 @@ export default function Meters() {
     child: function view() {
       if (meters.length <= 0 && !pageLoading) {
         return (
-          <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl py-32 2xl:pt-36 2xl:pb-64">
+          <div className="mt-5 flex items-center justify-center bg-white py-32 sm:rounded-xl 2xl:pt-36 2xl:pb-64">
             <div className="flex flex-col items-center">
               <Empty />
-              <div className="text-base font-bold mt-2">
+              <div className="mt-2 text-base font-bold">
                 {`You've not added any meters yet!`}
               </div>
-              <p className="text-gray-400 text-sm max-w-xs text-center mt-1">
+              <p className="mt-1 max-w-xs text-center text-sm text-gray-400">
                 An email has been sent to you kindly submit to continue with
                 this application
               </p>
               <button
                 onClick={() => setOpenAddMeterModal(true)}
-                className="outline-none uppercase border-none bg-primary-light text-primary-base font-bold rounded-lg px-6 text-xs py-3 mt-8 flex items-center"
+                className="mt-8 flex items-center rounded-lg border-none bg-primary-light px-6 py-3 text-xs font-bold uppercase text-primary-base outline-none"
               >
                 <FontAwesomeIcon
                   icon={faPlus}
-                  className="w-3 h-3 text-opacity-70"
+                  className="h-3 w-3 text-opacity-70"
                 />{' '}
                 <span className="ml-2">Add new meter</span>
               </button>
@@ -134,7 +134,7 @@ export default function Meters() {
     <>
       {pageLoading && (
         <div className="pt-5 sm:pt-10">
-          <div className="bg-primary-light sm:bg-white w-full min-h-screen rounded-xl"></div>
+          <div className="min-h-screen w-full rounded-xl bg-primary-light sm:bg-white"></div>
         </div>
       )}
       {!pageLoading && (
@@ -151,12 +151,12 @@ export default function Meters() {
                 meters.map((item, index) => {
                   return (
                     <tr
-                      className="pl-6 py-4 last:-white"
+                      className="last:-white py-4 pl-6"
                       key={`${item}${index}`}
                     >
-                      <td className="pl-6 py-4  whitespace-nowrap">
+                      <td className="whitespace-nowrap py-4  pl-6">
                         <div className="flex items-center">
-                          <div className="w-12 h-12 rounded-2xl bg-secondary-green flex items-center">
+                          <div className="flex h-12 w-12 items-center rounded-2xl bg-secondary-green">
                             <BulbIcon className="mx-auto my-3" />
                           </div>
                           <div className="ml-8">
@@ -168,41 +168,41 @@ export default function Meters() {
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4  whitespace-nowrap">
+                      <td className="whitespace-nowrap px-6  py-4">
                         <div className="text-sm text-font-grey">
                           {moment(item?.createdAt).utc().format('LLL')}
                         </div>
                       </td>
-                      <td className="px-6 py-4  whitespace-nowrap">
+                      <td className="whitespace-nowrap px-6  py-4">
                         <div className="text-sm text-font-grey">
                           {item?.meter?.provider?.disco?.shortName}
                         </div>
                       </td>
-                      <td className="px-6 py-4  whitespace-nowrap">
+                      <td className="whitespace-nowrap px-6  py-4">
                         <div className="text-sm font-bold">
                           {item?.meter?.number}
                         </div>
                       </td>
-                      <td className="px-6 py-4  whitespace-nowrap">
+                      <td className="whitespace-nowrap px-6  py-4">
                         <div className="text-sm text-font-grey">
                           {item?.meter?.address}
                         </div>
                       </td>
-                      <td className="px-6 py-4  whitespace-nowrap text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-6  py-4 text-sm text-gray-500">
                         <div className="flex space-x-4">
                           <button
                             onClick={() => {
                               setSelectedMeter(item);
                               setOpenAddMeterModal(true);
                             }}
-                            className="py-1.5 px-3 bg-primary-light active:bg-gray-200 rounded-lg text-gray-700 font-semibold text-xs"
+                            className="rounded-lg bg-primary-light py-1.5 px-3 text-xs font-semibold text-gray-700 active:bg-gray-200"
                           >
                             Edit info
                           </button>
-                          <button className="py-2.5 px-3 bg-red-50 rounded-lg text-red-600 font-semibold text-xs">
+                          <button className="rounded-lg bg-red-50 py-2.5 px-3 text-xs font-semibold text-red-600">
                             <FontAwesomeIcon
                               icon={faTrash}
-                              className="w-2.5 h-2.5"
+                              className="h-2.5 w-2.5"
                             />
                           </button>
                         </div>
@@ -220,9 +220,9 @@ export default function Meters() {
                     }}
                     key={`${item}${index}`}
                   >
-                    <div className="flex justify-between items-center py-3 px-4">
+                    <div className="flex items-center justify-between py-3 px-4">
                       <div className="flex">
-                        <div className="w-8 h-8 rounded-lg bg-secondary-green flex items-center">
+                        <div className="flex h-8 w-8 items-center rounded-lg bg-secondary-green">
                           <BulbIcon className="mx-auto my-3" />
                         </div>
                         <div className="ml-2">
@@ -234,7 +234,7 @@ export default function Meters() {
                       </div>
                       <FontAwesomeIcon
                         icon={faChevronRight}
-                        className="w-4 h-4 text-gray-400"
+                        className="h-4 w-4 text-gray-400"
                       />
                     </div>
                   </div>
@@ -242,12 +242,12 @@ export default function Meters() {
             </Table>
           </div>
           {meters.length > 0 && (
-            <div className="flex sm:hidden justify-center mt-5">
+            <div className="mt-5 flex justify-center sm:hidden">
               <Button onClick={() => setOpenAddMeterModal(true)}>
-                <span className="uppercase flex items-center">
+                <span className="flex items-center uppercase">
                   <FontAwesomeIcon
                     icon={faPlus}
-                    className="w-3 h-3 text-white text-opacity-70"
+                    className="h-3 w-3 text-white text-opacity-70"
                   />{' '}
                   <span className="ml-2">Add new meter</span>
                 </span>

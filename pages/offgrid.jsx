@@ -13,23 +13,23 @@ export default function offGrid() {
       <Header bg>
         <div className="relative w-1/2 pt-52 2xl:pt-72">
           <div className="max-w-xl">
-            <h1 className="text-6xl leading-tight font-extrabold text-white ">
+            <h1 className="text-6xl font-extrabold leading-tight text-white ">
               Smart energy management with offgrid
             </h1>
-            <p className="text-white text-xl leading-normal mt-6">
+            <p className="mt-6 text-xl leading-normal text-white">
               Instant Energy deploys patient, value accretive capital alongside
               international and local value investors to create.
             </p>
-            <div className="px-2.5 lg:px-0 grid grid-cols-2 gap-x-5 sm:max-w-sm lg:max-w-md mt-8 lg:mt-10">
+            <div className="mt-8 grid grid-cols-2 gap-x-5 px-2.5 sm:max-w-sm lg:mt-10 lg:max-w-md lg:px-0">
               <a
                 href="/"
-                className="py-5 rounded-xl uppercase bg-primary-base border-2  border-primary-base text-white text-center text-sm font-bold"
+                className="rounded-xl border-2 border-primary-base bg-primary-base py-5  text-center text-sm font-bold uppercase text-white"
               >
                 Request Demo
               </a>
               <a
                 href="/"
-                className="py-5 rounded-xl uppercase border-2 border-white bg-transparent text-white text-center text-sm font-bold"
+                className="rounded-xl border-2 border-white bg-transparent py-5 text-center text-sm font-bold uppercase text-white"
               >
                 Learn more
               </a>

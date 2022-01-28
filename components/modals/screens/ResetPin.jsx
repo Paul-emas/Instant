@@ -36,17 +36,17 @@ const ResetPin = ({ close, setStep }) => {
 
   return (
     <Modal border={false} close={close}>
-      <div className="px-6 lg:px-8 -mt-4">
-        <h1 className="text-2xl font-bold max-w-xs mx-auto text-center">
+      <div className="-mt-4 px-6 lg:px-8">
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           {`We've sent you an OTP to reset your PIN`}
         </h1>
-        <p className="text-gray-700 mt-3 text-sm text-center max-w-xs mx-auto">
+        <p className="mx-auto mt-3 max-w-xs text-center text-sm text-gray-700">
           An OTP has been set to your phone, kindly enter OTP to continue
         </p>
         {errorMessage && (
           <ErrorAlert error={errorMessage} setError={setErrorMessage} />
         )}
-        <form className="mt-10 flex items-center flex-col" onSubmit={onSubmit}>
+        <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
             length={6}
             secret
@@ -68,11 +68,11 @@ const ResetPin = ({ close, setStep }) => {
             Continue
           </PrimaryButton>
         </form>
-        <div className="text-center mt-5">
+        <div className="mt-5 text-center">
           <Link href="/auth/otp/forgot">
             <button className="text-sm">
               <span>{`Didn't receive an OTP?`}</span>
-              <span className="text-primary-base font-bold ml-1">Resend</span>
+              <span className="ml-1 font-bold text-primary-base">Resend</span>
             </button>
           </Link>
         </div>

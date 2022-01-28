@@ -6,9 +6,9 @@ import TwitterIcon from '../public/svgs/social/twitter.svg';
 const SocialCard = ({ follow = true, center = true }) => (
   <div className="mt-5 px-5">
     {follow && (
-      <p className="text-sm text-center">Join our community on social media</p>
+      <p className="text-center text-sm">Join our community on social media</p>
     )}
-    <div className="flex justify-center items-center mt-4 space-x-4">
+    <div className="mt-4 flex items-center justify-center space-x-4">
       <FacebookIcon />
       <WhatsappIcon />
       <InstagramIcon />

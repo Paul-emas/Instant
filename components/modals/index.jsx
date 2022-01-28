@@ -66,40 +66,40 @@ const Modal = ({
   }, [successMessage]);
 
   return (
-    <div className="w-full min-h-screen top-0 left-0 fixed z-50 overflow-hidden">
-      <div className="absolute w-full h-full inset-0  flex items-end sm:items-center justify-center">
+    <div className="fixed top-0 left-0 z-50 min-h-screen w-full overflow-hidden">
+      <div className="absolute inset-0 flex h-full  w-full items-end justify-center sm:items-center">
         <div
           onClick={() => close()}
-          className="modal-overlay w-full min-h-screen absolute bg-secondary-modal bg-opacity-70"
+          className="modal-overlay absolute min-h-screen w-full bg-secondary-modal bg-opacity-70"
         ></div>
-        <div className="modal-box w-full xs:w-modal pt-5 pb-10 rounded-t-2xl sm:rounded-2xl overflow-y-scroll max-h-48 bg-white modal-card">
+        <div className="modal-box modal-card max-h-48 w-full overflow-y-scroll rounded-t-2xl bg-white pt-5 pb-10 xs:w-modal sm:rounded-2xl">
           <div
-            className={`${border && 'border-b border-gray-100'} text-xl h-14`}
+            className={`${border && 'border-b border-gray-100'} h-14 text-xl`}
           >
             <div className="px-4 sm:px-8">
               <div className="relative">
                 {goBack && (
                   <button
                     onClick={() => goBack()}
-                    className="py-2 rounded-lg w-28 justify-center text-sm font-semibold bg-primary-light hover:opacity-80 flex relative items-center"
+                    className="relative flex w-28 items-center justify-center rounded-lg bg-primary-light py-2 text-sm font-semibold hover:opacity-80"
                   >
                     <FontAwesomeIcon
                       icon={faChevronLeft}
-                      className="w-3 h-3 mr-2"
+                      className="mr-2 h-3 w-3"
                     />
                     <span className="mt-0.5">Go back</span>
                   </button>
                 )}
                 {title && (
-                  <div className="text-center font-bold relative top-1">
+                  <div className="relative top-1 text-center font-bold">
                     <span>{title}</span>
                   </div>
                 )}
                 <button
                   onClick={() => close()}
-                  className={`top-0 float-right right-0 absolute`}
+                  className={`absolute top-0 right-0 float-right`}
                 >
-                  <div className="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-50 active:bg-gray-100">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-gray-50 active:bg-gray-100">
                     <TimesIcon />
                   </div>
                 </button>
@@ -111,10 +111,10 @@ const Modal = ({
 
         {successMessage && (
           <>
-            <div className="successAlert bg-secondary-green absolute z-10 sm:bottom-5 2xl:bottom-10 text-white py-2.5 px-6 text-sm rounded-lg hidden sm:block">
+            <div className="successAlert absolute z-10 hidden rounded-lg bg-secondary-green py-2.5 px-6 text-sm text-white sm:bottom-5 sm:block 2xl:bottom-10">
               {successMessage}
             </div>
-            <div className="successAlert bg-secondary-green text-center absolute w-full z-10 top-0 text-white py-2.5 px-4 text-sm block sm:hidden">
+            <div className="successAlert absolute top-0 z-10 block w-full bg-secondary-green py-2.5 px-4 text-center text-sm text-white sm:hidden">
               {successMessage}
             </div>
           </>

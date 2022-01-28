@@ -121,14 +121,14 @@ const ConfirmPin = ({ close, setStep }) => {
       goBack={() => setStep('createPin')}
       close={close}
     >
-      <div className="px-6 lg:px-8 mt-2">
-        <h1 className="text-2xl font-bold max-w-xs mx-auto text-center">
+      <div className="mt-2 px-6 lg:px-8">
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           {`Let's make sure you don't forget, confirm your PIN`}
         </h1>
-        <p className="text-gray-700 mt-3 text-sm text-center max-w-xs mx-auto">
+        <p className="mx-auto mt-3 max-w-xs text-center text-sm text-gray-700">
           Your pin will be used to login to your account
         </p>
-        <form className="mt-10 flex items-center flex-col" onSubmit={onSubmit}>
+        <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
             length={6}
             secret
@@ -147,13 +147,13 @@ const ConfirmPin = ({ close, setStep }) => {
             Create PIN
           </PrimaryButton>
         </form>
-        <div className="text-center mt-5">
+        <div className="mt-5 text-center">
           <Link href="/auth/otp/forgot">
             <button className="text-sm">
               <span>Already have an account?</span>
               <span
                 onClick={() => setStep('login')}
-                className="text-primary-base font-bold cursor-pointer ml-1 hover:text-primary-hover"
+                className="ml-1 cursor-pointer font-bold text-primary-base hover:text-primary-hover"
               >
                 Login
               </span>

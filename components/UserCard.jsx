@@ -43,44 +43,44 @@ const UserCard = ({ openLogout, animate, setOpenNav }) => {
   };
 
   return (
-    <div className="absolute w-full bottom-12 left-0">
+    <div className="absolute bottom-12 left-0 w-full">
       <div className="px-3 2xl:px-6">
-        <div className="bg-white py-4 px-5 rounded-xl flex items-center relative">
+        <div className="relative flex items-center rounded-xl bg-white py-4 px-5">
           {!me && (
             <>
-              <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+              <div className="h-8 w-8 rounded-full bg-gray-200"></div>
               <div className="ml-3 mt-0.5 w-28 font-bold">
-                <div className="h-3 w-4/5 2xl:w-full rounded-sm bg-gray-200"></div>
-                <div className="h-2.5 w-1/2 mt-1 rounded-sm bg-gray-200"></div>
+                <div className="h-3 w-4/5 rounded-sm bg-gray-200 2xl:w-full"></div>
+                <div className="mt-1 h-2.5 w-1/2 rounded-sm bg-gray-200"></div>
               </div>
             </>
           )}
           {me && (
             <>
               <Image src="/images/profile.jpg" width={32} height={32} />
-              <div className="ml-3 relative top-1 w-28 font-bold">
-                <p className="text-xs -mb-1.5 truncate">
+              <div className="relative top-1 ml-3 w-28 font-bold">
+                <p className="-mb-1.5 truncate text-xs">
                   {me?.firstName ?? 'Anonymous'}
                 </p>
-                <span className="text-primary-base hover:text-primary-hover text-xxs font-semibold">
+                <span className="text-xxs font-semibold text-primary-base hover:text-primary-hover">
                   {userPhone?.phone?.number}
                 </span>
               </div>
               <FontAwesomeIcon
                 icon={faEllipsisH}
                 onClick={animate}
-                className="w-4 h-4 ml-auto text-gray-400 cursor-pointer"
+                className="ml-auto h-4 w-4 cursor-pointer text-gray-400"
               />
             </>
           )}
           {openLogout && (
             <button
               onClick={signOut}
-              className="scaleUp pl-4 absolute w-32 shadow-2xl top-12 hover:border-primary-light scale right-5 bg-white z-10 rounded-xl text-left py-3  border border-transparent"
+              className="scaleUp scale absolute top-12 right-5 z-10 w-32 rounded-xl border border-transparent bg-white py-3 pl-4 text-left  shadow-2xl hover:border-primary-light"
             >
               <span className="flex items-center">
                 <LogoutIcon />
-                <span className="text-sm font-bold ml-2">Logout</span>
+                <span className="ml-2 text-sm font-bold">Logout</span>
               </span>
             </button>
           )}

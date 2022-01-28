@@ -2,9 +2,9 @@ import DownloadButtons from '../DownloadButtons';
 
 const BottomDownload = () => {
   return (
-    <div className="mt-10 px-12 sm:pb-3 border-t">
-      <div className="w-full justify-center mt-5">
-        <h2 className="font-semibold text-sm mt-2 -mb-4 text-center">
+    <div className="mt-10 border-t px-12 sm:pb-3">
+      <div className="mt-5 w-full justify-center">
+        <h2 className="mt-2 -mb-4 text-center text-sm font-semibold">
           Download our mobile app
         </h2>
         <DownloadButtons
@@ -12,7 +12,7 @@ const BottomDownload = () => {
           center
           labelColor="text-black"
           captionColor="text-gray-500"
-          className="border border-gray-700 bg-white shadow-soft"
+          className="shadow-soft border border-gray-700 bg-white"
         />
       </div>
     </div>

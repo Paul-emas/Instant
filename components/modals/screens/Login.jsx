@@ -68,11 +68,11 @@ const Login = ({ close, setStep }) => {
 
   return (
     <Modal border={false} close={close}>
-      <div className="px-6 sm:px-10 -mt-4">
-        <h1 className="text-2xl font-bold max-w-xs mx-auto text-center">
+      <div className="-mt-4 px-6 sm:px-10">
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           Hey there, Welcome to Instant Energy
         </h1>
-        <p className="text-gray-700 mt-3 text-sm text-center">
+        <p className="mt-3 text-center text-sm text-gray-700">
           Enter your phone number to continue
         </p>
         <form
@@ -83,7 +83,7 @@ const Login = ({ close, setStep }) => {
           }}
         >
           <FormInput
-            className="py-2 px-4 mt-2"
+            className="mt-2 py-2 px-4"
             type="phone"
             id="phone"
             label="Phone number"
@@ -110,17 +110,17 @@ const Login = ({ close, setStep }) => {
             Continue
           </PrimaryButton>
         </form>
-        <div className="text-blue text-sm lg:text-sm text-gray-500 mt-3.5">
+        <div className="text-blue mt-3.5 text-sm text-gray-500 lg:text-sm">
           Dont have an account?{' '}
           <span
             onClick={() => setStep('register')}
-            className="text-primary-base font-semibold cursor-pointer hover:text-primary-hover"
+            className="cursor-pointer font-semibold text-primary-base hover:text-primary-hover"
           >
             Register
           </span>
         </div>
       </div>
-      <div className="mt-10 sm:pb-3 border-t">
+      <div className="mt-10 border-t sm:pb-3">
         <SocialCard />
       </div>
     </Modal>

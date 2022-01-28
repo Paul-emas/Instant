@@ -56,23 +56,23 @@ export default function solarPlans() {
       <Header>
         <div className="relative w-1/2 pt-52 2xl:pt-72">
           <div className="max-w-xl">
-            <h1 className="text-6xl leading-tight xl:leading-tight 2xl:leading-tight font-extrabold text-font-darker ">
+            <h1 className="text-6xl font-extrabold leading-tight text-font-darker xl:leading-tight 2xl:leading-tight ">
               Never run of power with solar electricity
             </h1>
-            <p className="text-font-dark text-xl leading-normal mt-6">
+            <p className="mt-6 text-xl leading-normal text-font-dark">
               Instant Energy deploys patient, value accretive capital alongside
               international and local value investors to create.
             </p>
-            <div className="px-2.5 lg:px-0 grid grid-cols-2 gap-x-5 sm:max-w-sm lg:max-w-md mt-8 lg:mt-10">
+            <div className="mt-8 grid grid-cols-2 gap-x-5 px-2.5 sm:max-w-sm lg:mt-10 lg:max-w-md lg:px-0">
               <a
                 href="/"
-                className="py-5 rounded-xl uppercase bg-primary-base border-2  border-primary-base text-white text-center text-sm font-bold"
+                className="rounded-xl border-2 border-primary-base bg-primary-base py-5  text-center text-sm font-bold uppercase text-white"
               >
                 Request solar
               </a>
               <a
                 href="/"
-                className="py-5 rounded-xl uppercase border-2 border-primary-darker bg-primary-light text-primary-darker text-center text-sm font-bold"
+                className="rounded-xl border-2 border-primary-darker bg-primary-light py-5 text-center text-sm font-bold uppercase text-primary-darker"
               >
                 Learn more
               </a>
@@ -82,8 +82,8 @@ export default function solarPlans() {
             <ContactCard />
           </div>
         </div>
-        <div className="w-1/2 pt-40 2xl:pt-72 relative ">
-          <div className="transform 2xl:scale-125 flex justify-end relative 2xl:-left-20">
+        <div className="relative w-1/2 pt-40 2xl:pt-72 ">
+          <div className="relative flex transform justify-end 2xl:-left-20 2xl:scale-125">
             <SolarIcon />
           </div>
         </div>

@@ -13,7 +13,7 @@ const ChangePhone = ({ setStep }) => {
     <form className="px-8">
       <div className="mt-6">
         <div className="text-center">
-          <div className="text-2xl text-primary-darker font-bold">
+          <div className="text-2xl font-bold text-primary-darker">
             Change phone number
           </div>
           <p className="text-sm font-semibold text-gray-400">
@@ -22,7 +22,7 @@ const ChangePhone = ({ setStep }) => {
         </div>
         <div className="mt-6">
           <FormInput
-            className="py-2.5 px-4 mt-2"
+            className="mt-2 py-2.5 px-4"
             type="phone"
             id="phone"
             label="Phone number"

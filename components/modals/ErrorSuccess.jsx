@@ -17,15 +17,15 @@ const ErrorSuccess = ({ paystack, error, next }) => {
     }
   }, [error]);
   return (
-    <div className="px-8 -mt-6 text-center">
+    <div className="-mt-6 px-8 text-center">
       <div className="icon flex justify-center">
         {!error ? <SuccessIcon /> : <ErrorIcon />}
       </div>
       <div className="pb-6">
-        <div className="text-2xl mt-6 ">
+        <div className="mt-6 text-2xl ">
           <span>Transcation {!error ? 'Successful' : 'Failed'}</span>
         </div>
-        <p className="text-sm text-gray-400 mt-1 max-w-xs mx-auto">
+        <p className="mx-auto mt-1 max-w-xs text-sm text-gray-400">
           {!error ? (
             <>
               Your transaction was successful. Kindly copy <br /> Token for
@@ -35,7 +35,7 @@ const ErrorSuccess = ({ paystack, error, next }) => {
                   toast.success('Copied');
                   copy(paystack?.reference);
                 }}
-                className="font-semibold text-primary-base cursor-pointer"
+                className="cursor-pointer font-semibold text-primary-base"
               >
                 {paystack?.reference}
               </span>

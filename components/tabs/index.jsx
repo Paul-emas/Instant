@@ -3,7 +3,7 @@ const index = ({ data, center = false, activeTab, setActiveTab }) => {
     <div
       className={`flex ${
         center ? 'justify-center' : 'justify-center sm:justify-start'
-      } sm:space-x-10 px-6 sm:px-8 border-b w-full`}
+      } w-full border-b px-6 sm:space-x-10 sm:px-8`}
     >
       {data?.map(({ name }, ind) => (
         <div
@@ -11,9 +11,9 @@ const index = ({ data, center = false, activeTab, setActiveTab }) => {
           onClick={() => setActiveTab(ind)}
           className={`${
             activeTab === ind
-              ? 'text-primary-base border-b-2 border-base font-bold'
-              : 'text-gray-400 font-semibold'
-          } text-sm lg:text-base text-center w-full sm:w-auto px-12 py-2 cursor-pointer`}
+              ? 'border-b-2 border-base font-bold text-primary-base'
+              : 'font-semibold text-gray-400'
+          } w-full cursor-pointer px-12 py-2 text-center text-sm sm:w-auto lg:text-base`}
         >
           {name}
         </div>

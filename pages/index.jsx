@@ -28,7 +28,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header>
-        <div className="relative lg:w-1/2 max-w-3xl top-16 sm:top-20">
+        <div className="relative top-16 max-w-3xl sm:top-20 lg:w-1/2">
           <Image
             src="/images/woman.webp"
             layout="intrinsic"
@@ -38,7 +38,7 @@ export default function Home() {
             priority
           />
         </div>
-        <div className="md:max-w-lg lg:max-w-full mx-auto flex items-center lg:w-1/2 pb-16 2xl:pb-10">
+        <div className="mx-auto flex items-center pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full 2xl:pb-10">
           <QuickPay />
         </div>
       </Header>

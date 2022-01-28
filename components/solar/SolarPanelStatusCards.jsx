@@ -11,27 +11,27 @@ const SolarPanelStatusCards = ({
   Icon,
 }) => {
   return (
-    <div className="py-6 px-8 bg-white rounded-xl sm_shadow">
-      <div className="flex justify-between items-center">
+    <div className="sm_shadow rounded-xl bg-white py-6 px-8">
+      <div className="flex items-center justify-between">
         <div>
           <div className="text-xs font-semibold text-secondary-label">
             {caption}
           </div>
-          <div className="text-xl -mt-0.5  font-semibold flex items-center">
+          <div className="-mt-0.5 flex  items-center text-xl font-semibold">
             <span>{label}</span>
             {isCharging && (
-              <span className="flex items-end space-x-1 text-yellow-400 text-xs ml-2">
-                <FontAwesomeIcon icon={faChargingStation} className="w-4 h-4" />
+              <span className="ml-2 flex items-end space-x-1 text-xs text-yellow-400">
+                <FontAwesomeIcon icon={faChargingStation} className="h-4 w-4" />
                 <span>Charging</span>
               </span>
             )}
           </div>
           {online ? (
-            <span className="text-xxs font-bold px-2 py-0.5 rounded-lg bg-secondary-lightGreen text-secondary-green">
+            <span className="rounded-lg bg-secondary-lightGreen px-2 py-0.5 text-xxs font-bold text-secondary-green">
               {onlineLabel}
             </span>
           ) : (
-            <span className="text-xxs font-bold px-2.5 py-0.5 rounded-lg bg-red-100 text-red-600">
+            <span className="rounded-lg bg-red-100 px-2.5 py-0.5 text-xxs font-bold text-red-600">
               Offline
             </span>
           )}

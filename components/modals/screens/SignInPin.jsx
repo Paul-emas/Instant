@@ -70,14 +70,14 @@ const SignInPin = ({ close, setStep }) => {
 
   return (
     <Modal border={false} close={close}>
-      <div className="px-6 lg:px-8 -mt-4">
-        <h1 className="text-2xl font-bold max-w-xs mx-auto text-center">
+      <div className="-mt-4 px-6 lg:px-8">
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           Sign in to your account
         </h1>
-        <p className="text-gray-700 mt-3 text-sm text-center">
+        <p className="mt-3 text-center text-sm text-gray-700">
           Your 6-digit access code
         </p>
-        <form className="mt-10 flex items-center flex-col" onSubmit={onSubmit}>
+        <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
             length={6}
             secret
@@ -96,12 +96,12 @@ const SignInPin = ({ close, setStep }) => {
             Continue
           </PrimaryButton>
         </form>
-        <div className="text-center mt-5">
+        <div className="mt-5 text-center">
           <button className="text-sm">
             <span>Having trouble getting in?</span>
             <span
               onClick={() => setStep('reset')}
-              className="text-primary-base font-bold ml-1"
+              className="ml-1 font-bold text-primary-base"
             >
               Forgot Pin
             </span>

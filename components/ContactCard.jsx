@@ -7,20 +7,20 @@ const ContactCard = ({ top, light, iconLight }) => {
     <div
       className={`${
         top ? 'top-24 2xl:top-40' : null
-      } hidden lg:flex items-center relative`}
+      } relative hidden items-center lg:flex`}
     >
       {!iconLight ? (
-        <div className="bg-secondary-green rounded-full text-center flex items-center text-white w-10 h-10">
+        <div className="flex h-10 w-10 items-center rounded-full bg-secondary-green text-center text-white">
           <FontAwesomeIcon
             icon={faPhoneAlt}
-            className="text-xl w-4 h-4 mx-auto"
+            className="mx-auto h-4 w-4 text-xl"
           />
         </div>
       ) : (
-        <div className="bg-white rounded-full text-center flex items-center text-primary-base w-10 h-10">
+        <div className="flex h-10 w-10 items-center rounded-full bg-white text-center text-primary-base">
           <FontAwesomeIcon
             icon={faPhoneAlt}
-            className="text-xl w-4 h-4 mx-auto"
+            className="mx-auto h-4 w-4 text-xl"
           />
         </div>
       )}
@@ -28,7 +28,7 @@ const ContactCard = ({ top, light, iconLight }) => {
         <p
           className={`${
             light ? 'text-gray-400' : 'text-font-darker'
-          } text-xs relative top-1`}
+          } relative top-1 text-xs`}
         >
           Need help?
         </p>

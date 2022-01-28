@@ -108,17 +108,17 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
-          <div className="pt-6 px-6 lg:px-8">
+          <div className="px-6 pt-6 lg:px-8">
             <form onSubmit={handleSubmit(onSubmit)}>
               <ProviderSelectInput
-                className="px-5 mt-2"
+                className="mt-2 px-5"
                 label="State of residence"
                 error={errors.select ?? false}
                 selectedProvider={selectedProvider}
                 setSelectedProvider={setSelectedProvider}
               />
               <FormInput
-                className="py-2.5 px-5 mt-2"
+                className="mt-2 py-2.5 px-5"
                 type="number"
                 id="meter"
                 value={selectedMeter && selectedMeter?.meter?.number}
@@ -130,7 +130,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
                 })}
               />
               <FormInput
-                className="py-2.5 px-5 mt-2"
+                className="mt-2 py-2.5 px-5"
                 type="phone"
                 id="phone"
                 label="Phone number"
@@ -148,7 +148,7 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
                 onChange={value => setPhone(value)}
               />
               <FormInput
-                className="py-2.5 px-5 mt-2"
+                className="mt-2 py-2.5 px-5"
                 id="label"
                 errors={errors}
                 value={selectedMeter && selectedMeter?.label}

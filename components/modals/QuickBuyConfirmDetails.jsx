@@ -25,22 +25,22 @@ const QuickBuyConfirmDetails = ({
 
   return (
     <div>
-      <div className="pt-3 pb-6 border-b border-gray-100 px-6 lg:px-8">
+      <div className="border-b border-gray-100 px-6 pt-3 pb-6 lg:px-8">
         <div className="text-center">
-          <span className="text-sm text-gray-500 font-semibold">
+          <span className="text-sm font-semibold text-gray-500">
             Your Meter
           </span>
-          <div className=" text-2.5xl text-secondary-green font-bold">
+          <div className=" text-2.5xl font-bold text-secondary-green">
             {details?.meter?.number}
           </div>
           <div className="mt-6">
-            <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
+            <div className="mb-2 flex h-10 w-full items-center justify-between rounded-xl bg-primary-light px-4 text-xs">
               <span className="font-semibold text-gray-500">
                 Reference code
               </span>
               <span className="font-bold">{details?.reference}</span>
             </div>
-            <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
+            <div className="mb-2 flex h-10 w-full items-center justify-between rounded-xl bg-primary-light px-4 text-xs">
               <span className="font-semibold text-gray-500">
                 Service charge
               </span>
@@ -48,13 +48,13 @@ const QuickBuyConfirmDetails = ({
                 {details?.country?.currency} {details?.charge.fee}
               </span>
             </div>
-            <div className="h-10 w-full px-4 text-xs rounded-xl mb-2 bg-primary-light flex justify-between items-center">
+            <div className="mb-2 flex h-10 w-full items-center justify-between rounded-xl bg-primary-light px-4 text-xs">
               <span className="font-semibold text-gray-500">Amount</span>
               <span className="font-bold">
                 {details?.country?.currency} {details?.amount}
               </span>
             </div>
-            <div className="h-10 w-full px-4 text-xs rounded-xl bg-primary-light flex justify-between items-center border border-primary-dark">
+            <div className="flex h-10 w-full items-center justify-between rounded-xl border border-primary-dark bg-primary-light px-4 text-xs">
               <span className="font-semibold text-primary-dark">Total</span>
               <span className="font-bold">
                 {details?.country?.currency} {details?.gross}
@@ -63,9 +63,9 @@ const QuickBuyConfirmDetails = ({
           </div>
         </div>
       </div>
-      <div className="pt-3 px-8">
+      <div className="px-8 pt-3">
         <FormInput
-          className="py-2.5 px-5 mt-2"
+          className="mt-2 py-2.5 px-5"
           type="phone"
           id="phone"
           label="Phone number"
@@ -83,7 +83,7 @@ const QuickBuyConfirmDetails = ({
           }}
           onChange={value => setPhone(value)}
         />
-        <div className="text-xs -mt-1 text-primary-dark font-semibold">
+        <div className="-mt-1 text-xs font-semibold text-primary-dark">
           Token generated will be sent to this number
         </div>
         <div className="mt-10">

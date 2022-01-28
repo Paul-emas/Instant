@@ -31,10 +31,10 @@ export default function Solar() {
     viewAll: function view() {
       return (
         <div>
-          <button className="py-2.5 rounded-lg w-24 text-sm font-semibold bg-primary-light hover:opacity-80">
-            <span className="flex relative items-center justify-center">
+          <button className="w-24 rounded-lg bg-primary-light py-2.5 text-sm font-semibold hover:opacity-80">
+            <span className="relative flex items-center justify-center">
               <span className="mr-2">See all</span>
-              <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+              <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3" />
             </span>
           </button>
         </div>
@@ -54,17 +54,17 @@ export default function Solar() {
     child: function view() {
       if (data.length <= 0 && !pageLoading) {
         return (
-          <div className="flex justify-center items-center mt-5 bg-white sm:rounded-xl pt-24 pb-32">
+          <div className="mt-5 flex items-center justify-center bg-white pt-24 pb-32 sm:rounded-xl">
             <div className="flex flex-col items-center">
               <Empty />
               <div className="text-base font-bold">
                 Your transactions will appear here
               </div>
-              <p className="text-gray-400 text-sm max-w-xs text-center mt-1">
+              <p className="mt-1 max-w-xs text-center text-sm text-gray-400">
                 An email has been sent to you kindly submit to continue with
                 this application
               </p>
-              <button className="outline-none border-none bg-primary-light text-primary-base font-bold rounded-lg px-6 text-xs py-3 mt-8 uppercase">
+              <button className="mt-8 rounded-lg border-none bg-primary-light px-6 py-3 text-xs font-bold uppercase text-primary-base outline-none">
                 Request solar
               </button>
             </div>
@@ -97,7 +97,7 @@ export default function Solar() {
 
       {!pageLoading && (
         <>
-          <div className="hidden sm:flex items-center justify-between">
+          <div className="hidden items-center justify-between sm:flex">
             <div>
               <h1 className="text-heading font-bold ">Your Solar Plan</h1>
               <p className="text-md font-medium text-font-muted">
@@ -106,7 +106,7 @@ export default function Solar() {
             </div>
             <Button>NEW REQUEST</Button>
           </div>
-          <div className="grid lg:space-x-5 lg:grid-cols-6">
+          <div className="grid lg:grid-cols-6 lg:space-x-5">
             <div className="lg:col-span-2">
               <SolarAmountCard />
               <SolarPaymentCard />
@@ -127,15 +127,15 @@ export default function Solar() {
                 const active = index + 1 === el;
                 return (
                   <tr
-                    className="pl-6 py-4 last:-white hover:bg-gray-50"
+                    className="last:-white py-4 pl-6 hover:bg-gray-50"
                     key={index}
                   >
-                    <td className="pl-6 py-4  whitespace-nowrap">
+                    <td className="whitespace-nowrap py-4  pl-6">
                       <div className="flex items-center">
                         <div
                           className={`${
                             active ? 'bg-font-green' : 'bg-red-600'
-                          } w-12 h-12 rounded-2xl`}
+                          } h-12 w-12 rounded-2xl`}
                         >
                           <SunIcon className="mx-auto my-3" />
                         </div>
@@ -148,40 +148,40 @@ export default function Solar() {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4  whitespace-nowrap">
-                      <div className="text-sm text-font-grey font-light">
+                    <td className="whitespace-nowrap px-6  py-4">
+                      <div className="text-sm font-light text-font-grey">
                         Nov 27, 2021
                       </div>
                     </td>
-                    <td className="px-6 py-4  whitespace-nowrap">
-                      <div className="text-sm text-font-grey font-light">
+                    <td className="whitespace-nowrap px-6  py-4">
+                      <div className="text-sm font-light text-font-grey">
                         AEDC
                       </div>
                     </td>
-                    <td className="px-6 py-4  whitespace-nowrap">
+                    <td className="whitespace-nowrap px-6  py-4">
                       <div className="text-sm font-bold">Card</div>
                     </td>
-                    <td className="px-6 py-4  whitespace-nowrap">
-                      <div className="text-sm text-font-grey font-light">
+                    <td className="whitespace-nowrap px-6  py-4">
+                      <div className="text-sm font-light text-font-grey">
                         GTRE23456789
                       </div>
                     </td>
-                    <td className="px-6 py-4  whitespace-nowrap text-sm text-gray-500">
-                      <div className="text-sm  text-font-grey font-light">
+                    <td className="whitespace-nowrap px-6  py-4 text-sm text-gray-500">
+                      <div className="text-sm  font-light text-font-grey">
                         <span className="font-semibold">NGN</span>
-                        <span className="text-font-dark ml-1 font-bold">
+                        <span className="ml-1 font-bold text-font-dark">
                           10, 000
                         </span>
                       </div>
                     </td>
-                    <td className="px-6 py-4  whitespace-nowrap text-xs font-medium">
+                    <td className="whitespace-nowrap px-6  py-4 text-xs font-medium">
                       {active && (
-                        <span className="px-3 py-1 inline-flex text-xs leading-5 font-bold rounded-lg bg-green-100 text-font-green">
+                        <span className="inline-flex rounded-lg bg-green-100 px-3 py-1 text-xs font-bold leading-5 text-font-green">
                           Reciept
                         </span>
                       )}
                       {!active && (
-                        <span className="px-3 py-1 inline-flex relative text-xs leading-5 font-bold rounded-lg bg-red-100 text-red-700">
+                        <span className="relative inline-flex rounded-lg bg-red-100 px-3 py-1 text-xs font-bold leading-5 text-red-700">
                           Retry
                         </span>
                       )}
