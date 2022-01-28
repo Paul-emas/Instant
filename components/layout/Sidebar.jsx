@@ -27,31 +27,26 @@ const Sidebar = ({ openNav, setOpenNav }) => {
       name: 'Buy Electricity',
       url: '/dashboard',
       icon: faHome,
-      open: true,
     },
     {
       name: 'Solar Electricity',
       url: '/solar',
       icon: faSun,
-      open: isLoggedIn,
     },
     {
       name: 'Meters',
       url: '/meters',
       icon: faMeteor,
-      open: isLoggedIn,
     },
     {
       name: 'Transactions',
       url: '/transactions',
       icon: faMoneyBillWave,
-      open: true,
     },
     {
       name: 'Settings',
       url: '/settings',
       icon: faCog,
-      open: isLoggedIn,
     },
   ];
 
@@ -64,21 +59,21 @@ const Sidebar = ({ openNav, setOpenNav }) => {
       <div
         onClick={() => setOpenNav(false)}
         className={`${
-          openNav ? 'opacity-100 visible' : 'opacity-0 invisible'
-        } w-full min-h-screen bg-secondary-modal bg-opacity-70 top-0 left-0 duration-200 z-40 fixed`}
+          openNav ? 'visible opacity-100' : 'invisible opacity-0'
+        } fixed top-0 left-0 z-40 min-h-screen w-full bg-secondary-modal bg-opacity-70 duration-200`}
       ></div>
       <div
         className={`${
           openNav ? 'left-0' : '-left-full lg:left-0'
-        } min-h-screen  fixed w-72 sm:w-60 2xl:w-sidebar pt-5 2xl:pt-10 bg-primary-base bg-contain z-50 sm:z-10 ease`}
+        } ease  fixed z-50 min-h-screen w-72 bg-primary-base bg-contain pt-5 sm:z-10 sm:w-60 2xl:w-sidebar 2xl:pt-10`}
       >
         {openLogout && (
           <div
             onClick={() => setOpenLogout(false)}
-            className="fixed w-full h-full top-0 z-10"
+            className="fixed top-0 z-10 h-full w-full"
           ></div>
         )}
-        <div className="h-20 pl-5 2xl:pl-10 pr-5">
+        <div className="h-20 pl-5 pr-5 2xl:pl-10">
           <div className="flex items-center">
             <Link href="/">
               <a>
@@ -93,51 +88,41 @@ const Sidebar = ({ openNav, setOpenNav }) => {
             </Link>
           </div>
         </div>
-        <div className="border-b border-t border-primary-border pl-5 2xl:pl-10 pr-3 2xl:pr-6">
+        <div className="border-b border-t border-primary-border pl-5 pr-3 2xl:pl-10 2xl:pr-6">
           <div className="flex items-center justify-between py-6">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 flex justify-center items-center bg-white bg-opacity-20 scale rounded-lg text-white">
+              <div className="scale flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-opacity-20 text-white">
                 <WalletIcon />
               </div>
               <div className="relative top-0.5">
-                <div className="text-xxs flex items-center text-white text-opacity-70">
+                <div className="flex items-center text-xxs text-white text-opacity-70">
                   <span>Your IE wallet</span>
                 </div>
-                <p className="text-white font-bold -mt-1">
+                <p className="-mt-1 font-bold text-white">
                   <span>&#x20A6;</span> <span className="ml-1">0.00</span>
                 </p>
               </div>
             </div>
-            <button className="w-fund 2xl:w-24 h-8 text-xxs 2xl:text-xs bg-secondary-green font-semibold rounded-lg cursor-pointer text-white hover:bg-opacity-80 text-center">
+            <button className="h-8 w-fund cursor-pointer rounded-lg bg-secondary-green text-center text-xxs font-semibold text-white hover:bg-opacity-80 2xl:w-24 2xl:text-xs">
               Fund wallet
             </button>
           </div>
         </div>
-        <div className="px-3 2xl:px-6 space-y-2.5 2xl:space-y-5 py-8">
-          {routes.map(({ name, url, icon, open }, index) => (
+        <div className="space-y-2.5 px-3 py-8 2xl:space-y-5 2xl:px-6">
+          {routes.map(({ name, url, icon }, index) => (
             <div key={index}>
               <a>
                 <button
-                  onClick={() => {
-                    if (open) {
-                      router.push(url);
-                      setOpenNav(false);
-                    } else {
-                      router.push('/sign-up');
-                      setOpenNav(false);
-                    }
-                  }}
+                  onClick={() => router.push(url)}
                   className={`${
                     router.asPath === url
-                      ? 'text-primary-base bg-white active-icon'
+                      ? 'active-icon bg-white text-primary-base'
                       : 'text-white  hover:bg-primary-hover'
-                  } ${
-                    !open ? 'text-opacity-30' : ''
-                  }  pl-6 w-full rounded-xl text-left py-4  duration-100`}
+                  } w-full rounded-xl py-4 pl-6 text-left duration-100`}
                 >
                   <span className="flex items-center">
-                    <FontAwesomeIcon icon={icon} className="w-5 h-5" />
-                    <span className="text-sm font-bold ml-5">{name}</span>
+                    <FontAwesomeIcon icon={icon} className="h-5 w-5" />
+                    <span className="ml-5 text-sm font-bold">{name}</span>
                   </span>
                 </button>
               </a>

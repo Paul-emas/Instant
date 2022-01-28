@@ -42,9 +42,9 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
 
   return (
     <>
-      <div className="h-56 sm:h-96 mb-10 sm:mb-0 w-full py-5 rounded-xl mt-3 sm:mt-10 bg-white">
-        <div className="flex w-full justify-between sm:px-5 mb-2">
-          <h2 className="text-base sm:text-xl mt-2 sm:mt-0 font-bold text-font-darker ">
+      <div className="mb-10 mt-3 h-56 w-full rounded-xl bg-white py-5 sm:mb-0 sm:mt-10 sm:h-96">
+        <div className="mb-2 flex w-full justify-between sm:px-5">
+          <h2 className="mt-2 text-base font-bold text-font-darker sm:mt-0 sm:text-xl ">
             {title}
           </h2>
           <div className="w-36 sm:w-40">
@@ -55,15 +55,15 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
             />
           </div>
         </div>
-        <div className="hidden sm:block w-full h-full">
-          <ResponsiveContainer width="100%" height="75%">
+        <div className="hidden h-full w-full sm:block">
+          <ResponsiveContainer width="100%" height="85%">
             <AreaChart
               data={selectedMonthStats}
               fontSize={12}
               fontWeight={'semibold'}
               margin={{
                 top: 10,
-                right: 20,
+                right: 10,
                 left: 40,
                 bottom: 0,
               }}
@@ -118,7 +118,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-        <div className="block sm:hidden w-full h-full">
+        <div className="block h-full w-full sm:hidden">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={selectedMonthStats}
@@ -186,7 +186,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
           </ResponsiveContainer>
         </div>
       </div>
-      <div className="flex sm:hidden space-x-4 py-6">
+      <div className="flex space-x-4 py-6 sm:hidden">
         {ranges.map(({ name, data }, index) => (
           <div
             onClick={() => {
@@ -196,9 +196,9 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
             key={`${name}${index}`}
             className={`${
               activeRange === index
-                ? 'text-primary-base border-primary-base'
+                ? 'border-primary-base text-primary-base'
                 : 'border-gray-200'
-            } py-2 px-4 border  text-sm rounded-lg font-semibold`}
+            } rounded-lg border py-2  px-4 text-sm font-semibold`}
           >
             {name}
           </div>
