@@ -10,7 +10,7 @@ import Footer from '../components/homepage/Footer';
 export default function offGrid() {
   return (
     <div>
-      <Header bg>
+      {/* <Header bg>
         <div className="relative w-1/2 pt-52 2xl:pt-72">
           <div className="max-w-xl">
             <h1 className="text-6xl font-extrabold leading-tight text-white ">
@@ -43,7 +43,7 @@ export default function offGrid() {
       <People />
       <Slider />
       <CTA />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

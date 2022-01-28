@@ -24,13 +24,13 @@ const PrimaryButton = ({
       type="submit"
       onClick={onClick}
       className={`${
-        disabled ? 'opacity-70 pointer-events-none' : 'active:translate-y-1'
-      } ${className} ${height} btn bg-primary-base flex items-center justify-center btn-white transform uppercase`}
+        disabled ? 'pointer-events-none opacity-70' : ''
+      } ${className} ${height} btn btn-white flex transform items-center justify-center bg-primary-base uppercase`}
     >
       {loading ? (
         <FontAwesomeIcon
           icon={faBolt}
-          className="text-lg lg:text-xl w-5 h-5 lg:w-6 lg:h-6 mx-auto loading"
+          className="loading mx-auto h-5 w-5 text-lg lg:h-6 lg:w-6 lg:text-xl"
         />
       ) : (
         <span>{children}</span>

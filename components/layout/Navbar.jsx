@@ -24,13 +24,13 @@ const Navbar = () => {
     <nav
       className={`${
         isScrolling
-          ? 'border-b bg-white h-14 lg:h-16'
-          : 'bg-primary-light h-16 lg:h-16'
-      }  fixed transition-all z-40 inset-0`}
+          ? 'h-14 border-b bg-white lg:h-16'
+          : 'h-16 bg-primary-light lg:h-16'
+      }  fixed inset-0 z-40 transition-all`}
     >
-      <div className="xl:container mx-auto h-full px-4 lg:px-14">
-        <div className="flex justify-between h-full items-center">
-          <div className="hidden lg:block -ml-3">
+      <div className="mx-auto h-full px-4 lg:px-14 xl:container">
+        <div className="flex h-full items-center justify-between">
+          <div className="-ml-3 hidden lg:block">
             <Link href="/">
               <a>
                 <Image
@@ -43,7 +43,7 @@ const Navbar = () => {
               </a>
             </Link>
           </div>
-          <div className="block lg:hidden mt-1">
+          <div className="mt-1 block lg:hidden">
             <Link href="/">
               <a>
                 <Image
@@ -56,24 +56,23 @@ const Navbar = () => {
               </a>
             </Link>
           </div>
-          <div className="grid grid-cols-2 lg:flex items-center text-base space-x-2 lg:space-x-8">
-            <Link href="/">
-              <a className="hidden lg:block text-primary-darker font-semibold">
+          <div className="grid grid-cols-2 items-center space-x-2 text-base lg:flex lg:space-x-8">
+            {/* <Link href="/">
+              <a className="hidden font-semibold text-primary-darker lg:block">
                 Electricity Units
               </a>
             </Link>
-            <Link href="/solar-plans">
-              <a className="text-primary-darker text-xs lg:text-base font-semibold">
-                Solar Electricity
-              </a>
-            </Link>
+           
             <Link href="/offgrid">
-              <a className="hidden lg:block text-primary-darker font-semibold">
+              <a className="hidden font-semibold text-primary-darker lg:block">
                 Offgrid
               </a>
+            </Link> */}
+            <Link href="/solar-plans">
+              <a className="text-xs font-semibold text-primary-darker lg:text-base"></a>
             </Link>
             <Button onClick={() => dispatch(setInitAuthentication('login'))}>
-              Login
+              Get started
             </Button>
           </div>
         </div>

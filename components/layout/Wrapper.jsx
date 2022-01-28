@@ -74,9 +74,9 @@ const Wrapper = ({ children }) => {
             <div className="min-h-screen w-full overflow-hidden bg-gray-300">
               <div className="min-h-screen">
                 <Sidebar openNav={openNav} setOpenNav={setOpenNav} />
-                <div className="p-0 pb-8 bg-white sm:bg-primary-light">
-                  <main className="min-h-screen main-content">
-                    <div className="flex sm:hidden justify-between items-center h-14 px-4">
+                <div className="bg-white p-0 pb-8 sm:bg-primary-light">
+                  <main className="main-content min-h-screen">
+                    <div className="flex h-14 items-center justify-between px-4 sm:hidden">
                       <div className="container mx-auto">
                         <div className="relative top-1">
                           <Link href="/">

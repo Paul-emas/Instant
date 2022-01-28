@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   persistSelector,
   setIsLoggedIn,
-  setQuickBuy,
   setToken,
 } from '../../../slices/persist';
 import { setInitAuthentication, setUser } from '../../../slices/user';
@@ -59,7 +58,6 @@ const SignInPin = ({ close, setStep }) => {
         const { user, authorization } = data;
         dispatch(setUser(user));
         dispatch(setToken(authorization));
-        dispatch(setQuickBuy(false));
         dispatch(setIsLoggedIn(true));
         dispatch(setInitAuthentication(null));
         close();

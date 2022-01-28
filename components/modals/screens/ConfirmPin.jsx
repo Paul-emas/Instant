@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   persistSelector,
   setIsLoggedIn,
-  setQuickBuy,
   setToken,
   setUserPhone,
 } from '../../../slices/persist';
@@ -83,7 +82,6 @@ const ConfirmPin = ({ close, setStep }) => {
           const { account, authorization } = data;
           dispatch(setUser(account));
           dispatch(setToken(authorization));
-          dispatch(setQuickBuy(false));
           dispatch(setIsLoggedIn(true));
           dispatch(setInitAuthentication(null));
           router.push('/dashboard');

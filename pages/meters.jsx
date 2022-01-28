@@ -242,7 +242,7 @@ export default function Meters() {
             </Table>
           </div>
           {meters.length > 0 && (
-            <div className="mt-5 flex justify-center sm:hidden">
+            <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
               <Button onClick={() => setOpenAddMeterModal(true)}>
                 <span className="flex items-center uppercase">
                   <FontAwesomeIcon

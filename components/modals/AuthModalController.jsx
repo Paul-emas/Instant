@@ -25,8 +25,8 @@ const AuthModalController = () => {
   }, [initAuthentication]);
 
   function close() {
+    dispatch(setInitAuthentication(null));
     setStep(null);
-    dispatch(setInitAuthentication(false));
   }
 
   return (

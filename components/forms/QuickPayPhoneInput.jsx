@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
 import {
   setUserPhone,
   setQuickBuy,
   persistSelector,
+  setAnonymousToken,
 } from '../../slices/persist';
+import { setInitAuthentication } from '../../slices/user';
+import { checkUserValidation } from '../../api';
 
 import FormInput from './FormInput';
 import PrimaryButton from '../Buttons/PrimaryButton';
@@ -14,13 +15,9 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 const QuickPayPhoneInput = () => {
   const dispatch = useDispatch();
   const { userPhone } = useSelector(persistSelector);
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (userPhone) {
@@ -29,8 +26,15 @@ const QuickPayPhoneInput = () => {
     }
   }, [userPhone]);
 
-  const onSubmit = async formData => {
-    if (formData && phone.length) {
+  async function onSubmit(e) {
+    e !== undefined && e.preventDefault();
+    if (phone.length) {
+      if (!navigator.onLine) {
+        dispatch(setInitAuthentication('offline'));
+        return;
+      }
+
+      setIsLoading(true);
       const formattedPhone = phone.replace(country.countryCode, '');
       const payload = {
         phone: {
@@ -39,19 +43,34 @@ const QuickPayPhoneInput = () => {
           value: formattedPhone,
         },
       };
+
       dispatch(setUserPhone(payload));
-      dispatch(setQuickBuy(true));
-      router.push('/dashboard');
+      const { data, error } = await checkUserValidation(payload);
+
+      if (error?.response?.status === 404) {
+        setIsLoading(false);
+        dispatch(setInitAuthentication('register'));
+      }
+
+      if (data) {
+        setIsLoading(false);
+        dispatch(setQuickBuy(true));
+        const { isPin } = data;
+        if (isPin) {
+          dispatch(setInitAuthentication('signIn'));
+        } else {
+          const { authorization } = data;
+          dispatch(setAnonymousToken(authorization));
+          dispatch(setInitAuthentication('createPin'));
+        }
+      }
     }
-  };
+  }
 
   return (
-    <form
-      className="px-6 lg:px-8 pt-4 2xl:px-8 2xl:pt-0"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form className="px-6 pt-4 lg:px-8 2xl:px-8 2xl:pt-0" onSubmit={onSubmit}>
       <FormInput
-        className="py-2.5 px-5 mt-2"
+        className="mt-2 py-2.5 px-5"
         type="phone"
         id="phone"
         label="Phone number"
@@ -68,7 +87,12 @@ const QuickPayPhoneInput = () => {
         }}
         onChange={value => setPhone(value)}
       />
-      <PrimaryButton className="mt-8 mb-7" type="large">
+      <PrimaryButton
+        loading={isLoading}
+        disabled={isLoading}
+        className="mt-8 mb-7"
+        type="large"
+      >
         Buy Electricity
       </PrimaryButton>
     </form>

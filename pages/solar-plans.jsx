@@ -53,7 +53,7 @@ export default function solarPlans() {
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header>
+      {/* <Header>
         <div className="relative w-1/2 pt-52 2xl:pt-72">
           <div className="max-w-xl">
             <h1 className="text-6xl font-extrabold leading-tight text-font-darker xl:leading-tight 2xl:leading-tight ">
@@ -96,7 +96,7 @@ export default function solarPlans() {
       <People />
       <Slider />
       <CTA />
-      <Footer />
+      <Footer /> */}
     </div>
   );
 }

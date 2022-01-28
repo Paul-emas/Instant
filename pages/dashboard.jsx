@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import { persistSelector } from '../slices/persist';
+import { persistSelector, setQuickBuy } from '../slices/persist';
 import { toast } from 'react-toastify';
 import { setUserTransactions, userSelector } from '../slices/user';
 import { getUserTransactions } from '../api';
@@ -33,6 +33,8 @@ export default function Dashboard() {
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
   const [pageLoading, setPageLoading] = useState(true);
   const [transactions, setTransactions] = useState([]);
+
+  console.log(quickbuy);
 
   const tableProps = {
     title: 'Your transcations',
@@ -95,17 +97,20 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
+    if (quickbuy && !pageLoading) {
+      setOpenBuyElectricityModal(true);
+      setTimeout(() => {
+        dispatch(setQuickBuy(false));
+      }, 200);
+    }
+  }, [pageLoading]);
+
+  useEffect(() => {
     if (!userTransactions) {
       fetchTransactions();
     } else {
       setTransactions(userTransactions?.docs);
       setPageLoading(false);
-    }
-
-    if (quickbuy) {
-      setTimeout(() => {
-        setOpenBuyElectricityModal(true);
-      }, 200);
     }
   }, [userTransactions]);
 
@@ -318,7 +323,7 @@ export default function Dashboard() {
               </>
             )}
           </div>
-          <div className="mt-5 flex justify-center sm:hidden">
+          <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
             <Button onClick={() => setOpenBuyElectricityModal(true)}>
               Buy Electricity
             </Button>
