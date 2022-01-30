@@ -16,6 +16,7 @@ import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
 import useFetchTransaction from '../hooks/useFetchTransaction';
 import Footer from '../components/homepage/Footer';
+import Button from '../components/Button';
 
 export default function QuickBuy() {
   const dispatch = useDispatch();
@@ -58,14 +59,29 @@ export default function QuickBuy() {
             </div>
           </div>
         </Header>
-        <div className="mx-auto -mt-96 px-3 xl:container xl:px-14">
-          <TransactionsTable
-            transactions={transactions}
-            setOpenBuyElectricityModal={setOpenBuyElectricityModal}
-          >
-            <TransactionDataDefault transactions={transactions} />
-            <TransactionDataMobile transactions={transactions} />
-          </TransactionsTable>
+        <div className="mx-auto px-3 xl:container xl:px-14">
+          <div className="-mt-96">
+            <TransactionsTable
+              transactions={transactions}
+              setOpenBuyElectricityModal={setOpenBuyElectricityModal}
+            >
+              <TransactionDataDefault transactions={transactions} />
+              <TransactionDataMobile transactions={transactions} />
+            </TransactionsTable>
+          </div>
+          <div className="py-16">
+            <div className="overlay w-full rounded-xl bg-primary-base py-24 text-center">
+              <div className="text-3.5xl font-bold text-white">
+                Having trouble with a transaction?
+              </div>
+              <p className="text-gray-300">
+                Earn and save more when you create an account with us.
+              </p>
+              <div className="mt-12">
+                <Button white>Talk to customer care</Button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />
