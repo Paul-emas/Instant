@@ -1,13 +1,11 @@
-import React from 'react';
-
 const PaymentPlans = () => {
   return (
     <div className="py-16 sm:py-44">
       <div className="container mx-auto px-4 sm:px-10">
-        <div className="sm:max-w-6xl mx-auto">
-          <div className="grid sm:grid-cols-2 space-y-5 sm:space-x-16">
-            <div className="px-5 sm:px-0 text-center sm:text-left">
-              <div className="text-xl sm:text-5xl text-primary-darker font-bold">
+        <div className="mx-auto sm:max-w-6xl">
+          <div className="grid space-y-5 sm:grid-cols-2 sm:space-x-16">
+            <div className="px-5 text-center sm:px-0 sm:text-left">
+              <div className="text-xl font-bold text-primary-darker sm:text-5xl">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitred
               </div>
               <p className="mt-5 max-w-md text-sm sm:text-base">

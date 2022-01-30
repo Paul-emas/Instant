@@ -94,9 +94,9 @@ const PrePaid = ({
 
   return (
     <>
-      <form className="px-6 lg:px-8 pt-4" onSubmit={handleSubmit(onSubmit)}>
+      <form className="px-6 pt-4 lg:px-8" onSubmit={handleSubmit(onSubmit)}>
         <FormInput
-          className="py-2.5 px-5 mt-2"
+          className="mt-2 py-2.5 px-5"
           type="number"
           id="meter"
           errors={errors}
@@ -108,14 +108,14 @@ const PrePaid = ({
           })}
         />
         <ProviderSelectInput
-          className="px-5 mt-2"
+          className="mt-2 px-5"
           label="State of residence"
           placeholder="Enter account number"
           selectedProvider={selectedProvider}
           setSelectedProvider={setSelectedProvider}
         />
         <FormInput
-          className="py-2.5 px-5 mt-2"
+          className="mt-2 px-5"
           type="phone"
           id="phone"
           label="Phone number"
@@ -133,7 +133,7 @@ const PrePaid = ({
           onChange={value => setPhone(value)}
         />
         <FormInput
-          className="py-2.5 px-5 mt-2"
+          className="mt-2 px-5"
           type="currency"
           id="amount"
           errors={errors}
@@ -145,10 +145,10 @@ const PrePaid = ({
           })}
         />
         <div className="flex items-end">
-          <p className="text-gray-400 font-semibold text-sm relative top-0.5">
+          <p className="relative top-0.5 text-sm font-semibold text-gray-400">
             Estimated units: <span className="text-primary-base">32.5kw/h</span>
           </p>
-          <span className="w-5 h-5 bg-blue-600 ml-3 rounded-full text-white py-0.5 text-center text-xs font-bold">
+          <span className="ml-3 h-5 w-5 rounded-full bg-blue-600 py-0.5 text-center text-xs font-bold text-white">
             ?
           </span>
         </div>

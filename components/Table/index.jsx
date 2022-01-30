@@ -12,7 +12,7 @@ const Table = ({
   child,
 }) => {
   return (
-    <div className="sm_shadow mt-5 flex flex-col overflow-hidden rounded-xl bg-white">
+    <div className="shadow-soft-lg mt-5 flex flex-col overflow-hidden rounded-xl bg-white">
       <div className="mt-4 py-3 px-7">
         <div className="flex w-full items-center justify-center sm:justify-between">
           <h3 className="flex items-start text-xl font-bold text-font-dark">
@@ -42,7 +42,7 @@ const Table = ({
                       <th
                         key={`${heading}${index}`}
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-500"
+                        className="px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-500 lg:uppercase"
                       >
                         {heading}
                       </th>
@@ -55,7 +55,7 @@ const Table = ({
           )}
           {!loading && isMobile && <div>{children}</div>}
           {loading && (
-            <div className="py-8 sm:py-44">
+            <div className="py-8 sm:py-36">
               <RequestLoader type="request" />
             </div>
           )}

@@ -54,6 +54,7 @@ export default function solarPlans() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <Header>
+      <div className="justify-between lg:flex">
         <div className="relative w-1/2 pt-52 2xl:pt-72">
           <div className="max-w-xl">
             <h1 className="text-6xl font-extrabold leading-tight text-font-darker xl:leading-tight 2xl:leading-tight ">
@@ -77,6 +78,7 @@ export default function solarPlans() {
                 Learn more
               </a>
             </div>
+          </div>
           </div>
           <div className="mt-16 2xl:mt-36">
             <ContactCard />

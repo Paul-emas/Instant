@@ -11,6 +11,7 @@ export default function offGrid() {
   return (
     <div>
       {/* <Header bg>
+      <div className="justify-between lg:flex">
         <div className="relative w-1/2 pt-52 2xl:pt-72">
           <div className="max-w-xl">
             <h1 className="text-6xl font-extrabold leading-tight text-white ">
@@ -34,6 +35,7 @@ export default function offGrid() {
                 Learn more
               </a>
             </div>
+          </div>
           </div>
         </div>
       </Header>

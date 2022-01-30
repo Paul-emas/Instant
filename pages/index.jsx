@@ -28,18 +28,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header>
-        <div className="relative top-16 max-w-3xl sm:top-20 lg:w-1/2">
-          <Image
-            src="/images/woman.webp"
-            layout="intrinsic"
-            width={738}
-            height={910}
-            className="object-contain"
-            priority
-          />
-        </div>
-        <div className="mx-auto flex items-center pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full 2xl:pb-10">
-          <QuickPay />
+        <div className="justify-between lg:flex">
+          <div className="relative top-16 max-w-3xl sm:top-20 lg:w-1/2">
+            <Image
+              src="/images/woman.webp"
+              layout="intrinsic"
+              width={738}
+              height={910}
+              className="object-contain"
+              priority
+            />
+          </div>
+          <div className="mx-auto flex items-center pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full 2xl:pb-10">
+            <QuickPay />
+          </div>
         </div>
       </Header>
       <main>

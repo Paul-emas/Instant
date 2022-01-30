@@ -27,7 +27,7 @@ const FormInput = forwardRef(
         <label
           className={`${
             font === 'small' ? 'text-xs' : 'text-xs'
-          } text-gray-400 label`}
+          } label text-gray-400`}
         >
           {label}
         </label>
@@ -67,7 +67,7 @@ const FormInput = forwardRef(
         )}
 
         {type === 'currency' && (
-          <div className={`${className} ${errorStyles} form-input flex`}>
+          <div className={`${className} ${errorStyles} form-input flex py-2.5`}>
             <div className="text capitalize text-primary-base">NGN</div>
             <input
               {...props}
@@ -77,7 +77,7 @@ const FormInput = forwardRef(
               ref={ref}
               className={`${
                 error ? 'focus:bg-white' : 'focus:bg-primary-light'
-              } ml-4 focus:outline-none w-full font-bold`}
+              } ml-4 w-full font-bold focus:outline-none`}
             />
           </div>
         )}

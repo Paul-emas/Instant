@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   setUserPhone,
@@ -15,6 +16,7 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 const QuickPayPhoneInput = () => {
   const dispatch = useDispatch();
   const { userPhone } = useSelector(persistSelector);
+  const router = useRouter();
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -45,16 +47,17 @@ const QuickPayPhoneInput = () => {
       };
 
       dispatch(setUserPhone(payload));
+      dispatch(setQuickBuy(true));
+
       const { data, error } = await checkUserValidation(payload);
 
       if (error?.response?.status === 404) {
         setIsLoading(false);
-        dispatch(setInitAuthentication('register'));
+        router.push('/quickbuy');
       }
 
       if (data) {
         setIsLoading(false);
-        dispatch(setQuickBuy(true));
         const { isPin } = data;
         if (isPin) {
           dispatch(setInitAuthentication('signIn'));

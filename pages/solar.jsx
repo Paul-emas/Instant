@@ -89,7 +89,7 @@ export default function Solar() {
     setTimeout(() => {
       setPageLoading(false);
     }, 2000);
-  });
+  }, []);
 
   return (
     <div className="pt-5 2xl:pt-10">
