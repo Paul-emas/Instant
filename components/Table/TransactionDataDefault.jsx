@@ -15,7 +15,7 @@ const TransactionDataDefault = ({ transactions }) => {
               className="last:-white py-4 pl-6 hover:bg-primary-light"
               key={`${transaction}${index}`}
             >
-              <td className="whitespace-nowrap py-4  pl-6">
+              <td className="whitespace-nowrap py-4 pl-6">
                 <div className="flex items-center">
                   <div
                     className={`${

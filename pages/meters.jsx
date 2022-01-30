@@ -151,12 +151,12 @@ export default function Meters() {
                 meters.map((item, index) => {
                   return (
                     <tr
-                      className="last:-white py-4 pl-6"
+                      className="last:-white py-4 pl-6 hover:bg-primary-light"
                       key={`${item}${index}`}
                     >
                       <td className="whitespace-nowrap py-4  pl-6">
                         <div className="flex items-center">
-                          <div className="flex h-12 w-12 items-center rounded-2xl bg-secondary-green">
+                          <div className="flex h-8 w-8 items-center rounded-xl bg-primary-base">
                             <BulbIcon className="mx-auto my-3" />
                           </div>
                           <div className="ml-8">

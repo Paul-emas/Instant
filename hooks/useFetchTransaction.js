@@ -3,11 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserTransactions } from '../api';
 import { persistSelector } from '../slices/persist';
 import { toast } from 'react-toastify';
-import {
-  setInitAuthentication,
-  setUserTransactions,
-  userSelector,
-} from '../slices/user';
+import { setUserTransactions, userSelector } from '../slices/user';
 
 export default function useFetchTransaction(itemsPerPage) {
   const dispatch = useDispatch();

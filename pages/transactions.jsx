@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import useFetchTransaction from '../hooks/useFetchTransaction';
 
 import WalletCard from '../components/WalletCard';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
@@ -7,7 +7,6 @@ import Pagination from '../components/Table/Pagination';
 import TransactionsTable from '../components/Table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
-import useFetchTransaction from '../hooks/useFetchTransaction';
 
 export default function Transactions() {
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
@@ -29,7 +28,7 @@ export default function Transactions() {
 
   const updateTransactionState = data => {
     if (data) {
-      const { page, docs, totalDocs, totalPages } = data;
+      const { docs, totalDocs, totalPages } = data;
       setPaginatedTransactions(docs);
       setPageCount(totalPages);
       setTotalDocs(totalDocs);

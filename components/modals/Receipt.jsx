@@ -33,8 +33,6 @@ const Receipt = ({ receipt }) => {
     };
   }
 
-  console.log(receipt);
-
   return (
     <div id="reciept" className="-mt-6 px-6 lg:px-8">
       <div className="flex justify-center">
