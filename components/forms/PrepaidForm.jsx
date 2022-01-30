@@ -133,6 +133,18 @@ const PrePaid = ({
           onChange={value => setPhone(value)}
         />
         <FormInput
+          className="mt-2 py-2.5 px-5"
+          type="number"
+          id="prepaid-email"
+          errors={errors}
+          placeholder="Enter email address"
+          label="Email Address"
+          error={errors.email ?? false}
+          {...register('email', {
+            required: true,
+          })}
+        />
+        <FormInput
           className="mt-2 px-5"
           type="currency"
           id="amount"
