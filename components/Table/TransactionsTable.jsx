@@ -35,43 +35,53 @@ const TransactionsTable = ({
       'Status',
     ],
     loading,
-    viewAll: () => (
-      <>
-        {router.asPath !== '/quickbuy' && (
-          <>
-            {router.asPath === '/dashboard' ? (
-              <Link href="/transactions">
-                <button className="w-24 rounded-lg bg-primary-light py-2.5 text-sm font-semibold hover:opacity-80">
-                  <span className="relative flex items-center justify-center">
-                    <span className="mr-2">See all</span>
-                    <FontAwesomeIcon
-                      icon={faChevronRight}
-                      className="h-3 w-3"
-                    />
-                  </span>
-                </button>
-              </Link>
-            ) : (
-              <Button>Wallet History</Button>
-            )}
-          </>
-        )}
-      </>
-    ),
-    tabs: () => (
-      <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />
-    ),
-    child: () => (
-      <>
-        {transactions.length <= 0 ? (
-          <TransactionEmptyState
-            setOpenBuyElectricityModal={setOpenBuyElectricityModal}
-          />
-        ) : null}
+    viewAll: function view() {
+      return (
+        <>
+          {router.asPath !== '/quickbuy' && (
+            <>
+              {router.asPath === '/dashboard' ? (
+                <Link href="/transactions">
+                  <button className="w-24 rounded-lg bg-primary-light py-2.5 text-sm font-semibold hover:opacity-80">
+                    <span className="relative flex items-center justify-center">
+                      <span className="mr-2">See all</span>
+                      <FontAwesomeIcon
+                        icon={faChevronRight}
+                        className="h-3 w-3"
+                      />
+                    </span>
+                  </button>
+                </Link>
+              ) : (
+                <Button>Wallet History</Button>
+              )}
+            </>
+          )}
+        </>
+      );
+    },
+    tabs: function view() {
+      return (
+        <Tabs
+          data={tabsData}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      );
+    },
+    child: function view() {
+      return (
+        <>
+          {transactions.length <= 0 ? (
+            <TransactionEmptyState
+              setOpenBuyElectricityModal={setOpenBuyElectricityModal}
+            />
+          ) : null}
 
-        {paginate && paginate()}
-      </>
-    ),
+          {paginate && paginate()}
+        </>
+      );
+    },
   };
 
   return (
@@ -92,6 +102,8 @@ const TransactionsTable = ({
     </Table>
   );
 };
+
+TransactionsTable.displayName = 'TransactionsTable';
 
 TransactionsTable.defaultProps = {
   loading: false,
