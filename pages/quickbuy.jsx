@@ -21,7 +21,7 @@ import Button from '../components/Button';
 export default function QuickBuy() {
   const dispatch = useDispatch();
   const { quickbuy } = useSelector(persistSelector);
-  const { transactions, error, pageLoading } = useFetchTransaction(0, 10);
+  const { transactions, error, pageLoading } = useFetchTransaction(10);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
 
   useEffect(() => {

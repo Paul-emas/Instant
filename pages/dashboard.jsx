@@ -18,7 +18,7 @@ import TransactionDataMobile from '../components/table/TransactionDataMobile';
 export default function Dashboard() {
   const dispatch = useDispatch();
   const { quickbuy, isLoggedIn } = useSelector(persistSelector);
-  const { transactions, error, pageLoading } = useFetchTransaction(0, 10);
+  const { transactions, error, pageLoading } = useFetchTransaction(10);
 
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
