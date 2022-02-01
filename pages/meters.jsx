@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Button from '../components/Button';
-import Table from '../components/Table';
+import Table from '../components/table';
 import AddMeter from '../components/modals/screens/AddMeter';
 import Tabs from '../components/tabs';
 
