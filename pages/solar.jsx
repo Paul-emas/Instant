@@ -5,7 +5,7 @@ import Chart from '../components/Chart';
 import SolarAmountCard from '../components/solar/SolarAmountCard';
 import SolarPanelStatus from '../components/solar/SolarPanelStatus';
 import SolarPaymentCard from '../components/solar/SolarPaymentCard';
-import Table from '../components/Table';
+import Table from '../components/table';
 import Tabs from '../components/tabs';
 import SolarSkeleton from '../components/skeletons/SolarSkeleton';
 

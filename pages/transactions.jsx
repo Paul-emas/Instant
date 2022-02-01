@@ -3,8 +3,8 @@ import useFetchTransaction from '../hooks/useFetchTransaction';
 
 import WalletCard from '../components/WalletCard';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
-import Pagination from '../components/Table/Pagination';
-import TransactionsTable from '../components/Table/TransactionsTable';
+import Pagination from '../components/table/Pagination';
+import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
 

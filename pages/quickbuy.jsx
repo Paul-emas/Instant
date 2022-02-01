@@ -11,7 +11,7 @@ import BuyElectricityModal from '../components/modals/screens/BuyElectricityModa
 import Header from '../components/homepage/Header';
 import BuyCard from '../components/BuyCard';
 import BuyAdsCard from '../components/BuyAdsCard';
-import TransactionsTable from '../components/Table/TransactionsTable';
+import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
 import useFetchTransaction from '../hooks/useFetchTransaction';

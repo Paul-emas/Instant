@@ -11,7 +11,7 @@ import BuyElectricityModal from '../components/modals/screens/BuyElectricityModa
 import DashboardSkeleton from '../components/skeletons/DashboardSkeleton';
 
 import WalletCard from '../components/WalletCard';
-import TransactionsTable from '../components/Table/TransactionsTable';
+import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
 
