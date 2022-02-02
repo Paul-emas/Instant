@@ -97,6 +97,25 @@ const PrePaid = ({
       <form className="px-6 pt-4 lg:px-8" onSubmit={handleSubmit(onSubmit)}>
         <FormInput
           className="mt-2 py-2.5 px-5"
+          type="number"
+          id="meter"
+          errors={errors}
+          placeholder="Enter meter number"
+          label="Meter number"
+          error={errors.meter_no ?? false}
+          {...register('meter', {
+            required: true,
+          })}
+        />
+        <ProviderSelectInput
+          className="mt-2 px-5"
+          label="State of residence"
+          placeholder="Enter account number"
+          selectedProvider={selectedProvider}
+          setSelectedProvider={setSelectedProvider}
+        />
+        <FormInput
+          className="mt-2 py-2.5 px-5"
           type="text"
           id="name"
           placeholder="Enter your Full Name"
@@ -117,25 +136,6 @@ const PrePaid = ({
           {...register('email', {
             required: true,
           })}
-        />
-        <FormInput
-          className="mt-2 py-2.5 px-5"
-          type="number"
-          id="meter"
-          errors={errors}
-          placeholder="Enter meter number"
-          label="Meter number"
-          error={errors.meter_no ?? false}
-          {...register('meter', {
-            required: true,
-          })}
-        />
-        <ProviderSelectInput
-          className="mt-2 px-5"
-          label="State of residence"
-          placeholder="Enter account number"
-          selectedProvider={selectedProvider}
-          setSelectedProvider={setSelectedProvider}
         />
         <FormInput
           className="mt-2 px-5"
