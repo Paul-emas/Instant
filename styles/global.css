@@ -69,7 +69,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .modal-card {
-  max-height: 80vh;
+  max-height: 90vh;
 }
 
 .form-input {

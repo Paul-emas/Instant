@@ -97,6 +97,29 @@ const PrePaid = ({
       <form className="px-6 pt-4 lg:px-8" onSubmit={handleSubmit(onSubmit)}>
         <FormInput
           className="mt-2 py-2.5 px-5"
+          type="text"
+          id="name"
+          placeholder="Enter your Full Name"
+          label="Full name"
+          error={errors.name && true}
+          {...register('name', {
+            required: true,
+            minLength: 3,
+          })}
+        />
+        <FormInput
+          className="mt-2 py-2.5 px-5"
+          id="prepaid-email"
+          errors={errors}
+          placeholder="Enter email address"
+          label="Email Address"
+          error={errors.email ?? false}
+          {...register('email', {
+            required: true,
+          })}
+        />
+        <FormInput
+          className="mt-2 py-2.5 px-5"
           type="number"
           id="meter"
           errors={errors}
@@ -113,35 +136,6 @@ const PrePaid = ({
           placeholder="Enter account number"
           selectedProvider={selectedProvider}
           setSelectedProvider={setSelectedProvider}
-        />
-        <FormInput
-          className="mt-2 px-5"
-          type="phone"
-          id="phone"
-          label="Phone number"
-          value={phone}
-          isValid={(value, country) => {
-            if (value.match(/12345/)) {
-              return 'Invalid value: ' + value + ', ' + country.name;
-            } else if (value.match(/1234/)) {
-              return false;
-            } else {
-              setCountry(country);
-              return true;
-            }
-          }}
-          onChange={value => setPhone(value)}
-        />
-        <FormInput
-          className="mt-2 py-2.5 px-5"
-          id="prepaid-email"
-          errors={errors}
-          placeholder="Enter email address"
-          label="Email Address"
-          error={errors.email ?? false}
-          {...register('email', {
-            required: true,
-          })}
         />
         <FormInput
           className="mt-2 px-5"
