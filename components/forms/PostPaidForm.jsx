@@ -139,7 +139,6 @@ const PostPaid = ({
         />
         <FormInput
           className="mt-2 py-2.5 px-5"
-          type="number"
           id="post-email"
           errors={errors}
           placeholder="Enter email address"

@@ -41,7 +41,7 @@ export default function QuickBuy() {
           setOpen={setOpenBuyElectricityModal}
         />
         <Header>
-          <div className="relative top-32">
+          <div className="relative top-24 lg:top-32">
             <Link href="/">
               <button className="relative flex items-center justify-center rounded-lg bg-white py-2 px-4 text-sm font-semibold hover:opacity-80">
                 <FontAwesomeIcon
@@ -51,7 +51,7 @@ export default function QuickBuy() {
                 <span className="mt-0.5">Go back home</span>
               </button>
             </Link>
-            <div className="mt-20 justify-between space-x-8 lg:flex 2xl:space-x-20">
+            <div className="relative top-8 justify-between space-y-4 lg:top-0 lg:mt-20 lg:flex lg:space-x-8 lg:space-y-0 2xl:space-x-20">
               <BuyCard
                 setOpenBuyElectricityModal={setOpenBuyElectricityModal}
               />
@@ -60,7 +60,7 @@ export default function QuickBuy() {
           </div>
         </Header>
         <div className="mx-auto px-3 xl:container xl:px-14">
-          <div className="-mt-96">
+          <div className="mt-28 lg:-mt-96">
             <TransactionsTable
               transactions={transactions}
               setOpenBuyElectricityModal={setOpenBuyElectricityModal}
@@ -69,12 +69,14 @@ export default function QuickBuy() {
               <TransactionDataMobile transactions={transactions} />
             </TransactionsTable>
           </div>
-          <div className="py-16">
-            <div className="overlay w-full rounded-xl bg-primary-base py-24 text-center">
-              <div className="text-3.5xl font-bold text-white">
+        </div>
+        <div className="bg-white py-8 lg:py-16">
+          <div className="mx-auto px-3 xl:container xl:px-14">
+            <div className="overlay w-full rounded-xl bg-primary-base py-16 text-center lg:py-24">
+              <div className="px-8 text-2xl font-bold leading-snug text-white lg:text-3.5xl">
                 Having trouble with a transaction?
               </div>
-              <p className="text-gray-300">
+              <p className="px-5 text-gray-300">
                 Earn and save more when you create an account with us.
               </p>
               <div className="mt-12">

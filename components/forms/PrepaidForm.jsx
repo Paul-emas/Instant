@@ -134,7 +134,6 @@ const PrePaid = ({
         />
         <FormInput
           className="mt-2 py-2.5 px-5"
-          type="number"
           id="prepaid-email"
           errors={errors}
           placeholder="Enter email address"

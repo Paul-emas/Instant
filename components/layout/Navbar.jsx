@@ -56,7 +56,7 @@ const Navbar = () => {
               </a>
             </Link>
           </div>
-          <div className="grid grid-cols-2 items-center space-x-2 text-base lg:flex lg:space-x-8">
+          <div className="grid items-center space-x-2 text-base lg:flex lg:grid-cols-2 lg:space-x-8">
             {/* <Link href="/">
               <a className="hidden font-semibold text-primary-darker lg:block">
                 Electricity Units
@@ -68,9 +68,6 @@ const Navbar = () => {
                 Offgrid
               </a>
             </Link> */}
-            <Link href="/solar-plans">
-              <a className="text-xs font-semibold text-primary-darker lg:text-base"></a>
-            </Link>
             <Button onClick={() => dispatch(setInitAuthentication('login'))}>
               Get started
             </Button>

@@ -10,8 +10,8 @@ const BuyAdsCard = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex h-224 w-1/2 items-center rounded-xl bg-secondary-teal p-4">
-      <div>
+    <div className="h-224 w-full items-center rounded-xl bg-secondary-teal py-7 px-5 lg:flex lg:w-1/2 lg:p-4">
+      <div className="hidden lg:block">
         <Image
           src="/images/ads.jpg"
           width={178}
@@ -21,19 +21,21 @@ const BuyAdsCard = () => {
           className="rounded-xl"
         />
       </div>
-      <div className="ml-6">
-        <div className="text-2xl font-bold text-white">
+      <div className="xl:ml-6">
+        <div className="text-xl font-bold text-white lg:text-2xl">
           Start saving more on <br /> electricity
         </div>
-        <p className="max-w-md text-gray-200">
-          Earn and save more when you create an <br /> account with us.
+        <p className="max-w-md text-sm text-gray-200 lg:text-base">
+          Earn and save more when you create an{' '}
+          <br className="hidden lg:block" /> account with us.
         </p>
-        <div className="mt-6">
+        <div className="mt-10 w-full lg:mt-6">
           <Button
+            className="w-full lg:w-auto"
             onClick={() => dispatch(setInitAuthentication('register'))}
             white
           >
-            <div className="flex items-center">
+            <div className="flex items-center justify-center">
               <span>Start Saving now</span>
               <FontAwesomeIcon icon={faChevronRight} className="ml-2 h-4 w-4" />
             </div>

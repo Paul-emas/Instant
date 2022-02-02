@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ primary, white, light, onClick, children }) => {
+const Button = ({ className, primary, white, light, onClick, children }) => {
   let color = '';
 
   switch (primary) {
@@ -19,7 +19,7 @@ const Button = ({ primary, white, light, onClick, children }) => {
   return (
     <button
       onClick={onClick}
-      className={`${color} rounded-lg px-4 py-3 text-xs font-semibold uppercase lg:px-6 lg:text-sm`}
+      className={`${color} ${className} rounded-lg px-4 py-3 text-xs font-semibold uppercase lg:px-6 lg:text-sm`}
     >
       {children}
     </button>
