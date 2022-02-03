@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { userSelector } from '../../../slices/user';
 import { persistSelector } from '../../../slices/persist';
 import { generateTranscationToken } from '../../../api';
 
@@ -12,10 +11,10 @@ import QuickBuyConfirmDetails from '../QuickBuyConfirmDetails';
 import ErrorSuccess from '../ErrorSuccess';
 import Receipt from '../Receipt';
 import RequestLoader from '../../loaders/RequestLoader';
+import AddMeter from './AddMeter';
 
 const BuyElectricityModal = ({ open, setOpen }) => {
-  const { me } = useSelector(userSelector);
-  const { email, userPhone } = useSelector(persistSelector);
+  const { userPhone } = useSelector(persistSelector);
   const tabs = [
     { id: 0, name: 'prepaid' },
     { id: 1, name: 'postpaid' },
@@ -24,11 +23,11 @@ const BuyElectricityModal = ({ open, setOpen }) => {
   const [step, setStep] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
   const [confirmDetails, setConfirmDetails] = useState(null);
-  const [userEmail, setUserEmail] = useState('');
   const [paystack, setPayStack] = useState(null);
   const [paymentToken, setPaymentToken] = useState(null);
   const [receipt, setReciept] = useState(null);
   const [phone, setPhone] = useState('');
+  const [selectedMeter, setSelectedMeter] = useState(null);
 
   useEffect(() => {
     if (userPhone) {
@@ -36,14 +35,6 @@ const BuyElectricityModal = ({ open, setOpen }) => {
       setPhone(phone?.number);
     }
   }, [userPhone]);
-
-  useEffect(() => {
-    if (!me) {
-      setUserEmail(email);
-    } else {
-      setUserEmail(me?.email?.value);
-    }
-  }, []);
 
   const close = () => {
     const resp = confirm('Are you sure you want to cancel transcation?');
@@ -72,6 +63,14 @@ const BuyElectricityModal = ({ open, setOpen }) => {
     }
   };
 
+  const PrepaidPostPaidProps = {
+    setConfirmDetails,
+    setStep,
+    setPaymentToken,
+    selectedMeter,
+    setSelectedMeter,
+  };
+
   return (
     <div>
       {step === 0 && open && (
@@ -91,24 +90,8 @@ const BuyElectricityModal = ({ open, setOpen }) => {
           />
           <div className="overflow-y-hidden pb-1.5">
             <div className="slideUp">
-              {activeTab === 0 && (
-                <PrePaidForm
-                  setConfirmDetails={setConfirmDetails}
-                  setStep={setStep}
-                  setOpenModal={setOpen}
-                  email={userEmail}
-                  setPaymentToken={setPaymentToken}
-                />
-              )}
-              {activeTab === 1 && (
-                <PostPaid
-                  setConfirmDetails={setConfirmDetails}
-                  setStep={setStep}
-                  setOpenModal={setOpen}
-                  email={userEmail}
-                  setPaymentToken={setPaymentToken}
-                />
-              )}
+              {activeTab === 0 && <PrePaidForm {...PrepaidPostPaidProps} />}
+              {activeTab === 1 && <PostPaid {...PrepaidPostPaidProps} />}
             </div>
           </div>
         </Modal>
@@ -152,6 +135,15 @@ const BuyElectricityModal = ({ open, setOpen }) => {
         >
           <Receipt receipt={receipt} />
         </Modal>
+      )}
+
+      {open && step === 5 && (
+        <AddMeter
+          open={open}
+          setOpen={setOpen}
+          goBack={() => setStep(0)}
+          setSelectedMeter={setSelectedMeter}
+        />
       )}
     </div>
   );

@@ -4,7 +4,7 @@ import Image from 'next/image';
 const About = () => (
   <section className="py-24">
     <div className="container mx-auto xl:px-14">
-      <div className="flex w-full justify-between items-center">
+      <div className="flex w-full items-center justify-between">
         <div className="2xl:hidden">
           <Image
             src="/images/man.png"
@@ -25,7 +25,7 @@ const About = () => (
           <h1 className="text-5xl leading-tight text-font-darker">
             Be comfortable as you move around the city anytime, anyday.
           </h1>
-          <p className="text-font-dark mt-3">
+          <p className="mt-3 text-font-dark">
             Move around at your will in convivence go about your day at ease.
             Move around at your will in convivence go about your day at ease.
             Move around at your will in convivence go about your day at ease.

@@ -37,7 +37,7 @@ const TransactionDataDefault = ({ transactions }) => {
                 <div className="text-sm text-font-grey">
                   {moment(transaction?.createdAt).utc().format('LL')}{' '}
                   <span className="ml-2">
-                    {moment(transaction?.createdAt).utc().format('LTS')}
+                    {moment(transaction?.createdAt).format('LT')}
                   </span>
                 </div>
               </td>

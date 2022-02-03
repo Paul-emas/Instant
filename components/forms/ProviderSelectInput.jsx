@@ -134,7 +134,7 @@ const ProviderSelectInput = ({
                     </span>
                   </div>
                   <span className="absolute inset-y-0 right-0 flex items-center pr-4">
-                    {selectedProvider?.state?.name === option.state.name ? (
+                    {selectedProvider?.state?._id === option.state._id ? (
                       <FontAwesomeIcon
                         className="h-5 w-5 text-secondary-green"
                         icon={faCheckCircle}

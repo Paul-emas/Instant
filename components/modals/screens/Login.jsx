@@ -44,7 +44,7 @@ const Login = ({ close, setStep }) => {
         },
       };
 
-      dispatch(setUserPhone(payload));
+      dispatch(setUserPhone({ ...payload, country }));
       const { data, error } = await checkUserValidation(payload);
 
       if (error?.response?.status === 404) {

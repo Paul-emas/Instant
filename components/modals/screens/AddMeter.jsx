@@ -13,7 +13,13 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector, setUserPhone } from '../../../slices/persist';
 
-const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
+const AddMeter = ({
+  open,
+  setOpen,
+  goBack,
+  selectedMeter,
+  setSelectedMeter,
+}) => {
   const dispatch = useDispatch();
   const { token, userPhone } = useSelector(persistSelector);
   const {
@@ -98,16 +104,19 @@ const AddMeter = ({ open, setOpen, selectedMeter, setSelectedMeter }) => {
         <Modal
           title={`${selectedMeter ? 'Edit Meter' : 'Add New Meter'}`}
           border={false}
+          goBack={goBack}
           close={() => {
             setSelectedMeter(null);
             setOpen(false);
           }}
         >
-          <BuyElectricityTab
-            tabs={tabs}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
+          <div className={`${goBack && 'pt-5'}`}>
+            <BuyElectricityTab
+              tabs={tabs}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+          </div>
           <div className="px-6 pt-6 lg:px-8">
             <form onSubmit={handleSubmit(onSubmit)}>
               <ProviderSelectInput

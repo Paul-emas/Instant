@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCheckCircle,
+  faChevronDown,
+} from '@fortawesome/free-solid-svg-icons';
 
 const SelectInput = ({
   className,
   error,
+  meters,
   label,
   options,
   selectedOption,
@@ -24,10 +28,10 @@ const SelectInput = ({
 
   return (
     <>
-      <label className="text-gray-400 font-bold text-xs lg:text-sm label">
+      <label className="label text-xs font-bold text-gray-400 lg:text-sm">
         {label}
       </label>
-      <div className="mb-4 relative">
+      <div className="relative mb-4">
         <button
           type="button"
           aria-haspopup="listbox"
@@ -36,19 +40,27 @@ const SelectInput = ({
           aria-labelledby="listbox-label"
           className={`${className} ${errorStyles} form-input`}
         >
-          {selectedOption && (
+          {selectedOption ? (
             <>
-              <span className="text-left ml-1.5 block truncate">
-                {selectedOption?.name}
-              </span>
+              {!meters ? (
+                <span className="ml-1.5 block truncate text-left">
+                  {selectedOption?.name}
+                </span>
+              ) : (
+                <span className="ml-1.5 block truncate text-left">
+                  {selectedOption?.meter?.number}
+                </span>
+              )}
               <span
                 className={`${
-                  className && 'mt-2'
-                } ml-3 absolute inset-y-0 right-0 text-gray-500 flex items-center pr-3.5 pointer-events-none`}
+                  className && ''
+                } pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-3.5 text-gray-500`}
               >
                 <FontAwesomeIcon className="h-4 w-4" icon={faChevronDown} />
               </span>
             </>
+          ) : (
+            <div className="h-4 w-2/3 rounded-md bg-gray-200"></div>
           )}
         </button>
         <ul
@@ -57,22 +69,41 @@ const SelectInput = ({
           aria-labelledby="listbox-label"
           aria-activedescendant="listbox-option-3"
           className={`${
-            openOption ? 'opacity-100 visible' : 'opacity-0 invisible'
-          } absolute z-10 mt-1 w-full bg-white shadow-soft max-h-64 rounded-md py-2 text-base overflow-auto focus:outline-none sm:text-sm transition ease-in duration-100`}
+            openOption ? 'visible opacity-100' : 'invisible opacity-0'
+          } shadow-soft absolute z-10 mt-1 max-h-64 w-full overflow-auto rounded-md bg-white py-2 text-base transition duration-100 ease-in focus:outline-none sm:text-sm`}
         >
-          {options.length > 0 &&
-            options.map((option, index) => (
+          {options?.length > 0 &&
+            options?.map((option, index) => (
               <li
                 key={index}
                 onClick={() => {
                   setSelectedOption(option);
                   setOpenOptions(false);
                 }}
-                className="text-gray-900 cursor-default group select-none relative py-2 pl-3 pr-9 hover:bg-primary-light hover:text-primary-base rounded-lg mx-2"
+                className="group relative mx-2 cursor-pointer select-none rounded-lg py-2 pl-3 pr-9 text-gray-900 hover:bg-primary-light hover:text-primary-base"
                 role="option"
               >
-                <div className="flex items-center text-sm sm:text-base">
-                  {option.name}
+                {/* <div className="flex items-center text-sm sm:text-base">
+                  {meters ? option?.meter?.number : option.name}
+                </div> */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-xs font-bold">
+                      {option?.meter?.name}
+                    </div>
+                    <div className="text-xxs font-bold text-primary-base">
+                      {option?.meter?.number}
+                    </div>
+                    <div className="text-xxs text-gray-500">
+                      {option?.meter?.address}
+                    </div>
+                  </div>
+                  {selectedOption?.meter?._id === option?.meter?._id && (
+                    <FontAwesomeIcon
+                      className="-mr-5 h-6 w-6 scale-150 transform text-secondary-green"
+                      icon={faCheckCircle}
+                    />
+                  )}
                 </div>
               </li>
             ))}

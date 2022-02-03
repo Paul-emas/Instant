@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { usePaystackPayment } from 'react-paystack';
 import PropTypes from 'prop-types';
+import { usePaystackPayment } from 'react-paystack';
 import PrimaryButton from '../Buttons/PrimaryButton';
-import { generateTranscationToken } from '../../api';
 import FormInput from '../forms/FormInput';
 import { setUserPhone } from '../../slices/persist';
 import { useDispatch } from 'react-redux';

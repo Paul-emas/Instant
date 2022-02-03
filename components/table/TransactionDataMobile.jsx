@@ -17,7 +17,7 @@ const TransactionDataMobile = ({ transactions }) => {
                   <div className="text-sm font-semibold text-gray-500">
                     {moment(transaction?.createdAt).utc().format('L')}{' '}
                     <span className="ml-1">
-                      {moment(transaction?.createdAt).utc().format('LTS')}
+                      {moment(transaction?.createdAt).format('LT')}
                     </span>
                   </div>
                 </div>
