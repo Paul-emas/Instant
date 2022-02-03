@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import moment from 'moment';
 import { isMobile } from 'react-device-detect';
 
 const TransactionDataMobile = ({ transactions }) => {
+  const router = useRouter();
+  const data =
+    router.asPath === '/dashboard' ? transactions.slice(0, 2) : transactions;
   return (
     <>
       {isMobile &&
-        transactions.slice(0, 2).map((transaction, index) => {
+        data.map((transaction, index) => {
           return (
             <div className="px-3 py-4" key={`${transaction}${index}`}>
               <div className="w-full rounded-xl border-2 border-gray-200 bg-white pb-6">
