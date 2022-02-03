@@ -40,7 +40,7 @@ const PostPaid = ({
   async function onSubmit(formData) {
     if (formData) {
       setIsLoading(true);
-      const { meter, amount } = formData;
+      const { meter, email, amount } = formData;
       const formattedPhone = phone.replace(country.countryCode, '');
       const payload = {
         phone: {
@@ -127,7 +127,6 @@ const PostPaid = ({
           label="Full name"
           error={errors.name && true}
           {...register('name', {
-            required: true,
             minLength: 3,
           })}
         />

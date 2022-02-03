@@ -11,7 +11,6 @@ import FormInput from './FormInput';
 import ProviderSelectInput from './ProviderSelectInput';
 
 const PrePaid = ({
-  email,
   setConfirmDetails,
   setStep,
   setOpenModal,
@@ -32,25 +31,29 @@ const PrePaid = ({
 
   useEffect(() => {
     if (userPhone) {
-      const { phone } = userPhone;
+      const { phone, country } = userPhone;
       setPhone(phone?.number);
+      setCountry(country);
     }
   }, [userPhone]);
+
+  console.log(userPhone);
 
   async function onSubmit(formData) {
     if (formData) {
       setIsLoading(true);
-      const { meter, amount } = formData;
-      const formattedPhone = phone.replace(country.countryCode, '');
+      const { meter, email, amount } = formData;
+      const formattedPhone = phone.replace(country?.countryCode, '');
       const payload = {
         phone: {
           number: phone,
-          code: country.countryCode,
+          code: country?.countryCode,
           value: formattedPhone,
         },
         email,
-        country: country.name,
+        country: country?.name,
       };
+      console.log(payload);
       const resp = await getAccountToken(payload);
       if (resp?.error) {
         setIsLoading(false);
@@ -61,12 +64,12 @@ const PrePaid = ({
         const payload = {
           recipient: {
             number: phone,
-            code: country.countryCode,
+            code: country?.countryCode,
             value: formattedPhone,
           },
           provider: selectedProvider._id,
           meter,
-          country: country.name,
+          country: country?.name,
           amount: Number(amount),
         };
         const response = await createTranscationToken(payload, token);
@@ -79,15 +82,6 @@ const PrePaid = ({
           setStep(1);
           setOpenModal(true);
         }
-        dispatch(
-          setUserPhone({
-            phone: {
-              number: phone,
-              code: country.countryCode,
-              value: formattedPhone,
-            },
-          }),
-        );
       }
     }
   }
@@ -122,7 +116,6 @@ const PrePaid = ({
           label="Full name"
           error={errors.name && true}
           {...register('name', {
-            required: true,
             minLength: 3,
           })}
         />

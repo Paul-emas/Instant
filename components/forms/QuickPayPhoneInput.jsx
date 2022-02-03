@@ -28,6 +28,8 @@ const QuickPayPhoneInput = () => {
     }
   }, [userPhone]);
 
+  console.log(country);
+
   async function onSubmit(e) {
     e !== undefined && e.preventDefault();
     if (phone.length) {
@@ -46,7 +48,7 @@ const QuickPayPhoneInput = () => {
         },
       };
 
-      dispatch(setUserPhone(payload));
+      dispatch(setUserPhone({ ...payload, country }));
       dispatch(setQuickBuy(true));
 
       const { data, error } = await checkUserValidation(payload);

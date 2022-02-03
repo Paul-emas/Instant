@@ -5,6 +5,7 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 import { generateTranscationToken } from '../../api';
 import FormInput from '../forms/FormInput';
 import { setUserPhone } from '../../slices/persist';
+import { useDispatch } from 'react-redux';
 
 const QuickBuyConfirmDetails = ({
   setOpen,
@@ -19,6 +20,7 @@ const QuickBuyConfirmDetails = ({
     amount: details?.gross * 100,
     publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUB_KEY,
   };
+  const dispatch = useDispatch();
   const initializePayment = usePaystackPayment(config);
   const [isLoading, setIsLoading] = useState(false);
   const [country, setCountry] = useState('');
