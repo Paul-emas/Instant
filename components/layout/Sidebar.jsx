@@ -2,13 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  faCog,
-  faHome,
-  faMeteor,
-  faMoneyBillWave,
-  faSun,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCog, faHome, faMeteor, faMoneyBillWave, faSun } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useSelector } from 'react-redux';
@@ -129,11 +123,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
             </div>
           ))}
         </div>
-        <UserCard
-          animate={animate}
-          openLogout={openLogout}
-          setOpenNav={setOpenNav}
-        />
+        <UserCard animate={animate} openLogout={openLogout} setOpenNav={setOpenNav} />
       </div>
     </aside>
   );

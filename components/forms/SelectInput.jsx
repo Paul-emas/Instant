@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCheckCircle,
-  faChevronDown,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const SelectInput = ({
   className,
@@ -28,9 +25,7 @@ const SelectInput = ({
 
   return (
     <>
-      <label className="label text-xs font-bold text-gray-400 lg:text-sm">
-        {label}
-      </label>
+      <label className="label text-xs font-bold text-gray-400 lg:text-sm">{label}</label>
       <div className="relative mb-4">
         <button
           type="button"
@@ -43,9 +38,7 @@ const SelectInput = ({
           {selectedOption ? (
             <>
               {!meters ? (
-                <span className="ml-1.5 block truncate text-left">
-                  {selectedOption?.name}
-                </span>
+                <span className="ml-1.5 block truncate text-left">{selectedOption?.name}</span>
               ) : (
                 <span className="ml-1.5 block truncate text-left">
                   {selectedOption?.meter?.number}
@@ -83,28 +76,25 @@ const SelectInput = ({
                 className="group relative mx-2 cursor-pointer select-none rounded-lg py-2 pl-3 pr-9 text-gray-900 hover:bg-primary-light hover:text-primary-base"
                 role="option"
               >
-                {/* <div className="flex items-center text-sm sm:text-base">
-                  {meters ? option?.meter?.number : option.name}
-                </div> */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-xs font-bold">
-                      {option?.meter?.name}
+                {!meters ? (
+                  <div className="flex items-center text-sm sm:text-base">{option.name}</div>
+                ) : (
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-xs font-bold">{option?.meter?.name}</div>
+                      <div className="text-xxs font-bold text-primary-base">
+                        {option?.meter?.number}
+                      </div>
+                      <div className="text-xxs text-gray-500">{option?.meter?.address}</div>
                     </div>
-                    <div className="text-xxs font-bold text-primary-base">
-                      {option?.meter?.number}
-                    </div>
-                    <div className="text-xxs text-gray-500">
-                      {option?.meter?.address}
-                    </div>
+                    {selectedOption?.meter?._id === option?.meter?._id && (
+                      <FontAwesomeIcon
+                        className="-mr-5 h-6 w-6 scale-150 transform text-secondary-green"
+                        icon={faCheckCircle}
+                      />
+                    )}
                   </div>
-                  {selectedOption?.meter?._id === option?.meter?._id && (
-                    <FontAwesomeIcon
-                      className="-mr-5 h-6 w-6 scale-150 transform text-secondary-green"
-                      icon={faCheckCircle}
-                    />
-                  )}
-                </div>
+                )}
               </li>
             ))}
         </ul>
