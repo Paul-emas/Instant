@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Flickity from 'react-flickity-component';
 
-const Counter = props => {
+const Counter = (props) => {
   const slides = [1, 2, 3, 4];
   const flickityOptions = {
     initialIndex: 0,
@@ -13,27 +13,27 @@ const Counter = props => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-white">
+    <section className="bg-white py-16 lg:py-24">
       <div className="container mx-auto px-4 lg:px-10">
-        <h1 className="text-2xl lg:text-5xl font-bold max-w-2xl text-center mx-auto text-primary-darker">
+        <h1 className="mx-auto max-w-2xl text-center text-2xl font-bold text-primary-darker lg:text-5xl">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.
         </h1>
-        <div className="hidden lg:flex justify-center items-center space-x-10 mt-24">
-          <div className="w-279 h-282 mr-6 border border-primary-base flex flex-col justify-center items-center rounded-3xl text-center bg-primary-light">
+        <div className="mt-24 hidden items-center justify-center space-x-10 lg:flex">
+          <div className="mr-6 flex h-282 w-279 flex-col items-center justify-center rounded-3xl border border-primary-base bg-primary-light text-center">
             <p className="text-5xl  font-bold text-primary-darker">3000k</p>
-            <span className="text-sm px-12 mt-4 text-font-dark">
+            <span className="mt-4 px-12 text-sm text-font-dark">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             </span>
           </div>
-          <div className="w-279 h-282 mr-6 bg-secondary-lighterGreen border border-secondary-green flex flex-col justify-center items-center rounded-3xl text-center">
+          <div className="mr-6 flex h-282 w-279 flex-col items-center justify-center rounded-3xl border border-secondary-green bg-secondary-lighterGreen text-center">
             <p className="text-5xl  font-bold text-primary-darker">460+</p>
-            <span className="text-sm px-12 mt-4 text-font-dark">
+            <span className="mt-4 px-12 text-sm text-font-dark">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             </span>
           </div>
-          <div className="w-279 h-282 bg-secondary-lighterPurple border border-secondary-purple flex flex-col justify-center items-center rounded-3xl text-center">
+          <div className="flex h-282 w-279 flex-col items-center justify-center rounded-3xl border border-secondary-purple bg-secondary-lighterPurple text-center">
             <p className="text-5xl  font-bold text-primary-darker">150k</p>
-            <span className="text-sm px-12 mt-4 text-font-dark">
+            <span className="mt-4 px-12 text-sm text-font-dark">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             </span>
           </div>
@@ -41,35 +41,35 @@ const Counter = props => {
       </div>
       <div className="mt-14 block lg:hidden">
         <Flickity
-          className={'carousel-home p-1 px-20 overflow-x-hidden'}
+          className={'carousel-home overflow-x-hidden p-1 px-20'}
           elementType={'div'}
           options={flickityOptions}
           disableImagesLoaded={false}
           reloadOnUpdate
           static
         >
-          <div className="w-257 h-274 mr-6 border border-primary-base flex flex-col justify-center items-center rounded-3xl text-center bg-primary-light">
+          <div className="mr-6 flex h-274 w-257 flex-col items-center justify-center rounded-3xl border border-primary-base bg-primary-light text-center">
             <p className="text-5xl  font-bold text-primary-darker">3000k</p>
-            <span className="text-sm px-12 mt-4 text-font-dark">
+            <span className="mt-4 px-12 text-sm text-font-dark">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             </span>
           </div>
-          <div className="w-257 h-274 mr-6 bg-secondary-lighterGreen border border-secondary-green flex flex-col justify-center items-center rounded-3xl text-center">
+          <div className="mr-6 flex h-274 w-257 flex-col items-center justify-center rounded-3xl border border-secondary-green bg-secondary-lighterGreen text-center">
             <p className="text-5xl  font-bold text-primary-darker">460+</p>
-            <span className="text-sm px-12 mt-4 text-font-dark">
+            <span className="mt-4 px-12 text-sm text-font-dark">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             </span>
           </div>
-          <div className="w-257 h-274 bg-secondary-lighterPurple border border-secondary-purple flex flex-col justify-center items-center rounded-3xl text-center">
+          <div className="flex h-274 w-257 flex-col items-center justify-center rounded-3xl border border-secondary-purple bg-secondary-lighterPurple text-center">
             <p className="text-5xl  font-bold text-primary-darker">150k</p>
-            <span className="text-sm px-12 mt-4 text-font-dark">
+            <span className="mt-4 px-12 text-sm text-font-dark">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             </span>
           </div>
         </Flickity>
       </div>
-      <div className="text-center mt-8 lg:mt-24">
-        <p className="text-primary-darker text-sm lg:text-base font-semibold">
+      <div className="mt-8 text-center lg:mt-24">
+        <p className="text-sm font-semibold text-primary-darker lg:text-base">
           <span>Need energy right now?</span>
           <Link href="/sign-up">
             <a className="ml-2 text-primary-base">Sign up now</a>

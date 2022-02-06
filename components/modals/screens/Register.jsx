@@ -30,7 +30,7 @@ const Register = ({ close, setStep }) => {
     }
   }, [userPhone]);
 
-  const onSubmit = async formData => {
+  const onSubmit = async (formData) => {
     if (!navigator.onLine) {
       dispatch(setInitAuthentication('offline'));
       return;
@@ -47,20 +47,12 @@ const Register = ({ close, setStep }) => {
   return (
     <Modal border={false} close={close}>
       <div className="-mt-4 px-6 lg:px-8">
-        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
-          Create an account
-        </h1>
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">Create an account</h1>
         <p className="mt-3 text-center text-sm text-gray-700">
           Buy electricity units easily with Instant Energy
         </p>
-        {errorMessage && (
-          <ErrorAlert error={errorMessage} setError={setErrorMessage} />
-        )}
-        <form
-          className="mt-5"
-          onSubmit={handleSubmit(onSubmit)}
-          autoComplete="off"
-        >
+        {errorMessage && <ErrorAlert error={errorMessage} setError={setErrorMessage} />}
+        <form className="mt-5" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           <FormInput
             className="mt-2 py-2.5 px-5"
             type="text"
@@ -82,7 +74,7 @@ const Register = ({ close, setStep }) => {
             error={errors.email && true}
             {...register('email', {
               required: true,
-              validate: value => isEmail(value),
+              validate: (value) => isEmail(value),
             })}
           />
           <FormInput
@@ -101,7 +93,7 @@ const Register = ({ close, setStep }) => {
                 return true;
               }
             }}
-            onChange={value => setPhone(value)}
+            onChange={(value) => setPhone(value)}
           />
           <FormInput
             className="mt-2 py-2.5 px-5"

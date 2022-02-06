@@ -16,10 +16,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Instant Energy - Buy Electricity Units in Nigeria</title>
-        <meta
-          name="description"
-          content="Instant Energy - Buy Electrical Units in Nigeria"
-        />
+        <meta name="description" content="Instant Energy - Buy Electrical Units in Nigeria" />
         <meta
           property="og:description"
           content="Instant Energy - Buy Electrical Units in Nigeria"

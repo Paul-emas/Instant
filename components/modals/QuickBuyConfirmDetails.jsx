@@ -6,13 +6,7 @@ import FormInput from '../forms/FormInput';
 import { setUserPhone } from '../../slices/persist';
 import { useDispatch } from 'react-redux';
 
-const QuickBuyConfirmDetails = ({
-  setOpen,
-  details,
-  phone,
-  setPhone,
-  onPayStackSuccess,
-}) => {
+const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackSuccess }) => {
   const config = {
     reference: details?.reference,
     email: details?.account?.email?.value,
@@ -28,23 +22,15 @@ const QuickBuyConfirmDetails = ({
     <div>
       <div className="border-b border-gray-100 px-6 pt-3 pb-6 lg:px-8">
         <div className="text-center">
-          <span className="text-sm font-semibold text-gray-500">
-            Your Meter
-          </span>
-          <div className=" text-2.5xl font-bold text-secondary-green">
-            {details?.meter?.number}
-          </div>
+          <span className="text-sm font-semibold text-gray-500">Your Meter</span>
+          <div className=" text-2.5xl font-bold text-secondary-green">{details?.meter?.number}</div>
           <div className="mt-6">
             <div className="mb-2 flex h-10 w-full items-center justify-between rounded-xl bg-primary-light px-4 text-xs">
-              <span className="font-semibold text-gray-500">
-                Reference code
-              </span>
+              <span className="font-semibold text-gray-500">Reference code</span>
               <span className="font-bold">{details?.reference}</span>
             </div>
             <div className="mb-2 flex h-10 w-full items-center justify-between rounded-xl bg-primary-light px-4 text-xs">
-              <span className="font-semibold text-gray-500">
-                Service charge
-              </span>
+              <span className="font-semibold text-gray-500">Service charge</span>
               <span className="font-bold">
                 {details?.country?.currency} {details?.charge.fee}
               </span>
@@ -82,7 +68,7 @@ const QuickBuyConfirmDetails = ({
               return true;
             }
           }}
-          onChange={value => setPhone(value)}
+          onChange={(value) => setPhone(value)}
         />
         <div className="-mt-1 text-xs font-semibold text-primary-dark">
           Token generated will be sent to this number
@@ -100,6 +86,7 @@ const QuickBuyConfirmDetails = ({
                     code: country.countryCode,
                     value: phone.replace(country.countryCode, ''),
                   },
+                  country,
                 }),
               );
               initializePayment(onPayStackSuccess);

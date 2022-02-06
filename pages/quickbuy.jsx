@@ -36,30 +36,22 @@ export default function QuickBuy() {
   return (
     <>
       <div className="pb-20">
-        <BuyElectricityModal
-          open={openBuyElectricityModal}
-          setOpen={setOpenBuyElectricityModal}
-        />
+        <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
         <Header>
           <div className="relative top-24 lg:top-32">
             <Link href="/">
               <button className="relative flex items-center justify-center rounded-lg bg-white py-2 px-4 text-sm font-semibold hover:opacity-80">
-                <FontAwesomeIcon
-                  icon={faChevronLeft}
-                  className="mr-2 h-3 w-3"
-                />
+                <FontAwesomeIcon icon={faChevronLeft} className="mr-2 h-3 w-3" />
                 <span className="mt-0.5">Go back home</span>
               </button>
             </Link>
             <div className="relative top-8 justify-between space-y-4 lg:top-0 lg:mt-20 lg:flex lg:space-x-8 lg:space-y-0 2xl:space-x-20">
-              <BuyCard
-                setOpenBuyElectricityModal={setOpenBuyElectricityModal}
-              />
+              <BuyCard setOpenBuyElectricityModal={setOpenBuyElectricityModal} />
               <BuyAdsCard />
             </div>
           </div>
         </Header>
-        <div className="mx-auto px-3 xl:container xl:px-14">
+        <div className="mx-auto px-4 xl:container xl:px-14">
           <div className="mt-28 lg:-mt-96">
             <TransactionsTable
               transactions={transactions}
@@ -71,7 +63,7 @@ export default function QuickBuy() {
           </div>
         </div>
         <div className="bg-white py-8 lg:py-16">
-          <div className="mx-auto px-3 xl:container xl:px-14">
+          <div className="mx-auto px-4 xl:container xl:px-14">
             <div className="overlay w-full rounded-xl bg-primary-base py-16 text-center lg:py-24">
               <div className="px-8 text-2xl font-bold leading-snug text-white lg:text-3.5xl">
                 Having trouble with a transaction?

@@ -4,11 +4,10 @@ const Partners = () => {
   return (
     <div className="bg-white py-10 lg:py-20">
       <div className="container mx-auto px-8 lg:px-14">
-        <h1 className="text-base lg:text-xl text-center font-semibold text-font-dark uppercase ">
+        <h1 className="text-center text-base font-semibold uppercase text-font-dark lg:text-xl ">
           Our partners
         </h1>
-
-        <div className="hidden lg:flex items-center justify-between mt-7">
+        <div className="mt-7 hidden items-center justify-between lg:flex">
           <Image
             src="/images/partners/logo-1.png"
             width={146.7}
@@ -41,7 +40,7 @@ const Partners = () => {
             className="object-cover"
           />
         </div>
-        <div className="lg:hidden space-x-5 flex items-center justify-between mt-7">
+        <div className="mt-7 flex items-center justify-between space-x-5 lg:hidden">
           <div>
             <Image
               src="/images/partners/logo-1.png"

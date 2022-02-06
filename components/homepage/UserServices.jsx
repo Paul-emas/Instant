@@ -5,27 +5,23 @@ import GuardIcon from '../../public/svgs/guard.svg';
 
 const UserServices = ({ title, stepArr }) => {
   return (
-    <div className="py-10 lg:py-28 bg-white">
-      <div className="container px-4 sm:px-5 xl:px-14 mx-auto">
-        <h1 className="text-xl lg:text-5xl font-bold px-10 sm:px-0 max-w-xs lg:max-w-xl text-center mx-auto text-primary-dark">
+    <div className="bg-white py-10 lg:py-28">
+      <div className="container mx-auto px-4 sm:px-5 xl:px-14">
+        <h1 className="mx-auto max-w-xs px-10 text-center text-xl font-bold text-primary-dark sm:px-0 lg:max-w-xl lg:text-5xl">
           {title}
         </h1>
-        <div className="md:flex justify-center mt-16 lg:mt-24 sm:px-10 sm:space-x-16 mx-auto">
+        <div className="mx-auto mt-16 justify-center sm:space-x-16 sm:px-10 md:flex lg:mt-24">
           {stepArr.map(({ name, caption, icon }, index) => {
             const Icon = icon;
             return (
               <div
                 key={index}
-                className="lg:mx-0 mb-10 lg:mb-0 py-10 sm:py-16 px-5 rounded-3xl border border-primary-light hover:bg-white shadow-soft-hover duration-200"
+                className="shadow-soft-hover mb-10 rounded-3xl border border-primary-light py-10 px-5 duration-200 hover:bg-white sm:py-16 lg:mx-0 lg:mb-0"
               >
                 <Icon className="mx-auto block" />
-                <div className="text-center mt-7">
-                  <h2 className=" lg:text-2xl font-bold text-primary-dark">
-                    {name}
-                  </h2>
-                  <p className="text-sm sm:max-w-xs mx-auto px-5 mt-2">
-                    {caption}
-                  </p>
+                <div className="mt-7 text-center">
+                  <h2 className=" font-bold text-primary-dark lg:text-2xl">{name}</h2>
+                  <p className="mx-auto mt-2 px-5 text-sm sm:max-w-xs">{caption}</p>
                 </div>
               </div>
             );
@@ -41,20 +37,17 @@ UserServices.defaultProps = {
   stepArr: [
     {
       name: 'Add your meter',
-      caption:
-        'Tell us what you like to send and let us know when we can come.',
+      caption: 'Tell us what you like to send and let us know when we can come.',
       icon: BulbIcon,
     },
     {
       name: 'Enter Amount',
-      caption:
-        'Tell us what you like to send and let us know when we can come.',
+      caption: 'Tell us what you like to send and let us know when we can come.',
       icon: MoneyIcon,
     },
     {
       name: 'Buy Electricty',
-      caption:
-        'Tell us what you like to send and let us know when we can come.',
+      caption: 'Tell us what you like to send and let us know when we can come.',
       icon: GuardIcon,
     },
   ],

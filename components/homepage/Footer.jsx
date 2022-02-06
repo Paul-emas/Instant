@@ -11,15 +11,10 @@ const Footer = () => {
       <div className="container mx-auto px-0 lg:px-14">
         <div className="grid lg:grid-cols-6">
           <div className="col-span-2 border-b border-secondary-lightGreen px-4 pb-5 text-center lg:border-none lg:px-0 lg:pb-0 lg:text-left">
-            <Image
-              src="/images/logo.webp"
-              width={185}
-              height={40}
-              className="object-contain"
-            />
+            <Image src="/images/logo.webp" width={185} height={40} className="object-contain" />
             <p className="mx-auto mt-2 px-10 text-xs lg:mx-0 lg:mt-5 lg:max-w-xs lg:px-0 lg:pr-20 lg:text-sm">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut.
             </p>
             <div className="hidden lg:mt-10 lg:block">
               <ContactCard light />
@@ -41,19 +36,13 @@ const Footer = () => {
                 <h2 className="font-semibold">Products</h2>
                 <div className="mt-5 flex flex-col space-y-4 lg:mt-10 lg:space-y-8">
                   <Link href="">
-                    <a className="text-xs font-semibold lg:text-sm">
-                      Buy Electricity
-                    </a>
+                    <a className="text-xs font-semibold lg:text-sm">Buy Electricity</a>
                   </Link>
                   <Link href="">
-                    <a className="text-xs font-semibold lg:text-sm">
-                      Become an Agent
-                    </a>
+                    <a className="text-xs font-semibold lg:text-sm">Become an Agent</a>
                   </Link>
                   <Link href="">
-                    <a className="text-xs font-semibold lg:text-sm">
-                      Available Cities
-                    </a>
+                    <a className="text-xs font-semibold lg:text-sm">Available Cities</a>
                   </Link>
                 </div>
               </div>
@@ -67,9 +56,7 @@ const Footer = () => {
                     <a className="text-xs font-semibold lg:text-sm">About us</a>
                   </Link>
                   <Link href="">
-                    <a className="text-xs font-semibold lg:text-sm">
-                      Contact us
-                    </a>
+                    <a className="text-xs font-semibold lg:text-sm">Contact us</a>
                   </Link>
                 </div>
               </div>
@@ -77,14 +64,10 @@ const Footer = () => {
                 <h2 className="font-semibold">Legal</h2>
                 <div className="mt-5 flex flex-col space-y-4 lg:mt-10 lg:space-y-8">
                   <Link href="">
-                    <a className="text-xs font-semibold lg:text-sm">
-                      Privacy Policy
-                    </a>
+                    <a className="text-xs font-semibold lg:text-sm">Privacy Policy</a>
                   </Link>
                   <Link href="">
-                    <a className="text-xs font-semibold lg:text-sm">
-                      Terms of use
-                    </a>
+                    <a className="text-xs font-semibold lg:text-sm">Terms of use</a>
                   </Link>
                   <Link href="">
                     <a className="text-xs font-semibold lg:text-sm">FAQs</a>
@@ -108,9 +91,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-10 w-full justify-center px-5 lg:mt-32 lg:px-0">
-          <h2 className="mt-2 -mb-2 text-center font-semibold">
-            Download our mobile app
-          </h2>
+          <h2 className="mt-2 -mb-2 text-center font-semibold">Download our mobile app</h2>
           <DownloadButtons
             dark
             center

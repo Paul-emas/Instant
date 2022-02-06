@@ -48,9 +48,7 @@ const PostPaid = ({
       <form className="px-6 pt-4 lg:px-8" onSubmit={handleSubmit(onSubmit)}>
         {isLoggedIn && (
           <>
-            <div className="label my-2 text-xs text-gray-400">
-              Select an account
-            </div>
+            <div className="label my-2 text-xs text-gray-400">Select an account</div>
             <SelectInput
               options={[]}
               selectedOption={selectedMeter}
@@ -133,12 +131,7 @@ const PostPaid = ({
             ?
           </span>
         </div>
-        <PrimaryButton
-          size="base"
-          disabled={isLoading}
-          loading={isLoading}
-          className="mt-8"
-        >
+        <PrimaryButton size="base" disabled={isLoading} loading={isLoading} className="mt-8">
           Proceed to Payment
         </PrimaryButton>
       </form>

@@ -9,11 +9,11 @@ const DownloadApp = () => {
   const [active, setActive] = useState(true);
 
   return (
-    <div className="py-8 lg:py-32 bg-primary-light">
-      <div className="container px-10 mx-auto">
-        <div className="flex flex-col-reverse sm:flex-row max-w-4xl mx-auto">
+    <div className="bg-primary-light py-8 lg:py-32">
+      <div className="container mx-auto px-10">
+        <div className="mx-auto flex max-w-4xl flex-col-reverse sm:flex-row">
           <div className="lg:w-1/2">
-            <div className="flex justify-center lg:block transform mt-8 sm:mt-0 lg:scale-125 2xl:ml-6">
+            <div className="mt-8 flex transform justify-center sm:mt-0 lg:block lg:scale-125 2xl:ml-6">
               <Image
                 src="/images/mobile-mockup.webp"
                 width={311.64}
@@ -23,75 +23,68 @@ const DownloadApp = () => {
               />
             </div>
           </div>
-          <div className="lg:w-1/2 flex items-center">
+          <div className="flex items-center lg:w-1/2">
             <div>
-              <h1 className="text-5xl font-bold max-w-md  hidden lg:block text-primary-darker">
+              <h1 className="hidden max-w-md text-5xl  font-bold text-primary-darker lg:block">
                 Download our mobile app
               </h1>
-              <div className="mt-12 md:max-w-sm lg:max-w-full mx-auto">
+              <div className="mx-auto mt-12 md:max-w-sm lg:max-w-full">
                 <div className="flex">
-                  <div className="rounded-full w-16 h-16 flex justify-center items-center relative stepper">
+                  <div className="stepper relative flex h-16 w-16 items-center justify-center rounded-full">
                     <div
                       className={`${
                         active &&
-                        'border-secondary-tealGreen border-dashed border-2 rounded-full w-16 h-16 absolute spin'
+                        'spin absolute h-16 w-16 rounded-full border-2 border-dashed border-secondary-tealGreen'
                       }`}
                     ></div>
-                    <div className="w-12 h-12 bg-secondary-tealGreen rounded-full">
+                    <div className="h-12 w-12 rounded-full bg-secondary-tealGreen">
                       <BulbIcon className="mx-auto my-3" />
                     </div>
                   </div>
                   <div className="ml-6">
-                    <p className="text-font-darker lg:text-xl  font-bold">
-                      Buy Electricity
-                    </p>
-                    <p className="text-font-darker mt-2 text-xs lg:text-base max-w-xs">
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed.
+                    <p className="font-bold text-font-darker  lg:text-xl">Buy Electricity</p>
+                    <p className="mt-2 max-w-xs text-xs text-font-darker lg:text-base">
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.
                     </p>
                   </div>
                 </div>
-                <div className="flex mt-10">
-                  <div className="rounded-full w-16 h-16 flex justify-center items-center relative stepper">
+                <div className="mt-10 flex">
+                  <div className="stepper relative flex h-16 w-16 items-center justify-center rounded-full">
                     <div
                       className={`${
                         active &&
-                        'border-secondary-yellowLight border-dashed border-2 rounded-full w-16 h-16 absolute spin'
+                        'spin absolute h-16 w-16 rounded-full border-2 border-dashed border-secondary-yellowLight'
                       }`}
                     ></div>
-                    <div className="w-12 h-12 bg-secondary-yellowLight rounded-full">
+                    <div className="h-12 w-12 rounded-full bg-secondary-yellowLight">
                       <SunIcon className="mx-auto my-3" />
                     </div>
                   </div>
                   <div className="ml-6">
-                    <p className="text-gray-400 lg:text-xl  font-bold">
-                      Manage solar Plan
-                    </p>
-                    <p className="text-gray-400 mt-2 text-xs lg:text-base max-w-xs">
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed.
+                    <p className="font-bold text-gray-400  lg:text-xl">Manage solar Plan</p>
+                    <p className="mt-2 max-w-xs text-xs text-gray-400 lg:text-base">
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.
                     </p>
                   </div>
                 </div>
-                <div className="flex mt-10">
-                  <div className="rounded-full w-16 h-16 flex justify-center items-center relative">
+                <div className="mt-10 flex">
+                  <div className="relative flex h-16 w-16 items-center justify-center rounded-full">
                     <div
                       className={`${
                         active &&
-                        'border-secondary-blue border-dashed border-2 rounded-full w-16 h-16 absolute spin'
+                        'spin absolute h-16 w-16 rounded-full border-2 border-dashed border-secondary-blue'
                       }`}
                     ></div>
-                    <div className="w-12 h-12 bg-secondary-blue rounded-full">
+                    <div className="h-12 w-12 rounded-full bg-secondary-blue">
                       <MoneyIcon className="mx-auto my-3.5" />
                     </div>
                   </div>
                   <div className="ml-6">
-                    <p className="text-gray-400 lg:text-xl  font-bold">
+                    <p className="font-bold text-gray-400  lg:text-xl">
                       Keep track of your Spending
                     </p>
-                    <p className="text-gray-400 mt-2 text-xs lg:text-base max-w-xs">
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed.
+                    <p className="mt-2 max-w-xs text-xs text-gray-400 lg:text-base">
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.
                     </p>
                   </div>
                 </div>

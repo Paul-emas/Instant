@@ -70,9 +70,7 @@ const PrePaid = ({
             code: country?.countryCode,
             value: formattedPhone,
           },
-          provider: isLoggedIn
-            ? selectedMeter?.meter?.provider?._id
-            : selectedProvider?._id,
+          provider: isLoggedIn ? selectedMeter?.meter?.provider?._id : selectedProvider?._id,
           meter: isLoggedIn ? selectedMeter?.meter?.number : meter,
           country: country?.name,
           amount: Number(amount),
@@ -95,9 +93,7 @@ const PrePaid = ({
       <form className="px-6 pt-4 lg:px-8" onSubmit={handleSubmit(onSubmit)}>
         {isLoggedIn && (
           <>
-            <div className="label my-2 text-xs text-gray-400">
-              Select a meter
-            </div>
+            <div className="label my-2 text-xs text-gray-400">Select a meter</div>
             <SelectInput
               options={meters ?? []}
               selectedOption={selectedMeter}
@@ -142,7 +138,7 @@ const PrePaid = ({
               type="text"
               id="name"
               placeholder="Enter your Full Name"
-              label="Full name"
+              label="Full name (Optional)"
               error={errors.name && true}
               {...register('name', {
                 minLength: 3,
@@ -180,12 +176,7 @@ const PrePaid = ({
             ?
           </span>
         </div>
-        <PrimaryButton
-          size="base"
-          disabled={isLoading}
-          loading={isLoading}
-          className="mt-8"
-        >
+        <PrimaryButton size="base" disabled={isLoading} loading={isLoading} className="mt-8">
           Proceed to Payment
         </PrimaryButton>
       </form>
