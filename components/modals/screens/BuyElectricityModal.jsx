@@ -44,15 +44,12 @@ const BuyElectricityModal = ({ open, setOpen }) => {
     }
   };
 
-  const onPayStackSuccess = async reference => {
+  const onPayStackSuccess = async (reference) => {
     if (reference?.status === 'success') {
       setOpen(true);
       setStep(3);
       setPayStack(reference);
-      const resp = await generateTranscationToken(
-        { reference: reference.reference },
-        paymentToken,
-      );
+      const resp = await generateTranscationToken({ reference: reference.reference }, paymentToken);
       if (resp?.data) {
         setReciept(resp.data);
         setStep(4);
@@ -83,11 +80,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
             setOpen(false);
           }}
         >
-          <BuyElectricityTab
-            tabs={tabs}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
+          <BuyElectricityTab tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
           <div className="overflow-y-hidden pb-1.5">
             <div className="slideUp">
               {activeTab === 0 && <PrePaidForm {...PrepaidPostPaidProps} />}
