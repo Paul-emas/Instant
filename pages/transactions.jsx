@@ -7,16 +7,20 @@ import Pagination from '../components/table/Pagination';
 import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
+import Modal from '../components/modals';
+import Receipt from '../components/modals/Receipt';
 
 export default function Transactions() {
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [totalDocs, setTotalDocs] = useState(0);
   const [itemsPerPage, setItemPerPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-  const [paginatedTransactions, setPaginatedTransactions] =
-    useState(transactions);
+  const [paginatedTransactions, setPaginatedTransactions] = useState(transactions);
   const { data, transactions, pageLoading, error, tableLoading, init } =
     useFetchTransaction(itemsPerPage);
+
+  const [receipt, setReceipt] = useState(null);
+  const [openReceiptModal, setOpenReceiptModal] = useState(false);
 
   useEffect(() => {
     updateTransactionState(data);
@@ -26,7 +30,7 @@ export default function Transactions() {
     setPaginatedTransactions(transactions);
   }, [transactions, error]);
 
-  const updateTransactionState = data => {
+  const updateTransactionState = (data) => {
     if (data) {
       const { docs, totalDocs, totalPages } = data;
       setPaginatedTransactions(docs);
@@ -50,6 +54,15 @@ export default function Transactions() {
             open={openBuyElectricityModal}
             setOpen={setOpenBuyElectricityModal}
           />
+          {openReceiptModal && (
+            <Modal
+              close={() => setOpenReceiptModal(false)}
+              border={false}
+              setOpen={setOpenReceiptModal}
+            >
+              <Receipt receipt={receipt} />
+            </Modal>
+          )}
           <div className="pt-5 sm:pt-10">
             <WalletCard />
           </div>
@@ -63,11 +76,15 @@ export default function Transactions() {
                 totalItems={totalDocs}
                 itemsPerPage={itemsPerPage}
                 pageCount={pageCount}
-                fetch={val => init(val)}
+                fetch={(val) => init(val)}
               />
             )}
           >
-            <TransactionDataDefault transactions={paginatedTransactions} />
+            <TransactionDataDefault
+              setReceipt={setReceipt}
+              setOpenReceiptModal={setOpenReceiptModal}
+              transactions={paginatedTransactions}
+            />
             <TransactionDataMobile transactions={paginatedTransactions} />
           </TransactionsTable>
         </>

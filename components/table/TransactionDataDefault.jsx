@@ -4,7 +4,7 @@ import { isMobile } from 'react-device-detect';
 
 import BulbIcon from '../../public/svgs/bulb-db.svg';
 
-const TransactionDataDefault = ({ transactions }) => {
+const TransactionDataDefault = ({ transactions, setReceipt, setOpenReceiptModal }) => {
   return (
     <>
       {!isMobile &&
@@ -26,9 +26,7 @@ const TransactionDataDefault = ({ transactions }) => {
                   </div>
                   <div className="ml-8">
                     <div>
-                      <div className="text-sm font-bold text-font-dark">
-                        Unit Purchased
-                      </div>
+                      <div className="text-sm font-bold text-font-dark">Unit Purchased</div>
                     </div>
                   </div>
                 </div>
@@ -36,9 +34,7 @@ const TransactionDataDefault = ({ transactions }) => {
               <td className="whitespace-nowrap px-6  py-4">
                 <div className="text-sm text-font-grey">
                   {moment(transaction?.createdAt).utc().format('LL')}{' '}
-                  <span className="ml-2">
-                    {moment(transaction?.createdAt).format('LT')}
-                  </span>
+                  <span className="ml-2">{moment(transaction?.createdAt).format('LT')}</span>
                 </div>
               </td>
               <td className="whitespace-nowrap px-6  py-4">
@@ -47,21 +43,15 @@ const TransactionDataDefault = ({ transactions }) => {
                 </div>
               </td>
               <td className="whitespace-nowrap px-6  py-4">
-                <div className="text-sm text-font-grey">
-                  {transaction?.meter?.number}
-                </div>
+                <div className="text-sm text-font-grey">{transaction?.meter?.number}</div>
               </td>
               <td className="whitespace-nowrap px-6  py-4">
-                <div className="text-sm font-bold">
-                  {transaction?.reference}
-                </div>
+                <div className="text-sm font-bold">{transaction?.reference}</div>
               </td>
               <td className="whitespace-nowrap px-6  py-4">
                 <div className="text-sm font-bold">
                   <div className="text-sm  text-font-grey">
-                    <span className="font-semibold">
-                      {transaction?.country?.currency}
-                    </span>
+                    <span className="font-semibold">{transaction?.country?.currency}</span>
                     <span className="ml-1 font-bold text-font-dark">
                       {transaction?.amount.toLocaleString()}
                     </span>
@@ -71,7 +61,13 @@ const TransactionDataDefault = ({ transactions }) => {
               <td className="whitespace-nowrap px-6  py-4">
                 <div className="text-sm font-bold">
                   {active && (
-                    <span className="inline-flex rounded-lg bg-green-100 px-3 py-1 text-xs font-semibold capitalize leading-5 text-font-green">
+                    <span
+                      onClick={() => {
+                        setReceipt(transaction);
+                        setOpenReceiptModal(true);
+                      }}
+                      className="inline-flex cursor-pointer rounded-lg bg-green-100 px-3 py-1 text-xs font-semibold capitalize leading-5 text-font-green"
+                    >
                       Receipt
                     </span>
                   )}
@@ -90,10 +86,14 @@ const TransactionDataDefault = ({ transactions }) => {
 };
 TransactionDataDefault.defaultProps = {
   transactions: [],
+  setReceipt: () => null,
+  setOpenReceiptModal: () => null,
 };
 
 TransactionDataDefault.propTypes = {
   transactions: PropTypes.array,
+  setReceipt: PropTypes.func,
+  setOpenReceiptModal: PropTypes.func,
 };
 
 export default TransactionDataDefault;

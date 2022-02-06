@@ -11,14 +11,8 @@ const Receipt = ({ receipt }) => {
 
   function PrintElem() {
     var data = document.getElementById('reciept').innerHTML;
-    var myWindow = window.open(
-      '',
-      'Instant Energy Recharge Receipt',
-      'height=400,width=600',
-    );
-    myWindow.document.write(
-      '<html><head><title>Instant Energy Recharge Receipt</title>',
-    );
+    var myWindow = window.open('', 'Instant Energy Recharge Receipt', 'height=400,width=600');
+    myWindow.document.write('<html><head><title>Instant Energy Recharge Receipt</title>');
     myWindow.document.write(
       `<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">`,
     );
@@ -56,53 +50,35 @@ const Receipt = ({ receipt }) => {
         />
         <div className="border-t border-b py-4">
           <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">
-              Date Issued
-            </div>
+            <div className="text-sm font-semibold text-primary-gray">Date Issued</div>
             <div className="text-sm font-semibold">
               {moment(receipt?.createdAt).utc().format('LLL')}
             </div>
           </div>
           <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">
-              Reference code
-            </div>
+            <div className="text-sm font-semibold text-primary-gray">Reference code</div>
             <div className="text-sm font-semibold">{receipt?.reference}</div>
           </div>
           <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">
-              Meter number
-            </div>
-            <div className="text-sm font-semibold">
-              {receipt?.meter?.number}
-            </div>
+            <div className="text-sm font-semibold text-primary-gray">Meter number</div>
+            <div className="text-sm font-semibold">{receipt?.meter?.number}</div>
           </div>
           <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">
-              Meter name
-            </div>
+            <div className="text-sm font-semibold text-primary-gray">Meter name</div>
             <div className="text-sm font-semibold">{receipt?.meter?.name}</div>
           </div>
           <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">
-              Meter address
-            </div>
-            <div className="text-sm font-semibold">
-              {receipt?.meter?.address}
-            </div>
+            <div className="text-sm font-semibold text-primary-gray">Meter address</div>
+            <div className="text-sm font-semibold">{receipt?.meter?.address}</div>
           </div>
           <div className="flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">
-              Units purchased
-            </div>
+            <div className="text-sm font-semibold text-primary-gray">Units purchased</div>
             <div className="text-sm font-semibold">{receipt?.units} kwh</div>
           </div>
         </div>
         <div className="py-4">
           <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">
-              Amount
-            </div>
+            <div className="text-sm font-semibold text-primary-gray">Amount</div>
             <div className="text-sm font-semibold">
               {receipt?.country?.currency} {receipt?.amount}
             </div>
@@ -120,9 +96,7 @@ const Receipt = ({ receipt }) => {
             </div>
           </div>
           <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">
-              Service Charge
-            </div>
+            <div className="text-sm font-semibold text-primary-gray">Service Charge</div>
             <div className="text-sm font-semibold">
               {receipt?.country?.currency} {receipt?.charge?.fee}
             </div>
@@ -155,9 +129,7 @@ const Receipt = ({ receipt }) => {
             <p className="text-sm">
               New to Instant Energy?{' '}
               <Link href="/sign-up">
-                <a className="font-semibold text-primary-base">
-                  Create an Account
-                </a>
+                <a className="font-semibold text-primary-base">Create an Account</a>
               </Link>
             </p>
           </div>

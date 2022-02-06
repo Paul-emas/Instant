@@ -2,7 +2,13 @@ import { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { faCog, faHome, faMeteor, faMoneyBillWave, faSun } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faMeteor,
+  faMoneyBillWave,
+  faSun,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useSelector } from 'react-redux';
@@ -38,9 +44,9 @@ const Sidebar = ({ openNav, setOpenNav }) => {
       icon: faMoneyBillWave,
     },
     {
-      name: 'Settings',
-      url: '/settings',
-      icon: faCog,
+      name: 'Profile',
+      url: '/profile',
+      icon: faUser,
     },
   ];
 

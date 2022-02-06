@@ -28,8 +28,6 @@ const QuickPayPhoneInput = () => {
     }
   }, [userPhone]);
 
-  console.log(country);
-
   async function onSubmit(e) {
     e !== undefined && e.preventDefault();
     if (phone.length) {
@@ -90,14 +88,9 @@ const QuickPayPhoneInput = () => {
             return true;
           }
         }}
-        onChange={value => setPhone(value)}
+        onChange={(value) => setPhone(value)}
       />
-      <PrimaryButton
-        loading={isLoading}
-        disabled={isLoading}
-        className="mt-8 mb-7"
-        type="large"
-      >
+      <PrimaryButton loading={isLoading} disabled={isLoading} className="mt-8 mb-7" type="large">
         Buy Electricity
       </PrimaryButton>
     </form>

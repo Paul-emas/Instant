@@ -14,6 +14,8 @@ import WalletCard from '../components/WalletCard';
 import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
+import Modal from '../components/modals';
+import Receipt from '../components/modals/Receipt';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -22,6 +24,8 @@ export default function Dashboard() {
 
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
+  const [receipt, setReceipt] = useState(null);
+  const [openReceiptModal, setOpenReceiptModal] = useState(false);
 
   useEffect(() => {
     if (quickbuy && !pageLoading) {
@@ -45,6 +49,15 @@ export default function Dashboard() {
             open={openBuyElectricityModal}
             setOpen={setOpenBuyElectricityModal}
           />
+          {openReceiptModal && (
+            <Modal
+              close={() => setOpenReceiptModal(false)}
+              border={false}
+              setOpen={setOpenReceiptModal}
+            >
+              <Receipt receipt={receipt} />
+            </Modal>
+          )}
           <div className="pt-5 2xl:pt-10">
             <WalletCard className="block sm:hidden" />
             <div className="hidden items-center justify-between sm:flex">
@@ -54,9 +67,7 @@ export default function Dashboard() {
                   Never have interrupted power supply, making life easy.
                 </p>
               </div>
-              <Button onClick={() => setOpenBuyElectricityModal(true)}>
-                BUY ELECTRICITY
-              </Button>
+              <Button onClick={() => setOpenBuyElectricityModal(true)}>BUY ELECTRICITY</Button>
             </div>
             <div className="grid lg:grid-cols-6 lg:space-x-5">
               <div className="lg:col-span-4">
@@ -73,12 +84,12 @@ export default function Dashboard() {
             <SolarCard className="hidden lg:block" />
           </div>
           <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
-            <Button onClick={() => setOpenBuyElectricityModal(true)}>
-              Buy Electricity
-            </Button>
+            <Button onClick={() => setOpenBuyElectricityModal(true)}>Buy Electricity</Button>
           </div>
           <TransactionsTable
             transactions={transactions}
+            setReceipt={setReceipt}
+            setOpenReceiptModal={setOpenReceiptModal}
             setOpenBuyElectricityModal={setOpenBuyElectricityModal}
           >
             <TransactionDataDefault transactions={transactions} />
