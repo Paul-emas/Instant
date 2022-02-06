@@ -17,19 +17,13 @@ const Wrapper = ({ children }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector(persistSelector);
-  const protectedRoutes = [
-    '/dashboard',
-    '/transactions',
-    '/meters',
-    '/solar',
-    '/settings',
-  ];
+  const protectedRoutes = ['/dashboard', '/transactions', '/meters', '/solar', '/profile'];
   const [pageLoading, setPageLoading] = useState(false);
   const [openNav, setOpenNav] = useState(false);
 
   let isRouteProtected = false;
 
-  protectedRoutes.forEach(route => {
+  protectedRoutes.forEach((route) => {
     if (router.asPath === route) {
       isRouteProtected = true;
     }
@@ -37,9 +31,9 @@ const Wrapper = ({ children }) => {
   });
 
   useEffect(() => {
-    const handleStart = url =>
+    const handleStart = (url) =>
       url !== router.pathname && !isRouteProtected && setPageLoading(true);
-    const handleComplete = url => {
+    const handleComplete = (url) => {
       url !== router.pathname && setPageLoading(false);
       window.scrollTo(0, 0);
     };

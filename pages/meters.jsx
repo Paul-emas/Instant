@@ -10,11 +10,7 @@ import Empty from '../public/svgs/meter-db.svg';
 import { getUserMeters } from '../api';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronRight,
-  faPlus,
-  faTrash,
-} from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import { isMobile } from 'react-device-detect';
 import { useDispatch, useSelector } from 'react-redux';
@@ -49,24 +45,14 @@ export default function Meters() {
       return (
         <Button onClick={() => setOpenAddMeterModal(true)}>
           <span className="flex items-center uppercase">
-            <FontAwesomeIcon
-              icon={faPlus}
-              className="h-3 w-3 text-white text-opacity-70"
-            />{' '}
+            <FontAwesomeIcon icon={faPlus} className="h-3 w-3 text-white text-opacity-70" />{' '}
             <span className="ml-2">Add new meter</span>
           </span>
         </Button>
       );
     },
     tabs: function view() {
-      return (
-        <Tabs
-          data={tabsData}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          center
-        />
-      );
+      return <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} center />;
     },
     child: function view() {
       if (meters.length <= 0 && !pageLoading) {
@@ -74,21 +60,15 @@ export default function Meters() {
           <div className="mt-5 flex items-center justify-center bg-white py-32 sm:rounded-xl 2xl:pt-36 2xl:pb-64">
             <div className="flex flex-col items-center">
               <Empty />
-              <div className="mt-2 text-base font-bold">
-                {`You've not added any meters yet!`}
-              </div>
+              <div className="mt-2 text-base font-bold">{`You've not added any meters yet!`}</div>
               <p className="mt-1 max-w-xs text-center text-sm text-gray-400">
-                An email has been sent to you kindly submit to continue with
-                this application
+                An email has been sent to you kindly submit to continue with this application
               </p>
               <button
                 onClick={() => setOpenAddMeterModal(true)}
                 className="mt-8 flex items-center rounded-lg border-none bg-primary-light px-6 py-3 text-xs font-bold uppercase text-primary-base outline-none"
               >
-                <FontAwesomeIcon
-                  icon={faPlus}
-                  className="h-3 w-3 text-opacity-70"
-                />{' '}
+                <FontAwesomeIcon icon={faPlus} className="h-3 w-3 text-opacity-70" />{' '}
                 <span className="ml-2">Add new meter</span>
               </button>
             </div>
@@ -161,9 +141,7 @@ export default function Meters() {
                           </div>
                           <div className="ml-8">
                             <div>
-                              <div className="text-sm font-bold text-font-dark">
-                                {item?.label}
-                              </div>
+                              <div className="text-sm font-bold text-font-dark">{item?.label}</div>
                             </div>
                           </div>
                         </div>
@@ -179,14 +157,10 @@ export default function Meters() {
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-6  py-4">
-                        <div className="text-sm font-bold">
-                          {item?.meter?.number}
-                        </div>
+                        <div className="text-sm font-bold">{item?.meter?.number}</div>
                       </td>
                       <td className="whitespace-nowrap px-6  py-4">
-                        <div className="text-sm text-font-grey">
-                          {item?.meter?.address}
-                        </div>
+                        <div className="text-sm text-font-grey">{item?.meter?.address}</div>
                       </td>
                       <td className="whitespace-nowrap px-6  py-4 text-sm text-gray-500">
                         <div className="flex space-x-4">
@@ -195,15 +169,12 @@ export default function Meters() {
                               setSelectedMeter(item);
                               setOpenAddMeterModal(true);
                             }}
-                            className="rounded-lg bg-primary-light py-1.5 px-3 text-xs font-semibold text-gray-700 active:bg-gray-200"
+                            className="rounded-lg bg-primary-light py-1 px-4 text-xs font-bold text-gray-700 active:bg-gray-200"
                           >
-                            Edit info
+                            Edit
                           </button>
                           <button className="rounded-lg bg-red-50 py-2.5 px-3 text-xs font-semibold text-red-600">
-                            <FontAwesomeIcon
-                              icon={faTrash}
-                              className="h-2.5 w-2.5"
-                            />
+                            <FontAwesomeIcon icon={faTrash} className="h-2.5 w-2.5" />
                           </button>
                         </div>
                       </td>
@@ -227,15 +198,10 @@ export default function Meters() {
                         </div>
                         <div className="ml-2">
                           <div className="text-sm font-bold">{item?.label}</div>
-                          <div className="text-xs text-primary-base">
-                            {item?.meter?.number}
-                          </div>
+                          <div className="text-xs text-primary-base">{item?.meter?.number}</div>
                         </div>
                       </div>
-                      <FontAwesomeIcon
-                        icon={faChevronRight}
-                        className="h-4 w-4 text-gray-400"
-                      />
+                      <FontAwesomeIcon icon={faChevronRight} className="h-4 w-4 text-gray-400" />
                     </div>
                   </div>
                 ))}
@@ -245,10 +211,7 @@ export default function Meters() {
             <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
               <Button onClick={() => setOpenAddMeterModal(true)}>
                 <span className="flex items-center uppercase">
-                  <FontAwesomeIcon
-                    icon={faPlus}
-                    className="h-3 w-3 text-white text-opacity-70"
-                  />{' '}
+                  <FontAwesomeIcon icon={faPlus} className="h-3 w-3 text-white text-opacity-70" />{' '}
                   <span className="ml-2">Add new meter</span>
                 </span>
               </Button>

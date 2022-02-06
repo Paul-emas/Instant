@@ -12,8 +12,7 @@ const Button = ({ className, primary, white, light, onClick, children }) => {
       color = 'bg-white active:opacity-80 text-primary-base';
       break;
     default:
-      color =
-        'bg-primary-base text-white hover:bg-primary-hover active:bg-primary-active';
+      color = 'bg-primary-base text-white hover:bg-primary-hover active:bg-primary-active';
   }
 
   return (
