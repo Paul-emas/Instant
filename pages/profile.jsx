@@ -9,6 +9,7 @@ import SocialCard from '../components/SocialCard';
 import UserProfile from '../components/UserProfile';
 import Security from '../components/Security';
 import Notifications from '../components/Notifications';
+import UserProfileDetails from '../components/UserProfileDetails';
 
 export default function Profile() {
   const tabsData = [
@@ -26,25 +27,40 @@ export default function Profile() {
           <div className="min-h-screen w-full rounded-xl bg-primary-light sm:bg-white"></div>
         </div>
       )} */}
-      <div className="shadow-soft-lg relative top-5 flex flex-col overflow-hidden rounded-xl bg-white">
-        <div className="mt-5 py-3 px-7">
+      <div className="lg:shadow-soft-lg relative top-5 flex flex-col rounded-xl lg:bg-white">
+        <div className="mt-5 hidden py-3 px-7 lg:block">
           <div className="flex w-full items-center justify-center sm:justify-between">
             <h3 className="flex items-start text-xl font-bold text-font-dark">Settings</h3>
           </div>
         </div>
-        <div className="mt-10">
+        <div className="mt-10 hidden lg:block">
           <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
-        <div className="grid grid-cols-2 pb-24">
-          <div className="pt-20">
-            <div className="slideUp">
-              {activeTab === 0 && <UserProfile />}
+        <div className="grid pb-5 lg:grid-cols-2 lg:pb-24">
+          <div className="pt-5 lg:pt-20">
+            <div className="block lg:hidden">
+              <UserProfile />
+              <div className="shadow-soft mt-6 rounded-2xl pt-4">
+                <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} small />
+                {activeTab === 0 && <UserProfileDetails />}
+                {activeTab === 1 && <Security />}
+                {activeTab === 2 && <Notifications />}
+                <div className="mt-4 border-t py-5 text-center font-bold text-red-600">Logout</div>
+              </div>
+            </div>
+
+            <div className="hidden lg:block">
+              {activeTab === 0 && (
+                <UserProfile>
+                  <UserProfileDetails />
+                </UserProfile>
+              )}
               {activeTab === 1 && <Security />}
               {activeTab === 2 && <Notifications />}
             </div>
           </div>
-          <div className="border-l pt-20">
-            <div className="mx-auto max-w-sm rounded-2xl border  px-4 py-16 text-center">
+          <div className="pt-5 lg:border-l lg:pt-20">
+            <div className="mx-auto rounded-2xl bg-white px-4 py-10 text-center shadow-sm lg:max-w-sm lg:border lg:py-16">
               <ConversationIcon className="mx-auto" />
               <div className="mt-6 text-xl font-bold text-primary-darker">Need Help?</div>
               <div className="mt-2 text-xs text-gray-400">
@@ -53,13 +69,15 @@ export default function Profile() {
               <button className="mt-8 rounded-lg bg-primary-base px-4 py-2 text-sm font-semibold text-primary-light active:opacity-80 lg:px-6">
                 Live chat with our agent
               </button>
-              <div className="my-5 text-xs text-gray-500">Or</div>
-              <div className="flex items-center justify-center space-x-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light">
-                  <FontAwesomeIcon icon={faPhoneAlt} className="h-6 w-6" />
-                </div>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light">
-                  <FontAwesomeIcon icon={faEnvelope} className="h-6 w-6" />
+              <div className="hidden lg:block">
+                <div className="my-5 text-xs text-gray-500">Or</div>
+                <div className="flex items-center justify-center space-x-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light">
+                    <FontAwesomeIcon icon={faPhoneAlt} className="h-6 w-6" />
+                  </div>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light">
+                    <FontAwesomeIcon icon={faEnvelope} className="h-6 w-6" />
+                  </div>
                 </div>
               </div>
               <div className="mt-10">

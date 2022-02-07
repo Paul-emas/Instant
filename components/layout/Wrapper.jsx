@@ -86,7 +86,19 @@ const Wrapper = ({ children }) => {
                           </Link>
                         </div>
                       </div>
-                      <MenuIcon onClick={() => setOpenNav(true)} />
+                      <div className="flex">
+                        <div onClick={() => router.push('/profile')}>
+                          <Image
+                            src="/images/profile.jpg"
+                            width={26}
+                            height={26}
+                            alt="user profile image"
+                            objectFit="cover"
+                            className="rounded-full"
+                          />
+                        </div>
+                        <MenuIcon className="ml-1" onClick={() => setOpenNav(true)} />
+                      </div>
                     </div>
                     <div className="px-4 2xl:px-7">{children}</div>
                   </main>

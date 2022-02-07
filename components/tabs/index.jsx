@@ -1,8 +1,8 @@
-const index = ({ data, center = false, activeTab, setActiveTab }) => {
+const index = ({ data, center = false, activeTab, setActiveTab, small }) => {
   return (
     <div
-      className={`flex ${
-        center ? 'justify-center' : 'justify-center sm:justify-start'
+      className={`flex ${center ? 'justify-center' : 'justify-center sm:justify-start'} ${
+        small ? 'text-xs' : 'text-sm'
       } w-full border-b px-6 sm:space-x-10 sm:px-8`}
     >
       {data?.map(({ name }, ind) => (
@@ -13,7 +13,7 @@ const index = ({ data, center = false, activeTab, setActiveTab }) => {
             activeTab === ind
               ? 'border-b-2 border-base font-bold text-primary-base'
               : 'font-semibold text-gray-400'
-          } w-full cursor-pointer px-12 py-2 text-center text-sm sm:w-auto lg:text-base`}
+          } w-full cursor-pointer py-2 text-center sm:w-auto lg:px-12 lg:text-base`}
         >
           {name}
         </div>

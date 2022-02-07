@@ -43,7 +43,7 @@ const UserCard = ({ openLogout, animate, setOpenNav }) => {
   };
 
   return (
-    <div className="absolute bottom-12 left-0 w-full">
+    <div className="absolute bottom-12 left-0 hidden w-full lg:block">
       <div className="px-3 2xl:px-6">
         <div className="relative flex items-center rounded-xl bg-white py-4 px-5">
           {!me && (
@@ -59,9 +59,7 @@ const UserCard = ({ openLogout, animate, setOpenNav }) => {
             <>
               <Image src="/images/profile.jpg" width={32} height={32} />
               <div className="relative top-1 ml-3 w-28 font-bold">
-                <p className="-mb-1.5 truncate text-xs">
-                  {me?.firstName ?? 'Anonymous'}
-                </p>
+                <p className="-mb-1.5 truncate text-xs">{me?.firstName ?? 'Anonymous'}</p>
                 <span className="text-xxs font-semibold text-primary-base hover:text-primary-hover">
                   {userPhone?.phone?.number}
                 </span>

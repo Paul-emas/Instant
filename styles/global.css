@@ -284,3 +284,14 @@ input[type='number']::-webkit-outer-spin-button {
     box-shadow: none;
   }
 }
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #48bb78;
+  height: 200px;
+}
+
+.modal-overlay {
+  backdrop-filter: blur(3px);
+  --webkit-backdrop-filter: blur(3px);
+}

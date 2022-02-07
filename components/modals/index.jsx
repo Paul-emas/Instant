@@ -55,7 +55,7 @@ const Modal = ({ title, close, border = true, successMessage, goBack, children }
       <div className="absolute inset-0 flex h-full  w-full items-end justify-center sm:items-center">
         <div
           onClick={() => close()}
-          className="modal-overlay absolute min-h-screen w-full bg-secondary-modal bg-opacity-70"
+          className="modal-overlay modal-overlay absolute min-h-screen w-full bg-secondary-modal bg-opacity-70"
         ></div>
         <div className="modal-box modal-card shadow-soft max-h-12 w-full overflow-y-auto rounded-t-2xl bg-white pt-5 pb-10 xs:w-modal sm:rounded-2xl">
           <div className={`${border && 'border-b border-gray-100'} h-14 text-xl`}>
