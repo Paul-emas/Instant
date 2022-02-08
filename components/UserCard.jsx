@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, userSelector } from '../slices/user';
-import { persistSelector, setToken, setIsLoggedIn } from '../slices/persist';
+import { setUser, userSelector, userSignOut } from '../slices/user';
+import { persistSelector } from '../slices/persist';
 import { getUserAccount } from '../api';
 
 import LogoutIcon from '../public/svgs/logout.svg';
@@ -35,9 +35,7 @@ const UserCard = ({ openLogout, animate, setOpenNav }) => {
   }
 
   const signOut = () => {
-    dispatch(setToken(null));
-    dispatch(setUser(null));
-    dispatch(setIsLoggedIn(false));
+    dispatch(userSignOut());
     setOpenNav(false);
     router.push('/');
   };

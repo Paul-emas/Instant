@@ -109,6 +109,11 @@ input[type='number']::-webkit-outer-spin-button {
   background-image: url('../public/images/overlay.png');
 }
 
+.pattern {
+  background-image: url('../public/images/pattern.png') !important;
+  background-size: contain;
+}
+
 .auth-banner-1 {
   background-image: url('../public/images/auth/banner-1.webp');
 }

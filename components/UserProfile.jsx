@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import UsersIcons from '../public/svgs/refer-users.svg';
 
-const UserProfile = ({ children }) => {
+const UserProfile = ({ user, children }) => {
   return (
     <>
       <div className="text-center">
@@ -29,7 +29,9 @@ const UserProfile = ({ children }) => {
             className="rounded-full"
           />
         </span>
-        <div className="text-xs font-bold lg:text-base lg:text-2xl">Lionel Okoeguale</div>
+        <div className="text-xs font-bold lg:text-2xl">
+          {user?.firstName ? user.firstName : 'Anonymous'}
+        </div>
         <button className="mt-2 rounded-lg bg-primary-light px-4 py-2 text-xs font-semibold text-primary-base active:opacity-80 lg:px-6">
           Change Profile Photo
         </button>

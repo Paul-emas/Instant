@@ -15,11 +15,19 @@ const reducers = combineReducers({
   persist: persistedReducer,
 });
 
-const rootReducer = persistReducer(persistConfig, reducers);
+const rootReducer = (state, action) => {
+  if (action.type === 'user/userSignOut') {
+    storage.removeItem('persist:root');
+    return reducers(undefined, action);
+  }
+  return reducers(state, action);
+};
+
+const persistedStoreReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: getDefaultMiddleware =>
+  reducer: persistedStoreReducer,
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),

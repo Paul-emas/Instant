@@ -37,7 +37,7 @@ export default function QuickBuy() {
     <>
       <div className="pb-20">
         <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
-        <Header>
+        <Header bg="bg-primary-dark pattern">
           <div className="relative top-24 lg:top-32">
             <Link href="/">
               <button className="relative flex items-center justify-center rounded-lg bg-white py-2 px-4 text-sm font-semibold hover:opacity-80">

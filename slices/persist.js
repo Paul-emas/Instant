@@ -43,6 +43,6 @@ export const {
   setAnonymousToken,
 } = persistSlice.actions;
 
-export const persistSelector = state => state.persist;
+export const persistSelector = (state) => state.persist;
 
 export default persistSlice.reducer;

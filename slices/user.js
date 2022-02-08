@@ -35,6 +35,9 @@ const userSlice = createSlice({
     setInitAuthentication: (state, { payload }) => {
       state.initAuthentication = payload;
     },
+    userSignOut: () => {
+      console.log('User has been logged out....');
+    },
   },
 });
 
@@ -46,8 +49,9 @@ export const {
   setUserTransactions,
   setUserMeter,
   setInitAuthentication,
+  userSignOut,
 } = userSlice.actions;
 
-export const userSelector = state => state.user;
+export const userSelector = (state) => state.user;
 
 export default userSlice.reducer;
