@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  persistSelector,
-  setAnonymousToken,
-  setUserPhone,
-} from '../../../slices/persist';
+import { persistSelector, setAnonymousToken, setUserPhone } from '../../../slices/persist';
 import { setInitAuthentication } from '../../../slices/user';
 import { checkUserValidation } from '../../../api';
 
@@ -27,7 +23,7 @@ const Login = ({ close, setStep }) => {
     }
   }, [userPhone]);
 
-  const onSubmit = async formData => {
+  const onSubmit = async (formData) => {
     if (formData) {
       if (!navigator.onLine) {
         dispatch(setInitAuthentication('offline'));
@@ -77,7 +73,7 @@ const Login = ({ close, setStep }) => {
         </p>
         <form
           className="mt-10"
-          onSubmit={e => {
+          onSubmit={(e) => {
             e.preventDefault();
             onSubmit();
           }}
@@ -98,7 +94,7 @@ const Login = ({ close, setStep }) => {
                 return true;
               }
             }}
-            onChange={value => setPhone(value)}
+            onChange={(value) => setPhone(value)}
           />
           <PrimaryButton
             className="mt-8"

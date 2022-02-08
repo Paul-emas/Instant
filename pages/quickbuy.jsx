@@ -6,8 +6,9 @@ import { persistSelector, setQuickBuy } from '../slices/persist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
+import { getAccountToken } from '../api';
 
+import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
 import Header from '../components/homepage/Header';
 import BuyCard from '../components/BuyCard';
 import BuyAdsCard from '../components/BuyAdsCard';
@@ -20,7 +21,7 @@ import Button from '../components/Button';
 
 export default function QuickBuy() {
   const dispatch = useDispatch();
-  const { quickbuy } = useSelector(persistSelector);
+  const { quickbuy, userPhone } = useSelector(persistSelector);
   const { transactions, error, pageLoading } = useFetchTransaction(10);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
 
@@ -31,13 +32,25 @@ export default function QuickBuy() {
         dispatch(setQuickBuy(false));
       }, 200);
     }
+    fetchTransaction();
   }, []);
+
+  async function fetchTransaction() {
+    const paylaod = {
+      phone: userPhone?.phone,
+      country: userPhone?.country?.name,
+      email: 'test@gmail.com',
+    };
+    const resp = await getAccountToken(paylaod);
+
+    console.log(resp);
+  }
 
   return (
     <>
       <div className="pb-20">
         <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
-        <Header bg="bg-primary-dark pattern">
+        <Header bg="bg-primary-light pattern">
           <div className="relative top-24 lg:top-32">
             <Link href="/">
               <button className="relative flex items-center justify-center rounded-lg bg-white py-2 px-4 text-sm font-semibold hover:opacity-80">

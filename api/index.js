@@ -72,16 +72,12 @@ export async function getAccountToken(payload) {
 
 export async function createTranscationToken(payload, token) {
   try {
-    const response = await axios.post(
-      `${baseUrl}/transaction/token/create`,
-      payload,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+    const response = await axios.post(`${baseUrl}/transaction/token/create`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
-    );
+    });
     const { data } = response.data;
     return { data };
   } catch (error) {
@@ -91,16 +87,12 @@ export async function createTranscationToken(payload, token) {
 
 export async function generateTranscationToken(payload, token) {
   try {
-    const response = await axios.post(
-      `${baseUrl}/transaction/token/generate`,
-      payload,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+    const response = await axios.post(`${baseUrl}/transaction/token/generate`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
-    );
+    });
     const { data } = response.data;
     return { data };
   } catch (error) {
@@ -110,15 +102,12 @@ export async function generateTranscationToken(payload, token) {
 
 export async function validateNewMeter(meter, providerId, token) {
   try {
-    const response = await axios.get(
-      `${baseUrl}/meter/validate/${meter}/${providerId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+    const response = await axios.get(`${baseUrl}/meter/validate/${meter}/${providerId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
-    );
+    });
     const { data } = response.data;
     return { data };
   } catch (error) {
