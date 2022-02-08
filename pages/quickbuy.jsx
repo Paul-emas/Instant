@@ -6,7 +6,7 @@ import { persistSelector, setQuickBuy } from '../slices/persist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-import { getAccountToken } from '../api';
+import { getAccountToken, getUserTransactions } from '../api';
 
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
 import Header from '../components/homepage/Header';
@@ -15,14 +15,14 @@ import BuyAdsCard from '../components/BuyAdsCard';
 import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
-import useFetchTransaction from '../hooks/useFetchTransaction';
 import Footer from '../components/homepage/Footer';
 import Button from '../components/Button';
 
 export default function QuickBuy() {
   const dispatch = useDispatch();
   const { quickbuy, userPhone } = useSelector(persistSelector);
-  const { transactions, error, pageLoading } = useFetchTransaction(10);
+  const [transactions, setTransactions] = useState([]);
+  const [tableLoading, setTableLoading] = useState(true);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
 
   useEffect(() => {
@@ -43,7 +43,11 @@ export default function QuickBuy() {
     };
     const resp = await getAccountToken(paylaod);
 
-    console.log(resp);
+    if (resp?.data) {
+      const { data } = await getUserTransactions(resp?.data?.authorization, 0, 6);
+      setTransactions(data?.docs);
+      setTableLoading(false);
+    }
   }
 
   return (
@@ -68,6 +72,7 @@ export default function QuickBuy() {
           <div className="mt-28 lg:-mt-96">
             <TransactionsTable
               transactions={transactions}
+              loading={tableLoading}
               setOpenBuyElectricityModal={setOpenBuyElectricityModal}
             >
               <TransactionDataDefault transactions={transactions} />
