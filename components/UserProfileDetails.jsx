@@ -21,7 +21,7 @@ const UserProfileDetails = ({ user }) => {
           <div>
             <div className="text-xxs text-gray-400 lg:text-xs">Phone number</div>
             <div className="text-xs font-bold lg:text-base">
-              {user?.phone ? user?.phone?.value : '0000000000'}
+              {user?.phone ? user?.phone?.number : '0000000000'}
             </div>
           </div>
           <div>
