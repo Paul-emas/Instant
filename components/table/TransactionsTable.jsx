@@ -45,10 +45,7 @@ const TransactionsTable = ({
                   <button className="w-24 rounded-lg bg-primary-light py-2.5 text-sm font-semibold hover:opacity-80">
                     <span className="relative flex items-center justify-center">
                       <span className="mr-2">See all</span>
-                      <FontAwesomeIcon
-                        icon={faChevronRight}
-                        className="h-3 w-3"
-                      />
+                      <FontAwesomeIcon icon={faChevronRight} className="h-3 w-3" />
                     </span>
                   </button>
                 </Link>
@@ -61,21 +58,13 @@ const TransactionsTable = ({
       );
     },
     tabs: function view() {
-      return (
-        <Tabs
-          data={tabsData}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-      );
+      return <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />;
     },
     child: function view() {
       return (
         <>
-          {transactions.length <= 0 ? (
-            <TransactionEmptyState
-              setOpenBuyElectricityModal={setOpenBuyElectricityModal}
-            />
+          {transactions.length <= 0 && !loading ? (
+            <TransactionEmptyState setOpenBuyElectricityModal={setOpenBuyElectricityModal} />
           ) : null}
 
           {paginate && paginate()}
