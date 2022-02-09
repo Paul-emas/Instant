@@ -43,10 +43,6 @@ const Wrapper = ({ children }) => {
       dispatch(setInitAuthentication('login'));
     }
 
-    if (isLoggedIn && !isRouteProtected) {
-      router.replace('/dashboard');
-    }
-
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
     router.events.on('routeChangeError', handleComplete);

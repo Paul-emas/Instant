@@ -15,7 +15,7 @@ import PrimaryButton from '../Buttons/PrimaryButton';
 
 const QuickPayPhoneInput = () => {
   const dispatch = useDispatch();
-  const { userPhone } = useSelector(persistSelector);
+  const { isLoggedIn, userPhone } = useSelector(persistSelector);
   const router = useRouter();
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
@@ -60,7 +60,7 @@ const QuickPayPhoneInput = () => {
         setIsLoading(false);
         const { isPin } = data;
         if (isPin) {
-          dispatch(setInitAuthentication('signIn'));
+          isLoggedIn ? router.push('/dashboard') : dispatch(setInitAuthentication('signIn'));
         } else {
           const { authorization } = data;
           dispatch(setAnonymousToken(authorization));

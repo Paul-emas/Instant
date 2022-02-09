@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setInitAuthentication } from '../../slices/user';
 
 import Button from '../Button';
+import { persistSelector } from '../../slices/persist';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const [isScrolling, setIsScrolling] = useState(false);
+  const { isLoggedIn } = useSelector(persistSelector);
 
   useEffect(() => {
     window.onscroll = () => {
@@ -23,9 +25,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        isScrolling
-          ? 'h-14 border-b bg-white lg:h-16'
-          : 'h-16 bg-primary-light lg:h-16'
+        isScrolling ? 'h-14 border-b bg-white lg:h-16' : 'h-16 bg-primary-light lg:h-16'
       }  fixed inset-0 z-40 transition-all`}
     >
       <div className="mx-auto h-full px-4 lg:px-14 xl:container">
@@ -68,9 +68,14 @@ const Navbar = () => {
                 Offgrid
               </a>
             </Link> */}
-            <Button onClick={() => dispatch(setInitAuthentication('login'))}>
-              Get started
-            </Button>
+
+            {isLoggedIn ? (
+              <Link href="/dashboard">
+                <Button>My Dashboard</Button>
+              </Link>
+            ) : (
+              <Button onClick={() => dispatch(setInitAuthentication('login'))}>Get started</Button>
+            )}
           </div>
         </div>
       </div>
