@@ -18,16 +18,12 @@ const ResetPin = ({ close, setStep }) => {
   const [pin, setPin] = useState('');
 
   useEffect(() => {
-    typeof userPhone === undefined && router.replace('/auth/sign-in');
-  }, [userPhone]);
-
-  useEffect(() => {
     if (pin?.length === 6) {
       onSubmit();
     }
   }, [pin]);
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     if (!navigator.onLine) {
       dispatch(setInitAuthentication('offline'));
       return;
@@ -43,14 +39,12 @@ const ResetPin = ({ close, setStep }) => {
         <p className="mx-auto mt-3 max-w-xs text-center text-sm text-gray-700">
           An OTP has been set to your phone, kindly enter OTP to continue
         </p>
-        {errorMessage && (
-          <ErrorAlert error={errorMessage} setError={setErrorMessage} />
-        )}
+        {errorMessage && <ErrorAlert error={errorMessage} setError={setErrorMessage} />}
         <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
             length={6}
             secret
-            onChange={value => setPin(value)}
+            onChange={(value) => setPin(value)}
             type="numeric"
             className="hidden"
             inputStyle={{
@@ -59,22 +53,15 @@ const ResetPin = ({ close, setStep }) => {
             inputMode="number"
             autoSelect={true}
           />
-          <PrimaryButton
-            size="base"
-            className="mt-8"
-            disabled={isLoading}
-            loading={isLoading}
-          >
+          <PrimaryButton size="base" className="mt-8" disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>
         </form>
         <div className="mt-5 text-center">
-          <Link href="/auth/otp/forgot">
-            <button className="text-sm">
-              <span>{`Didn't receive an OTP?`}</span>
-              <span className="ml-1 font-bold text-primary-base">Resend</span>
-            </button>
-          </Link>
+          <button className="text-sm">
+            <span>{`Didn't receive an OTP?`}</span>
+            <span className="ml-1 font-bold text-primary-base">Resend</span>
+          </button>
         </div>
       </div>
       <BottomDownload />

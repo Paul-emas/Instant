@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import QuickPayPhoneInput from '../forms/QuickPayPhoneInput';
 
 const QuickPay = () => {
@@ -19,9 +18,7 @@ const QuickPay = () => {
           </div>
           <div className="relative top-1 flex h-16 w-full items-center justify-center bg-primary-light text-sm font-medium text-primary-dark lg:text-base">
             <span>Having trouble?</span>
-            <Link href="/auth/sign-up">
-              <a className="ml-2 font-semibold text-primary-base">Get help</a>
-            </Link>
+            <a className="ml-2 font-semibold text-primary-base">Get help</a>
           </div>
         </div>
       </div>

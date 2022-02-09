@@ -3,11 +3,7 @@ import Link from 'next/link';
 import router from 'next/router';
 import PinInput from 'react-pin-input';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  persistSelector,
-  setIsLoggedIn,
-  setToken,
-} from '../../../slices/persist';
+import { persistSelector, setIsLoggedIn, setToken } from '../../../slices/persist';
 import { setInitAuthentication, setUser } from '../../../slices/user';
 import { logIn } from '../../../api';
 
@@ -24,16 +20,12 @@ const SignInPin = ({ close, setStep }) => {
   const [pin, setPin] = useState('');
 
   useEffect(() => {
-    typeof userPhone === undefined && router.replace('/auth/sign-in');
-  }, [userPhone]);
-
-  useEffect(() => {
     if (pin?.length === 6) {
       onSubmit();
     }
   }, [pin]);
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e !== undefined && e.preventDefault();
     if (userPhone && pin.length === 6) {
       if (!navigator.onLine) {
@@ -69,38 +61,26 @@ const SignInPin = ({ close, setStep }) => {
   return (
     <Modal border={false} close={close}>
       <div className="-mt-4 px-6 lg:px-8">
-        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
-          Sign in to your account
-        </h1>
-        <p className="mt-3 text-center text-sm text-gray-700">
-          Your 6-digit access code
-        </p>
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">Sign in to your account</h1>
+        <p className="mt-3 text-center text-sm text-gray-700">Your 6-digit access code</p>
         <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
             length={6}
             secret
-            onChange={value => setPin(value)}
+            onChange={(value) => setPin(value)}
             type="numeric"
             className="hidden"
             inputMode="number"
             autoSelect={true}
           />
-          <PrimaryButton
-            size="base"
-            className="mt-8"
-            disabled={isLoading}
-            loading={isLoading}
-          >
+          <PrimaryButton size="base" className="mt-8" disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>
         </form>
         <div className="mt-5 text-center">
           <button className="text-sm">
             <span>Having trouble getting in?</span>
-            <span
-              onClick={() => setStep('reset')}
-              className="ml-1 font-bold text-primary-base"
-            >
+            <span onClick={() => setStep('reset')} className="ml-1 font-bold text-primary-base">
               Forgot Pin
             </span>
           </button>
