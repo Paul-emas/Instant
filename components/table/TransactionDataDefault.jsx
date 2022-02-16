@@ -1,10 +1,23 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import gsap from 'gsap';
 import { isMobile } from 'react-device-detect';
 
 import BulbIcon from '../../public/svgs/bulb-db.svg';
 
 const TransactionDataDefault = ({ transactions, setReceipt, setOpenReceiptModal }) => {
+  useEffect(() => {
+    const tl = gsap.timeline({});
+    const lists = gsap.utils.toArray('.lists');
+    if (lists) {
+      tl.from(lists, { scale: 0.9, autoAlpha: 0, y: 30, stagger: 0.2 });
+      tl.duration(1.5);
+    }
+
+    return () => tl.kill;
+  }, []);
+
   return (
     <>
       {!isMobile &&
@@ -12,7 +25,7 @@ const TransactionDataDefault = ({ transactions, setReceipt, setOpenReceiptModal 
           const active = transaction?.status === 'success' ? true : false;
           return (
             <tr
-              className="last:-white py-4 pl-6 hover:bg-primary-light"
+              className="last:-white lists py-4 pl-6 hover:bg-primary-light"
               key={`${transaction}${index}`}
             >
               <td className="whitespace-nowrap py-4 pl-6">

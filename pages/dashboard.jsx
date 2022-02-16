@@ -16,6 +16,7 @@ import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
 import Modal from '../components/modals';
 import Receipt from '../components/modals/Receipt';
+import gsap from 'gsap';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -34,6 +35,16 @@ export default function Dashboard() {
         dispatch(setQuickBuy(false));
       }, 200);
     }
+  }, [pageLoading]);
+
+  useEffect(() => {
+    const el = gsap.utils.toArray('.scale-up');
+    const tl = gsap.timeline({});
+    tl.fromTo(
+      el,
+      { autoAlpha: 0, scaleY: 0.95, display: 'none' },
+      { autoAlpha: 1, scaleY: 1, stagger: 0.3, duration: 0.4, display: 'block', delay: 0.2 },
+    );
   }, [pageLoading]);
 
   return (
@@ -62,39 +73,41 @@ export default function Dashboard() {
             <WalletCard className="block sm:hidden" />
             <div className="hidden items-center justify-between sm:flex">
               <div>
-                <h1 className="text-heading font-bold ">Buy Electricity</h1>
-                <p className="text-md font-medium text-font-muted">
+                <h1 className="scale-up text-heading  font-bold">Buy Electricity</h1>
+                <p className="text-md scale-up font-medium text-font-muted">
                   Never have interrupted power supply, making life easy.
                 </p>
               </div>
               <Button onClick={() => setOpenBuyElectricityModal(true)}>BUY ELECTRICITY</Button>
             </div>
             <div className="grid lg:grid-cols-6 lg:space-x-5">
-              <div className="lg:col-span-4">
+              <div className="scale-up lg:col-span-4">
                 <Chart
                   title="Units purchased"
                   selectedMonth={chartSelectedMonth}
                   setSelectedMonth={setChartSelectedMonth}
                 />
               </div>
-              <div className="lg:col-span-2">
+              <div className="scale-up lg:col-span-2">
                 <ReferBox />
               </div>
             </div>
-            <SolarCard className="hidden lg:block" />
+            <SolarCard className="scale-up hidden lg:block" />
           </div>
           <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
             <Button onClick={() => setOpenBuyElectricityModal(true)}>Buy Electricity</Button>
           </div>
-          <TransactionsTable
-            transactions={transactions}
-            setReceipt={setReceipt}
-            setOpenReceiptModal={setOpenReceiptModal}
-            setOpenBuyElectricityModal={setOpenBuyElectricityModal}
-          >
-            <TransactionDataDefault transactions={transactions} />
-            <TransactionDataMobile transactions={transactions} />
-          </TransactionsTable>
+          <div className="scale-up">
+            <TransactionsTable
+              transactions={transactions}
+              setReceipt={setReceipt}
+              setOpenReceiptModal={setOpenReceiptModal}
+              setOpenBuyElectricityModal={setOpenBuyElectricityModal}
+            >
+              <TransactionDataDefault transactions={transactions} />
+              <TransactionDataMobile transactions={transactions} />
+            </TransactionsTable>
+          </div>
           {isLoggedIn && <SolarCard className="block lg:hidden" />}
         </>
       )}

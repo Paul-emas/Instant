@@ -1,16 +1,7 @@
 import RequestLoader from '../loaders/RequestLoader';
 import { isMobile } from 'react-device-detect';
 
-const Table = ({
-  title,
-  headings,
-  viewAll,
-  titleLabel,
-  tabs,
-  children,
-  loading,
-  child,
-}) => {
+const Table = ({ title, headings, viewAll, titleLabel, tabs, children, loading, child }) => {
   return (
     <div className="shadow-soft-lg mt-5 flex flex-col overflow-hidden rounded-xl bg-white">
       <div className="mt-4 py-3 px-7">
@@ -27,11 +18,7 @@ const Table = ({
         </div>
       </div>
       {tabs && tabs()}
-      <div
-        className={`${
-          !loading ? 'overflow-x-auto' : ''
-        } my-2 sm:-mx-6 lg:-mx-6`}
-      >
+      <div className={`${!loading ? 'overflow-x-auto' : ''} my-2 sm:-mx-6 lg:-mx-6`}>
         <div className="inline-block min-w-full py-2 align-middle sm:px-6">
           {!loading && !isMobile && (
             <div className="overflow-hidden">

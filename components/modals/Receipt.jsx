@@ -104,7 +104,7 @@ const Receipt = ({ receipt }) => {
           <div className="mb-3 flex items-center justify-between border-t border-b border-primary-lighter py-4">
             <div className="text-sm font-bold">Total</div>
             <div className="text-sm font-bold">
-              {receipt?.country?.currency} {receipt?.gross}
+              {receipt?.country?.currency} {receipt?.amount}
             </div>
           </div>
         </div>

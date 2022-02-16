@@ -1,38 +1,18 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, userSelector, userSignOut } from '../slices/user';
+import { userSignOut } from '../slices/user';
 import { persistSelector } from '../slices/persist';
-import { getUserAccount } from '../api';
 
 import LogoutIcon from '../public/svgs/logout.svg';
 
-const UserCard = ({ openLogout, animate, setOpenNav }) => {
-  const router = useRouter();
-  const { me } = useSelector(userSelector);
-  const { token, isLoggedIn, userPhone } = useSelector(persistSelector);
+const UserCard = ({ me, openLogout, animate, setOpenNav }) => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!me && isLoggedIn) {
-      fetchUser();
-    }
-  }, [me, isLoggedIn]);
-
-  async function fetchUser() {
-    const resp = await getUserAccount(token);
-    if (resp?.error) {
-      dispatch(setUser(null));
-    }
-    if (resp?.data) {
-      dispatch(setUser(resp?.data));
-    }
-  }
+  const router = useRouter();
+  const { userPhone } = useSelector(persistSelector);
 
   const signOut = () => {
     dispatch(userSignOut());
@@ -43,7 +23,7 @@ const UserCard = ({ openLogout, animate, setOpenNav }) => {
   return (
     <div className="absolute bottom-12 left-0 hidden w-full lg:block">
       <div className="px-3 2xl:px-6">
-        <div className="relative flex items-center rounded-xl bg-white py-4 px-5">
+        <div className="relative flex h-16 items-center rounded-xl bg-white py-4 px-5">
           {!me && (
             <>
               <div className="h-8 w-8 rounded-full bg-gray-200"></div>
