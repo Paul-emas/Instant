@@ -75,8 +75,8 @@ const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, ch
         <div className={`${isAuth && 'px-5 pt-10 sm:px-0 sm:pt-0'} w-full xs:w-modal`}>
           <div
             className={`${
-              isAuth ? '' : 'modal-card'
-            } modal-box shadow-soft w-full overflow-y-auto rounded-t-2xl bg-white pt-5 pb-10  sm:rounded-2xl`}
+              isAuth ? 'rounded-2xl' : 'modal-card rounded-t-2xl sm:rounded-2xl'
+            } modal-box shadow-soft w-full overflow-y-auto bg-white pt-5 pb-10`}
           >
             <div className={`${border && 'border-b border-gray-100'} h-14 text-xl`}>
               <div className="px-4 sm:px-8">
