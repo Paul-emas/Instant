@@ -16,7 +16,6 @@ import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
 import Modal from '../components/modals';
 import Receipt from '../components/modals/Receipt';
-import gsap from 'gsap';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -35,16 +34,6 @@ export default function Dashboard() {
         dispatch(setQuickBuy(false));
       }, 200);
     }
-  }, [pageLoading]);
-
-  useEffect(() => {
-    const el = gsap.utils.toArray('.scale-up');
-    const tl = gsap.timeline({});
-    tl.fromTo(
-      el,
-      { autoAlpha: 0, scaleY: 0.95, display: 'none' },
-      { autoAlpha: 1, scaleY: 1, stagger: 0.3, duration: 0.4, display: 'block', delay: 0.2 },
-    );
   }, [pageLoading]);
 
   return (

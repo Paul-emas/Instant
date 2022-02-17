@@ -45,7 +45,7 @@ const Register = ({ close, setStep }) => {
   };
 
   return (
-    <Modal border={false} close={close}>
+    <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 lg:px-8">
         <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">Create an account</h1>
         <p className="mt-3 text-center text-sm text-gray-700">

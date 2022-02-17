@@ -63,7 +63,7 @@ const Login = ({ close, setStep }) => {
   };
 
   return (
-    <Modal border={false} close={close}>
+    <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 sm:px-10">
         <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           Hey there, Welcome to Instant Energy

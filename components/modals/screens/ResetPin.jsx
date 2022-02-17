@@ -31,7 +31,7 @@ const ResetPin = ({ close, setStep }) => {
   };
 
   return (
-    <Modal border={false} close={close}>
+    <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 lg:px-8">
         <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           {`We've sent you an OTP to reset your PIN`}

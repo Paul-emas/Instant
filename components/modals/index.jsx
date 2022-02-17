@@ -6,7 +6,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import gsap from 'gsap';
 import { isMobile } from 'react-device-detect';
 
-const Modal = ({ title, close, border = true, successMessage, goBack, children }) => {
+const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, children }) => {
   useEffect(() => {
     const tl = gsap.timeline({
       delay: 0.1,
@@ -18,6 +18,13 @@ const Modal = ({ title, close, border = true, successMessage, goBack, children }
         '.modal-box',
         { autoAlpha: 0, scale: 0.8 },
         { autoAlpha: 1, scale: 1, duration: 0.3 },
+      );
+    } else if (isMobile && isAuth) {
+      tl.fromTo('.modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
+      tl.fromTo(
+        '.modal-box',
+        { autoAlpha: 0, scaleX: 0.9 },
+        { autoAlpha: 1, scaleX: 1, duration: 0.3 },
       );
     } else {
       tl.fromTo('.modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
@@ -52,38 +59,52 @@ const Modal = ({ title, close, border = true, successMessage, goBack, children }
 
   return (
     <div className="fixed top-0 left-0 z-50 min-h-full w-full overflow-hidden">
-      <div className="absolute inset-0 flex h-full  w-full items-end justify-center sm:items-center">
+      <div
+        className={`${
+          isAuth ? 'sm:flex' : 'flex items-end'
+        } absolute inset-0 h-full w-full justify-center sm:items-center`}
+      >
         <div
           onClick={() => close()}
-          className="modal-overlay modal-overlay absolute min-h-screen w-full bg-secondary-modal bg-opacity-70"
+          className={`${
+            isAuth
+              ? 'bg-white lg:bg-secondary-modal lg:bg-opacity-70'
+              : 'bg-secondary-modal bg-opacity-70'
+          } modal-overlay absolute min-h-screen w-full`}
         ></div>
-        <div className="modal-box modal-card shadow-soft max-h-12 w-full overflow-y-auto rounded-t-2xl bg-white pt-5 pb-10 xs:w-modal sm:rounded-2xl">
-          <div className={`${border && 'border-b border-gray-100'} h-14 text-xl`}>
-            <div className="px-4 sm:px-8">
-              <div className="relative">
-                {goBack && (
-                  <button
-                    onClick={() => goBack()}
-                    className="relative flex w-28 items-center justify-center rounded-lg bg-primary-light py-2 text-sm font-semibold hover:opacity-80"
-                  >
-                    <FontAwesomeIcon icon={faChevronLeft} className="mr-2 h-3 w-3" />
-                    <span className="mt-0.5">Go back</span>
+        <div className={`${isAuth && 'px-5 pt-10 sm:px-0 sm:pt-0'} w-full xs:w-modal`}>
+          <div
+            className={`${
+              isAuth ? '' : 'modal-card'
+            } modal-box shadow-soft w-full overflow-y-auto rounded-t-2xl bg-white pt-5 pb-10  sm:rounded-2xl`}
+          >
+            <div className={`${border && 'border-b border-gray-100'} h-14 text-xl`}>
+              <div className="px-4 sm:px-8">
+                <div className="relative">
+                  {goBack && (
+                    <button
+                      onClick={() => goBack()}
+                      className="relative flex w-28 items-center justify-center rounded-lg bg-primary-light py-2 text-sm font-semibold hover:opacity-80"
+                    >
+                      <FontAwesomeIcon icon={faChevronLeft} className="mr-2 h-3 w-3" />
+                      <span className="mt-0.5">Go back</span>
+                    </button>
+                  )}
+                  {title && (
+                    <div className="relative top-1 text-center font-bold">
+                      <span>{title}</span>
+                    </div>
+                  )}
+                  <button onClick={() => close()} className={`absolute top-0 right-0 float-right`}>
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-gray-50 active:bg-gray-100">
+                      <TimesIcon />
+                    </div>
                   </button>
-                )}
-                {title && (
-                  <div className="relative top-1 text-center font-bold">
-                    <span>{title}</span>
-                  </div>
-                )}
-                <button onClick={() => close()} className={`absolute top-0 right-0 float-right`}>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-gray-50 active:bg-gray-100">
-                    <TimesIcon />
-                  </div>
-                </button>
+                </div>
               </div>
             </div>
+            {children}
           </div>
-          {children}
         </div>
 
         {successMessage && (

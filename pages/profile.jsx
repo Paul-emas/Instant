@@ -84,14 +84,14 @@ export default function Profile() {
                   <button className="mt-8 rounded-lg bg-primary-base px-4 py-2 text-sm font-semibold text-primary-light active:opacity-80 lg:px-6">
                     Live chat with our agent
                   </button>
-                  <div className="hidden lg:block">
+                  <div className="block lg:hidden">
                     <div className="my-5 text-xs text-gray-500">Or</div>
                     <div className="flex items-center justify-center space-x-4">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light">
-                        <FontAwesomeIcon icon={faPhoneAlt} className="h-6 w-6" />
+                        <FontAwesomeIcon icon={faPhoneAlt} className="h-5 w-5" />
                       </div>
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light">
-                        <FontAwesomeIcon icon={faEnvelope} className="h-6 w-6" />
+                        <FontAwesomeIcon icon={faEnvelope} className="h-5 w-5" />
                       </div>
                     </div>
                   </div>

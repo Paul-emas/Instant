@@ -5,17 +5,11 @@ import AppleIcon2 from '../public/svgs/apple-dark.svg';
 import PlayStoreIcon from '../public/svgs/google-play.svg';
 import PlayStoreIcon2 from '../public/svgs/google-play-dark.svg';
 
-const DownloadButtons = ({
-  className,
-  captionColor,
-  labelColor,
-  center,
-  dark,
-}) => (
+const DownloadButtons = ({ className, captionColor, labelColor, center, dark }) => (
   <div
     className={`${
       center ? 'mx-auto' : 'lg:ml-0'
-    } mt-8 grid grid-cols-2 gap-x-5 px-2.5 sm:max-w-sm lg:mt-10 lg:px-0`}
+    } mt-8 grid grid-cols-2 gap-x-5 px-0 sm:max-w-sm lg:mt-10 lg:px-0`}
   >
     <a
       href="/"
@@ -28,9 +22,7 @@ const DownloadButtons = ({
       )}
       <div className="ml-1 mt-0.5 text-left sm:ml-2 lg:mt-1">
         <p className={`${captionColor} text-xxs`}>Get it on</p>
-        <p className={`${labelColor} text-xs font-bold lg:text-base`}>
-          Play Store
-        </p>
+        <p className={`${labelColor} text-xs font-bold lg:text-base`}>Play Store</p>
       </div>
     </a>
     <a
@@ -44,9 +36,7 @@ const DownloadButtons = ({
       )}
       <div className="ml-1 mt-0.5 text-left  sm:ml-2">
         <p className={`${captionColor} text-xxs`}>Download on the</p>
-        <p className={`${labelColor} text-xs font-bold lg:text-base`}>
-          App Store
-        </p>
+        <p className={`${labelColor} text-xs font-bold lg:text-base`}>App Store</p>
       </div>
     </a>
   </div>
