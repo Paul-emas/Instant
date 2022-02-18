@@ -48,6 +48,7 @@ const FormInput = forwardRef(
             placeholder="Enter your phone number"
             enableSearch
             disableSearchIcon={true}
+            prefix=""
             dropdownStyle={{
               fontWeight: 'normal',
               fontFamily: 'Red Hat Display',

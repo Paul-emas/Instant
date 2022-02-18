@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector } from '../../../slices/persist';
 import { generateTranscationToken } from '../../../api';
 
@@ -12,9 +12,11 @@ import ErrorSuccess from '../ErrorSuccess';
 import Receipt from '../Receipt';
 import RequestLoader from '../../loaders/RequestLoader';
 import AddMeter from './AddMeter';
+import { setInitAuthentication } from '../../../slices/user';
 
 const BuyElectricityModal = ({ open, setOpen }) => {
-  const { userPhone } = useSelector(persistSelector);
+  const { isLoggedIn, userPhone } = useSelector(persistSelector);
+  const dispatch = useDispatch();
   const tabs = [
     { id: 0, name: 'prepaid' },
     { id: 1, name: 'postpaid' },
@@ -122,6 +124,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
           close={() => {
             setOpen(false);
             setStep(0);
+            !isLoggedIn && dispatch(setInitAuthentication('createPin'));
           }}
           border={false}
           setOpen={setOpen}
