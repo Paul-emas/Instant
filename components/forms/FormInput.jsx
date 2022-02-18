@@ -47,6 +47,7 @@ const FormInput = forwardRef(
             inputClass="phone-input"
             placeholder="Enter your phone number"
             enableSearch
+            disableCountryCode
             disableCountryGuess
             disableSearchIcon={true}
             prefix=""
