@@ -2,14 +2,7 @@ import PropTypes from 'prop-types';
 import { faBolt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const PrimaryButton = ({
-  loading,
-  className,
-  size = 'large',
-  disabled,
-  children,
-  onClick,
-}) => {
+const PrimaryButton = ({ loading, className, size = 'large', disabled, children, onClick }) => {
   let height = '';
   if (size === 'large') {
     height = 'h-14 lg:h-16 text-sm lg:text-base';
@@ -30,7 +23,7 @@ const PrimaryButton = ({
       {loading ? (
         <FontAwesomeIcon
           icon={faBolt}
-          className="loading mx-auto h-5 w-5 text-lg lg:h-6 lg:w-6 lg:text-xl"
+          className="mx-auto h-5 w-5 text-lg lg:h-6 lg:w-6 lg:text-xl"
         />
       ) : (
         <span>{children}</span>

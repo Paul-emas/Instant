@@ -30,25 +30,24 @@ const FAQs = () => {
   ];
 
   return (
-    <div className="py-16 lg:py-32 bg-white">
-      <div className="container px-4 lg:px-10 mx-auto">
+    <div className="bg-white py-16 lg:py-32">
+      <div className="container mx-auto px-4 lg:px-10">
         <div className="text-center">
-          <h1 className="text-2xl lg:text-5xl font-bold max-w-2xl text-center mx-auto ">
+          <h1 className="mx-auto max-w-2xl text-center text-2xl font-bold lg:text-5xl ">
             Instant Energy FAQs
           </h1>
-          <p className="mt-6 text-sm lg:text-base max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua.
+          <p className="mx-auto mt-6 max-w-3xl text-sm lg:text-base">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
           </p>
         </div>
-        <div className="mt-12 lg:mt-24 max-w-6xl 2xl:max-w-5xl mx-auto">
+        <div className="mx-auto mt-12 max-w-6xl lg:mt-24 2xl:max-w-5xl">
           {questions.map((question, index) => (
             <Accordion {...question} key={index} />
           ))}
         </div>
-        <div className="text-center mt-8 lg:mt-24">
-          <p className="text-primary-darker text-sm lg:text-base font-semibold">
+        <div className="mt-8 text-center lg:mt-24">
+          <p className="text-sm font-semibold text-primary-darker lg:text-base">
             <span>Need help? talk to our</span>
             <a href="" className="ml-2 text-primary-base">
               Customer support

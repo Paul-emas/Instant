@@ -7,7 +7,7 @@ const UserServices = ({ title, stepArr }) => {
   return (
     <div className="bg-white py-10 lg:py-28">
       <div className="container mx-auto px-4 sm:px-5 xl:px-14">
-        <h1 className="mx-auto max-w-xs px-10 text-center text-xl font-bold text-primary-dark sm:px-0 lg:max-w-xl lg:text-5xl">
+        <h1 className="mx-auto max-w-xs px-10 text-center text-xl font-bold text-primary-dark sm:px-0 lg:max-w-xl lg:text-5xl xl:leading-tight">
           {title}
         </h1>
         <div className="mx-auto mt-16 justify-center sm:space-x-16 sm:px-10 md:flex lg:mt-24">
@@ -33,21 +33,21 @@ const UserServices = ({ title, stepArr }) => {
 };
 
 UserServices.defaultProps = {
-  title: 'Easy steps to recharge your meter',
+  title: 'Recharge your meter with 3 easy steps',
   stepArr: [
     {
       name: 'Add your meter',
-      caption: 'Tell us what you like to send and let us know when we can come.',
+      caption: 'Add the meter number given by your energy provider.',
       icon: BulbIcon,
     },
     {
       name: 'Enter Amount',
-      caption: 'Tell us what you like to send and let us know when we can come.',
+      caption: 'Enter the preferred amount for the transaction with a minimum value.',
       icon: MoneyIcon,
     },
     {
-      name: 'Buy Electricty',
-      caption: 'Tell us what you like to send and let us know when we can come.',
+      name: 'Make Payment',
+      caption: 'Select the preferred option from the list of providers',
       icon: GuardIcon,
     },
   ],

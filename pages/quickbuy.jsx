@@ -57,7 +57,7 @@ export default function QuickBuy() {
         <Header bg="bg-primary-light">
           <div className="relative top-24 lg:top-32">
             <Link href="/">
-              <button className="relative flex items-center justify-center rounded-lg bg-white py-2 px-4 text-sm font-semibold hover:opacity-80">
+              <button className="relative flex items-center justify-center rounded-lg bg-white py-2 px-4 text-xs font-semibold hover:opacity-80 lg:text-sm">
                 <FontAwesomeIcon icon={faChevronLeft} className="mr-2 h-3 w-3" />
                 <span className="mt-0.5">Go back home</span>
               </button>

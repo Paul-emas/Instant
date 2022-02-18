@@ -8,6 +8,9 @@ import Counter from '../components/homepage/Counter';
 import DownloadApp from '../components/homepage/DownloadApp';
 import Footer from '../components/homepage/Footer';
 import HomeBanners from '../components/homepage/HomeBanners';
+import People from '../components/homepage/People';
+import Slider from '../components/homepage/Slider';
+import FAQs from '../components/homepage/FAQs';
 import PaymentPlans from '../components/forms/PaymentPlans';
 import Buy from '../components/homepage/Buy';
 
@@ -45,11 +48,14 @@ export default function Home() {
         <Partners />
         <UserServices />
         <HomeBanners />
-        <PaymentPlans />
-        <Buy />
-        <Counter />
-        <DownloadApp />
-        <Partners />
+        {/* <PaymentPlans /> */}
+        {/* <Buy /> */}
+        {/* <Counter /> */}
+        {/* <DownloadApp /> */}
+        <People />
+        <Slider />
+        <FAQs />
+        {/* <Partners /> */}
         <Footer />
       </main>
     </div>

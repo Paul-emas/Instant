@@ -31,8 +31,8 @@ const Footer = () => {
             <p className="mt-2 font-semibold">080-1234-5678</p>
           </div>
           <div className="col-span-2 px-4 lg:px-0">
-            <div className="mt-10 flex flex-wrap justify-between px-5 lg:mt-0 lg:px-0">
-              <div className="w-1/2 lg:w-auto">
+            <div className="mt-10 flex flex-wrap px-5 lg:mt-0 lg:space-x-24 lg:px-0">
+              {/* <div className="w-1/2 lg:w-auto">
                 <h2 className="font-semibold">Products</h2>
                 <div className="mt-5 flex flex-col space-y-4 lg:mt-10 lg:space-y-8">
                   <Link href="">
@@ -45,7 +45,7 @@ const Footer = () => {
                     <a className="text-xs font-semibold lg:text-sm">Available Cities</a>
                   </Link>
                 </div>
-              </div>
+              </div> */}
               <div className="w-1/2 lg:w-auto">
                 <h2 className="font-semibold">Company</h2>
                 <div className="mt-5 flex flex-col space-y-4 lg:mt-10 lg:space-y-8">
@@ -82,13 +82,13 @@ const Footer = () => {
               Suite 409, Nawa Complex Jahi, Abuja. Nigeria.
             </p>
             <p className="mt-5 ml-auto max-w-xs pl-24 text-xs lg:text-sm">
-              Rigakade 10 1013 BC Amsterdam, Netherlands.
+              278, Dr. Lelykade The Hague The Netherlands.
             </p>
-            <p className="mt-2 font-bold">Info@instantenergy.com</p>
-            <p className="mt-1 font-bold">080-1234-5678</p>
+            <p className="mt-2 font-bold">Info@instantenergy.com.ng</p>
+            <p className="mt-1 font-bold">090-8233-3376</p>
           </div>
         </div>
-        <div className="mt-10 w-full justify-center px-5 lg:mt-32 lg:px-0">
+        {/* <div className="mt-10 w-full justify-center px-5 lg:mt-32 lg:px-0">
           <h2 className="mt-2 -mb-2 text-center font-semibold">Download our mobile app</h2>
           <DownloadButtons
             dark
@@ -97,7 +97,7 @@ const Footer = () => {
             captionColor="text-gray-500"
             className="shadow-soft border-2 border-gray-700 bg-white"
           />
-        </div>
+        </div> */}
       </div>
       <div className="mt-10 border-t py-6 lg:py-8">
         <p className="text-center text-xs text-gray-600 lg:text-base">

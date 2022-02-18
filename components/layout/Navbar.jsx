@@ -30,13 +30,13 @@ const Navbar = () => {
     >
       <div className="mx-auto h-full px-4 lg:px-14 xl:container">
         <div className="flex h-full items-center justify-between">
-          <div className="-ml-3 hidden lg:block">
+          <div className="-ml-3 mt-1 hidden lg:block">
             <Link href="/">
               <a>
                 <Image
                   src="/images/logo.webp"
-                  width={185}
-                  height={40}
+                  width={200}
+                  height={46}
                   className="object-contain"
                   priority={true}
                 />
@@ -62,12 +62,13 @@ const Navbar = () => {
                 Electricity Units
               </a>
             </Link>
-           
-            <Link href="/offgrid">
-              <a className="hidden font-semibold text-primary-darker lg:block">
-                Offgrid
+            */}
+
+            <Link href="/contact">
+              <a className="hidden font-semibold uppercase text-primary-darker hover:text-primary-base lg:block">
+                Contact us
               </a>
-            </Link> */}
+            </Link>
 
             {isLoggedIn ? (
               <Link href="/dashboard">
