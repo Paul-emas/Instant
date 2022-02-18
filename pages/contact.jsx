@@ -1,6 +1,10 @@
 import Head from 'next/head';
 import Header from '../components/homepage/Header';
 import ContactForm from '../components/forms/ContactForm';
+import ContactCard from '../components/ContactCard';
+import ContactBanner from '../components/homepage/ContactBanner';
+import CTA from '../components/homepage/CTA';
+import Footer from '../components/homepage/Footer';
 
 export default function Contact() {
   return (
@@ -17,16 +21,22 @@ export default function Contact() {
       </Head>
       <Header>
         <div className="justify-between lg:flex">
-          <div className="max-w-3xl border-2 border-black pt-36 sm:top-20 lg:w-1/2">
-            <div className="text-5xl font-bold leading-tight">
+          <div className="pt-28 lg:w-1/2 lg:pt-60">
+            <div className="max-w-md text-center text-2xl font-bold leading-tight text-gray-800 lg:text-left lg:text-5xl">
               Get in touch, {`we'll`} love to hear from you
             </div>
+            <div className="mt-8">
+              <ContactCard up />
+            </div>
           </div>
-          <div className="mx-auto flex items-center pb-16 outline-black md:max-w-lg lg:w-1/2 lg:max-w-full 2xl:pb-10">
+          <div className="flex justify-end lg:w-1/2 lg:max-w-full lg:pb-16 lg:pt-36">
             <ContactForm />
           </div>
         </div>
       </Header>
+      <ContactBanner />
+      <CTA />
+      <Footer />
     </div>
   );
 }

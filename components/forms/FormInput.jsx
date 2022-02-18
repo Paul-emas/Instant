@@ -7,7 +7,7 @@ const FormInput = forwardRef(
     const As = as;
 
     const errorStyles =
-      type !== 'phone' && type !== 'currency'
+      type !== 'phone' && type !== 'currency' && type !== 'textarea'
         ? `${
             error
               ? 'border-red-600 focus:border-red-600 focus:outline-none'
@@ -22,7 +22,7 @@ const FormInput = forwardRef(
     return (
       <div className="mb-2.5 2xl:mb-4">
         <label className="label text-xs text-gray-400">{label}</label>
-        {type !== 'phone' && type !== 'currency' && (
+        {type !== 'phone' && type !== 'currency' && type !== 'textarea' && (
           <As
             name={label}
             ref={ref}
@@ -73,6 +73,12 @@ const FormInput = forwardRef(
               } ml-4 w-full font-bold focus:outline-none`}
             />
           </div>
+        )}
+        {type === 'textarea' && (
+          <textarea
+            className={`${className} ${errorStyles} form-input mt-2 pt-2.5 pb-9`}
+            placeholder="Enter your message here.."
+          ></textarea>
         )}
         {children}
       </div>
