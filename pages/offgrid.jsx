@@ -1,7 +1,6 @@
 import Business from '../components/homepage/Business';
 import Control from '../components/homepage/Control';
 import Header from '../components/homepage/Header';
-import Solution from '../components/homepage/Solution';
 import People from '../components/homepage/People';
 import Slider from '../components/homepage/Slider';
 import CTA from '../components/homepage/CTA';
