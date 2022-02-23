@@ -64,6 +64,12 @@ const Navbar = () => {
             </Link>
             */}
 
+            <Link href="/about">
+              <a className="hidden font-semibold uppercase text-primary-darker hover:text-primary-base lg:block">
+                About us
+              </a>
+            </Link>
+
             <Link href="/contact">
               <a className="hidden font-semibold uppercase text-primary-darker hover:text-primary-base lg:block">
                 Contact us

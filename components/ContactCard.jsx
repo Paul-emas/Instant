@@ -22,7 +22,7 @@ const ContactCard = ({ top, up }) => {
             </div>
             <div className="ml-4">
               <p className="relative top-1 text-xs text-gray-400">Send us an email</p>
-              <p className="text-lg font-bold text-font-darker">Support@instantenergy.com</p>
+              <p className="text-lg font-bold text-font-darker">Support@instantenergy.com.ng</p>
             </div>
           </div>
           <div className="my-8 hidden items-center lg:flex">

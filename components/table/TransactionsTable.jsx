@@ -26,11 +26,11 @@ const TransactionsTable = ({
   const tableProps = {
     title: 'Your transcations',
     headings: [
-      'Transaction Information',
+      'Meter name',
       'Date',
       'Distributor',
-      'Meter number',
-      'Reference number',
+      'Meter No.',
+      'Reference Code',
       'Amount',
       'Status',
     ],

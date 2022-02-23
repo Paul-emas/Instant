@@ -34,7 +34,7 @@ const Wrapper = ({ children }) => {
     const handleStart = (url) =>
       url !== router.pathname && !isRouteProtected && setPageLoading(true);
     const handleComplete = (url) => {
-      url !== router.pathname && setPageLoading(false);
+      url !== router.pathname && setPageLoading(true);
       window.scrollTo(0, 0);
     };
 

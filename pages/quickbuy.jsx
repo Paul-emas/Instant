@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector, setQuickBuy } from '../slices/persist';
@@ -20,17 +21,20 @@ import Button from '../components/Button';
 
 export default function QuickBuy() {
   const dispatch = useDispatch();
-  const { quickbuy, userPhone } = useSelector(persistSelector);
+  const router = useRouter();
+  const { quickbuy, userPhone, isLoggedIn } = useSelector(persistSelector);
   const [transactions, setTransactions] = useState([]);
   const [tableLoading, setTableLoading] = useState(true);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
 
   useEffect(() => {
-    if (quickbuy) {
+    if (quickbuy && !isLoggedIn) {
       setOpenBuyElectricityModal(true);
       setTimeout(() => {
         dispatch(setQuickBuy(false));
       }, 200);
+    } else {
+      router.push('/dashboard');
     }
     fetchTransaction();
   }, []);

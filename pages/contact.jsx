@@ -35,7 +35,6 @@ export default function Contact() {
         </div>
       </Header>
       <ContactBanner />
-      <CTA />
       <Footer />
     </div>
   );

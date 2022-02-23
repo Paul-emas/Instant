@@ -13,6 +13,7 @@ import Slider from '../components/homepage/Slider';
 import FAQs from '../components/homepage/FAQs';
 import PaymentPlans from '../components/forms/PaymentPlans';
 import Buy from '../components/homepage/Buy';
+import Steps from '../components/homepage/Steps';
 
 export default function Home() {
   return (
@@ -45,9 +46,10 @@ export default function Home() {
         </div>
       </Header>
       <main>
-        <Partners />
+        {/* <Partners /> */}
         <UserServices />
         <HomeBanners />
+        <Steps />
         {/* <PaymentPlans /> */}
         {/* <Buy /> */}
         {/* <Counter /> */}
@@ -55,7 +57,7 @@ export default function Home() {
         <People />
         <Slider />
         <FAQs />
-        {/* <Partners /> */}
+        <Partners />
         <Footer />
       </main>
     </div>

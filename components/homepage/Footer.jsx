@@ -49,13 +49,13 @@ const Footer = () => {
               <div className="w-1/2 lg:w-auto">
                 <h2 className="font-semibold">Company</h2>
                 <div className="mt-5 flex flex-col space-y-4 lg:mt-10 lg:space-y-8">
-                  <Link href="">
+                  <Link href="/">
                     <a className="text-xs font-semibold lg:text-sm">Home</a>
                   </Link>
-                  <Link href="">
+                  <Link href="/about">
                     <a className="text-xs font-semibold lg:text-sm">About us</a>
                   </Link>
-                  <Link href="">
+                  <Link href="/contact">
                     <a className="text-xs font-semibold lg:text-sm">Contact us</a>
                   </Link>
                 </div>
@@ -84,7 +84,7 @@ const Footer = () => {
             <p className="mt-5 ml-auto max-w-xs pl-24 text-xs lg:text-sm">
               278, Dr. Lelykade The Hague The Netherlands.
             </p>
-            <p className="mt-2 font-bold">Info@instantenergy.com.ng</p>
+            <p className="mt-2 font-bold">support@instantenergy.com.ng</p>
             <p className="mt-1 font-bold">090-8233-3376</p>
           </div>
         </div>

@@ -23,7 +23,7 @@ const PrimaryButton = ({ loading, className, size = 'large', disabled, children,
       {loading ? (
         <FontAwesomeIcon
           icon={faBolt}
-          className="mx-auto h-5 w-5 text-lg lg:h-6 lg:w-6 lg:text-xl"
+          className="loading mx-auto h-5 w-5 text-lg lg:h-6 lg:w-6 lg:text-xl"
         />
       ) : (
         <span>{children}</span>

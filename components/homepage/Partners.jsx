@@ -5,7 +5,7 @@ const Partners = () => {
     <div className="bg-white py-10 lg:py-20">
       <div className="container mx-auto px-8 lg:px-14">
         <h1 className="text-center text-base font-semibold uppercase text-font-dark lg:text-xl ">
-          Our partners
+          Energy Providers
         </h1>
         <div className="mt-7 hidden items-center justify-between lg:flex">
           <Image

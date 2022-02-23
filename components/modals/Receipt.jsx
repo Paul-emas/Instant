@@ -32,9 +32,9 @@ const Receipt = ({ receipt }) => {
       <div className="flex justify-center">
         <Image
           src="/images/logo.webp"
-          width={160.05}
-          height={34}
-          className="object-cover"
+          width={200}
+          height={46}
+          className="object-contain"
           priority={true}
         />
       </div>

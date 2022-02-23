@@ -39,14 +39,16 @@ const TransactionDataDefault = ({ transactions, setReceipt, setOpenReceiptModal 
                   </div>
                   <div className="ml-8">
                     <div>
-                      <div className="text-sm font-bold text-font-dark">Unit Purchased</div>
+                      <div className="text-sm font-bold text-font-dark">
+                        {transaction?.meter?.name}
+                      </div>
                     </div>
                   </div>
                 </div>
               </td>
               <td className="whitespace-nowrap px-6  py-4">
                 <div className="text-sm text-font-grey">
-                  {moment(transaction?.createdAt).utc().format('LL')}{' '}
+                  {moment(transaction?.createdAt).utc().format('L')}{' '}
                   <span className="ml-2">{moment(transaction?.createdAt).format('LT')}</span>
                 </div>
               </td>

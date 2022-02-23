@@ -36,10 +36,6 @@ const FAQs = () => {
           <h1 className="mx-auto max-w-2xl text-center text-2xl font-bold lg:text-5xl ">
             Instant Energy FAQs
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-sm lg:text-base">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          </p>
         </div>
         <div className="mx-auto mt-12 max-w-6xl lg:mt-24 2xl:max-w-5xl">
           {questions.map((question, index) => (
