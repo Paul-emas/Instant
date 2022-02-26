@@ -10,8 +10,9 @@ import ResetPin from './screens/ResetPin';
 import SignInPin from './screens/SignInPin';
 import CreatePinMessage from './screens/CreatePinMessage';
 import NoInternet from './screens/NoInternet';
+import FundWallet from './screens/FundWallet';
 
-const AuthModalController = () => {
+const ModalController = () => {
   const dispatch = useDispatch();
   const { initAuthentication } = useSelector(userSelector);
   const [step, setStep] = useState(null);
@@ -29,23 +30,21 @@ const AuthModalController = () => {
     setStep(null);
   }
 
+  const modalProps = { close, setStep };
+
   return (
     <>
       {initAuthentication && (
         <div>
-          {step === 'login' && <Login close={close} setStep={setStep} />}
-          {step === 'register' && <Register close={close} setStep={setStep} />}
-          {step === 'signIn' && <SignInPin close={close} setStep={setStep} />}
-          {step === 'reset' && <ResetPin close={close} setStep={setStep} />}
-          {step === 'createPinMessage' && (
-            <CreatePinMessage close={close} setStep={setStep} />
-          )}
-          {step === 'createPin' && (
-            <CreatePin close={close} setStep={setStep} />
-          )}
-          {step === 'confirmPin' && (
-            <ConfirmPin close={close} setStep={setStep} />
-          )}
+          {step === 'login' && <Login {...modalProps} />}
+          {step === 'register' && <Register {...modalProps} />}
+          {step === 'signIn' && <SignInPin {...modalProps} />}
+          {step === 'reset' && <ResetPin {...modalProps} />}
+          {step === 'createPinMessage' && <CreatePinMessage {...modalProps} />}
+          {step === 'createPin' && <CreatePin {...modalProps} />}
+          {step === 'confirmPin' && <ConfirmPin {...modalProps} />}
+          {step === 'confirmPin' && <ConfirmPin {...modalProps} />}
+          {step === 'fundWallet' && <FundWallet {...modalProps} />}
           {step === 'offline' && <NoInternet close={close} />}
         </div>
       )}
@@ -53,4 +52,4 @@ const AuthModalController = () => {
   );
 };
 
-export default AuthModalController;
+export default ModalController;

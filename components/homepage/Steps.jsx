@@ -11,7 +11,7 @@ const Steps = () => {
         </h1>
         <div className="mx-auto mt-8 max-w-4xl lg:mt-20">
           <div className="grid-cols-2 gap-y-10 gap-x-20 space-y-8 lg:grid lg:space-y-0">
-            <div className="rounded-2xl bg-white p-8 text-center">
+            <div className="rounded-2xl bg-white px-8 py-12 text-center">
               <FontAwesomeIcon
                 icon={faLayerGroup}
                 className="mx-auto h-5 w-5 text-xl text-primary-base"
@@ -24,7 +24,7 @@ const Steps = () => {
                 in one place and set reminders for future transactions.
               </p>
             </div>
-            <div className="rounded-2xl bg-white p-8 text-center">
+            <div className="rounded-2xl bg-white px-8 py-12 text-center">
               <FontAwesomeIcon
                 icon={faLayerGroup}
                 className="mx-auto h-5 w-5 text-xl text-primary-base"
@@ -35,7 +35,7 @@ const Steps = () => {
                 from the comfort of your home.
               </p>
             </div>
-            <div className="rounded-2xl bg-white p-8 text-center">
+            <div className="rounded-2xl bg-white px-8 py-12 text-center">
               <FontAwesomeIcon
                 icon={faLayerGroup}
                 className="mx-auto h-5 w-5 text-xl text-primary-base"
@@ -46,7 +46,7 @@ const Steps = () => {
                 payment.
               </p>
             </div>
-            <div className="rounded-2xl bg-white p-8 text-center">
+            <div className="rounded-2xl bg-white px-8 py-12 text-center">
               <FontAwesomeIcon
                 icon={faLayerGroup}
                 className="mx-auto h-5 w-5 text-xl text-primary-base"

@@ -12,11 +12,11 @@ const AboutBanner = () => {
         />
       </div>
       <div className="container relative top-28 z-20 mx-auto px-4 sm:top-2 2xl:px-16">
-        <div className="smpt-10 ml-auto w-full rounded-xl bg-primary-base px-10 py-10 sm:w-446 sm:rounded-t-xl sm:pb-16">
+        <div className="smpt-10 ml-auto w-full rounded-xl bg-primary-base px-6 py-5 sm:w-446 sm:rounded-t-xl sm:pb-16 lg:px-10 lg:py-10">
           <div className="max-w-md text-lg font-bold leading-snug text-white sm:text-3xl">
             Enjoy those family moments with uninterrupted supply
           </div>
-          <p className="mt-2 text-sm text-gray-300">
+          <p className="mt-2 text-xs text-gray-300 lg:text-sm">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
             invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
           </p>

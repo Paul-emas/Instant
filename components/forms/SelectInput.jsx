@@ -89,7 +89,7 @@ const SelectInput = ({
                     </div>
                     {selectedOption?.meter?._id === option?.meter?._id && (
                       <FontAwesomeIcon
-                        className="-mr-5 h-6 w-6 scale-150 transform text-secondary-green"
+                        className="-mr-5 h-6 w-6 text-secondary-green"
                         icon={faCheckCircle}
                       />
                     )}

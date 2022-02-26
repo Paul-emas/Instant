@@ -10,7 +10,7 @@ import MenuIcon from '../../public/svgs/menu.svg';
 
 import Sidebar from '../layout/Sidebar';
 import PageLoader from '../loaders/PageLoader';
-import AuthModalController from '../modals/AuthModalController';
+import ModalController from '../modals/ModalController';
 import { setInitAuthentication } from '../../slices/user';
 
 const Wrapper = ({ children }) => {
@@ -58,7 +58,7 @@ const Wrapper = ({ children }) => {
       {pageLoading && <PageLoader />}
       {!pageLoading && (
         <>
-          <AuthModalController />
+          <ModalController />
           {!isRouteProtected && <div>{children}</div>}
           {isRouteProtected && (
             <div className="min-h-screen w-full overflow-hidden bg-gray-300">

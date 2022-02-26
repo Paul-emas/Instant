@@ -60,7 +60,7 @@ const Footer = () => {
                   </Link>
                 </div>
               </div>
-              <div className="col-span-3 mt-5 w-full lg:mt-0 lg:w-auto">
+              <div className="col-span-3 w-1/2 lg:w-auto">
                 <h2 className="font-semibold">Legal</h2>
                 <div className="mt-5 flex flex-col space-y-4 lg:mt-10 lg:space-y-8">
                   <Link href="">

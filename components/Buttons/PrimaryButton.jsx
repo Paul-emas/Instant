@@ -2,7 +2,15 @@ import PropTypes from 'prop-types';
 import { faBolt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const PrimaryButton = ({ loading, className, size = 'large', disabled, children, onClick }) => {
+const PrimaryButton = ({
+  loading,
+  className,
+  size = 'large',
+  disabled,
+  children,
+  onClick,
+  transparent,
+}) => {
   let height = '';
   if (size === 'large') {
     height = 'h-14 lg:h-16 text-sm lg:text-base';
@@ -11,6 +19,7 @@ const PrimaryButton = ({ loading, className, size = 'large', disabled, children,
   } else {
     height = 'h-9 text-xs';
   }
+  const bg = transparent ? 'bg-transparent border-2' : 'bg-primary-base';
   return (
     <button
       disabled={disabled}
@@ -18,7 +27,7 @@ const PrimaryButton = ({ loading, className, size = 'large', disabled, children,
       onClick={onClick}
       className={`${
         disabled ? 'pointer-events-none opacity-70' : ''
-      } ${className} ${height} btn btn-white flex transform items-center justify-center bg-primary-base uppercase`}
+      } ${className} ${height} ${bg} btn btn-white flex transform items-center justify-center uppercase`}
     >
       {loading ? (
         <FontAwesomeIcon

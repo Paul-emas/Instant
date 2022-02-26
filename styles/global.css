@@ -23,16 +23,6 @@ input[type='number']::-webkit-outer-spin-button {
   justify-content: center;
 }
 
-@screen lg {
-  .flickity-page-dots {
-    bottom: -40px !important;
-  }
-  .flickity-page-dots .dot {
-    width: 16px !important;
-    height: 16px !important;
-  }
-}
-
 /* white circles */
 .flickity-page-dots .dot {
   width: 10px;
@@ -114,18 +104,6 @@ input[type='number']::-webkit-outer-spin-button {
   background-size: contain;
 }
 
-.auth-banner-1 {
-  background-image: url('../public/images/auth/banner-1.webp');
-}
-
-.auth-banner-2 {
-  background-image: url('../public/images/auth/banner-2.webp');
-}
-
-.auth-banner-3 {
-  background-image: url('../public/images/auth/banner-3.webp');
-}
-
 .scale {
   @apply transform transition-all duration-100 active:scale-95;
 }
@@ -148,6 +126,9 @@ input[type='number']::-webkit-outer-spin-button {
 @screen 2xl {
   .main-content {
     padding-left: 300px;
+  }
+  .xl\:container {
+    max-width: 1536px !important;
   }
 }
 
@@ -186,9 +167,21 @@ input[type='number']::-webkit-outer-spin-button {
 
 .banner-4 {
   background-repeat: no-repeat;
-  background-size: cover;
-  background-image: linear-gradient(to left, rgba(0, 19, 25, 0.27) 0%, #001319 100%),
-    url('../public/images/banners/banner-4.webp');
+  background-image: url('../public/images/banners/banner-4-sm.webp');
+}
+
+@screen lg {
+  .flickity-page-dots {
+    bottom: -40px !important;
+  }
+  .flickity-page-dots .dot {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .banner-4 {
+    background-image: linear-gradient(to left, rgba(0, 19, 25, 0.27) 0%, #001319 100%),
+      url('../public/images/banners/banner-4.webp');
+  }
 }
 
 .loading {

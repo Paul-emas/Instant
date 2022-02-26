@@ -1,3 +1,4 @@
+import ContactCard from '../ContactCard';
 import Accordion from './Accordion';
 
 const FAQs = () => {
@@ -50,6 +51,9 @@ const FAQs = () => {
             </a>
           </p>
         </div>
+      </div>
+      <div className="mx-auto mt-8 hidden w-64 justify-center rounded-xl px-5 py-3 shadow-lg lg:flex">
+        <ContactCard />
       </div>
     </div>
   );

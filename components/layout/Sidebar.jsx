@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, userSelector } from '../../slices/user';
+import { setInitAuthentication, setUser, userSelector } from '../../slices/user';
 
 import WalletIcon from '../../public/svgs/wallet-sm.svg';
 import UserCard from '../UserCard';
@@ -131,7 +131,14 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                   </p>
                 </div>
               </div>
-              <button className="h-8 w-fund cursor-pointer rounded-lg bg-secondary-green text-center text-xxs font-semibold text-white hover:bg-opacity-80 2xl:w-24 2xl:text-xs">
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(setInitAuthentication('fundWallet'));
+                  setOpenNav(false);
+                }}
+                className="h-8 w-fund cursor-pointer rounded-lg bg-secondary-green text-center text-xxs font-semibold text-white hover:bg-opacity-80 2xl:w-24 2xl:text-xs"
+              >
                 Fund wallet
               </button>
             </div>
@@ -141,7 +148,10 @@ const Sidebar = ({ openNav, setOpenNav }) => {
               <div key={index}>
                 <a>
                   <button
-                    onClick={() => router.push(url)}
+                    onClick={() => {
+                      router.push(url);
+                      setOpenNav(false);
+                    }}
                     className={`${
                       router.asPath === url
                         ? 'active-icon bg-white text-primary-base'
