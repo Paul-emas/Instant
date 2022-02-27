@@ -222,3 +222,21 @@ export async function getUserWalletBalance(token) {
     if (error.response) return { error: error.response.data };
   }
 }
+
+export async function getUserWalletTransactions(token, skip, limit) {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/transaction/wallet/me?skip=${skip}&limit=${limit}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}

@@ -6,6 +6,7 @@ const initialState = {
   authPin: null,
   userProviders: null,
   userTransactions: null,
+  userWalletTransactions: null,
   userMeters: null,
   initAuthentication: '',
   walletBalance: 0.0,
@@ -39,6 +40,9 @@ const userSlice = createSlice({
     setWalletBalance: (state, { payload }) => {
       state.initAuthentication = payload;
     },
+    setUserWalletTransactions: (state, { payload }) => {
+      state.initAuthentication = payload;
+    },
     userSignOut: () => {
       console.log('User has been logged out....');
     },
@@ -54,6 +58,7 @@ export const {
   setUserMeter,
   setInitAuthentication,
   setWalletBalance,
+  setUserWalletTransactions,
   userSignOut,
 } = userSlice.actions;
 

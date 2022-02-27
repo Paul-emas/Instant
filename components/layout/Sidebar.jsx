@@ -8,6 +8,7 @@ import {
   faMoneyBillWave,
   faSun,
   faUser,
+  faWallet,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
@@ -72,6 +73,12 @@ const Sidebar = ({ openNav, setOpenNav }) => {
       name: 'Transactions',
       url: '/transactions',
       icon: faMoneyBillWave,
+    },
+    {
+      name: 'Wallet History',
+      url: '/transactions/wallet',
+      icon: faWallet,
+      isMobile: true,
     },
     {
       name: 'Profile',
@@ -155,7 +162,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
             </div>
           </div>
           <div className="space-y-2.5 px-3 py-8 2xl:space-y-5 2xl:px-6">
-            {routes.map(({ name, url, icon }, index) => (
+            {routes.map(({ name, url, icon, isMobile }, index) => (
               <div key={index}>
                 <a>
                   <button
@@ -167,11 +174,13 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                       router.asPath === url
                         ? 'active-icon bg-white text-primary-base'
                         : 'text-white  hover:bg-primary-hover'
+                    } ${
+                      isMobile ? 'block lg:hidden' : 'block'
                     } w-full rounded-xl py-4 pl-6 text-left duration-100`}
                   >
                     <span className="flex items-center">
                       <FontAwesomeIcon icon={icon} className="h-4 w-4 lg:h-5 lg:w-5" />
-                      <span className="ml-5 text-xs font-bold lg:text-sm">{name}</span>
+                      <span className="ml-5 text-sm font-bold">{name}</span>
                     </span>
                   </button>
                 </a>

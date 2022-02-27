@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserTransactions } from '../api';
+import { getUserWalletTransactions } from '../api';
 import { persistSelector } from '../slices/persist';
 import { toast } from 'react-toastify';
-import { setUserTransactions, userSelector } from '../slices/user';
+import { setUserWalletTransactions, userSelector } from '../slices/user';
 
-export default function useFetchTransaction(itemsPerPage) {
+export default function useFetchWalletTransactions(itemsPerPage) {
   const dispatch = useDispatch();
-  const { userTransactions } = useSelector(userSelector);
+  const { userWalletTransactions } = useSelector(userSelector);
   const { token, isLoggedIn } = useSelector(persistSelector);
   const [transactions, setTransactions] = useState([]);
   const [pageLoading, setPageLoading] = useState(true);
@@ -16,19 +16,19 @@ export default function useFetchTransaction(itemsPerPage) {
   const [tableLoading, setTabelLoading] = useState(false);
 
   useEffect(() => {
-    if (!userTransactions) {
+    if (!userWalletTransactions) {
       fetchTransactions();
     } else {
-      setTransactions(userTransactions?.docs);
-      setData(userTransactions);
+      setTransactions(userWalletTransactions?.docs);
+      setData(userWalletTransactions);
       setPageLoading(false);
     }
-  }, [userTransactions]);
+  }, [userWalletTransactions]);
 
   async function fetchTransactions(currentPage = 0) {
     if (token && isLoggedIn) {
       setTabelLoading(true);
-      const resp = await getUserTransactions(token, currentPage, itemsPerPage);
+      const resp = await getUserWalletTransactions(token, currentPage, itemsPerPage);
 
       if (resp?.error) {
         toast.error('Something went wrong');
@@ -38,7 +38,7 @@ export default function useFetchTransaction(itemsPerPage) {
       }
 
       if (resp?.data) {
-        dispatch(setUserTransactions(resp.data));
+        dispatch(setUserWalletTransactions(resp.data));
         const { docs } = resp.data;
         setData(resp.data);
         setTransactions(docs);

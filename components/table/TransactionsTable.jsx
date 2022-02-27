@@ -18,13 +18,14 @@ const TransactionsTable = ({
   loading,
   paginate,
   children,
+  title = 'Your transcations',
 }) => {
   const router = useRouter();
   const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
   const [activeTab, setActiveTab] = useState(0);
 
   const tableProps = {
-    title: 'Your transcations',
+    title,
     headings: [
       'Meter name',
       'Date',
@@ -50,7 +51,13 @@ const TransactionsTable = ({
                   </button>
                 </Link>
               ) : (
-                <Button>Wallet History</Button>
+                <>
+                  {!router.asPath.includes('/wallet') && (
+                    <Link href="/transactions/wallet">
+                      <Button>Wallet History</Button>
+                    </Link>
+                  )}
+                </>
               )}
             </>
           )}

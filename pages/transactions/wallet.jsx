@@ -1,25 +1,29 @@
 import { useEffect, useState } from 'react';
-import useFetchTransaction from '../hooks/useFetchTransaction';
+import Link from 'next/link';
+import useFetchWalletTransactions from '../../hooks/useFetchWalletTransactions';
+import { useDispatch } from 'react-redux';
 
-import WalletCard from '../components/WalletCard';
-import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
-import Pagination from '../components/table/Pagination';
-import TransactionsTable from '../components/table/TransactionsTable';
-import TransactionDataDefault from '../components/table/TransactionDataDefault';
-import TransactionDataMobile from '../components/table/TransactionDataMobile';
-import Modal from '../components/modals';
-import Receipt from '../components/modals/Receipt';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+
+import BuyElectricityModal from '../../components/modals/screens/BuyElectricityModal';
+import Pagination from '../../components/table/Pagination';
+import TransactionsTable from '../../components/table/TransactionsTable';
+import TransactionDataDefault from '../../components/table/TransactionDataDefault';
+import TransactionDataMobile from '../../components/table/TransactionDataMobile';
+import Button from '../../components/Button';
+import { setInitAuthentication } from '../../slices/user';
 
 export default function Transactions() {
+  const dispatch = useDispatch();
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [totalDocs, setTotalDocs] = useState(0);
   const [itemsPerPage, setItemPerPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-  const [paginatedTransactions, setPaginatedTransactions] = useState(transactions);
   const { data, transactions, pageLoading, error, tableLoading, init } =
-    useFetchTransaction(itemsPerPage);
+    useFetchWalletTransactions(itemsPerPage);
+  const [paginatedTransactions, setPaginatedTransactions] = useState([]);
 
-  const [receipt, setReceipt] = useState(null);
   const [openReceiptModal, setOpenReceiptModal] = useState(false);
 
   useEffect(() => {
@@ -43,7 +47,7 @@ export default function Transactions() {
     <>
       {pageLoading && (
         <div className="pt-5 sm:pt-10">
-          <div className="w-full rounded-3xl bg-primary-light py-16 sm:bg-white"></div>
+          <div className="relative h-10 w-36 rounded-lg bg-white py-2 px-4"></div>
           <div className="mt-5 min-h-screen w-full rounded-xl bg-primary-light sm:bg-white"></div>
         </div>
       )}
@@ -54,19 +58,16 @@ export default function Transactions() {
             open={openBuyElectricityModal}
             setOpen={setOpenBuyElectricityModal}
           />
-          {openReceiptModal && (
-            <Modal
-              close={() => setOpenReceiptModal(false)}
-              border={false}
-              setOpen={setOpenReceiptModal}
-            >
-              <Receipt receipt={receipt} />
-            </Modal>
-          )}
           <div className="pt-5 sm:pt-10">
-            <WalletCard />
+            <Link href="/transactions">
+              <button className="relative flex items-center justify-center rounded-lg bg-primary-light py-2 px-4 text-xs font-semibold hover:opacity-80 lg:bg-white lg:text-sm">
+                <FontAwesomeIcon icon={faChevronLeft} className="mr-2 h-3 w-3" />
+                <span className="lg:mt-0.5">Go back</span>
+              </button>
+            </Link>
           </div>
           <TransactionsTable
+            title="Wallet transactions"
             loading={tableLoading}
             transactions={paginatedTransactions}
             setOpenBuyElectricityModal={setOpenBuyElectricityModal}
@@ -80,13 +81,14 @@ export default function Transactions() {
               />
             )}
           >
-            <TransactionDataDefault
-              setReceipt={setReceipt}
-              setOpenReceiptModal={setOpenReceiptModal}
-              transactions={paginatedTransactions}
-            />
+            <TransactionDataDefault transactions={paginatedTransactions} />
             <TransactionDataMobile transactions={paginatedTransactions} />
           </TransactionsTable>
+          <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
+            <Button onClick={() => dispatch(setInitAuthentication('fundWallet'))}>
+              Fund Wallet
+            </Button>
+          </div>
         </>
       )}
     </>
