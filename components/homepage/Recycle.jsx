@@ -28,7 +28,7 @@ const Recycle = (props) => {
             </div>
             <div>
               <div className="text-center text-xl font-bold leading-tight text-primary-dark lg:text-left lg:text-5xl xl:leading-tight">
-                Lorem ipsum dolor sit amet, consetetur
+                What we do
               </div>
               <p className="mt-4 text-center text-sm lg:text-left lg:text-base">
                 At Instant Energy, we make Energy accessible and affordable in emerging, underserved

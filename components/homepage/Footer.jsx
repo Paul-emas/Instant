@@ -8,7 +8,7 @@ import SocialCard from '../SocialCard';
 const Footer = () => {
   return (
     <footer className="bg-primary-lightGray pt-8 lg:pt-24">
-      <div className="container mx-auto px-0 lg:px-14">
+      <div className="container mx-auto px-0 lg:px-14 xl:container">
         <div className="grid lg:grid-cols-6">
           <div className="col-span-2 border-b border-secondary-lightGreen px-4 pb-5 text-center lg:border-none lg:px-0 lg:pb-0 lg:text-left">
             <Image src="/images/logo.webp" width={185} height={40} className="object-contain" />

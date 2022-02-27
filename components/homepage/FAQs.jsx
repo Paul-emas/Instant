@@ -35,7 +35,7 @@ const FAQs = () => {
       <div className="container mx-auto px-4 lg:px-10">
         <div className="text-center">
           <h1 className="mx-auto max-w-2xl text-center text-2xl font-bold lg:text-5xl ">
-            Instant Energy FAQs
+            Frequently Asked Questions
           </h1>
         </div>
         <div className="mx-auto mt-12 max-w-6xl lg:mt-24 2xl:max-w-5xl">

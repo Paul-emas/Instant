@@ -13,13 +13,7 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector, setUserPhone } from '../../../slices/persist';
 
-const AddMeter = ({
-  open,
-  setOpen,
-  goBack,
-  selectedMeter,
-  setSelectedMeter,
-}) => {
+const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) => {
   const dispatch = useDispatch();
   const { token, userPhone } = useSelector(persistSelector);
   const {
@@ -47,11 +41,7 @@ const AddMeter = ({
       setIsLoading(true);
       const { label, meter } = formData;
 
-      const response = await validateNewMeter(
-        meter,
-        selectedProvider._id,
-        token,
-      );
+      const response = await validateNewMeter(meter, selectedProvider._id, token);
 
       const { data, error } = response;
 
@@ -111,11 +101,7 @@ const AddMeter = ({
           }}
         >
           <div className={`${goBack && 'pt-5'}`}>
-            <BuyElectricityTab
-              tabs={tabs}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-            />
+            <BuyElectricityTab tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
           </div>
           <div className="px-6 pt-6 lg:px-8">
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -154,7 +140,7 @@ const AddMeter = ({
                     return true;
                   }
                 }}
-                onChange={value => setPhone(value)}
+                onChange={(value) => setPhone(value)}
               />
               <FormInput
                 className="mt-2 py-2.5 px-5"
@@ -168,11 +154,7 @@ const AddMeter = ({
                 })}
               />
               <div className="mt-10">
-                <PrimaryButton
-                  loading={isLoading}
-                  disabled={isLoading}
-                  size="base"
-                >
+                <PrimaryButton loading={isLoading} size="base">
                   {selectedMeter ? 'Save' : 'Add Meter'}
                 </PrimaryButton>
               </div>

@@ -131,7 +131,7 @@ const PostPaid = ({
             ?
           </span>
         </div>
-        <PrimaryButton size="base" disabled={isLoading} loading={isLoading} className="mt-8">
+        <PrimaryButton size="base" loading={isLoading} className="mt-8">
           Proceed to Payment
         </PrimaryButton>
       </form>

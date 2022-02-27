@@ -24,7 +24,7 @@ const Wrapper = ({ children }) => {
   let isRouteProtected = false;
 
   protectedRoutes.forEach((route) => {
-    if (router.asPath === route) {
+    if (router.asPath.includes(route)) {
       isRouteProtected = true;
     }
     return isRouteProtected;

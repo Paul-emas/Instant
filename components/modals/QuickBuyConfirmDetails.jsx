@@ -75,7 +75,6 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
         </div>
         <div className="mt-10">
           <PrimaryButton
-            disabled={isLoading}
             loading={isLoading}
             onClick={() => {
               setIsLoading(true);

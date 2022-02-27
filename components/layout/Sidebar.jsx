@@ -11,12 +11,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
-import { setInitAuthentication, setUser, userSelector } from '../../slices/user';
+import { setInitAuthentication, setUser, setWalletBalance, userSelector } from '../../slices/user';
 
 import WalletIcon from '../../public/svgs/wallet-sm.svg';
 import UserCard from '../UserCard';
 import { persistSelector } from '../../slices/persist';
-import { getUserAccount } from '../../api';
+import { getUserAccount, getUserWalletBalance } from '../../api';
 
 const Sidebar = ({ openNav, setOpenNav }) => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
 
   useEffect(() => {
     if (!me) {
-      fetchUser();
+      Promise.all([fetchUser(), fetchWalletBalance()]);
     }
   }, [me]);
 
@@ -38,6 +38,17 @@ const Sidebar = ({ openNav, setOpenNav }) => {
     }
     if (resp?.data) {
       dispatch(setUser(resp?.data));
+    }
+  }
+
+  async function fetchWalletBalance() {
+    const resp = await getUserWalletBalance(token);
+    if (resp?.error) {
+      dispatch(setWalletBalance(0.0));
+    }
+    if (resp?.data) {
+      console.log(resp.data);
+      // dispatch(setWalletBalance(resp?.data));
     }
   }
 

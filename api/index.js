@@ -177,3 +177,48 @@ export async function getUserTransactions(token, skip, limit) {
     if (error.response) return { error: error.response.data };
   }
 }
+
+export async function createWalletTransaction(payload, token) {
+  try {
+    const response = await axios.post(`${baseUrl}/transaction/wallet/create`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}
+
+export async function fundWalletTransaction(payload, token) {
+  try {
+    const response = await axios.post(`${baseUrl}/transaction/wallet/fund`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}
+
+export async function getUserWalletBalance(token) {
+  try {
+    const response = await axios.get(`${baseUrl}/transaction/wallet/me`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}

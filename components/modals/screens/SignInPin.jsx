@@ -73,7 +73,7 @@ const SignInPin = ({ close, setStep }) => {
             inputMode="number"
             autoSelect={true}
           />
-          <PrimaryButton size="base" className="mt-8" disabled={isLoading} loading={isLoading}>
+          <PrimaryButton size="base" className="mt-8" loading={isLoading}>
             Continue
           </PrimaryButton>
         </form>

@@ -1,15 +1,16 @@
+import { useDispatch } from 'react-redux';
 import WalletIcon from '../public/svgs/wallet-light.svg';
+import { setInitAuthentication } from '../slices/user';
 
 const WalletCard = ({ className }) => {
+  const dispatch = useDispatch();
+
   return (
     <div
       className={`${className} relative w-full overflow-hidden rounded-3xl bg-primary-base pt-9 pb-24`}
     >
       <div className="absolute right-0 top-0 z-10 h-full w-full sm:w-446">
-        <img
-          src="/images/wallet-banner.png"
-          className="h-full w-full object-cover"
-        />
+        <img src="/images/wallet-banner.png" className="h-full w-full object-cover" />
       </div>
       <div className="absolute z-20 h-full w-full">
         <div className="z-20 flex items-center justify-center px-12 sm:justify-between">
@@ -24,7 +25,10 @@ const WalletCard = ({ className }) => {
             </div>
           </div>
           <div>
-            <button className="hidden rounded-lg bg-white py-3 px-5 text-xs font-bold uppercase sm:block">
+            <button
+              onClick={() => dispatch(setInitAuthentication('fundWallet'))}
+              className="hidden rounded-lg bg-white py-3 px-5 text-xs font-bold uppercase sm:block"
+            >
               Fund wallet
             </button>
           </div>

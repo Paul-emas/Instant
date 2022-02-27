@@ -90,7 +90,7 @@ const QuickPayPhoneInput = () => {
         }}
         onChange={(value) => setPhone(value)}
       />
-      <PrimaryButton loading={isLoading} disabled={isLoading} className="mt-8 mb-7" type="large">
+      <PrimaryButton loading={isLoading} className="mt-8 mb-7" type="large">
         Buy Electricity
       </PrimaryButton>
     </form>
