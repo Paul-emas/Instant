@@ -26,7 +26,7 @@ const CreatePin = ({ close, setStep }) => {
   }
 
   return (
-    <Modal border={false} close={close}>
+    <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 lg:px-8">
         <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           Secure your account by creating a PIN
@@ -38,7 +38,7 @@ const CreatePin = ({ close, setStep }) => {
           <PinInput
             length={6}
             secret
-            onChange={value => setPin(value)}
+            onChange={(value) => setPin(value)}
             type="numeric"
             className="hidden"
             inputMode="number"
