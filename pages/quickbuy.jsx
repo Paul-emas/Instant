@@ -28,13 +28,17 @@ export default function QuickBuy() {
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
 
   useEffect(() => {
-    if (quickbuy && !isLoggedIn) {
-      setOpenBuyElectricityModal(true);
-      setTimeout(() => {
-        dispatch(setQuickBuy(false));
-      }, 200);
+    if (quickbuy) {
+      if (!isLoggedIn) {
+        setOpenBuyElectricityModal(true);
+        setTimeout(() => {
+          dispatch(setQuickBuy(false));
+        }, 200);
+      } else {
+        router.push('/dashboard');
+      }
     } else {
-      router.push('/dashboard');
+      router.push('/');
     }
     fetchTransaction();
   }, []);

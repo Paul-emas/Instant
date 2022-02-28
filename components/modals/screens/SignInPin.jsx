@@ -55,7 +55,7 @@ const SignInPin = ({ close, setStep }) => {
     <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 lg:px-8">
         <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">Sign in to your account</h1>
-        <p className="mt-3 text-center text-sm text-gray-700">Your 6-digit access code</p>
+        <p className="mt-3 text-center text-sm text-gray-700">Your 4-digit access code</p>
         <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
             length={4}

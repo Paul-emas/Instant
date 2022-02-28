@@ -15,6 +15,11 @@ import PaymentPlans from '../components/forms/PaymentPlans';
 import Buy from '../components/homepage/Buy';
 import Steps from '../components/homepage/Steps';
 
+import FloatingIcon1 from '../public/svgs/floating/float-1.svg';
+import FloatingIcon2 from '../public/svgs/floating/float-2.svg';
+import FloatingIcon3 from '../public/svgs/floating/float-3.svg';
+import FloatingIcon4 from '../public/svgs/floating/float-4.svg';
+
 export default function Home() {
   return (
     <div>
@@ -31,6 +36,9 @@ export default function Home() {
       <Header>
         <div className="justify-between lg:flex">
           <div className="relative top-16 max-w-3xl sm:top-20 lg:w-1/2">
+            <FloatingIcon1 className="absolute top-24" />
+            <FloatingIcon2 className="absolute top-32 right-0" />
+            <FloatingIcon3 className="absolute bottom-32 2xl:-left-20" />
             <Image
               src="/images/woman.webp"
               layout="intrinsic"
@@ -40,23 +48,24 @@ export default function Home() {
               priority
             />
           </div>
-          <div className="mx-auto flex items-center pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full 2xl:pb-10">
+          <div className="relative mx-auto flex items-center pt-40 pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full lg:items-start 2xl:pb-10">
             <QuickPay />
+            <FloatingIcon4 className="absolute bottom-32 2xl:-right-20" />
           </div>
         </div>
       </Header>
       <main>
         {/* <Partners /> */}
         <UserServices />
-        <HomeBanners />
         <Steps />
+        <HomeBanners />
         {/* <PaymentPlans /> */}
         {/* <Buy /> */}
         {/* <Counter /> */}
         {/* <DownloadApp /> */}
+        <FAQs />
         <People />
         <Slider />
-        <FAQs />
         <Partners />
         <Footer />
       </main>

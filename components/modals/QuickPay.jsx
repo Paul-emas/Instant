@@ -12,7 +12,7 @@ const QuickPay = () => {
           <div className="lg:pt-8">
             <div className="max-w-md">
               <h2 className="px-8 pt-5 text-xl font-bold leading-tight text-black lg:mb-2 lg:py-0 lg:text-32xl 2xl:mb-5 2xl:leading-tight ">
-                Easy, Smart Energy <br /> Pre-pay
+                Easy, Smart <span className="text-secondary-green">Energy</span> <br /> Pre-pay
               </h2>
             </div>
             <QuickPayPhoneInput />

@@ -68,7 +68,7 @@ export default function Dashboard() {
                   {me?.firstName ? `Hello ${me.firstName?.split(' ')[0]},` : 'Buy Electricity'}
                 </h1>
                 <p className="text-md scale-up font-medium text-font-muted">
-                  Never have interrupted power supply, making life easy.
+                  Recharge meter, Get visibility, Track your spending & Usage
                 </p>
               </div>
               <Button onClick={() => setOpenBuyElectricityModal(true)}>BUY ELECTRICITY</Button>

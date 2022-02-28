@@ -32,7 +32,7 @@ const ContactCard = ({ top, up }) => {
             <div className="ml-4">
               <p className="relative top-1 text-xs text-gray-400">Visit us</p>
               <p className="text-lg font-bold text-font-darker">
-                Suite 409, Nawa Complex Jahi, Abuja. Nigeria.
+                Suite 410, Nawa Complex Jahi, Abuja. Nigeria.
               </p>
             </div>
           </div>

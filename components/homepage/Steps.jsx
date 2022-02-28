@@ -1,17 +1,21 @@
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import FloatIcon5 from '../../public/svgs/floating/float-5.svg';
+import FloatIcon6 from '../../public/svgs/floating/float-6.svg';
 
 const Steps = () => {
   return (
-    <div className="bg-primary-light py-20 lg:pt-36 lg:pb-40">
-      <div className="container mx-auto px-4 sm:px-5 xl:px-14">
+    <div className="py-20 lg:pt-16 lg:pb-40">
+      <div className="container relative mx-auto px-4 sm:px-5 xl:container xl:px-14">
+        <FloatIcon5 className="absolute left-14 top-20" />
+        <FloatIcon6 className="absolute right-14 -top-8" />
         <h1 className="mx-auto px-10 text-center text-xl font-bold text-primary-dark sm:px-0 lg:max-w-4xl lg:text-5xl xl:leading-tight">
-          Service that is a step ahead
+          We provide <span className="text-secondary-green">amazing features</span> to ensure you
+          have the best energy experience
         </h1>
-        <div className="mx-auto mt-8 max-w-4xl lg:mt-20">
-          <div className="grid-cols-2 gap-y-10 gap-x-20 space-y-8 lg:grid lg:space-y-0">
-            <div className="rounded-2xl bg-white px-8 py-12 text-center">
+        <div className="mx-auto mt-8 lg:mt-32">
+          <div className="grid-cols-4 gap-y-10 gap-x-5 space-y-8 lg:grid lg:space-y-0">
+            <div className="rounded-2xl border bg-white px-10 py-12">
               <FontAwesomeIcon
                 icon={faLayerGroup}
                 className="mx-auto h-5 w-5 text-xl text-primary-base"
@@ -24,7 +28,7 @@ const Steps = () => {
                 in one place and set reminders for future transactions.
               </p>
             </div>
-            <div className="rounded-2xl bg-white px-8 py-12 text-center">
+            <div className="rounded-2xl border bg-white px-10 py-12">
               <FontAwesomeIcon
                 icon={faLayerGroup}
                 className="mx-auto h-5 w-5 text-xl text-primary-base"
@@ -35,7 +39,7 @@ const Steps = () => {
                 from the comfort of your home.
               </p>
             </div>
-            <div className="rounded-2xl bg-white px-8 py-12 text-center">
+            <div className="rounded-2xl border bg-white px-10 py-12">
               <FontAwesomeIcon
                 icon={faLayerGroup}
                 className="mx-auto h-5 w-5 text-xl text-primary-base"
@@ -46,7 +50,7 @@ const Steps = () => {
                 payment.
               </p>
             </div>
-            <div className="rounded-2xl bg-white px-8 py-12 text-center">
+            <div className="rounded-2xl border bg-white px-10 py-12">
               <FontAwesomeIcon
                 icon={faLayerGroup}
                 className="mx-auto h-5 w-5 text-xl text-primary-base"
