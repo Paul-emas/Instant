@@ -43,7 +43,6 @@ const ModalController = () => {
           {step === 'createPinMessage' && <CreatePinMessage {...modalProps} />}
           {step === 'createPin' && <CreatePin {...modalProps} />}
           {step === 'confirmPin' && <ConfirmPin {...modalProps} />}
-          {step === 'confirmPin' && <ConfirmPin {...modalProps} />}
           {step === 'fundWallet' && <FundWallet {...modalProps} />}
           {step === 'offline' && <NoInternet close={close} />}
         </div>

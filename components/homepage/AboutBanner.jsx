@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const AboutBanner = () => {
   return (
-    <div className="home-banner relative mb-40 flex w-full items-end bg-white sm:overflow-hidden lg:mb-0 xl:mb-0">
+    <div className="home-banner relative mb-40 flex w-full items-end bg-white sm:overflow-hidden lg:mb-0 lg:h-[800px] xl:mb-0">
       <div className="absolute h-full w-full overflow-hidden">
         <Image
           src="/images/banners/banner-5.webp"

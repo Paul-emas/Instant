@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
 import router from 'next/router';
 import PinInput from 'react-pin-input';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,15 +18,9 @@ const SignInPin = ({ close, setStep }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [pin, setPin] = useState('');
 
-  useEffect(() => {
-    if (pin?.length === 6) {
-      onSubmit();
-    }
-  }, [pin]);
-
   const onSubmit = async (e) => {
     e !== undefined && e.preventDefault();
-    if (userPhone && pin.length === 6) {
+    if (userPhone && pin.length === 4) {
       if (!navigator.onLine) {
         dispatch(setInitAuthentication('offline'));
       }
@@ -65,13 +58,15 @@ const SignInPin = ({ close, setStep }) => {
         <p className="mt-3 text-center text-sm text-gray-700">Your 6-digit access code</p>
         <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
-            length={6}
+            length={4}
             secret
             onChange={(value) => setPin(value)}
             type="numeric"
             className="hidden"
             inputMode="number"
             autoSelect={true}
+            initialValue=""
+            regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
           />
           <PrimaryButton size="base" className="mt-8" loading={isLoading}>
             Continue

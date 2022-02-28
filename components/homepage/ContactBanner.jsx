@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 const ContactBanner = () => {
   return (
-    <div className="home-banner relative mb-40 flex w-full items-end bg-white sm:overflow-hidden lg:mb-0 xl:mb-0">
-      <div className="absolute h-full w-full overflow-hidden">
+    <div className="home-banner relative mb-40 flex w-full items-end bg-white sm:overflow-hidden lg:mb-0 lg:h-[800px] xl:mb-0">
+      <div className="absolute h-full w-full overflow-hidden bg-fixed">
         <Image
           src="/images/banners/banner-3.webp"
           layout="fill"

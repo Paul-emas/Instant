@@ -42,14 +42,11 @@ const ResetPin = ({ close, setStep }) => {
         {errorMessage && <ErrorAlert error={errorMessage} setError={setErrorMessage} />}
         <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
-            length={6}
+            length={4}
             secret
             onChange={(value) => setPin(value)}
             type="numeric"
             className="hidden"
-            inputStyle={{
-              border: `${errorMessage ? '2px solid red' : '2px solid #e8e8e8'}`,
-            }}
             inputMode="number"
             autoSelect={true}
           />

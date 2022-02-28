@@ -15,7 +15,7 @@ const CreatePin = ({ close, setStep }) => {
 
   function onSubmit(e) {
     e !== undefined && e.preventDefault();
-    if (pin?.length === 6) {
+    if (pin?.length === 4) {
       if (!navigator.onLine) {
         dispatch(setInitAuthentication('offline'));
         return;
@@ -32,11 +32,11 @@ const CreatePin = ({ close, setStep }) => {
           Secure your account by creating a PIN
         </h1>
         <p className="mx-auto mt-3 max-w-xs text-center text-sm text-gray-700">
-          Choose a 6-digit number as your pin to secure your account
+          Choose a 4-digit number as your pin to secure your account
         </p>
         <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
-            length={6}
+            length={4}
             secret
             onChange={(value) => setPin(value)}
             type="numeric"

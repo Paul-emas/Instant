@@ -23,7 +23,7 @@ const ConfirmPin = ({ close, setStep }) => {
   const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
-    if (confirmPin?.length === 6) {
+    if (confirmPin?.length === 4) {
       onSubmit();
     }
   }, [confirmPin]);
@@ -117,7 +117,7 @@ const ConfirmPin = ({ close, setStep }) => {
         </p>
         <form className="mt-10 flex flex-col items-center" onSubmit={onSubmit}>
           <PinInput
-            length={6}
+            length={4}
             secret
             onChange={(value) => setConfirmPin(value)}
             type="numeric"

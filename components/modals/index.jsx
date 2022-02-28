@@ -68,8 +68,8 @@ const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, ch
           onClick={() => close()}
           className={`${
             isAuth
-              ? 'bg-white lg:bg-secondary-modal lg:bg-opacity-70'
-              : 'bg-secondary-modal bg-opacity-70'
+              ? 'bg-white lg:bg-secondary-modal lg:bg-opacity-80'
+              : 'bg-secondary-modal bg-opacity-80'
           } modal-overlay absolute min-h-screen w-full`}
         ></div>
         <div className={`${isAuth && 'px-5 pt-10 sm:px-0 sm:pt-0'} w-full xs:w-modal`}>
