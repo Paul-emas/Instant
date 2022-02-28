@@ -52,7 +52,7 @@ export default function Meters() {
       );
     },
     tabs: function view() {
-      return <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} center />;
+      return <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />;
     },
     child: function view() {
       if (meters.length <= 0 && !pageLoading) {

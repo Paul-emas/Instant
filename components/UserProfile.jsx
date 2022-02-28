@@ -47,7 +47,7 @@ const UserProfile = ({ user, children }) => {
                   <div className="text-xs text-gray-300">Earn as you refer a friend</div>
                 </div>
               </div>
-              <FontAwesomeIcon icon={faChevronRight} className="h-7 w-7 text-white" />
+              <FontAwesomeIcon icon={faChevronRight} className="h-7 w-7 text-lg text-white" />
             </div>
           </div>
         </div>

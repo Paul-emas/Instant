@@ -75,12 +75,6 @@ const Sidebar = ({ openNav, setOpenNav }) => {
       icon: faMoneyBillWave,
     },
     {
-      name: 'Wallet History',
-      url: '/transactions/wallet',
-      icon: faWallet,
-      isMobile: true,
-    },
-    {
       name: 'Profile',
       url: '/profile',
       icon: faUser,
@@ -161,7 +155,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
               </button>
             </div>
           </div>
-          <div className="space-y-2.5 px-3 py-8 2xl:space-y-5 2xl:px-6">
+          <div className="lg:space-y-2.5 lg:py-8 lg:px-3 2xl:space-y-5 2xl:px-6">
             {routes.map(({ name, url, icon, isMobile }, index) => (
               <div key={index}>
                 <a>
@@ -171,12 +165,10 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                       setOpenNav(false);
                     }}
                     className={`${
-                      router.asPath === url
+                      router.asPath.includes(url)
                         ? 'active-icon bg-white text-primary-base'
                         : 'text-white  hover:bg-primary-hover'
-                    } ${
-                      isMobile ? 'block lg:hidden' : 'block'
-                    } w-full rounded-xl py-4 pl-6 text-left duration-100`}
+                    } w-full border-b border-primary-border py-4 pl-6 text-left duration-100 lg:rounded-xl lg:border-none`}
                   >
                     <span className="flex items-center">
                       <FontAwesomeIcon icon={icon} className="h-4 w-4 lg:h-5 lg:w-5" />

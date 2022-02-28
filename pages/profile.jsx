@@ -40,7 +40,7 @@ export default function Profile() {
                 <h3 className="flex items-start text-xl font-bold text-font-dark">Settings</h3>
               </div>
             </div>
-            <div className="mt-10 hidden lg:block">
+            <div className="hidden lg:block">
               <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
             <div className="grid pb-5 lg:grid-cols-2 lg:pb-24">

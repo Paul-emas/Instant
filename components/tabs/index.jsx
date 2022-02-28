@@ -3,7 +3,7 @@ const index = ({ data, center = false, activeTab, setActiveTab, small }) => {
     <div
       className={`flex ${center ? 'justify-center' : 'justify-center sm:justify-start'} ${
         small ? 'text-xs' : 'text-sm'
-      } mt-5 w-full px-6`}
+      } w-full border-b py-5 px-6`}
     >
       {data?.map(({ name }, ind) => (
         <div

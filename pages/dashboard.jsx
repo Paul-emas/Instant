@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { persistSelector, setQuickBuy } from '../slices/persist';
 import useFetchTransaction from '../hooks/useFetchTransaction';
+import { persistSelector, setQuickBuy } from '../slices/persist';
+import { userSelector } from '../slices/user';
 
 import SolarCard from '../components/ads/SolarCard';
 import Button from '../components/Button';
@@ -20,6 +21,7 @@ import Receipt from '../components/modals/Receipt';
 export default function Dashboard() {
   const dispatch = useDispatch();
   const { quickbuy, isLoggedIn } = useSelector(persistSelector);
+  const { me } = useSelector(userSelector);
   const { transactions, error, pageLoading } = useFetchTransaction(10);
 
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
@@ -62,7 +64,9 @@ export default function Dashboard() {
             <WalletCard className="block sm:hidden" />
             <div className="hidden items-center justify-between sm:flex">
               <div>
-                <h1 className="scale-up text-heading  font-bold">Buy Electricity</h1>
+                <h1 className="scale-up text-heading  font-bold">
+                  {me?.firstName ? `Hello ${me.firstName?.split(' ')[0]},` : 'Buy Electricity'}
+                </h1>
                 <p className="text-md scale-up font-medium text-font-muted">
                   Never have interrupted power supply, making life easy.
                 </p>
@@ -72,7 +76,7 @@ export default function Dashboard() {
             <div className="grid lg:grid-cols-6 lg:space-x-5">
               <div className="scale-up lg:col-span-4">
                 <Chart
-                  title="Units purchased"
+                  title="Monthly Spend"
                   selectedMonth={chartSelectedMonth}
                   setSelectedMonth={setChartSelectedMonth}
                 />
