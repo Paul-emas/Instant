@@ -19,7 +19,12 @@ const SolarCard = ({ className }) => {
                 className="absolute right-1 block h-4 w-4 sm:hidden"
               />
               <div>
-                <h2 className="text-lg font-bold sm:text-2xl">Solar Electricity</h2>
+                <div className="flex items-center text-lg font-bold sm:text-2xl">
+                  <div>Solar Electricity</div>{' '}
+                  <div className="ml-2 h-6 rounded-lg bg-secondary-green px-2 py-1 text-xs font-bold text-white">
+                    Coming Soon
+                  </div>
+                </div>
                 <p className="mt-0.5 pr-20 text-xs font-semibold text-font-muted sm:text-sm">
                   Request solar for residential & Business use with flexible payment plans
                 </p>

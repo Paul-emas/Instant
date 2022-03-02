@@ -290,6 +290,11 @@ input:checked ~ .dot {
 }
 
 .modal-overlay {
-  backdrop-filter: blur(3px);
-  --webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(5px);
+  --webkit-backdrop-filter: blur(5px);
+}
+
+.modal-soon {
+  backdrop-filter: blur(8px);
+  --webkit-backdrop-filter: blur(8px);
 }

@@ -107,7 +107,7 @@ const FundWallet = ({ setStep, close }) => {
               type="currency"
               id="amount"
               errors={errors}
-              label="How much will you like to purchase?"
+              label="Enter amount"
               error={errors.amount ?? false}
               {...register('amount', {
                 required: true,

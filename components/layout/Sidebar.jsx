@@ -168,12 +168,18 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                       router.asPath.includes(url)
                         ? 'active-icon bg-white text-primary-base'
                         : 'text-white  hover:bg-primary-hover'
-                    } w-full border-b border-primary-border py-4 pl-6 text-left duration-100 lg:rounded-xl lg:border-none`}
+                    } relative w-full border-b border-primary-border py-4 pl-6 text-left text-xxs duration-100 lg:rounded-xl lg:border-none`}
                   >
                     <span className="flex items-center">
                       <FontAwesomeIcon icon={icon} className="h-4 w-4 lg:h-5 lg:w-5" />
                       <span className="ml-5 text-sm font-bold">{name}</span>
                     </span>
+
+                    {url === '/solar' && (
+                      <div className="absolute top-3 right-4 rounded-lg bg-red-500 px-2  py-1.5 font-bold text-white lg:right-2">
+                        New
+                      </div>
+                    )}
                   </button>
                 </a>
               </div>

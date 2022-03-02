@@ -101,7 +101,7 @@ const Footer = () => {
       </div>
       <div className="mt-10 border-t py-6 lg:py-8">
         <p className="text-center text-xs text-gray-600 lg:text-base">
-          © 2021. Instant Energy All Rights Reserved{' '}
+          © {new Date().getFullYear()}. Instant Energy All Rights Reserved{' '}
         </p>
       </div>
     </footer>

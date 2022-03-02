@@ -12,7 +12,7 @@ import SolarSkeleton from '../components/skeletons/SolarSkeleton';
 import SunIcon from '../public/svgs/sun.svg';
 import Empty from '../public/svgs/empty-transcation.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faCogs } from '@fortawesome/free-solid-svg-icons';
 
 export default function Solar() {
   const tableProps = {
@@ -75,103 +75,117 @@ export default function Solar() {
   ];
   const [activeTab, setActiveTab] = useState(0);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
-  const [pageLoading, setPageLoading] = useState(true);
+  const [pageLoading, setPageLoading] = useState(false);
   const data = [];
 
-  useEffect(() => {
-    setTimeout(() => {
-      setPageLoading(false);
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setPageLoading(false);
+  //   }, 2000);
+  // }, []);
 
   return (
-    <div className="pt-5 2xl:pt-10">
-      {pageLoading && <SolarSkeleton />}
+    <div className="">
+      {pageLoading && (
+        <div className="pt-5 2xl:pt-10">
+          <SolarSkeleton />
+        </div>
+      )}
 
       {!pageLoading && (
-        <div className="relative">
-          <div className="hidden items-center justify-between sm:flex">
-            <div>
-              <h1 className="text-heading font-bold">Your Solar Plan</h1>
-              <p className="text-md font-medium text-font-muted">
-                Request solar for residential & Business use with flexible payment plans
-              </p>
-            </div>
-            <Button>NEW REQUEST</Button>
-          </div>
-          <div className="grid lg:grid-cols-6 lg:space-x-5">
-            <div className="lg:col-span-2">
-              <SolarAmountCard />
-              <SolarPaymentCard />
-            </div>
-            <div className="lg:col-span-4">
-              <Chart
-                title="Consumption Chart"
-                selectedMonth={chartSelectedMonth}
-                setSelectedMonth={setChartSelectedMonth}
-              />
+        <div className="relative -mx-4 2xl:-mx-7">
+          <div className="modal-soon absolute inset-0 z-30 flex min-h-screen w-full  justify-center bg-white bg-opacity-60 pt-96">
+            <div className="text-4xl font-bold text-primary-dark 2xl:mt-10">
+              <span>
+                <FontAwesomeIcon icon={faCogs} className="mx-auto mb-4 h-28 w-28" />
+              </span>
+              <span>Coming Soon...</span>
             </div>
           </div>
-          <SolarPanelStatus />
+          <div className="px-4 pt-5 2xl:px-7 2xl:pt-10">
+            <div className="hidden items-center justify-between sm:flex">
+              <div>
+                <h1 className="text-heading font-bold">Your Solar Plan</h1>
+                <p className="text-md font-medium text-font-muted">
+                  Always turn off unused appliances
+                </p>
+              </div>
+              <Button>NEW REQUEST</Button>
+            </div>
+            <div className="grid lg:grid-cols-6 lg:space-x-5">
+              <div className="lg:col-span-2">
+                <SolarAmountCard />
+                <SolarPaymentCard />
+              </div>
+              <div className="lg:col-span-4">
+                <Chart
+                  title="Consumption Chart"
+                  selectedMonth={chartSelectedMonth}
+                  setSelectedMonth={setChartSelectedMonth}
+                />
+              </div>
+            </div>
+            <SolarPanelStatus />
 
-          <Table {...tableProps}>
-            {data?.length > 0 &&
-              data.map((el, index) => {
-                const active = index + 1 === el;
-                return (
-                  <tr className="last:-white py-4 pl-6 hover:bg-gray-50" key={index}>
-                    <td className="whitespace-nowrap py-4  pl-6">
-                      <div className="flex items-center">
-                        <div
-                          className={`${
-                            active ? 'bg-font-green' : 'bg-red-600'
-                          } h-12 w-12 rounded-2xl`}
-                        >
-                          <SunIcon className="mx-auto my-3" />
-                        </div>
-                        <div className="ml-8">
-                          <div>
-                            <div className="text-sm font-bold text-font-dark">
-                              Electricity Units
+            <Table {...tableProps}>
+              {data?.length > 0 &&
+                data.map((el, index) => {
+                  const active = index + 1 === el;
+                  return (
+                    <tr className="last:-white py-4 pl-6 hover:bg-gray-50" key={index}>
+                      <td className="whitespace-nowrap py-4  pl-6">
+                        <div className="flex items-center">
+                          <div
+                            className={`${
+                              active ? 'bg-font-green' : 'bg-red-600'
+                            } h-12 w-12 rounded-2xl`}
+                          >
+                            <SunIcon className="mx-auto my-3" />
+                          </div>
+                          <div className="ml-8">
+                            <div>
+                              <div className="text-sm font-bold text-font-dark">
+                                Electricity Units
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-6  py-4">
-                      <div className="text-sm font-light text-font-grey">Nov 27, 2021</div>
-                    </td>
-                    <td className="whitespace-nowrap px-6  py-4">
-                      <div className="text-sm font-light text-font-grey">AEDC</div>
-                    </td>
-                    <td className="whitespace-nowrap px-6  py-4">
-                      <div className="text-sm font-bold">Card</div>
-                    </td>
-                    <td className="whitespace-nowrap px-6  py-4">
-                      <div className="text-sm font-light text-font-grey">GTRE23456789</div>
-                    </td>
-                    <td className="whitespace-nowrap px-6  py-4 text-sm text-gray-500">
-                      <div className="text-sm  font-light text-font-grey">
-                        <span className="font-semibold">NGN</span>
-                        <span className="ml-1 font-bold text-font-dark">10, 000</span>
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-6  py-4 text-xs font-medium">
-                      {active && (
-                        <span className="inline-flex rounded-lg bg-green-100 px-3 py-1 text-xs font-bold leading-5 text-font-green">
-                          Reciept
-                        </span>
-                      )}
-                      {!active && (
-                        <span className="relative inline-flex rounded-lg bg-red-100 px-3 py-1 text-xs font-bold leading-5 text-red-700">
-                          Retry
-                        </span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-          </Table>
+                      </td>
+                      <td className="whitespace-nowrap px-6  py-4">
+                        <div className="text-sm font-light text-font-grey">Nov 27, 2021</div>
+                      </td>
+                      <td className="whitespace-nowrap px-6  py-4">
+                        <div className="text-sm font-light text-font-grey">AEDC</div>
+                      </td>
+                      <td className="whitespace-nowrap px-6  py-4">
+                        <div className="text-sm font-bold">Card</div>
+                      </td>
+                      <td className="whitespace-nowrap px-6  py-4">
+                        <div className="text-sm font-light text-font-grey">GTRE23456789</div>
+                      </td>
+                      <td className="whitespace-nowrap px-6  py-4 text-sm text-gray-500">
+                        <div className="text-sm  font-light text-font-grey">
+                          <span className="font-semibold">NGN</span>
+                          <span className="ml-1 font-bold text-font-dark">10, 000</span>
+                        </div>
+                      </td>
+                      <td className="whitespace-nowrap px-6  py-4 text-xs font-medium">
+                        {active && (
+                          <span className="inline-flex rounded-lg bg-green-100 px-3 py-1 text-xs font-bold leading-5 text-font-green">
+                            Reciept
+                          </span>
+                        )}
+                        {!active && (
+                          <span className="relative inline-flex rounded-lg bg-red-100 px-3 py-1 text-xs font-bold leading-5 text-red-700">
+                            Retry
+                          </span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+            </Table>
+          </div>
         </div>
       )}
     </div>
