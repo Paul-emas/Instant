@@ -12,7 +12,7 @@ const UserServices = ({ title, stepArr }) => {
               return (
                 <div
                   key={index}
-                  className="flex items-center border-b py-7 pl-5 duration-200 last:border-none hover:bg-white lg:mx-0 lg:mb-10 lg:border-r lg:py-0 lg:pl-10"
+                  className="flex items-center border-b py-7 pl-5 duration-200 last:border-none hover:bg-white lg:mx-0 lg:mb-0 lg:border-b-0 lg:border-r lg:py-0 lg:pl-10"
                 >
                   <div>
                     <Icon />
