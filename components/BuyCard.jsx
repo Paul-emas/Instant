@@ -23,11 +23,11 @@ const BuyCard = ({ setOpenBuyElectricityModal }) => {
   return (
     <div className="h-224 w-full rounded-xl bg-white py-7 px-5 lg:w-1/2 lg:p-7">
       <div className="text-xl font-bold leading-snug lg:text-3.5xl">Good {time} 👀,</div>
-      <p className="max-w-lg text-sm text-gray-500 lg:text-base">
+      <p className="max-w-lg text-xs text-gray-500 lg:text-base">
         Quickly add a PIN to secure your account and gain access to your payment history, track your
         spending, meter records and more.
       </p>
-      <div className="mt-5 lg:mt-8 lg:pt-2">
+      <div className="mt-3 lg:mt-8 lg:pt-2">
         <div className="flex w-full flex-col justify-end space-y-2 lg:flex-row lg:space-y-0 lg:space-x-4">
           <Button light onClick={() => dispatch(setInitAuthentication('createPinMessage'))}>
             Create a PIN
