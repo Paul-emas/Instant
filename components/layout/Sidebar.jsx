@@ -171,7 +171,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                     } relative w-full border-b border-primary-border py-4 pl-6 text-left text-xxs duration-100 lg:rounded-xl lg:border-none`}
                   >
                     <span className="flex items-center">
-                      <FontAwesomeIcon icon={icon} className="h-4 w-4 lg:h-5 lg:w-5" />
+                      <FontAwesomeIcon icon={icon} className="h-4 w-4 text-lg lg:h-5 lg:w-5" />
                       <span className="ml-5 text-sm font-bold">{name}</span>
                     </span>
 

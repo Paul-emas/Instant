@@ -17,8 +17,8 @@ const People = () => {
           <div className="block lg:hidden">
             <Image
               src="/images/people-group.webp"
-              width={124}
-              height={43}
+              width={309.52}
+              height={96.23}
               className="mx-auto object-contain"
               priority={true}
             />

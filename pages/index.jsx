@@ -33,7 +33,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header>
+      <Header bg="pb-36 bg-primary-light">
         <div className="justify-between lg:flex">
           <div className="relative top-16 max-w-3xl sm:top-20 lg:w-1/2">
             <FloatingIcon1 className="absolute top-24" />
@@ -48,7 +48,7 @@ export default function Home() {
               priority
             />
           </div>
-          <div className="relative mx-auto flex items-center pt-40 pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full lg:items-start 2xl:pb-10">
+          <div className="relative mx-auto flex items-center pt-5 pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full lg:items-start lg:pt-40 2xl:pb-10">
             <QuickPay />
             <FloatingIcon4 className="absolute bottom-32 2xl:-right-20" />
           </div>

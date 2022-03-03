@@ -94,10 +94,13 @@ export default function Solar() {
 
       {!pageLoading && (
         <div className="relative -mx-4 2xl:-mx-7">
-          <div className="modal-soon absolute inset-0 z-30 flex min-h-screen w-full  justify-center bg-white bg-opacity-60 pt-96">
+          <div className="modal-soon absolute inset-0 z-30 flex min-h-screen w-full  justify-center bg-white bg-opacity-60 pt-60 lg:pt-96">
             <div className="text-4xl font-bold text-primary-dark 2xl:mt-10">
-              <span>
-                <FontAwesomeIcon icon={faCogs} className="mx-auto mb-4 h-28 w-28" />
+              <span className="flex justify-center">
+                <FontAwesomeIcon
+                  icon={faCogs}
+                  className="mx-auto mb-4 h-28 w-28 text-center text-7xl"
+                />
               </span>
               <span>Coming Soon...</span>
             </div>
