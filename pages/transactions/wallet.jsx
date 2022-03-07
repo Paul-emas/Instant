@@ -42,10 +42,10 @@ export default function Transactions() {
   };
 
   return (
-    <>
+    <div className="pb-10">
       {pageLoading && (
-        <div className="pt-5 sm:pt-10">
-          <div className="relative h-10 w-28 rounded-lg bg-white py-2 px-4"></div>
+        <div className="pt-5 lg:pt-10">
+          <div className="relative h-10 w-28 rounded-lg bg-primary-light py-2 px-4 sm:bg-white"></div>
           <div className="mt-5 min-h-screen w-full rounded-xl bg-primary-light sm:bg-white"></div>
         </div>
       )}
@@ -89,6 +89,6 @@ export default function Transactions() {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }

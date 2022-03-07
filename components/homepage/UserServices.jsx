@@ -4,8 +4,8 @@ import PlusIcon from '../../public/svgs/plus.svg';
 const UserServices = ({ title, stepArr }) => {
   return (
     <div className="z-30 bg-white lg:pb-10">
-      <div className="container relative mx-auto px-4 sm:px-5 xl:container xl:px-14">
-        <div className="shadow-soft relative -top-16 mx-auto rounded-2xl bg-white px-4 py-5 sm:px-5 lg:-top-24 lg:py-14 xl:px-14">
+      <div className="relative mx-auto px-4 xl:container xl:px-14">
+        <div className="shadow-soft relative -top-16 rounded-2xl bg-white px-4 py-5 lg:-top-24 lg:mx-auto lg:py-14 xl:px-14">
           <div className="mx-auto grid lg:grid-cols-3">
             {stepArr.map(({ name, caption, icon }, index) => {
               const Icon = icon;
@@ -22,7 +22,9 @@ const UserServices = ({ title, stepArr }) => {
                       Step {index + 1}
                     </div>
                     <h2 className="mt-1 font-bold text-black">{name}</h2>
-                    <p className="mt-0.5 text-sm text-gray-400 sm:max-w-xs">{caption}</p>
+                    <p className="mt-0.5 pr-5 text-xs text-gray-400 sm:max-w-xs lg:pr-0 lg:text-sm">
+                      {caption}
+                    </p>
                   </div>
                 </div>
               );

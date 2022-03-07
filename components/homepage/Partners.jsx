@@ -3,7 +3,7 @@ import Image from 'next/image';
 const Partners = () => {
   return (
     <div className="bg-white py-10 lg:py-20">
-      <div className="container mx-auto px-8 lg:px-14">
+      <div className="container mx-auto px-4 lg:px-14">
         <h1 className="text-center text-base font-semibold uppercase text-font-dark lg:text-xl ">
           Energy Providers
         </h1>

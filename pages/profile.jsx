@@ -33,7 +33,7 @@ export default function Profile() {
         </div>
       )}
       {me && (
-        <>
+        <div className="pt-5 sm:pt-10">
           <div className="lg:shadow-soft-lg relative top-5 flex flex-col rounded-xl lg:bg-white">
             <div className="mt-5 hidden py-3 px-7 lg:block">
               <div className="flex w-full items-center justify-center sm:justify-between">
@@ -102,7 +102,7 @@ export default function Profile() {
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

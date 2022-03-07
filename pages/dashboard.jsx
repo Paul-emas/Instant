@@ -39,7 +39,7 @@ export default function Dashboard() {
   }, [pageLoading]);
 
   return (
-    <>
+    <div className="pb-10">
       {pageLoading && (
         <div className="pt-5 2xl:pt-10">
           <DashboardSkeleton />
@@ -104,6 +104,6 @@ export default function Dashboard() {
           {isLoggedIn && <SolarCard className="block lg:hidden" />}
         </>
       )}
-    </>
+    </div>
   );
 }

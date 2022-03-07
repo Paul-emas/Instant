@@ -111,7 +111,7 @@ export default function Meters() {
   }
 
   return (
-    <>
+    <div className="pb-10">
       {pageLoading && (
         <div className="pt-5 sm:pt-10">
           <div className="min-h-screen w-full rounded-xl bg-primary-light sm:bg-white"></div>
@@ -219,6 +219,6 @@ export default function Meters() {
           )}
         </>
       )}
-    </>
+    </div>
   );
 }

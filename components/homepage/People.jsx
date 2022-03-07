@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const People = () => {
   return (
-    <div className="bg-white bg-cover py-12 lg:py-32">
+    <div className="bg-white bg-cover py-10 lg:py-16">
       <div className="container mx-auto px-4 lg:px-10">
         <div className="mx-auto max-w-6xl text-center">
           <div className="hidden lg:block">

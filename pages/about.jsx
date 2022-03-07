@@ -18,7 +18,7 @@ export default function About() {
 
   return (
     <div>
-      <Header bg="banner-4 bg-red pt-80 lg:pt-0 bg-center lg:bg-left bg-cover">
+      <Header bg="banner-4 bg-red pt-80 lg:pt-0 bg-center lg:bg-left bg-cover pb-10">
         <div className="justify-between lg:flex 2xl:mt-5">
           <div className="pt-28 lg:w-1/2 lg:pt-60">
             <div className="max-w-lg text-center text-2xl font-bold leading-tight text-white lg:text-left lg:text-6xl xl:leading-tight">

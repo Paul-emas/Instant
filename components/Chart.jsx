@@ -17,7 +17,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
   const [selectedMonthStats, setSelectedMonthStats] = useState(chart_one);
   const [activeRange, setActiveRange] = useState(0);
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     setSelectedMonthStats(chart_three);
   };
 
@@ -44,9 +44,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
     <>
       <div className="mb-10 mt-3 h-56 w-full rounded-xl bg-white py-5 sm:mb-0 sm:mt-10 sm:h-96">
         <div className="mb-2 flex w-full justify-between sm:px-5">
-          <h2 className="mt-2 text-base font-bold text-font-darker sm:mt-0 sm:text-xl ">
-            {title}
-          </h2>
+          <h2 className="mt-2 text-base font-bold text-font-darker sm:mt-0 sm:text-xl ">{title}</h2>
           <div className="w-36 sm:w-40">
             <SelectInput
               selectedOption={selectedMonth}
@@ -88,10 +86,10 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
                 }}
                 labelStyle={{ color: 'green' }}
                 itemStyle={{ color: '#000' }}
-                formatter={value => {
+                formatter={(value) => {
                   return [`${value}`, `Kwh`];
                 }}
-                labelFormatter={value => {
+                labelFormatter={(value) => {
                   return 'Unit Purchased', value;
                 }}
               />
@@ -155,10 +153,10 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
                 }}
                 labelStyle={{ color: 'green' }}
                 itemStyle={{ color: '#000' }}
-                formatter={value => {
+                formatter={(value) => {
                   return [`${value}`, `Kwh`];
                 }}
-                labelFormatter={value => {
+                labelFormatter={(value) => {
                   return 'Unit Purchased', value;
                 }}
               />
@@ -195,9 +193,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
             }}
             key={`${name}${index}`}
             className={`${
-              activeRange === index
-                ? 'border-primary-base text-primary-base'
-                : 'border-gray-200'
+              activeRange === index ? 'border-primary-base text-primary-base' : 'border-gray-200'
             } rounded-lg border py-2  px-4 text-sm font-semibold`}
           >
             {name}

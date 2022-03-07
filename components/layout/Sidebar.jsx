@@ -8,7 +8,6 @@ import {
   faMoneyBillWave,
   faSun,
   faUser,
-  faWallet,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
@@ -91,7 +90,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
         onClick={() => setOpenNav(false)}
         className={`${
           openNav ? 'visible opacity-100' : 'invisible opacity-0'
-        } fixed top-0 left-0 z-40 min-h-screen w-full bg-secondary-modal bg-opacity-70 duration-200`}
+        } modal-overlay fixed top-0 left-0 z-40 min-h-screen w-full bg-secondary-modal bg-opacity-70 duration-200`}
       ></div>
       {!me && (
         <div
@@ -100,7 +99,6 @@ const Sidebar = ({ openNav, setOpenNav }) => {
           } ease fixed z-50 min-h-screen w-72 bg-white bg-contain pt-5 sm:z-10 sm:w-60 2xl:w-sidebar 2xl:pt-10`}
         ></div>
       )}
-
       {me && (
         <div
           className={`${
@@ -156,7 +154,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
             </div>
           </div>
           <div className="lg:space-y-2.5 lg:py-8 lg:px-3 2xl:space-y-5 2xl:px-6">
-            {routes.map(({ name, url, icon, isMobile }, index) => (
+            {routes.map(({ name, url, icon }, index) => (
               <div key={index}>
                 <a>
                   <button
@@ -176,7 +174,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                     </span>
 
                     {url === '/solar' && (
-                      <div className="absolute top-3 right-4 rounded-lg bg-red-500 px-2  py-1.5 font-bold text-white lg:right-2">
+                      <div className="absolute top-3 right-4 rounded-lg bg-red-500 px-2  py-1.5 font-bold text-white lg:right-3">
                         New
                       </div>
                     )}

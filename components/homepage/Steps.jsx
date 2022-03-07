@@ -5,10 +5,10 @@ import FloatIcon6 from '../../public/svgs/floating/float-6.svg';
 
 const Steps = () => {
   return (
-    <div className="py-20 lg:pt-16 lg:pb-40">
+    <div className="pt-10 pb-20 lg:pt-16 lg:pb-40">
       <div className="container relative mx-auto px-4 sm:px-5 xl:container xl:px-14">
-        <FloatIcon5 className="absolute left-14 top-24 lg:top-20" />
-        <FloatIcon6 className="absolute right-5 -top-12 lg:right-14 lg:-top-8" />
+        <FloatIcon5 className="absolute left-8 top-28 scale-75 transform lg:top-20 lg:transform-none" />
+        <FloatIcon6 className="absolute right-5 -top-12 scale-75 transform lg:right-14 lg:-top-8" />
         <h1 className="mx-auto px-3 text-center text-2xl font-bold text-primary-dark sm:px-0 lg:max-w-4xl lg:text-5xl xl:leading-tight">
           We provide <span className="text-secondary-green">amazing features</span> to ensure you
           have the best energy experience

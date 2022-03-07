@@ -40,7 +40,7 @@ export default function Transactions() {
   };
 
   return (
-    <>
+    <div className="pb-10">
       {pageLoading && (
         <div className="pt-5 sm:pt-10">
           <div className="w-full rounded-3xl bg-primary-light py-16 sm:bg-white"></div>
@@ -89,6 +89,6 @@ export default function Transactions() {
           </TransactionsTable>
         </>
       )}
-    </>
+    </div>
   );
 }

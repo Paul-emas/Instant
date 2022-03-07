@@ -77,7 +77,7 @@ const SelectInput = ({
                 role="option"
               >
                 {!meters ? (
-                  <div className="flex items-center text-sm sm:text-base">{option.name}</div>
+                  <div className="flex items-center text-sm">{option.name}</div>
                 ) : (
                   <div className="flex items-center justify-between">
                     <div>

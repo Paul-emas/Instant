@@ -12,20 +12,15 @@ const RequestLoader = ({ type }) => {
   }, []);
 
   return (
-    <div className="flex items-center flex-col bg-white w-full sm:w-auto mx-4 sm:mx-0 sm:px-20 py-20 rounded-2xl text-center">
-      <div className="p-7 relative">
-        <div className="logo w-full h-full border-t-4 absolute transform border-4 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-b-4 border-primary-light border-t-primary-base border-b-primary-base rounded-full"></div>
-        <div className="rounded-full w-16 h-16 relative overflow-hidden">
-          <img
-            src="/images/logo-circle.png"
-            className="object-cover w-16 h-16"
-          />
+    <div className="mx-4 flex w-full flex-col items-center rounded-2xl bg-white py-20 text-center sm:mx-0 sm:w-auto sm:px-20">
+      <div className="relative p-4">
+        <div className="logo absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transform rounded-full border-4 border-t-4 border-b-4 border-primary-light border-t-primary-base border-b-primary-base"></div>
+        <div className="relative h-16 w-16 overflow-hidden rounded-full">
+          <img src="/images/logo-circle.png" className="h-16 w-16 object-cover" />
         </div>
       </div>
-      <div className="mt-5 text-xl text-primary-dark font-bold">
-        Your request is processing
-      </div>
-      <p className="text-sm text-gray-400 max-w-xs">
+      <div className="mt-5 text-xl font-bold text-primary-dark">Your request is processing</div>
+      <p className="max-w-xs text-sm text-gray-400">
         Just hold a seconds, we are processing <br /> your {type}
       </p>
     </div>
