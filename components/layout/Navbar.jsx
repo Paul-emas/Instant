@@ -37,7 +37,7 @@ const Navbar = () => {
                   src="/images/logo.webp"
                   width={200}
                   height={46}
-                  className="object-contain"
+                  objectFit="contain"
                   priority={true}
                 />
               </a>
@@ -50,7 +50,7 @@ const Navbar = () => {
                   src="/images/logo.webp"
                   width={140.13}
                   height={40.23}
-                  className="object-contain"
+                  objectFit="contain"
                   priority={true}
                 />
               </a>

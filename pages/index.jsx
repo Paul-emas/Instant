@@ -44,7 +44,7 @@ export default function Home() {
               layout="intrinsic"
               width={738}
               height={910}
-              className="object-contain"
+              objectFit="contain"
               priority
             />
           </div>

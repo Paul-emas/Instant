@@ -56,6 +56,7 @@ const FormInput = forwardRef(
               fontFamily: 'Red Hat Display',
             }}
             {...props}
+            ref={ref}
           />
         )}
 
@@ -77,6 +78,7 @@ const FormInput = forwardRef(
         {type === 'textarea' && (
           <textarea
             className={`${className} ${errorStyles} form-input mt-2 pt-2.5 pb-9`}
+            ref={ref}
             placeholder="Enter your message here.."
           ></textarea>
         )}

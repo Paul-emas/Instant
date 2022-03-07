@@ -7,7 +7,8 @@ const HomeBanners = () => {
         <Image
           src="/images/banners/banner-2.webp"
           layout="fill"
-          className="banner-image object-cover"
+          objectFit="cover"
+          className="banner-image"
           priority
         />
       </div>

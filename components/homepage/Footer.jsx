@@ -63,10 +63,10 @@ const Footer = () => {
               <div className="col-span-3 w-1/2 lg:w-auto">
                 <h2 className="font-semibold">Legal</h2>
                 <div className="mt-5 flex flex-col space-y-4 lg:mt-10 lg:space-y-8">
-                  <Link href="">
+                  <Link href="/policy">
                     <a className="text-xs font-semibold lg:text-sm">Privacy Policy</a>
                   </Link>
-                  <Link href="">
+                  <Link href="/terms-and-conditions">
                     <a className="text-xs font-semibold lg:text-sm">Terms of use</a>
                   </Link>
                   <Link href="">
