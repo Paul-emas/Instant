@@ -6,7 +6,7 @@ const QuickPay = () => {
     <>
       <div
         id="box"
-        className="ease shadow-soft relative top-16 z-20 -mt-32 ml-auto w-full overflow-hidden rounded-2xl bg-white sm:-mt-0 lg:w-w-modal lg:rounded-3xl 2xl:h-modal-sm"
+        className="ease shadow-soft relative top-16 z-20 -mt-56 ml-auto w-full overflow-hidden rounded-2xl bg-white sm:-mt-0 lg:w-w-modal lg:rounded-3xl 2xl:h-modal-sm"
       >
         <div className="hide">
           <div className="lg:pt-8">

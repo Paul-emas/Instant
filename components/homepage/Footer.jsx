@@ -12,10 +12,6 @@ const Footer = () => {
         <div className="grid lg:grid-cols-6">
           <div className="col-span-2 border-b border-secondary-lightGreen px-4 pb-5 text-center lg:border-none lg:px-0 lg:pb-0 lg:text-left">
             <Image src="/images/logo.webp" width={185} height={40} className="object-contain" />
-            <p className="mx-auto mt-2 px-10 text-xs lg:mx-0 lg:mt-5 lg:max-w-xs lg:px-0 lg:pr-20 lg:text-sm">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-              invidunt ut.
-            </p>
             <div className="hidden lg:mt-10 lg:block">
               <ContactCard light />
             </div>
@@ -24,11 +20,12 @@ const Footer = () => {
             <div className="">
               <SocialCard follow={false} center />
             </div>
-            <p className="mx-auto mt-5 max-w-xs px-16 text-xs text-gray-400 lg:text-sm">
-              Suite 409, Nawa Complex Jahi, Abuja. Nigeria
+            <p className="mx-auto mt-5 max-w-sm px-16 text-xs text-gray-400 lg:text-sm">
+              Suite 410, Nawa Complex Jahi, Abuja. Nigeria, <br /> 278, Dr. Lelykade The Hague The
+              Netherlands.
             </p>
-            <p className="mt-2 font-semibold">Info@instantenergy.com</p>
-            <p className="mt-2 font-semibold">080-1234-5678</p>
+            <p className="mt-2 font-semibold">Info@instantenergy.com.ng</p>
+            <p className="mt-2 font-semibold">090-8233-3376</p>
           </div>
           <div className="col-span-2 px-4 lg:px-0">
             <div className="mt-10 flex flex-wrap px-5 lg:mt-0 lg:space-x-24 lg:px-0">
@@ -79,12 +76,12 @@ const Footer = () => {
           <div className="col-span-2 hidden px-4 text-right lg:block lg:px-0">
             <SocialCard follow={false} center={false} />
             <p className="mt-5 ml-auto max-w-xs pl-24 text-xs lg:text-sm">
-              Suite 409, Nawa Complex Jahi, Abuja. Nigeria.
+              Suite 410, Nawa Complex Jahi, Abuja. Nigeria.
             </p>
             <p className="mt-5 ml-auto max-w-xs pl-24 text-xs lg:text-sm">
               278, Dr. Lelykade The Hague The Netherlands.
             </p>
-            <p className="mt-2 font-bold">support@instantenergy.com.ng</p>
+            <p className="mt-2 font-bold">info@instantenergy.com.ng</p>
             <p className="mt-1 font-bold">090-8233-3376</p>
           </div>
         </div>

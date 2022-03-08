@@ -43,7 +43,7 @@ export default function Profile() {
             <div className="hidden lg:block">
               <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
-            <div className="grid pb-5 lg:grid-cols-2 lg:pb-24">
+            <div className="grid pb-5 lg:grid-cols-2 lg:border-t lg:pb-24">
               <div className="pt-5 lg:pt-20">
                 <div className="block lg:hidden">
                   <UserProfile user={me} />

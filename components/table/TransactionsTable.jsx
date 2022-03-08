@@ -65,7 +65,13 @@ const TransactionsTable = ({
       );
     },
     tabs: function view() {
-      return <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />;
+      return (
+        <>
+          {router.asPath !== '/transactions/wallet' && (
+            <Tabs data={tabsData} activeTab={activeTab} setActiveTab={setActiveTab} />
+          )}
+        </>
+      );
     },
     child: function view() {
       return (

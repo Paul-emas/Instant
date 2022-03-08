@@ -18,8 +18,8 @@ const Table = ({ title, headings, viewAll, titleLabel, tabs, children, loading, 
         </div>
       </div>
       {tabs && tabs()}
-      <div className={`${!loading ? 'overflow-x-auto' : ''} my-2 sm:-mx-6 lg:-mx-6`}>
-        <div className="inline-block min-w-full py-2 align-middle sm:px-6">
+      <div className={`${!loading ? 'overflow-x-auto' : ''} pb-5 sm:-mx-6 lg:-mx-6`}>
+        <div className="inline-block min-w-full align-middle sm:px-6">
           {!loading && !isMobile && (
             <div className="overflow-hidden">
               <table className="min-w-full bg-white">
@@ -29,7 +29,7 @@ const Table = ({ title, headings, viewAll, titleLabel, tabs, children, loading, 
                       <th
                         key={`${heading}${index}`}
                         scope="col"
-                        className="px-6 py-3 text-left text-xs font-semibold tracking-wider text-gray-500 lg:uppercase"
+                        className="border-t border-b px-6 py-6 text-left text-xs font-semibold tracking-wider text-gray-500 lg:uppercase"
                       >
                         {heading}
                       </th>
