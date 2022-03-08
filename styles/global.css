@@ -298,3 +298,7 @@ input:checked ~ .dot {
   backdrop-filter: blur(8px);
   --webkit-backdrop-filter: blur(8px);
 }
+
+.static-padding {
+  padding-top: 80px !important;
+}
