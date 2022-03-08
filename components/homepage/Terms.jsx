@@ -76,7 +76,7 @@ const Terms = () => {
           </div>
         </div>
         <div className="ml-24 max-w-3xl">
-          <h1 className="text-4.5xl font-bold">Terms of use</h1>
+          <h1 className="text-4.5xl font-bold">Terms and Conditions</h1>
           <p className="text-gray-400">
             By using the instant energy services, web and mobile applications, you agree to be bound
             by the terms and conditions.
