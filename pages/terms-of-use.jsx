@@ -1,12 +1,12 @@
 import Navbar from '../components/layout/Navbar';
-import PolicySection from '../components/homepage/PolicySection';
+import Terms from '../components/homepage/Terms';
 import Footer from '../components/homepage/Footer';
 
-export default function TermsAndConditions() {
+export default function TermsOfUse() {
   return (
     <div>
       <Navbar />
-      <PolicySection />
+      <Terms />
       <Footer />
     </div>
   );
