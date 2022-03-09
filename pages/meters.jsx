@@ -8,7 +8,7 @@ import BulbIcon from '../public/svgs/bulb-db.svg';
 import Empty from '../public/svgs/meter-db.svg';
 
 import { getUserMeters } from '../api';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';

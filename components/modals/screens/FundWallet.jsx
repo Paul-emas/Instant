@@ -14,7 +14,7 @@ import FormInput from '../../forms/FormInput';
 import PrimaryButton from '../../Buttons/PrimaryButton';
 import RequestLoader from '../../loaders/RequestLoader';
 import ErrorSuccess from '../ErrorSuccess';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 const FundWallet = ({ setStep, close }) => {
   const {
@@ -55,9 +55,7 @@ const FundWallet = ({ setStep, close }) => {
 
       if (resp?.error) {
         setIsLoading(false);
-        toast.error(resp?.error?.data?.errors[0]?.message, {
-          theme: 'colored',
-        });
+        toast.error(resp?.error?.data?.errors[0]?.message);
         return;
       }
 

@@ -1,8 +1,7 @@
 import 'tailwindcss/tailwind.css';
 import { useForm, FormProvider } from 'react-hook-form';
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.min.css';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import Wrapper from '../components/layout/Wrapper';
@@ -18,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       <PersistGate persistor={persistor}>
         <FormProvider {...methods}>
           <Wrapper>
-            <ToastContainer />
+            <Toaster position="top-right" />
             <Component {...pageProps} />
           </Wrapper>
         </FormProvider>

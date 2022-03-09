@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { userSelector } from '../../slices/user';
 import { persistSelector } from '../../slices/persist';

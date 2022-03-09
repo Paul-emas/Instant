@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import copy from 'copy-to-clipboard';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import gsap from 'gsap';
 
 import SuccessIcon from '../../public/svgs/success.svg';

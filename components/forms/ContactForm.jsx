@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import isEmail from 'is-email';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import FormInput from './FormInput';
 import { sendEnquiry } from '../../api';
 

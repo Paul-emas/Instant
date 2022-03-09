@@ -9,7 +9,7 @@ import PrimaryButton from '../../Buttons/PrimaryButton';
 import BuyElectricityTab from '../../tabs/BuyElectricityTab';
 import Modal from '..';
 import ProviderSelectInput from '../../forms/ProviderSelectInput';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector, setUserPhone } from '../../../slices/persist';
 

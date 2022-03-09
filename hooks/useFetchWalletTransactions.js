@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserWalletTransactions } from '../api';
 import { persistSelector } from '../slices/persist';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { setUserWalletTransactions, userSelector } from '../slices/user';
 
 export default function useFetchWalletTransactions(itemsPerPage) {
