@@ -23,18 +23,13 @@ const TransactionsTable = ({
   const router = useRouter();
   const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
   const [activeTab, setActiveTab] = useState(0);
+  const headings = !router.asPath.includes('/wallet')
+    ? ['Meter name', 'Date', 'Distributor', 'Meter No.', 'Reference Code', 'Amount', 'Status']
+    : ['Transaction Type', 'Date', 'Reference Code', 'Amount', 'Status'];
 
   const tableProps = {
     title,
-    headings: [
-      'Meter name',
-      'Date',
-      'Distributor',
-      'Meter No.',
-      'Reference Code',
-      'Amount',
-      'Status',
-    ],
+    headings,
     loading,
     viewAll: function view() {
       return (

@@ -18,17 +18,7 @@ function MyApp({ Component, pageProps }) {
       <PersistGate persistor={persistor}>
         <FormProvider {...methods}>
           <Wrapper>
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-            />
+            <ToastContainer />
             <Component {...pageProps} />
           </Wrapper>
         </FormProvider>

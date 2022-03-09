@@ -46,19 +46,11 @@ const TransactionDataDefault = ({ transactions }) => {
                   </div>
                 </div>
               </td>
-              <td className="whitespace-nowrap px-6  py-4">
+              <td className="whitespace-nowrap px-6 py-4">
                 <div className="text-sm text-font-grey">
                   {moment(transaction?.createdAt).utc().format('L')}{' '}
                   <span className="ml-2">{moment(transaction?.createdAt).format('LT')}</span>
                 </div>
-              </td>
-              <td className="whitespace-nowrap px-6  py-4">
-                <div className="text-sm text-font-grey">
-                  {transaction?.meter?.provider?.disco?.shortName}
-                </div>
-              </td>
-              <td className="whitespace-nowrap px-6  py-4">
-                <div className="text-sm text-font-grey">{transaction?.meter?.number}</div>
               </td>
               <td className="whitespace-nowrap px-6  py-4">
                 <div className="text-sm font-bold">{transaction?.reference}</div>
@@ -66,7 +58,7 @@ const TransactionDataDefault = ({ transactions }) => {
               <td className="whitespace-nowrap px-6  py-4">
                 <div className="text-sm font-bold">
                   <div className="text-sm  text-font-grey">
-                    <span className="font-semibold">{transaction?.currency}</span>
+                    <span className="font-semibold">{transaction?.account?.country?.currency}</span>
                     <span className="ml-1 font-bold text-font-dark">
                       {transaction?.amount.toLocaleString()}
                     </span>

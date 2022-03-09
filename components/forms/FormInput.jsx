@@ -7,7 +7,7 @@ const FormInput = forwardRef(
     const As = as;
 
     const errorStyles =
-      type !== 'phone' && type !== 'currency' && type !== 'textarea'
+      type !== 'phone' && type !== 'currency'
         ? `${
             error
               ? 'border-red-600 focus:border-red-600 focus:outline-none'
@@ -80,6 +80,7 @@ const FormInput = forwardRef(
             className={`${className} ${errorStyles} form-input mt-2 pt-2.5 pb-9`}
             ref={ref}
             placeholder="Enter your message here.."
+            {...props}
           ></textarea>
         )}
         {children}

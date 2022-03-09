@@ -240,3 +240,12 @@ export async function getUserWalletTransactions(token, skip, limit) {
     if (error.response) return { error: error.response.data };
   }
 }
+
+export async function sendEnquiry(payload) {
+  try {
+    const response = await axios.post(`${baseUrl}/enquiry`, payload);
+    return { status: response.status };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}

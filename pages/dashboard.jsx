@@ -11,7 +11,6 @@ import ReferBox from '../components/ReferBox';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
 import DashboardSkeleton from '../components/skeletons/DashboardSkeleton';
 
-import WalletCard from '../components/WalletCard';
 import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
@@ -41,7 +40,7 @@ export default function Dashboard() {
   return (
     <div className="pb-10">
       {pageLoading && (
-        <div className="pt-5 2xl:pt-10">
+        <div className="2xl:pt-10">
           <DashboardSkeleton />
         </div>
       )}
@@ -60,8 +59,7 @@ export default function Dashboard() {
               <Receipt receipt={receipt} />
             </Modal>
           )}
-          <div className="pt-5 2xl:pt-10">
-            <WalletCard className="block sm:hidden" />
+          <div className="2xl:pt-10">
             <div className="hidden items-center justify-between sm:flex">
               <div>
                 <h1 className="scale-up text-heading  font-bold">

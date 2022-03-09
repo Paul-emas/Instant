@@ -18,7 +18,8 @@ export default function useFetchWalletBalance() {
 
   async function fetchWalletBalance() {
     const resp = await getUserWalletBalance(token);
-    if (resp?.error) {
+
+    if (resp?.data?.errors) {
       dispatch(setWalletBalance(0.0));
     }
 

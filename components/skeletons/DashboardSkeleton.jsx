@@ -1,7 +1,6 @@
 const DashboardSkeleton = () => {
   return (
     <>
-      <div className="block w-full rounded-3xl bg-primary-light py-16 sm:hidden"></div>
       <div className="flex items-center justify-between">
         <div className="hidden sm:block">
           <div className="relative flex h-9 w-44  items-center justify-center bg-primary-light sm:rounded-lg sm:bg-white"></div>
