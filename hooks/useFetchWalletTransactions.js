@@ -47,6 +47,7 @@ export default function useFetchWalletTransactions(itemsPerPage) {
       }
     }
   }
+
   return {
     data,
     transactions,

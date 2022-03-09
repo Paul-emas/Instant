@@ -1,10 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import WalletIcon from '../public/svgs/wallet-light.svg';
-import { setInitAuthentication } from '../slices/user';
+import { setInitAuthentication, userSelector } from '../slices/user';
 
 const WalletCard = ({ className }) => {
   const dispatch = useDispatch();
+  const { walletBalance } = useSelector(userSelector);
 
   return (
     <div
@@ -22,7 +23,7 @@ const WalletCard = ({ className }) => {
             <div className="sm:text-md text-gray-300">Your IE wallet</div>
             <div className="text-2xl font-bold sm:text-4xl">
               <span>&#8358;</span>
-              <span className="ml-2">0.00</span>
+              <span className="ml-2">{walletBalance.toLocaleString()}</span>
               <Link href="/transactions/wallet">
                 <button className="mt-2 block rounded-lg bg-secondary-transparentWhite px-3 text-xxs font-bold uppercase sm:hidden">
                   Wallet History

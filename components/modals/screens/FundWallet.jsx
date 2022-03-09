@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { userSelector } from '../../../slices/user';
 import { persistSelector } from '../../../slices/persist';
 import { createWalletTransaction, fundWalletTransaction } from '../../../api';
+import useFetchWalletBalance from '../../../hooks/useFetchWalletBalance';
 
 import WalletIcon from '../../../public/svgs/wallet.svg';
 
@@ -28,6 +29,7 @@ const FundWallet = ({ setStep, close }) => {
   const [reference, setReference] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const initializePayment = usePaystackPayment(config);
+  const { init } = useFetchWalletBalance();
 
   useEffect(() => {
     if (config?.reference) initializePayment(onSuccess, close);
@@ -89,6 +91,7 @@ const FundWallet = ({ setStep, close }) => {
 
       if (resp.data) {
         setPaymentStep(2);
+        init();
       }
     }
   }

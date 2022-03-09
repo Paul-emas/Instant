@@ -11,12 +11,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
-import { setInitAuthentication, setUser, setWalletBalance, userSelector } from '../../slices/user';
+import { setInitAuthentication, setUser, userSelector } from '../../slices/user';
+import useFetchWalletBalance from '../../hooks/useFetchWalletBalance';
+import { getUserAccount } from '../../api';
+import { persistSelector } from '../../slices/persist';
 
 import WalletIcon from '../../public/svgs/wallet-sm.svg';
+
 import UserCard from '../UserCard';
-import { persistSelector } from '../../slices/persist';
-import { getUserAccount, getUserWalletBalance } from '../../api';
 
 const Sidebar = ({ openNav, setOpenNav }) => {
   const dispatch = useDispatch();
@@ -24,10 +26,11 @@ const Sidebar = ({ openNav, setOpenNav }) => {
   const { me } = useSelector(userSelector);
   const [openLogout, setOpenLogout] = useState(false);
   const { token } = useSelector(persistSelector);
+  const { walletBalance } = useFetchWalletBalance();
 
   useEffect(() => {
     if (!me) {
-      Promise.all([fetchUser(), fetchWalletBalance()]);
+      fetchUser();
     }
   }, [me]);
 
@@ -38,17 +41,6 @@ const Sidebar = ({ openNav, setOpenNav }) => {
     }
     if (resp?.data) {
       dispatch(setUser(resp?.data));
-    }
-  }
-
-  async function fetchWalletBalance() {
-    const resp = await getUserWalletBalance(token);
-    if (resp?.error) {
-      dispatch(setWalletBalance(0.0));
-    }
-    if (resp?.data) {
-      console.log(resp.data);
-      // dispatch(setWalletBalance(resp?.data));
     }
   }
 
@@ -137,7 +129,8 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                     <span>Your IE wallet</span>
                   </div>
                   <p className="-mt-1 font-bold text-white">
-                    <span>&#x20A6;</span> <span className="ml-1">0.00</span>
+                    <span>&#x20A6;</span>{' '}
+                    <span className="ml-1">{walletBalance.toLocaleString()}</span>
                   </p>
                 </div>
               </div>

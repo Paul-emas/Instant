@@ -9,7 +9,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import BuyElectricityModal from '../../components/modals/screens/BuyElectricityModal';
 import Pagination from '../../components/table/Pagination';
 import TransactionsTable from '../../components/table/TransactionsTable';
-import TransactionDataDefault from '../../components/table/TransactionDataDefault';
+import TransactionDataWallet from '../../components/table/TransactionDataWallet';
 import TransactionDataMobile from '../../components/table/TransactionDataMobile';
 import Button from '../../components/Button';
 import { setInitAuthentication } from '../../slices/user';
@@ -79,7 +79,7 @@ export default function Transactions() {
               />
             )}
           >
-            <TransactionDataDefault transactions={paginatedTransactions} />
+            <TransactionDataWallet transactions={paginatedTransactions} />
             <TransactionDataMobile transactions={paginatedTransactions} />
           </TransactionsTable>
           <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">

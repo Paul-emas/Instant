@@ -210,7 +210,7 @@ export async function fundWalletTransaction(payload, token) {
 
 export async function getUserWalletBalance(token) {
   try {
-    const response = await axios.get(`${baseUrl}/transaction/wallet/me`, {
+    const response = await axios.get(`${baseUrl}/account/wallet`, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
