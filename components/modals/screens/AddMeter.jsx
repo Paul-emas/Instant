@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
-import { addNewMeter, getProviders, validateNewMeter } from '../../../api';
+import { addNewMeter, validateNewMeter } from '../../../api';
 
 import FormInput from '../../forms/FormInput';
 import PrimaryButton from '../../Buttons/PrimaryButton';
@@ -83,8 +83,8 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
         if (resp?.data) {
           reset();
           setIsLoading(false);
-          goBack();
           init();
+          goBack ? goBack() : setOpen(false);
           toast.success('Meter Has Been Added Successfully');
         }
       }

@@ -99,11 +99,6 @@ input[type='number']::-webkit-outer-spin-button {
   background-image: url('../public/images/overlay.png');
 }
 
-.pattern {
-  background-image: url('../public/images/pattern.png') !important;
-  background-size: contain;
-}
-
 .scale {
   @apply transform transition-all duration-100 active:scale-95;
 }

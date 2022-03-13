@@ -14,9 +14,6 @@ const TransactionEmptyState = ({ setOpenBuyElectricityModal }) => {
       <div className="flex flex-col items-center">
         <Empty />
         <div className="text-base font-bold">Your transactions will appear here</div>
-        <p className="mt-1 max-w-xs text-center text-sm text-gray-400">
-          An email has been sent to you kindly submit to continue with this application
-        </p>
         {!router.asPath.includes('/wallet') ? (
           <button
             onClick={() => setOpenBuyElectricityModal(true)}

@@ -10,9 +10,6 @@ const MetersEmptyState = ({ setOpenAddMeterModal }) => {
       <div className="flex flex-col items-center">
         <Empty />
         <div className="mt-2 text-base font-bold">{`You've not added any meters yet!`}</div>
-        <p className="mt-1 max-w-xs text-center text-sm text-gray-400">
-          An email has been sent to you kindly submit to continue with this application
-        </p>
         <button
           onClick={() => setOpenAddMeterModal(true)}
           className="mt-8 flex items-center rounded-lg border-none bg-primary-light px-6 py-3 text-xs font-bold uppercase text-primary-base outline-none"
