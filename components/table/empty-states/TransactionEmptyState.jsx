@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
-
-import PropTypes from 'prop-types';
-import Empty from '../../../public/svgs/empty-transcation.svg';
 import { setInitAuthentication } from '../../../slices/user';
+
+import Empty from '../../../public/svgs/empty-transcation.svg';
 
 const TransactionEmptyState = ({ setOpenBuyElectricityModal }) => {
   const router = useRouter();
@@ -42,7 +42,7 @@ TransactionEmptyState.defaultProps = {
 };
 
 TransactionEmptyState.propTypes = {
-  setOpenBuyElectricityModal: PropTypes.array,
+  setOpenBuyElectricityModal: PropTypes.func,
 };
 
 export default TransactionEmptyState;

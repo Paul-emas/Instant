@@ -101,13 +101,7 @@ const ConfirmPin = ({ close, setStep }) => {
   }
 
   return (
-    <Modal
-      successMessage={successMessage}
-      border={false}
-      goBack={() => setStep('createPin')}
-      close={close}
-      isAuth
-    >
+    <Modal successMessage={successMessage} border={false} goBack={() => setStep('createPin')} close={close} isAuth>
       <div className="mt-2 px-6 lg:px-8">
         <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           {`Let's make sure you don't forget, confirm your PIN`}

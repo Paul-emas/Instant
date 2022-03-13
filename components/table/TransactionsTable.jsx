@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { isMobile } from 'react-device-detect';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,23 +12,21 @@ import Table from './index';
 import Tabs from '../tabs';
 
 const TransactionsTable = ({
+  title,
+  headings,
   transactions,
+  mobileView,
   setOpenBuyElectricityModal,
   loading,
   paginate,
   children,
-  title = 'Your transcations',
 }) => {
   const router = useRouter();
   const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
   const [activeTab, setActiveTab] = useState(0);
-  const headings = !router.asPath.includes('/wallet')
-    ? ['Meter name', 'Date', 'Distributor', 'Meter No.', 'Reference Code', 'Amount', 'Status']
-    : ['Transaction Type', 'Date', 'Reference Code', 'Amount', 'Status'];
 
   const tableProps = {
     title,
-    headings,
     loading,
     viewAll: function view() {
       return (
@@ -83,9 +80,27 @@ const TransactionsTable = ({
 
   return (
     <Table {...tableProps}>
-      {children}
-      {isMobile && router.asPath === '/dashboard' && transactions.length > 0 && (
-        <div className="flex justify-center pb-5">
+      <div className="hidden overflow-hidden lg:block">
+        <table className="min-w-full bg-white">
+          <thead>
+            <tr>
+              {headings?.map((heading, index) => (
+                <th
+                  key={`${heading}${index}`}
+                  scope="col"
+                  className="border-t border-b px-6 py-6 text-left text-xs font-semibold tracking-wider text-gray-500 lg:uppercase"
+                >
+                  {heading}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>{children}</tbody>
+        </table>
+      </div>
+      <div className="block lg:hidden">{mobileView && mobileView()}</div>
+      {router.asPath === '/dashboard' && transactions.length > 0 && (
+        <div className="flex justify-center pb-5 lg:hidden">
           <Link href="/transactions">
             <button className="w-24 rounded-lg bg-primary-light py-2.5 text-sm font-semibold hover:opacity-80">
               <span className="relative flex items-center justify-center">
@@ -103,17 +118,23 @@ const TransactionsTable = ({
 TransactionsTable.displayName = 'TransactionsTable';
 
 TransactionsTable.defaultProps = {
-  loading: false,
-  transactions: [],
-  paginate: () => null,
+  title: 'Your transcations',
+  headings: [],
+  mobileView: () => null,
+  meters: [],
   setOpenBuyElectricityModal: () => null,
+  loading: false,
+  paginate: () => null,
 };
 
 TransactionsTable.propTypes = {
-  loading: PropTypes.bool,
-  transactions: PropTypes.array,
-  paginate: PropTypes.func,
+  title: PropTypes.string,
+  headings: PropTypes.array,
+  mobileView: PropTypes.func,
+  meters: PropTypes.array,
   setOpenBuyElectricityModal: PropTypes.func,
+  loading: PropTypes.bool,
+  paginate: PropTypes.func,
 };
 
 export default TransactionsTable;

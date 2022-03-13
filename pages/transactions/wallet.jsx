@@ -10,22 +10,22 @@ import BuyElectricityModal from '../../components/modals/screens/BuyElectricityM
 import Pagination from '../../components/table/Pagination';
 import TransactionsTable from '../../components/table/TransactionsTable';
 import TransactionDataWallet from '../../components/table/TransactionDataWallet';
-import TransactionDataMobile from '../../components/table/TransactionDataMobile';
+import TransactionWalletMobile from '../../components/table/TransactionWalletMobile';
 import Button from '../../components/Button';
 import { setInitAuthentication } from '../../slices/user';
 
 export default function Transactions() {
+  const headings = ['Transaction Type', 'Date', 'Reference Code', 'Amount', 'Status'];
   const dispatch = useDispatch();
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [totalDocs, setTotalDocs] = useState(0);
   const [itemsPerPage, setItemPerPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
-  const { data, transactions, pageLoading, error, tableLoading, init } =
-    useFetchWalletTransactions(itemsPerPage);
   const [paginatedTransactions, setPaginatedTransactions] = useState([]);
+  const { data, transactions, pageLoading, error, tableLoading, init } = useFetchWalletTransactions(itemsPerPage);
 
   useEffect(() => {
-    updateTransactionState(data);
+    if (data) updateTransactionState(data);
   }, [data]);
 
   useEffect(() => {
@@ -45,17 +45,14 @@ export default function Transactions() {
     <div className="pb-10">
       {pageLoading && (
         <div className="pt-5 lg:pt-10">
-          <div className="relative h-10 w-28 rounded-lg bg-primary-light py-2 px-4 sm:bg-white"></div>
+          <div className="relative h-7 w-24 rounded-lg bg-primary-light py-2 px-4 sm:bg-white lg:h-10 lg:w-28"></div>
           <div className="mt-5 min-h-screen w-full rounded-xl bg-primary-light sm:bg-white"></div>
         </div>
       )}
 
       {!pageLoading && (
         <>
-          <BuyElectricityModal
-            open={openBuyElectricityModal}
-            setOpen={setOpenBuyElectricityModal}
-          />
+          <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
           <div className="pt-5 sm:pt-10">
             <Link href="/transactions">
               <button className="relative flex items-center justify-center rounded-lg bg-primary-light py-2 px-4 text-xs font-semibold hover:opacity-80 lg:bg-white lg:text-sm">
@@ -66,9 +63,11 @@ export default function Transactions() {
           </div>
           <TransactionsTable
             title="Wallet transactions"
+            headings={headings}
             loading={tableLoading}
             transactions={paginatedTransactions}
             setOpenBuyElectricityModal={setOpenBuyElectricityModal}
+            mobileView={() => <TransactionWalletMobile transactions={paginatedTransactions} />}
             paginate={() => (
               <Pagination
                 items={paginatedTransactions}
@@ -80,12 +79,9 @@ export default function Transactions() {
             )}
           >
             <TransactionDataWallet transactions={paginatedTransactions} />
-            <TransactionDataMobile transactions={paginatedTransactions} />
           </TransactionsTable>
           <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
-            <Button onClick={() => dispatch(setInitAuthentication('fundWallet'))}>
-              Fund Wallet
-            </Button>
+            <Button onClick={() => dispatch(setInitAuthentication('fundWallet'))}>Fund Wallet</Button>
           </div>
         </>
       )}

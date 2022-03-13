@@ -134,12 +134,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
       )}
 
       {open && step === 5 && (
-        <AddMeter
-          open={open}
-          setOpen={setOpen}
-          goBack={() => setStep(0)}
-          setSelectedMeter={setSelectedMeter}
-        />
+        <AddMeter open={open} setOpen={setOpen} goBack={() => setStep(0)} setSelectedMeter={setSelectedMeter} />
       )}
     </div>
   );

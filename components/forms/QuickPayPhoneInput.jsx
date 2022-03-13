@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  setUserPhone,
-  setQuickBuy,
-  persistSelector,
-  setAnonymousToken,
-} from '../../slices/persist';
+import { setUserPhone, setQuickBuy, persistSelector, setAnonymousToken } from '../../slices/persist';
 import { setInitAuthentication } from '../../slices/user';
 import { checkUserValidation } from '../../api';
 
@@ -78,6 +73,7 @@ const QuickPayPhoneInput = () => {
         id="phone"
         label="Phone number"
         value={phone}
+        onChange={(value) => setPhone(value)}
         isValid={(value, country) => {
           if (value.match(/12345/)) {
             return 'Invalid value: ' + value + ', ' + country.name;
@@ -88,7 +84,6 @@ const QuickPayPhoneInput = () => {
             return true;
           }
         }}
-        onChange={(value) => setPhone(value)}
       />
       <PrimaryButton loading={isLoading} className="mt-8 mb-7" type="large">
         Buy Electricity

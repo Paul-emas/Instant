@@ -56,8 +56,8 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
           type="phone"
           id="phone"
           label="Phone number"
-          font="small"
           value={phone}
+          onChange={(value) => setPhone(value)}
           isValid={(value, country) => {
             if (value.match(/12345/)) {
               return 'Invalid value: ' + value + ', ' + country.name;
@@ -68,11 +68,8 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
               return true;
             }
           }}
-          onChange={(value) => setPhone(value)}
         />
-        <div className="-mt-1 text-xs font-semibold text-primary-dark">
-          Token generated will be sent to this number
-        </div>
+        <div className="-mt-1 text-xs font-semibold text-primary-dark">Token generated will be sent to this number</div>
         <div className="mt-10">
           <PrimaryButton
             loading={isLoading}

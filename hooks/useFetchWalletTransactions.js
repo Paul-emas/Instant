@@ -11,9 +11,9 @@ export default function useFetchWalletTransactions(itemsPerPage) {
   const { token, isLoggedIn } = useSelector(persistSelector);
   const [transactions, setTransactions] = useState([]);
   const [pageLoading, setPageLoading] = useState(true);
+  const [tableLoading, setTabelLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [tableLoading, setTabelLoading] = useState(false);
 
   useEffect(() => {
     if (!userWalletTransactions) {

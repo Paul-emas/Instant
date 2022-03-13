@@ -14,13 +14,7 @@ import FormInput from './FormInput';
 import SelectInput from './SelectInput';
 import ProviderSelectInput from './ProviderSelectInput';
 
-const PrePaid = ({
-  setConfirmDetails,
-  setStep,
-  setPaymentToken,
-  selectedMeter,
-  setSelectedMeter,
-}) => {
+const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, setSelectedMeter }) => {
   const {
     register,
     handleSubmit,
@@ -33,7 +27,7 @@ const PrePaid = ({
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
-  const meters = useFetchMeters();
+  const { meters } = useFetchMeters();
 
   useEffect(() => {
     if (userPhone) {
@@ -101,14 +95,9 @@ const PrePaid = ({
               meters
               className="py-2.5"
             />
-            <div
-              onClick={() => setStep(5)}
-              className="mb-2 flex w-full cursor-pointer items-center border-b pb-2"
-            >
+            <div onClick={() => setStep(5)} className="mb-2 flex w-full cursor-pointer items-center border-b pb-2">
               <PlusIcon />
-              <span className="ml-1.5 text-sm font-semibold text-primary-base">
-                Add a new meter
-              </span>
+              <span className="ml-1.5 text-sm font-semibold text-primary-base">Add a new meter</span>
             </div>
           </>
         )}

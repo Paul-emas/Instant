@@ -1,13 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  Area,
-  AreaChart,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+import { Area, AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 import SelectInput from '../components/forms/SelectInput';
 
@@ -139,13 +131,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
                   <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis
-                dataKey="name"
-                tick={{ fill: '#989898' }}
-                axisLine={false}
-                tickLine={false}
-                tickMargin={8}
-              />
+              <XAxis dataKey="name" tick={{ fill: '#989898' }} axisLine={false} tickLine={false} tickMargin={8} />
               <Tooltip
                 wrapperStyle={{
                   color: 'red',

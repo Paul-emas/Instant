@@ -3,22 +3,17 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-const SelectInput = ({
-  className,
-  error,
-  meters,
-  label,
-  options,
-  selectedOption,
-  setSelectedOption,
-}) => {
+const SelectInput = ({ className, error, meters, label, options, selectedOption, setSelectedOption }) => {
   const errorStyles = error
     ? 'border-red-600 focus:border-red-600 focus:outline-none'
     : 'focus:bg-primary-light focus:border-primary-base focus:border-skin-theme focus:outline-none';
+
   const [openOption, setOpenOptions] = useState(false);
 
+  console.log(options);
+
   useEffect(() => {
-    if (options.length && !selectedOption) {
+    if (options.length > 0 && !selectedOption) {
       setSelectedOption(options[0]);
     }
   }, [options]);
@@ -40,9 +35,7 @@ const SelectInput = ({
               {!meters ? (
                 <span className="ml-1.5 block truncate text-left">{selectedOption?.name}</span>
               ) : (
-                <span className="ml-1.5 block truncate text-left">
-                  {selectedOption?.meter?.number}
-                </span>
+                <span className="ml-1.5 block truncate text-left">{selectedOption?.meter?.number}</span>
               )}
               <span
                 className={`${
@@ -82,16 +75,11 @@ const SelectInput = ({
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-xs font-bold">{option?.meter?.name}</div>
-                      <div className="text-xxs font-bold text-primary-base">
-                        {option?.meter?.number}
-                      </div>
+                      <div className="text-xxs font-bold text-primary-base">{option?.meter?.number}</div>
                       <div className="text-xxs text-gray-500">{option?.meter?.address}</div>
                     </div>
                     {selectedOption?.meter?._id === option?.meter?._id && (
-                      <FontAwesomeIcon
-                        className="-mr-5 h-6 w-6 text-secondary-green"
-                        icon={faCheckCircle}
-                      />
+                      <FontAwesomeIcon className="-mr-5 h-6 w-6 text-secondary-green" icon={faCheckCircle} />
                     )}
                   </div>
                 )}
@@ -101,6 +89,11 @@ const SelectInput = ({
       </div>
     </>
   );
+};
+
+SelectInput.defaultProps = {
+  label: '',
+  options: [],
 };
 
 SelectInput.defaultProps = {

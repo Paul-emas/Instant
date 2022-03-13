@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserTransactions } from '../api';
-import { persistSelector } from '../slices/persist';
 import toast from 'react-hot-toast';
+
 import { setUserTransactions, userSelector } from '../slices/user';
+import { persistSelector } from '../slices/persist';
+import { getUserTransactions } from '../api';
 
 export default function useFetchTransaction(itemsPerPage) {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ export default function useFetchTransaction(itemsPerPage) {
       }
     }
   }
+
   return {
     data,
     transactions,

@@ -18,11 +18,12 @@ import Modal from '../components/modals';
 import Receipt from '../components/modals/Receipt';
 
 export default function Dashboard() {
+  const headings = ['Meter name', 'Date', 'Distributor', 'Meter No.', 'Reference Code', 'Amount', 'Status'];
   const dispatch = useDispatch();
   const { quickbuy, isLoggedIn } = useSelector(persistSelector);
   const { me } = useSelector(userSelector);
-  const { transactions, error, pageLoading } = useFetchTransaction(10);
 
+  const { transactions, pageLoading } = useFetchTransaction(10);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
   const [receipt, setReceipt] = useState(null);
@@ -46,16 +47,11 @@ export default function Dashboard() {
       )}
       {!pageLoading && (
         <>
-          <BuyElectricityModal
-            open={openBuyElectricityModal}
-            setOpen={setOpenBuyElectricityModal}
-          />
+          {openBuyElectricityModal && (
+            <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
+          )}
           {openReceiptModal && (
-            <Modal
-              close={() => setOpenReceiptModal(false)}
-              border={false}
-              setOpen={setOpenReceiptModal}
-            >
+            <Modal close={() => setOpenReceiptModal(false)} border={false} setOpen={setOpenReceiptModal}>
               <Receipt receipt={receipt} />
             </Modal>
           )}
@@ -90,13 +86,22 @@ export default function Dashboard() {
           </div>
           <div className="scale-up">
             <TransactionsTable
+              headings={headings}
               transactions={transactions}
-              setReceipt={setReceipt}
-              setOpenReceiptModal={setOpenReceiptModal}
               setOpenBuyElectricityModal={setOpenBuyElectricityModal}
+              mobileView={() => (
+                <TransactionDataMobile
+                  transactions={transactions}
+                  setReceipt={setReceipt}
+                  setOpenReceiptModal={setOpenReceiptModal}
+                />
+              )}
             >
-              <TransactionDataDefault transactions={transactions} />
-              <TransactionDataMobile transactions={transactions} />
+              <TransactionDataDefault
+                transactions={transactions}
+                setReceipt={setReceipt}
+                setOpenReceiptModal={setOpenReceiptModal}
+              />
             </TransactionsTable>
           </div>
           {isLoggedIn && <SolarCard className="block lg:hidden" />}

@@ -11,13 +11,13 @@ import Modal from '../../components/modals';
 import Receipt from '../../components/modals/Receipt';
 
 export default function Transactions() {
+  const headings = ['Meter name', 'Date', 'Distributor', 'Meter No.', 'Reference Code', 'Amount', 'Status'];
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [totalDocs, setTotalDocs] = useState(0);
   const [itemsPerPage, setItemPerPage] = useState(10);
+  const { data, transactions, pageLoading, error, tableLoading, init } = useFetchTransaction(itemsPerPage);
   const [pageCount, setPageCount] = useState(0);
   const [paginatedTransactions, setPaginatedTransactions] = useState(transactions);
-  const { data, transactions, pageLoading, error, tableLoading, init } =
-    useFetchTransaction(itemsPerPage);
 
   const [receipt, setReceipt] = useState(null);
   const [openReceiptModal, setOpenReceiptModal] = useState(false);
@@ -50,16 +50,9 @@ export default function Transactions() {
 
       {!pageLoading && (
         <>
-          <BuyElectricityModal
-            open={openBuyElectricityModal}
-            setOpen={setOpenBuyElectricityModal}
-          />
+          <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
           {openReceiptModal && (
-            <Modal
-              close={() => setOpenReceiptModal(false)}
-              border={false}
-              setOpen={setOpenReceiptModal}
-            >
+            <Modal close={() => setOpenReceiptModal(false)} border={false} setOpen={setOpenReceiptModal}>
               <Receipt receipt={receipt} />
             </Modal>
           )}
@@ -67,9 +60,17 @@ export default function Transactions() {
             <WalletCard />
           </div>
           <TransactionsTable
+            headings={headings}
             loading={tableLoading}
             transactions={paginatedTransactions}
             setOpenBuyElectricityModal={setOpenBuyElectricityModal}
+            mobileView={() => (
+              <TransactionDataMobile
+                setReceipt={setReceipt}
+                setOpenReceiptModal={setOpenReceiptModal}
+                transactions={paginatedTransactions}
+              />
+            )}
             paginate={() => (
               <Pagination
                 items={paginatedTransactions}
@@ -85,7 +86,6 @@ export default function Transactions() {
               setOpenReceiptModal={setOpenReceiptModal}
               transactions={paginatedTransactions}
             />
-            <TransactionDataMobile transactions={paginatedTransactions} />
           </TransactionsTable>
         </>
       )}

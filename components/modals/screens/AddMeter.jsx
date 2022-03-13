@@ -12,10 +12,12 @@ import ProviderSelectInput from '../../forms/ProviderSelectInput';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector, setUserPhone } from '../../../slices/persist';
+import useFetchMeters from '../../../hooks/useFetchMeters';
 
 const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) => {
   const dispatch = useDispatch();
   const { token, userPhone } = useSelector(persistSelector);
+  const { init } = useFetchMeters();
   const {
     register,
     handleSubmit,
@@ -81,7 +83,8 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
         if (resp?.data) {
           reset();
           setIsLoading(false);
-          setOpen(false);
+          goBack();
+          init();
           toast.success('Meter Has Been Added Successfully');
         }
       }
@@ -148,7 +151,7 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
                 errors={errors}
                 value={selectedMeter && selectedMeter?.label}
                 placeholder="John Doe's Meter"
-                label="Nickname meter (Optional)"
+                label="Nickname meter"
                 {...register('label', {
                   required: true,
                 })}
