@@ -13,9 +13,7 @@ const Receipt = ({ receipt }) => {
     var data = document.getElementById('reciept').innerHTML;
     var myWindow = window.open('', 'Instant Energy Recharge Receipt', 'height=400,width=600');
     myWindow.document.write('<html><head><title>Instant Energy Recharge Receipt</title>');
-    myWindow.document.write(
-      `<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">`,
-    );
+    myWindow.document.write(`<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">`);
     myWindow.document.write('</head><body >');
     myWindow.document.write(data);
     myWindow.document.write('</body></html>');
@@ -30,13 +28,7 @@ const Receipt = ({ receipt }) => {
   return (
     <div id="reciept" className="-mt-6 px-6 lg:px-8">
       <div className="flex justify-center">
-        <Image
-          src="/images/logo.webp"
-          width={200}
-          height={46}
-          className="object-contain"
-          priority={true}
-        />
+        <Image src="/images/logo.webp" width={200} height={46} className="object-contain" priority={true} />
       </div>
       <div className="mt-6 text-center">
         <p className="text-sm text-primary-gray">Your Electricity Token</p>
@@ -52,7 +44,8 @@ const Receipt = ({ receipt }) => {
           <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">Date Issued</div>
             <div className="text-sm font-semibold">
-              {moment(receipt?.createdAt).utc().format('LLL')}
+              {moment(item?.createdAt).utc().format('LL')}{' '}
+              <span className="ml-2">{moment(item?.createdAt).format('LT')}</span>
             </div>
           </div>
           <div className="mb-3 flex items-center justify-between">
@@ -109,9 +102,7 @@ const Receipt = ({ receipt }) => {
           </div>
         </div>
         <div className="mt-4">
-          <span className="text-xs font-semibold text-primary-gray">
-            Thanks for using Instant Energy
-          </span>
+          <span className="text-xs font-semibold text-primary-gray">Thanks for using Instant Energy</span>
           <div className="mt-4 flex justify-center space-x-4">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-light">
               <FontAwesomeIcon icon={faShareAlt} className="h-5 w-5" />
