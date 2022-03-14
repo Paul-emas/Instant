@@ -72,8 +72,8 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
         const response = await createTranscationToken(payload, token);
         if (response?.error) {
           setIsLoading(false);
-        } else {
           toast.error(response?.error?.message);
+        } else {
           setIsLoading(false);
           setConfirmDetails(response?.data);
           setStep(1);

@@ -44,8 +44,7 @@ const Receipt = ({ receipt }) => {
           <div className="mb-3 flex items-center justify-between">
             <div className="text-sm font-semibold text-primary-gray">Date Issued</div>
             <div className="text-sm font-semibold">
-              {moment(item?.createdAt).utc().format('LL')}{' '}
-              <span className="ml-2">{moment(item?.createdAt).format('LT')}</span>
+              {moment(receipt?.createdAt).utc().format('LL')} <span>{moment(receipt?.createdAt).format('LT')}</span>
             </div>
           </div>
           <div className="mb-3 flex items-center justify-between">

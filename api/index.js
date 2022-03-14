@@ -162,15 +162,12 @@ export async function getUserMeters(token) {
 
 export async function getUserTransactions(token, skip, limit) {
   try {
-    const response = await axios.get(
-      `${baseUrl}/transaction/token/me?skip=${skip}&limit=${limit}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+    const response = await axios.get(`${baseUrl}/transaction/token/me?skip=${skip}&limit=${limit}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
-    );
+    });
     const { data } = response.data;
     return { data };
   } catch (error) {
@@ -225,15 +222,12 @@ export async function getUserWalletBalance(token) {
 
 export async function getUserWalletTransactions(token, skip, limit) {
   try {
-    const response = await axios.get(
-      `${baseUrl}/transaction/wallet/me?skip=${skip}&limit=${limit}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
+    const response = await axios.get(`${baseUrl}/transaction/wallet/me?skip=${skip}&limit=${limit}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
-    );
+    });
     const { data } = response.data;
     return { data };
   } catch (error) {

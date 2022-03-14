@@ -47,18 +47,13 @@ const BuyElectricityModal = ({ open, setOpen }) => {
   };
 
   const onPayStackSuccess = async (reference) => {
-    if (reference?.status === 'success') {
-      setOpen(true);
-      setStep(3);
-      setPayStack(reference);
-      const resp = await generateTranscationToken({ reference: reference.reference }, paymentToken);
-      if (resp?.data) {
-        setReciept(resp.data);
-        setStep(4);
-      }
-    } else {
+    setStep(3);
+    setOpen(true);
+    setPayStack(reference);
+    const resp = await generateTranscationToken({ reference: reference.reference }, paymentToken);
+    if (resp?.data) {
+      setReciept(resp.data);
       setStep(4);
-      setPaymentError({ message: reference?.message });
     }
   };
 
@@ -101,9 +96,11 @@ const BuyElectricityModal = ({ open, setOpen }) => {
             onPayStackSuccess={onPayStackSuccess}
             phone={phone}
             setPhone={setPhone}
+            close={close}
           />
         </Modal>
       )}
+
       {open && step === 2 && (
         <Modal border={false} setOpen={setOpen}>
           <ErrorSuccess paystack={paystack} next={() => setStep(3)} />
@@ -124,7 +121,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
           close={() => {
             setOpen(false);
             setStep(0);
-            !isLoggedIn && dispatch(setInitAuthentication('createPin'));
+            // !isLoggedIn && dispatch(setInitAuthentication('createPin'));
           }}
           border={false}
           setOpen={setOpen}

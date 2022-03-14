@@ -64,7 +64,8 @@ const SignInPin = ({ close, setStep }) => {
             type="numeric"
             className="hidden"
             inputMode="number"
-            autoSelect={true}
+            autoSelect
+            focus
             initialValue=""
             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
           />
@@ -81,11 +82,7 @@ const SignInPin = ({ close, setStep }) => {
           </button>
         </div>
       </div>
-      {errorMessage ? (
-        <ErrorAlert error={errorMessage} setError={setErrorMessage} />
-      ) : (
-        <BottomDownload />
-      )}
+      {errorMessage ? <ErrorAlert error={errorMessage} setError={setErrorMessage} /> : <BottomDownload />}
     </Modal>
   );
 };

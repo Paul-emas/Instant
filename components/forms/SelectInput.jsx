@@ -10,8 +10,6 @@ const SelectInput = ({ className, error, meters, label, options, selectedOption,
 
   const [openOption, setOpenOptions] = useState(false);
 
-  console.log(options);
-
   useEffect(() => {
     if (options.length > 0 && !selectedOption) {
       setSelectedOption(options[0]);

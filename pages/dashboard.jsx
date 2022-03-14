@@ -47,9 +47,7 @@ export default function Dashboard() {
       )}
       {!pageLoading && (
         <>
-          {openBuyElectricityModal && (
-            <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
-          )}
+          <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
           {openReceiptModal && (
             <Modal close={() => setOpenReceiptModal(false)} border={false} setOpen={setOpenReceiptModal}>
               <Receipt receipt={receipt} />

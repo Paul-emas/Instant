@@ -6,7 +6,7 @@ import FormInput from '../forms/FormInput';
 import { setUserPhone } from '../../slices/persist';
 import { useDispatch } from 'react-redux';
 
-const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackSuccess }) => {
+const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackSuccess, close }) => {
   const config = {
     reference: details?.reference,
     email: details?.account?.email?.value,
@@ -85,7 +85,7 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
                   country,
                 }),
               );
-              initializePayment(onPayStackSuccess);
+              initializePayment(onPayStackSuccess, close);
               setOpen(false);
             }}
             size="base"
