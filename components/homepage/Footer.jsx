@@ -21,8 +21,7 @@ const Footer = () => {
               <SocialCard follow={false} center />
             </div>
             <p className="mx-auto mt-5 max-w-sm px-16 text-xs text-gray-400 lg:text-sm">
-              Suite 410, Nawa Complex Jahi, Abuja. Nigeria, <br /> 278, Dr. Lelykade The Hague The
-              Netherlands.
+              Suite 410, Nawa Complex Jahi, Abuja. Nigeria, <br /> 278, Dr. Lelykade The Hague The Netherlands.
             </p>
             <p className="mt-2 font-semibold">Info@instantenergy.com.ng</p>
             <p className="mt-2 font-semibold">090-8233-3376</p>
@@ -60,7 +59,7 @@ const Footer = () => {
               <div className="col-span-3 w-1/2 lg:w-auto">
                 <h2 className="font-semibold">Legal</h2>
                 <div className="mt-5 flex flex-col space-y-4 lg:mt-10 lg:space-y-8">
-                  <Link href="/policy">
+                  <Link href="/privacy-policy">
                     <a className="text-xs font-semibold lg:text-sm">Privacy Policy</a>
                   </Link>
                   <Link href="/terms-and-conditions">

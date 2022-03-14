@@ -22,10 +22,7 @@ const PrimaryButton = ({ loading, className, size = 'large', children, onClick, 
       } ${className} ${height} ${bg} btn btn-white flex transform items-center justify-center uppercase`}
     >
       {loading ? (
-        <FontAwesomeIcon
-          icon={faBolt}
-          className="loading mx-auto h-5 w-5 text-lg lg:h-6 lg:w-6 lg:text-xl"
-        />
+        <FontAwesomeIcon icon={faBolt} className="loading mx-auto h-5 w-5 text-lg lg:h-6 lg:w-6 lg:text-xl" />
       ) : (
         <span>{children}</span>
       )}
