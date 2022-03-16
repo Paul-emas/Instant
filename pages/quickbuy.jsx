@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { persistSelector, setQuickBuy } from '../slices/persist';
+import { persistSelector, setAnonymousToken, setQuickBuy } from '../slices/persist';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -52,6 +52,7 @@ export default function QuickBuy() {
     const resp = await getAccountToken(paylaod);
 
     if (resp?.data) {
+      dispatch(setAnonymousToken(resp?.data?.authorization));
       const { data } = await getUserTransactions(resp?.data?.authorization, 0, 6);
       setTransactions(data?.docs);
       setTableLoading(false);
