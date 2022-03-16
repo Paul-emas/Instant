@@ -31,6 +31,7 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
 
   useEffect(() => {
     if (userPhone) {
+      console.log(userPhone);
       const { phone, country } = userPhone;
       setPhone(phone?.number);
       setCountry(country);

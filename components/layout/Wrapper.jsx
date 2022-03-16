@@ -31,8 +31,7 @@ const Wrapper = ({ children }) => {
   });
 
   useEffect(() => {
-    const handleStart = (url) =>
-      url !== router.pathname && !isRouteProtected && setPageLoading(true);
+    const handleStart = (url) => url !== router.pathname && !isRouteProtected && setPageLoading(true);
     const handleComplete = (url) => {
       url !== router.pathname && setPageLoading(false);
       window.scrollTo(0, 0);
