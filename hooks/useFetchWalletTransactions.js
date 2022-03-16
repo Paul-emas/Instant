@@ -26,6 +26,7 @@ export default function useFetchWalletTransactions(itemsPerPage) {
   }, [userWalletTransactions]);
 
   async function fetchTransactions(currentPage = 0) {
+    console.log(currentPage);
     if (token && isLoggedIn) {
       setTabelLoading(true);
       const resp = await getUserWalletTransactions(token, currentPage, itemsPerPage);

@@ -123,7 +123,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
           close={() => {
             setOpen(false);
             setStep(0);
-            !isLoggedIn ? dispatch(setInitAuthentication('createPinMessage')) : init();
+            !isLoggedIn ? dispatch(setInitAuthentication('createPinNewUser')) : init();
           }}
           border={false}
           setOpen={setOpen}

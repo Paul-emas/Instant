@@ -9,6 +9,7 @@ import Register from './screens/Register';
 import ResetPin from './screens/ResetPin';
 import SignInPin from './screens/SignInPin';
 import CreatePinMessage from './screens/CreatePinMessage';
+import CreatePinNewUser from './screens/CreatePinNewUser';
 import NoInternet from './screens/NoInternet';
 import FundWallet from './screens/FundWallet';
 
@@ -41,6 +42,7 @@ const ModalController = () => {
           {step === 'signIn' && <SignInPin {...modalProps} />}
           {step === 'reset' && <ResetPin {...modalProps} />}
           {step === 'createPinMessage' && <CreatePinMessage {...modalProps} />}
+          {step === 'createPinNewUser' && <CreatePinNewUser {...modalProps} />}
           {step === 'createPin' && <CreatePin {...modalProps} />}
           {step === 'confirmPin' && <ConfirmPin {...modalProps} />}
           {step === 'fundWallet' && <FundWallet {...modalProps} />}
