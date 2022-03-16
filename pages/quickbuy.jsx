@@ -91,12 +91,9 @@ export default function QuickBuy() {
         <div className="bg-white py-8 lg:py-16">
           <div className="mx-auto px-4 xl:container xl:px-14">
             <div className="overlay w-full rounded-xl bg-primary-base py-16 text-center lg:py-24">
-              <div className="px-8 text-2xl font-bold leading-snug text-white lg:text-3.5xl">
+              <div className="px-8 text-xl font-bold leading-snug text-white lg:text-3.5xl">
                 Having trouble with a transaction?
               </div>
-              <p className="px-5 text-gray-300">
-                Earn and save more when you create an account with us.
-              </p>
               <div className="mt-12">
                 <Button white>Talk to customer care</Button>
               </div>

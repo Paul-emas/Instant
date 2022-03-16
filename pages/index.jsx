@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import Confetti from 'react-confetti';
+import { useDispatch, useSelector } from 'react-redux';
+import { persistSelector, setFirstTimeUser } from '../slices/persist';
 
 import Header from '../components/homepage/Header';
 import QuickPay from '../components/modals/QuickPay';
@@ -25,12 +27,13 @@ import FloatingIcon3 from '../public/svgs/floating/float-3.svg';
 import FloatingIcon4 from '../public/svgs/floating/float-4.svg';
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const { firstTimeUser } = useSelector(persistSelector);
   const { width, height } = useWindowSize();
-  const [openConfetti, setOpenConfetti] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      setOpenConfetti(false);
+      dispatch(setFirstTimeUser(false));
     }, 8000);
   }, []);
 
@@ -43,7 +46,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {openConfetti && <Confetti width={width} height={height} />}
+      {firstTimeUser && <Confetti width={width} height={height} />}
       <Header bg="pb-32 bg-primary-light">
         <div className="justify-between lg:flex">
           <div className="relative top-16 max-w-3xl sm:top-20 lg:w-1/2">

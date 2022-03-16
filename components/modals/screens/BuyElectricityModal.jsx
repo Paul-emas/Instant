@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector } from '../../../slices/persist';
 import { generateTranscationToken } from '../../../api';
+import useFetchTransaction from '../../../hooks/useFetchTransaction';
 
 import BuyElectricityTab from '../../tabs/BuyElectricityTab';
 import Modal from '../index';
@@ -16,6 +17,7 @@ import { setInitAuthentication } from '../../../slices/user';
 
 const BuyElectricityModal = ({ open, setOpen }) => {
   const { isLoggedIn, userPhone } = useSelector(persistSelector);
+  const { init } = useFetchTransaction(10);
   const dispatch = useDispatch();
   const tabs = [
     { id: 0, name: 'prepaid' },
@@ -121,6 +123,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
           close={() => {
             setOpen(false);
             setStep(0);
+            init();
             // !isLoggedIn && dispatch(setInitAuthentication('createPin'));
           }}
           border={false}

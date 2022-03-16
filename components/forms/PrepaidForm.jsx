@@ -31,7 +31,6 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
 
   useEffect(() => {
     if (userPhone) {
-      console.log(userPhone);
       const { phone, country } = userPhone;
       setPhone(phone?.number);
       setCountry(country);
@@ -73,7 +72,8 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
         const response = await createTranscationToken(payload, token);
         if (response?.error) {
           setIsLoading(false);
-          toast.error(response?.error?.message);
+          console.log(response?.error);
+          toast.error(response?.error?.data?.errors[0]?.message);
         } else {
           setIsLoading(false);
           setConfirmDetails(response?.data);

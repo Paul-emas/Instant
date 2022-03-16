@@ -140,9 +140,7 @@ const FundWallet = ({ setStep, close }) => {
           <ErrorSuccess
             error={errorMsg}
             msg={
-              errorMsg
-                ? errorMsg
-                : 'Your transaction was successfull you can now purchase electricity units via wallet'
+              errorMsg ? errorMsg : 'Your transaction was successfull you can now purchase electricity units via wallet'
             }
             next={() => validateTransaction()}
           />

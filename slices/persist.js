@@ -7,6 +7,7 @@ const initialState = {
   email: null,
   quickbuy: false,
   anonymousToken: null,
+  firstTimeUser: true,
 };
 
 const persistSlice = createSlice({
@@ -31,17 +32,14 @@ const persistSlice = createSlice({
     setAnonymousToken: (state, { payload }) => {
       state.anonymousToken = payload;
     },
+    setFirstTimeUser: (state, { payload }) => {
+      state.firstTimeUser = payload;
+    },
   },
 });
 
-export const {
-  setToken,
-  setIsLoggedIn,
-  setUserPhone,
-  setUserEmail,
-  setQuickBuy,
-  setAnonymousToken,
-} = persistSlice.actions;
+export const { setToken, setIsLoggedIn, setUserPhone, setUserEmail, setQuickBuy, setAnonymousToken, setFirstTimeUser } =
+  persistSlice.actions;
 
 export const persistSelector = (state) => state.persist;
 
