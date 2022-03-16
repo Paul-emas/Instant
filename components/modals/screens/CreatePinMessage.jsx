@@ -12,8 +12,7 @@ const CreatePinMessage = ({ setStep, close }) => {
         </h1>
         <LockIcon className="mx-auto my-3" />
         <p className="mt-4 text-center text-sm text-gray-400">
-          We improved our systems to be safe and secure for all our customers by creating a 6-digit
-          login Pin.
+          We improved our systems to be safe and secure for all our customers by creating a 4-digit login Pin.
         </p>
         <div className="mt-5 mb-4 flex justify-center">
           <Button onClick={() => setStep('createPin')}>Create a Pin</Button>
