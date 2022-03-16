@@ -17,7 +17,12 @@ function MyApp({ Component, pageProps }) {
       <PersistGate persistor={persistor}>
         <FormProvider {...methods}>
           <Wrapper>
-            <Toaster position="top-right" gutter={8} />
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                duration: 6000,
+              }}
+            />
             <Component {...pageProps} />
           </Wrapper>
         </FormProvider>
