@@ -1,23 +1,14 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCheckCircle,
-  faChevronDown,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUserProviders, userSelector } from '../../slices/user';
 import { getProviders } from '../../api';
 
 import EmptyIcon from '../../public/svgs/empty-state.svg';
 
-const ProviderSelectInput = ({
-  className,
-  error,
-  label,
-  selectedProvider,
-  setSelectedProvider,
-}) => {
+const ProviderSelectInput = ({ className, error, label, selectedProvider, setSelectedProvider }) => {
   const dispatch = useDispatch();
   const { userProviders } = useSelector(userSelector);
   const errorStyles = error
@@ -69,8 +60,7 @@ const ProviderSelectInput = ({
                     className="h-7 w-8 flex-shrink-0 rounded-full object-contain"
                   />
                   <span className="ml-3 block truncate text-sm">
-                    {selectedProvider?.state?.name} (
-                    {selectedProvider?.disco?.shortName})
+                    {selectedProvider?.state?.name} ({selectedProvider?.disco?.shortName})
                   </span>
                 </span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 mt-2 flex items-center pr-3.5 text-gray-500">
@@ -102,10 +92,8 @@ const ProviderSelectInput = ({
           {!providers?.length ? (
             <div className="flex flex-col items-center py-5">
               <EmptyIcon />
-              <p className="mt-2 text-sm text-gray-400">No Providers Found</p>
-              <p className="text-xs text-gray-700">
-                This is a network error try again?
-              </p>
+              <p className="mt-4 text-sm font-bold">No Providers Found</p>
+              <p className="text-xs text-gray-400">This is a network error try again?</p>
               <button
                 onClick={() => {
                   fetchProviders();
@@ -129,20 +117,13 @@ const ProviderSelectInput = ({
                   role="option"
                 >
                   <div className="flex items-center">
-                    <span className="block truncate text-sm font-semibold">
-                      {option.state.name}
-                    </span>
+                    <span className="block truncate text-sm font-semibold">{option.state.name}</span>
                   </div>
                   <span className="absolute inset-y-0 right-0 flex items-center pr-4">
                     {selectedProvider?.state?._id === option.state._id ? (
-                      <FontAwesomeIcon
-                        className="h-5 w-5 text-secondary-green"
-                        icon={faCheckCircle}
-                      />
+                      <FontAwesomeIcon className="h-5 w-5 text-secondary-green" icon={faCheckCircle} />
                     ) : (
-                      <span className="text-xs font-bold">
-                        {option.disco.shortName}
-                      </span>
+                      <span className="text-xs font-bold">{option.disco.shortName}</span>
                     )}
                   </span>
                 </li>

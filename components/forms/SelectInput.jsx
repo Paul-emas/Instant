@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
+import EmptyIcon from '../../public/svgs/empty-state.svg';
+
 const SelectInput = ({ className, error, meters, label, options, selectedOption, setSelectedOption }) => {
   const errorStyles = error
     ? 'border-red-600 focus:border-red-600 focus:outline-none'
@@ -83,6 +85,13 @@ const SelectInput = ({ className, error, meters, label, options, selectedOption,
                 )}
               </li>
             ))}
+          {!meters?.length ? (
+            <div className="flex flex-col items-center py-5">
+              <EmptyIcon />
+              <p className="mt-4 text-sm font-bold">No Meters</p>
+              <p className="text-xs text-gray-400">Kindly add a meter to purchase units?</p>
+            </div>
+          ) : null}
         </ul>
       </div>
     </>

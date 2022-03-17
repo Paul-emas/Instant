@@ -13,7 +13,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
-    "@hookform/error-message": "^2.0.0",
     "@reduxjs/toolkit": "^1.7.1",
     "@tailwindcss/custom-forms": "^0.2.1",
     "axios": "^0.22.0",

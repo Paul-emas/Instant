@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import Confetti from 'react-confetti';
-import { useDispatch, useSelector } from 'react-redux';
-import { persistSelector, setFirstTimeUser } from '../slices/persist';
+import { useDispatch } from 'react-redux';
+import { setInitAuthentication } from '../slices/user';
 
 import Header from '../components/homepage/Header';
 import QuickPay from '../components/modals/QuickPay';
@@ -28,13 +28,20 @@ import FloatingIcon4 from '../public/svgs/floating/float-4.svg';
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { firstTimeUser } = useSelector(persistSelector);
+  const [firstTimeUser, setFirstTimeUser] = useState(true);
   const { width, height } = useWindowSize();
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(setFirstTimeUser(false));
-    }, 8000);
+    console.log(localStorage.getItem('firstTimeUser'));
+    if (!localStorage.getItem('firstTimeUser')) {
+      setTimeout(() => {
+        dispatch(setInitAuthentication('welcome'));
+        setFirstTimeUser(false);
+        localStorage.setItem('firstTimeUser', true);
+      }, 4000);
+    } else {
+      setFirstTimeUser(false);
+    }
   }, []);
 
   return (

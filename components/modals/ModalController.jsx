@@ -12,6 +12,7 @@ import CreatePinMessage from './screens/CreatePinMessage';
 import CreatePinNewUser from './screens/CreatePinNewUser';
 import NoInternet from './screens/NoInternet';
 import FundWallet from './screens/FundWallet';
+import Welcome from './screens/Welcome';
 
 const ModalController = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const ModalController = () => {
           {step === 'confirmPin' && <ConfirmPin {...modalProps} />}
           {step === 'fundWallet' && <FundWallet {...modalProps} />}
           {step === 'offline' && <NoInternet close={close} />}
+          {step === 'welcome' && <Welcome close={close} />}
         </div>
       )}
     </>
