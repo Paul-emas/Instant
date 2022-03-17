@@ -45,7 +45,7 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
       const payload = {
         phone: {
           number: phone,
-          code: country?.countryCode,
+          code: country?.countryCode ?? me?.phone?.code,
           value: formattedPhone,
         },
         email: isLoggedIn && me ? me?.email.value : email,
