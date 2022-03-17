@@ -14,7 +14,7 @@ const CreatePinNewUser = ({ setStep, close }) => {
   useEffect(() => {
     setTimeout(() => {
       setOpenConfetii(false);
-    }, 10000);
+    }, 4000);
   }, []);
 
   return (
