@@ -54,6 +54,7 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
             code: country.countryCode,
             value: phone,
           },
+          country,
         }),
       );
 
