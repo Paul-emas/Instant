@@ -32,7 +32,6 @@ export default function Home() {
   const { width, height } = useWindowSize();
 
   useEffect(() => {
-    console.log(localStorage.getItem('firstTimeUser'));
     if (!localStorage.getItem('firstTimeUser')) {
       setTimeout(() => {
         dispatch(setInitAuthentication('welcome'));

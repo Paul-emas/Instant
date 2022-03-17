@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BulbIcon from '../../public/svgs/bulb-db.svg';
 
 const MetersDataMobile = ({ meters, setSelectedMeter, setOpenAddMeterModal }) => {
-  console.log(meters);
   return (
     <>
       {meters?.map((item, index) => (
