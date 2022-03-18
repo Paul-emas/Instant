@@ -16,6 +16,7 @@ import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
 import Modal from '../components/modals';
 import Receipt from '../components/modals/Receipt';
+import GiftBox from '../components/GiftCard';
 
 export default function Dashboard() {
   const headings = ['Meter name', 'Date', 'Distributor', 'Meter No.', 'Reference Code', 'Amount', 'Status'];
@@ -74,7 +75,7 @@ export default function Dashboard() {
                 />
               </div>
               <div className="scale-up lg:col-span-2">
-                <ReferBox />
+                <GiftBox />
               </div>
             </div>
             <SolarCard className="scale-up hidden lg:block" />
