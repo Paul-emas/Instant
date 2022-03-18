@@ -12,6 +12,7 @@ import Footer from '../components/homepage/Footer';
 import ContactCard from '../components/ContactCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import Goals from '../components/homepage/Goals';
 
 export default function About() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ export default function About() {
       {/* <AboutBanner /> */}
       {/* <Team /> */}
       <AboutInfo />
+      <Goals />
       <FAQs />
       <Footer />
     </div>
