@@ -38,7 +38,7 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
   }, [userPhone]);
 
   async function onSubmit(formData) {
-    if (formData) {
+    if (formData && selectedMeter) {
       setIsLoading(true);
       const { meter, email, name, amount } = formData;
       const formattedPhone = phone.replace(country?.countryCode, '');
@@ -80,6 +80,8 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
           setStep(1);
         }
       }
+    } else {
+      toast.error('Kindly add a meter to proceed');
     }
   }
 
