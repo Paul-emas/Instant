@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Header from '../components/homepage/Header';
 import ContactCard from '../components/ContactCard';
 import UserServices from '../components/homepage/UserServices';
-import BulbIcon from '../public/svgs/bulb.svg';
 import Plans from '../components/homepage/Plans';
 import Manage from '../components/homepage/Manage';
 import ChoosePlans from '../components/homepage/ChoosePlans';
@@ -19,20 +18,17 @@ export default function solarPlans() {
   const steps = [
     {
       name: 'Start a solar plan',
-      caption:
-        'Tell us what you like to send and let us know when we can come.',
+      caption: 'Tell us what you like to send and let us know when we can come.',
       icon: BulbIcon,
     },
     {
       name: 'First payment & solar installation',
-      caption:
-        'Tell us what you like to send and let us know when we can come.',
+      caption: 'Tell us what you like to send and let us know when we can come.',
       icon: BulbIcon,
     },
     {
       name: 'Lease to own',
-      caption:
-        'Tell us what you like to send and let us know when we can come.',
+      caption: 'Tell us what you like to send and let us know when we can come.',
       icon: BulbIcon,
     },
   ];
@@ -41,14 +37,8 @@ export default function solarPlans() {
     <div>
       <Head>
         <title>Instant Energy - Buy Solar Electricity Units in Nigeria</title>
-        <meta
-          name="description"
-          content="Instant Energy - Buy Electrical Units in Nigeria"
-        />
-        <meta
-          property="og:description"
-          content="Instant Energy - Buy Electrical Units in Nigeria"
-        />
+        <meta name="description" content="Instant Energy - Buy Electrical Units in Nigeria" />
+        <meta property="og:description" content="Instant Energy - Buy Electrical Units in Nigeria" />
         {/* <meta property="og:url" content="localhost:3000" /> */}
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />

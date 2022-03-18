@@ -3,7 +3,6 @@ import Header from '../components/homepage/Header';
 import ContactForm from '../components/forms/ContactForm';
 import ContactCard from '../components/ContactCard';
 import ContactBanner from '../components/homepage/ContactBanner';
-import CTA from '../components/homepage/CTA';
 import Footer from '../components/homepage/Footer';
 
 export default function Contact() {
@@ -12,10 +11,7 @@ export default function Contact() {
       <Head>
         <title>Instant Energy - Buy Electricity Units in Nigeria</title>
         <meta name="description" content="Instant Energy - Buy Electrical Units in Nigeria" />
-        <meta
-          property="og:description"
-          content="Instant Energy - Buy Electrical Units in Nigeria"
-        />
+        <meta property="og:description" content="Instant Energy - Buy Electrical Units in Nigeria" />
         <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

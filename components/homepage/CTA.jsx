@@ -1,5 +1,5 @@
-import MobileMockup from '../../public/svgs/mobile-mockup.svg';
-import MobileMockup2 from '../../public/svgs/mobile-mockup-sm.svg';
+// import MobileMockup from '../../public/svgs/mobile-mockup.svg';
+// import MobileMockup2 from '../../public/svgs/mobile-mockup-sm.svg';
 import DownloadButtons from '../DownloadButtons';
 
 const CTA = () => {
@@ -12,15 +12,15 @@ const CTA = () => {
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-sm text-gray-400 lg:mx-0 lg:text-base">
-              Move your products to your customers at your will and convivence go about your
-              business continently the modern way
+              Move your products to your customers at your will and convivence go about your business continently the
+              modern way
             </p>
             <div className="mx-auto max-w-sm lg:mx-0 lg:max-w-full">
               <DownloadButtons captionColor="text-gray-400" className="bg-primary-dark" />
             </div>
           </div>
-          <MobileMockup className="-mt-12 hidden lg:block" />
-          <MobileMockup2 className="relative -left-10 mt-6 block w-full lg:hidden" />
+          {/* <MobileMockup className="-mt-12 hidden lg:block" /> */}
+          {/* <MobileMockup2 className="relative -left-10 mt-6 block w-full lg:hidden" /> */}
         </div>
       </div>
     </div>
