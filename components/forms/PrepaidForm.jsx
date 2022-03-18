@@ -39,6 +39,13 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
 
   async function onSubmit(formData) {
     if (formData) {
+      if (isLoggedIn && !selectedMeter) {
+        toast.error('Kindly add a meter to proceed');
+        return;
+      } else if (!isLoggedIn && !selectedProvider) {
+        toast.error('Kindly add a meter to proceed');
+        return;
+      }
       setIsLoading(true);
       const { meter, email, name, amount } = formData;
       const formattedPhone = phone.replace(country?.countryCode, '');
