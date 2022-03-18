@@ -304,10 +304,10 @@ input:checked ~ .dot {
 
 ._2iWL7 {
   position: fixed !important;
-  z-index: 999999999 !important;
+  z-index: 40 !important;
 }
 
 ._1bpcM {
   position: fixed !important;
-  z-index: 999999999 !important;
+  z-index: 40 !important;
 }

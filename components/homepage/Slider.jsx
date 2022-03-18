@@ -16,7 +16,7 @@ const Slider = () => {
     {
       name: 'Bam Charles',
       type: 'whatsapp',
-      comment: 'Thanks IE i am greatful, you guys are wonderful I am proud of you all. A job well done.',
+      comment: 'Thanks IE i am grateful, you guys are wonderful I am proud of you all. A job well done.',
     },
   ];
   const flickityOptions = {

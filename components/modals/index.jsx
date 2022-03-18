@@ -14,26 +14,13 @@ const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, ch
 
     if (!isMobile) {
       tl.fromTo('#modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
-      tl.fromTo(
-        '.modal-box',
-        { autoAlpha: 0, scale: 0.8 },
-        { autoAlpha: 1, scale: 1, duration: 0.3 },
-      );
+      tl.fromTo('.modal-box', { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.3 });
     } else if (isMobile && isAuth) {
       tl.fromTo('#modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
-      tl.fromTo(
-        '.modal-box',
-        { autoAlpha: 0, scaleX: 0.9 },
-        { autoAlpha: 1, scaleX: 1, duration: 0.3 },
-      );
+      tl.fromTo('.modal-box', { autoAlpha: 0, scaleX: 0.9 }, { autoAlpha: 1, scaleX: 1, duration: 0.3 });
     } else {
       tl.fromTo('#modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
-      tl.fromTo(
-        '.modal-box',
-        { autoAlpha: 0, y: '40%' },
-        { autoAlpha: 1, y: 0, duration: 0.3 },
-        '<',
-      );
+      tl.fromTo('.modal-box', { autoAlpha: 0, y: '40%' }, { autoAlpha: 1, y: 0, duration: 0.3 }, '<');
     }
 
     return () => {
@@ -68,9 +55,7 @@ const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, ch
           onClick={() => close()}
           id="modal-overlay"
           className={`${
-            isAuth
-              ? 'bg-white lg:bg-secondary-modal lg:bg-opacity-80'
-              : 'bg-secondary-modal bg-opacity-80'
+            isAuth ? 'bg-white lg:bg-secondary-modal lg:bg-opacity-80' : 'bg-secondary-modal bg-opacity-80'
           } modal-overlay absolute min-h-screen w-full`}
         ></div>
         <div className={`${isAuth ? 'px-3 pt-10 sm:px-0 sm:pt-0' : ''} w-full xs:w-modal`}>

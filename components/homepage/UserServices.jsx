@@ -18,9 +18,9 @@ const UserServices = ({ stepArr }) => {
                     <Icon />
                   </div>
                   <div className="ml-6">
-                    <div className="text-xs font-bold uppercase text-gray-400">Step {index + 1}</div>
+                    <div className="text-xs font-bold uppercase text-gray-500">Step {index + 1}</div>
                     <h2 className="mt-1 font-bold text-black">{name}</h2>
-                    <p className="mt-0.5 pr-5 text-xs text-gray-400 sm:max-w-xs lg:pr-0 lg:text-sm">{caption}</p>
+                    <p className="mt-0.5 pr-5 text-xs text-gray-500 sm:max-w-xs lg:pr-0 lg:text-sm">{caption}</p>
                   </div>
                 </div>
               );

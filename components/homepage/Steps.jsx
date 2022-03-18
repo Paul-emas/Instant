@@ -22,7 +22,7 @@ const Steps = () => {
             <div className="rounded-2xl border bg-white px-8 py-12 text-center lg:text-left">
               <WalletPlusIcon className="mx-auto lg:mx-0" />
               <div className="mt-3 text-lg font-bold">Track your electricity spending</div>
-              <p className="mt-2 text-sm text-gray-400 lg:text-sm">
+              <p className="mt-2 text-sm text-gray-500 lg:text-sm">
                 Use your in-app dashboard to track your electricity spending, manage all your bills in one place and set
                 reminders for future transactions.
               </p>
@@ -30,7 +30,7 @@ const Steps = () => {
             <div className="rounded-2xl border bg-white px-8 py-12 text-center lg:text-left">
               <ChartIcon className="mx-auto text-xl lg:mx-0" />
               <div className="mt-3 text-lg font-bold">Top-up on the go</div>
-              <p className="mt-2 text-sm text-gray-400 lg:text-sm">
+              <p className="mt-2 text-sm text-gray-500 lg:text-sm">
                 Recharge your meter from anywhere, either online or using the app, with an agent or from the comfort of
                 your home.
               </p>
@@ -38,14 +38,14 @@ const Steps = () => {
             <div className="rounded-2xl border bg-white px-8 py-12 text-center lg:text-left">
               <PercentageIcon className="mx-auto lg:mx-0" />
               <div className="mt-3 text-lg font-bold">Energy Budgeting</div>
-              <p className="mt-2 text-sm text-gray-400 lg:text-sm">
+              <p className="mt-2 text-sm text-gray-500 lg:text-sm">
                 Use your in-app instant energy wallet to set aside money for your next electricity payment.
               </p>
             </div>
             <div className="rounded-2xl border bg-white px-8 py-12 text-center lg:text-left">
               <NicknameIcon className="mx-auto lg:mx-0" />
               <div className="mt-3 text-lg font-bold">Nickname Meter</div>
-              <p className="mt-2 text-sm text-gray-400 lg:text-sm">
+              <p className="mt-2 text-sm text-gray-500 lg:text-sm">
                 Buying electricity for family &friends or do you live in a multi-tenant building? You can now give a
                 unique name to every new meter you add on the app.
               </p>

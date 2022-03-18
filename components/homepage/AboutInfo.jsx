@@ -33,7 +33,7 @@ const AboutInfo = () => {
               <div key={d} className="rounded-2xl border bg-white px-8 py-12 text-center lg:text-left">
                 <Icon className="mx-auto lg:mx-0" />
                 <div className="mt-3 text-lg font-bold">{heading}</div>
-                <p className="mt-2 text-sm text-gray-400 lg:text-sm">{d}</p>
+                <p className="mt-2 text-sm text-gray-500 lg:text-sm">{d}</p>
               </div>
             ))}
           </div>
