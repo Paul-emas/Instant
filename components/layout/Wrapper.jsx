@@ -32,6 +32,12 @@ const Wrapper = ({ children }) => {
     return isRouteProtected;
   });
 
+  const handleRouteChange = (url) => {
+    window.gtag('config', `${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`, {
+      page_path: url,
+    });
+  };
+
   useEffect(() => {
     const handleStart = (url) => url !== router.pathname && !isRouteProtected && setPageLoading(true);
     const handleComplete = (url) => {

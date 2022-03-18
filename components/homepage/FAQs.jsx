@@ -5,20 +5,21 @@ const FAQs = () => {
   const questions = [
     {
       id: 0,
-      name: 'How do I buy electricity units on this plaform',
+      name: 'How do I buy electricity units on this plaform?',
       ans: `If you are a new user, kindly enter your mobile number and click buy electricity. A page will pop up for you to fill in your meter number, select your state, enter your name(optional), email address and the amount you want to purchase.`,
       ans2: `Once you have done that click proceeds to payment, a page will pop up for you to confirm that all the details you entered is correct and then you can proceed to select your payment option from the list that will be displayed on the screen.`,
     },
     {
       id: 1,
-      name: 'Do i need to create an account to buy electricity on this platform',
+      name: 'Do i need to create an account to buy electricity on this platform?',
       ans: 'No, all you need to do is enter your phone number to start.',
       ans2: 'However, once you are done with your first transaction, we will ask you to create a pin',
     },
     {
       id: 2,
-      name: 'Can i purchase units for other people',
-      ans: 'Yes, you can. You can purchase for anyone on our platform, just add their meter number purchase and send it to them via SMS or email.',
+      name: 'Why do i need to fund my wallet?',
+      ans: 'We created the wallet feature to help our customers better budget for their energy spending.',
+      ans2: 'You can save money in your wallet for a future transaction.',
     },
     {
       id: 4,
@@ -28,9 +29,9 @@ const FAQs = () => {
     },
     {
       id: 5,
-      name: 'What are the minimum and maximum purchases i can make?',
-      ans: 'The minimum you can purchase is 500',
-      ans2: 'We currently don’t have a limit to how much you can purchase at once.',
+      name: 'Why is the meter rejecting my token?',
+      ans: 'Check that the meter number you purchased is right for the meter in your home.',
+      ans2: 'The meter has not yet been activated- An activation code will be required from the distribution company.',
     },
   ];
 

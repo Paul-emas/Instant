@@ -5,7 +5,7 @@ const Goals = () => {
     <div className="bg-white py-16 lg:py-36">
       <div className="mx-auto px-4 lg:px-14 xl:container">
         <h1 className="mx-auto text-center text-xl font-bold text-primary-dark sm:px-0 lg:max-w-4xl lg:px-10 lg:text-5xl xl:leading-tight">
-          Our Priority {`SDG's`}
+          Our Priority SDGs
         </h1>
         <p className="mx-auto mt-5 max-w-3xl text-center text-xs leading-relaxed text-gray-500 lg:text-base">
           By facilitating access to affordable clean energy for residential and business clusters Instant Energy is
