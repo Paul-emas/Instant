@@ -73,7 +73,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="col-span-2 hidden px-4 text-right lg:block lg:px-0">
-            <SocialCard follow={false} center={false} />
+            <SocialCard isFooter follow={false} center={false} />
             <p className="mt-5 ml-auto max-w-xs pl-24 text-xs lg:text-sm">
               Suite 410, Nawa Complex Jahi, Abuja. Nigeria.
             </p>

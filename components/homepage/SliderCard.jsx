@@ -4,13 +4,11 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 import QuoteIcon from '../../public/svgs/quotes.svg';
-import QuoteIcon2 from '../../public/svgs/quotes-sm.svg';
-import CallCardIcon from '../../public/svgs/call-card.svg';
 
 const SliderCard = () => {
   return (
     <>
-      <div className="lg:shadow-soft h-[452px] w-full rounded-2xl border border-gray-100 py-8 px-7 lg:w-[376px]">
+      <div className="card-shadow h-[452px] w-full rounded-2xl border border-gray-100 py-8 px-7 lg:w-[376px]">
         <QuoteIcon />
         <p className="mt-10 text-base leading-relaxed">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et

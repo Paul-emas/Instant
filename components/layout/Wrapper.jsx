@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
+import WhatsAppWidget from 'react-whatsapp-widget';
+import 'react-whatsapp-widget/dist/index.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector } from '../../slices/persist';
@@ -58,7 +60,12 @@ const Wrapper = ({ children }) => {
       {!pageLoading && (
         <>
           <ModalController />
-          {!isRouteProtected && <div>{children}</div>}
+          {!isRouteProtected && (
+            <div>
+              <WhatsAppWidget phoneNumber="2349082333376" />
+              {children}
+            </div>
+          )}
           {isRouteProtected && (
             <div className="min-h-screen w-full overflow-hidden bg-gray-300">
               <div className="min-h-screen">

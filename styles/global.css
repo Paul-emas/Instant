@@ -95,6 +95,10 @@ input[type='number']::-webkit-outer-spin-button {
   filter: drop-shadow(9px 9px 40px rgba(0, 0, 0, 0.06));
 }
 
+.card-shadow {
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.03);
+}
+
 .overlay {
   background-image: url('../public/images/overlay.png');
 }
@@ -296,4 +300,14 @@ input:checked ~ .dot {
 
 .static-padding {
   padding-top: 80px !important;
+}
+
+._2iWL7 {
+  position: fixed !important;
+  z-index: 999999999 !important;
+}
+
+._1bpcM {
+  position: fixed !important;
+  z-index: 999999999 !important;
 }

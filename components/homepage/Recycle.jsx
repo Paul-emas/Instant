@@ -28,9 +28,9 @@ const Recycle = (props) => {
           </div>
         </div>
         <div className="mx-auto mt-14 max-w-6xl outline-black lg:mt-36">
-          <div className="items-center lg:flex lg:space-x-40">
+          <div className="flex flex-col-reverse items-center lg:flex-row lg:space-x-40">
             <div>
-              <div className="text-center text-xl font-bold leading-tight text-primary-dark lg:text-left lg:text-5xl xl:leading-tight">
+              <div className="mt-6 text-center text-xl font-bold leading-tight text-primary-dark lg:mt-0 lg:text-left lg:text-5xl xl:leading-tight">
                 How we do it
               </div>
               <p className="mt-4 text-center text-sm lg:text-left lg:text-base">
@@ -49,7 +49,7 @@ const Recycle = (props) => {
             </div>
             <div>
               <BulbIcon width="376.87" height="455.68" className="hidden lg:block" />
-              <TreesIcon width="376.87" className="block w-full lg:hidden" />
+              <BulbIcon width="376.87" className="block w-full lg:hidden" />
             </div>
           </div>
         </div>

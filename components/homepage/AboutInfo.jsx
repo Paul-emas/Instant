@@ -24,7 +24,7 @@ const AboutInfo = () => {
   return (
     <div className="py-16 lg:py-12">
       <div className="mx-auto px-4 xl:px-14">
-        <h1 className="mx-auto text-center text-xl font-bold text-primary-dark sm:px-0 lg:max-w-4xl lg:px-10 lg:text-5xl xl:leading-tight">
+        <h1 className="mx-auto text-center text-2xl font-bold text-primary-dark sm:px-0 lg:max-w-4xl lg:px-10 lg:text-5xl xl:leading-tight">
           What <span className="text-secondary-green">drives</span> us as a company
         </h1>
         <div className="mx-auto mt-8 max-w-6xl lg:mt-20">
@@ -33,10 +33,7 @@ const AboutInfo = () => {
               <div key={d} className="rounded-2xl border bg-white px-8 py-12 text-center lg:text-left">
                 <Icon className="mx-auto lg:mx-0" />
                 <div className="mt-3 text-lg font-bold">{heading}</div>
-                <p className="mt-2 text-sm text-gray-400 lg:text-sm">
-                  Buying electricity for family &friends or do you live in a multi-tenant building? You can now give a
-                  unique name to every new meter you add on the app.
-                </p>
+                <p className="mt-2 text-sm text-gray-400 lg:text-sm">{d}</p>
               </div>
             ))}
           </div>
