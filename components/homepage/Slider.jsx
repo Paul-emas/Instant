@@ -3,13 +3,21 @@ import SliderCard from './SliderCard';
 
 const Slider = () => {
   const slides = [
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.',
+    {
+      name: 'Mr Hassan Haliru',
+      type: 'whatsapp',
+      comment: `I'm impressed as my request for token has been dealt with immediately. I'm at rest and wishing to thank Instant energy for your prompt response. You made me remember my days abroad working and their services were unquantifiable. Thanks again.!`,
+    },
+    {
+      name: 'Onyinye Black-Pearl',
+      type: 'instagram',
+      comment: `You're amazing! My first time using the platform and to be honest when the token didn't come i got worried! But that you solved this issue at midnight???!!! 👏👏👏 Oshey, New Custormer alert!`,
+    },
+    {
+      name: 'Bam Charles',
+      type: 'whatsapp',
+      comment: 'Thanks IE i am greatful, you guys are wonderful I am proud of you all. A job well done.',
+    },
   ];
   const flickityOptions = {
     draggable: true,
@@ -33,13 +41,11 @@ const Slider = () => {
             reloadOnUpdate
             static
           >
-            {slides.slice(0, 4).map((slide, index) => (
-              <div key={index} className="mr-44 flex w-full justify-between">
-                <SliderCard />
-                <SliderCard />
-                <SliderCard />
-              </div>
-            ))}
+            <div className="mr-44 flex w-full justify-between">
+              <SliderCard {...slides[0]} />
+              <SliderCard {...slides[1]} />
+              <SliderCard {...slides[2]} />
+            </div>
           </Flickity>
         </div>
         <div className="block overflow-x-visible lg:hidden">
@@ -53,7 +59,7 @@ const Slider = () => {
           >
             {slides.map((slide, index) => (
               <div key={index} className="mr-44 flex w-full justify-between">
-                <SliderCard />
+                <SliderCard {...slide} />
               </div>
             ))}
           </Flickity>
