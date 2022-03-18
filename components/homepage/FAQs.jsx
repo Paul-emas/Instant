@@ -34,9 +34,7 @@ const FAQs = () => {
     <div className="bg-white py-16 lg:py-32">
       <div className="container mx-auto px-4 lg:px-10">
         <div className="text-center">
-          <h1 className="mx-auto max-w-2xl text-center text-2xl font-bold lg:text-5xl ">
-            Frequently Asked Questions
-          </h1>
+          <h1 className="mx-auto max-w-2xl text-center text-2xl font-bold lg:text-5xl ">Frequently Asked Questions</h1>
         </div>
         <div className="mx-auto mt-12 max-w-6xl lg:mt-24 2xl:max-w-5xl">
           {questions.map((question, index) => (
@@ -52,7 +50,7 @@ const FAQs = () => {
           </p>
         </div>
       </div>
-      <div className="mx-auto mt-8 hidden w-64 justify-center rounded-xl px-5 py-3 shadow-lg lg:flex">
+      <div className="card-shadow mx-auto mt-8 hidden w-64 justify-center rounded-xl px-5 py-3 lg:flex">
         <ContactCard />
       </div>
     </div>
