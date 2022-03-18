@@ -13,13 +13,7 @@ import FormInput from './FormInput';
 import SelectInput from './SelectInput';
 import ProviderSelectInput from './ProviderSelectInput';
 
-const PostPaid = ({
-  setConfirmDetails,
-  setStep,
-  setPaymentToken,
-  selectedMeter,
-  setSelectedMeter,
-}) => {
+const PostPaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, setSelectedMeter }) => {
   const {
     register,
     handleSubmit,
@@ -49,21 +43,10 @@ const PostPaid = ({
         {isLoggedIn && (
           <>
             <div className="label my-2 text-xs text-gray-400">Select an account</div>
-            <SelectInput
-              options={[]}
-              selectedOption={selectedMeter}
-              setSelectedOption={setSelectedMeter}
-              meters
-              className="py-2.5"
-            />
-            <div
-              onClick={() => {}}
-              className="mb-2 flex w-full cursor-pointer items-center border-b pb-2"
-            >
+            <SelectInput options={[]} selectedOption={null} setSelectedOption={setSelectedMeter} className="py-2.5" />
+            <div onClick={() => {}} className="mb-2 flex w-full cursor-pointer items-center border-b pb-2">
               <PlusIcon />
-              <span className="ml-1.5 text-sm font-semibold text-primary-base">
-                Add a new account
-              </span>
+              <span className="ml-1.5 text-sm font-semibold text-primary-base">Add a new account</span>
             </div>
           </>
         )}
@@ -123,14 +106,14 @@ const PostPaid = ({
             required: true,
           })}
         />
-        <div className="flex items-end">
+        {/* <div className="flex items-end">
           <p className="relative top-0.5 text-sm font-semibold text-gray-400">
             Estimated units: <span className="text-primary-base">32.5kw/h</span>
           </p>
           <span className="ml-3 h-5 w-5 rounded-full bg-blue-600 py-0.5 text-center text-xs font-bold text-white">
             ?
           </span>
-        </div>
+        </div> */}
         <PrimaryButton size="base" loading={isLoading} className="mt-8">
           Proceed to Payment
         </PrimaryButton>

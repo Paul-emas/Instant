@@ -40,9 +40,10 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
   async function onSubmit(formData) {
     if (formData) {
       setIsLoading(true);
-      const { meter, email, amount } = formData;
+      const { meter, email, name, amount } = formData;
       const formattedPhone = phone.replace(country?.countryCode, '');
       const payload = {
+        name: isLoggedIn && me ? me?.firstName : name,
         phone: {
           number: phone,
           code: country?.countryCode ?? me?.phone?.code,

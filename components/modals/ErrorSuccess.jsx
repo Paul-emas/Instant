@@ -28,14 +28,16 @@ const ErrorSuccess = ({ msg, error, next }) => {
           </Button>
         )}
       </div>
-      <div className="mt-6">
-        <p className="text-sm">
-          <span>Still having problems?</span>
-          <Link href="/contact">
-            <button className="ml-1 font-semibold text-primary-base">Contact us</button>
-          </Link>
-        </p>
-      </div>
+      {error && (
+        <div className="mt-6">
+          <p className="text-sm">
+            <span>Still having problems?</span>
+            <Link href="/contact">
+              <button className="ml-1 font-semibold text-primary-base">Contact us</button>
+            </Link>
+          </p>
+        </div>
+      )}
     </div>
   );
 };

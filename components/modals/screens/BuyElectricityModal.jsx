@@ -67,6 +67,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
 
       if (res?.error) {
         setStep(2);
+        return;
       }
 
       if (res?.data) {

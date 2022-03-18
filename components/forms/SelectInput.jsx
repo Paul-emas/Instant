@@ -88,8 +88,10 @@ const SelectInput = ({ className, error, meters, label, options, selectedOption,
           {!options?.length ? (
             <div className="flex flex-col items-center py-5">
               <EmptyIcon />
-              <p className="mt-4 text-sm font-bold">No Meters</p>
-              <p className="text-xs text-gray-400">Kindly add a meter to purchase units?</p>
+              <p className="mt-4 text-sm font-bold">No {meters ? 'Meters' : 'Accounts'}</p>
+              <p className="text-xs text-gray-400">
+                Kindly add {meters ? 'a meters' : 'an account'} to purchase units?
+              </p>
             </div>
           ) : null}
         </ul>

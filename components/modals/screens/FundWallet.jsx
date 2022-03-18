@@ -4,7 +4,7 @@ import { usePaystackPayment } from 'react-paystack';
 import { useSelector } from 'react-redux';
 import { userSelector } from '../../../slices/user';
 import { persistSelector } from '../../../slices/persist';
-import { createWalletTransaction, fundWalletTransaction } from '../../../api';
+import { createWalletTransaction, fundWalletTransaction, getTransactionWalletStatus } from '../../../api';
 import useFetchWalletBalance from '../../../hooks/useFetchWalletBalance';
 import useFetchWalletTransactions from '../../../hooks/useFetchWalletTransactions';
 
@@ -86,10 +86,19 @@ const FundWallet = ({ setStep, close }) => {
       const resp = await fundWalletTransaction({ reference }, token);
 
       if (resp?.error) {
-        setPaymentStep(2);
-        setIsLoading(false);
-        setErrorMsg(resp?.error?.message);
-        return;
+        const res = await getTransactionWalletStatus(reference, token);
+        if (res?.error) {
+          setPaymentStep(2);
+          setIsLoading(false);
+          setErrorMsg('Something went wrong while trying to process your transaction kindly retry.');
+          return;
+        }
+
+        if (res?.data) {
+          setPaymentStep(2);
+          init();
+          walletTransactions?.init();
+        }
       }
 
       if (resp.data) {
@@ -99,6 +108,8 @@ const FundWallet = ({ setStep, close }) => {
       }
     }
   }
+
+  async function RetryTransaction() {}
 
   return (
     <>
@@ -145,7 +156,7 @@ const FundWallet = ({ setStep, close }) => {
             msg={
               errorMsg ? errorMsg : 'Your transaction was successfull you can now purchase electricity units via wallet'
             }
-            next={() => validateTransaction()}
+            next={RetryTransaction}
           />
         </Modal>
       )}
