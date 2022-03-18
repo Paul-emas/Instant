@@ -5,22 +5,27 @@ const Recycle = (props) => {
     <div className="bg-white py-14 lg:py-36">
       <div className="container mx-auto px-4 sm:px-5 xl:px-14">
         <div className="mx-auto flex max-w-3xl">
-          <div className="hidden h-40 w-8 bg-primary-base lg:block"></div>
+          <div className="hidden h-56 w-8 bg-primary-base lg:block"></div>
           <div className="lg:ml-10">
             <div className="text-center text-xl font-bold leading-tight text-primary-dark lg:text-left lg:text-5xl xl:leading-tight">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitred
+              How we do it
             </div>
             <p className="mt-4 text-center text-sm lg:text-left lg:text-base">
-              At Instant Energy, we make Energy accessible and affordable in emerging, underserved
-              markets across Nigeria and Africa by providing energy as a service platform and also
-              facilitating access to clean renewable energy for residential and commercial clusters.
-              We seek to catalyze energy access partnerships by everaging grants, concessionary
-              finance from governments and mobilizing private sector investors interested in
-              investing in energy assets
+              We work with on-grid and off-grid power providers to provide a robust electricity billing platform that
+              takes care of bill collection, real-time energy monitoring and easy connection of every single individual
+              household and business to clean energy through our mobile and web app.
+            </p>
+            <p className="mt-4 text-center text-sm lg:text-left lg:text-base">
+              This service aims to provide a reliable power supply, reduce the dependence on fossil fuels and promote a
+              more sustainable and clean environment.
+            </p>
+            <p className="mt-4 text-center text-sm lg:text-left lg:text-base">
+              This will translate to a massive cost reduction on the amount currently being spent in Nigeria on diesel
+              generators as an alternative to the grid.
             </p>
           </div>
         </div>
-        <div className="mx-auto mt-14 max-w-5xl outline-black lg:mt-36">
+        <div className="mx-auto mt-14 max-w-6xl outline-black lg:mt-36">
           <div className="items-center lg:flex lg:space-x-20">
             <div>
               <TreesIcon width="506" height="418" className="hidden lg:block" />
@@ -31,10 +36,13 @@ const Recycle = (props) => {
                 What we do
               </div>
               <p className="mt-4 text-center text-sm lg:text-left lg:text-base">
-                At Instant Energy, we make Energy accessible and affordable in emerging, underserved
-                markets across Nigeria and Africa by providing energy as a service platform and also
-                facilitating access to clean renewable energy for residential and commercial
-                clusters.
+                At Instant Energy, we make Energy accessible and affordable in emerging, underserved markets across
+                Nigeria and Africa by providing energy as a service platform and facilitating access to clean renewable
+                energy for residential and commercial clusters.
+              </p>
+              <p className="mt-4 text-center text-sm lg:text-left lg:text-base">
+                We seek to catalyze energy access partnerships by leveraging grants, concessionary finance from
+                governments and mobilizing private sector investors interested in investing in energy assets.
               </p>
             </div>
           </div>

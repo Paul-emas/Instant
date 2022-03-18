@@ -24,14 +24,8 @@ export default function About() {
             <div className="max-w-lg text-center text-2xl font-bold leading-tight text-white lg:text-left lg:text-6xl xl:leading-tight">
               We make energy accessible <br className="block lg:hidden" /> & affordable
             </div>
-            <p className="mt-2 px-10 text-center text-xs text-gray-300 lg:max-w-lg lg:text-left lg:text-base 2xl:px-0">
-              Get in touch with us by filling up the form and our team will get back to you within
-              24 hours. Lorem ipsum dolor sit amet.
-            </p>
             <div className="mt-8 lg:w-56">
-              <PrimaryButton onClick={() => dispatch(setInitAuthentication('register'))}>
-                Get Started
-              </PrimaryButton>
+              <PrimaryButton onClick={() => dispatch(setInitAuthentication('register'))}>Get Started</PrimaryButton>
               <PrimaryButton
                 onClick={() => dispatch(setInitAuthentication('login'))}
                 className="mt-5 block lg:hidden"
@@ -54,8 +48,8 @@ export default function About() {
         </div>
       </Header>
       <Recycle />
-      <AboutBanner />
-      <Team />
+      {/* <AboutBanner /> */}
+      {/* <Team /> */}
       <AboutInfo />
       <FAQs />
       <Footer />

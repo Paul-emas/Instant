@@ -85,7 +85,7 @@ const SelectInput = ({ className, error, meters, label, options, selectedOption,
                 )}
               </li>
             ))}
-          {!meters?.length ? (
+          {!options?.length ? (
             <div className="flex flex-col items-center py-5">
               <EmptyIcon />
               <p className="mt-4 text-sm font-bold">No Meters</p>

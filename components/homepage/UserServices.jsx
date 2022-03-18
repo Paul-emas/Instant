@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import PlusIcon from '../../public/svgs/plus.svg';
 
-const UserServices = ({ title, stepArr }) => {
+const UserServices = ({ stepArr }) => {
   return (
     <div className="z-30 bg-white lg:pb-10">
       <div className="relative mx-auto px-4 xl:container xl:px-14">
@@ -18,13 +18,9 @@ const UserServices = ({ title, stepArr }) => {
                     <Icon />
                   </div>
                   <div className="ml-6">
-                    <div className="text-xs font-bold uppercase text-gray-400">
-                      Step {index + 1}
-                    </div>
+                    <div className="text-xs font-bold uppercase text-gray-400">Step {index + 1}</div>
                     <h2 className="mt-1 font-bold text-black">{name}</h2>
-                    <p className="mt-0.5 pr-5 text-xs text-gray-400 sm:max-w-xs lg:pr-0 lg:text-sm">
-                      {caption}
-                    </p>
+                    <p className="mt-0.5 pr-5 text-xs text-gray-400 sm:max-w-xs lg:pr-0 lg:text-sm">{caption}</p>
                   </div>
                 </div>
               );
@@ -37,7 +33,6 @@ const UserServices = ({ title, stepArr }) => {
 };
 
 UserServices.defaultProps = {
-  title: 'Recharge your meter with 3 easy steps',
   stepArr: [
     {
       name: 'Add your meter',
@@ -58,9 +53,7 @@ UserServices.defaultProps = {
 };
 
 UserServices.propTypes = {
-  title: PropTypes.string,
   stepArr: PropTypes.array,
-  border: PropTypes.bool,
 };
 
 export default UserServices;

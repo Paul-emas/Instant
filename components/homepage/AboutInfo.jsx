@@ -25,7 +25,7 @@ const AboutInfo = () => {
 
   return (
     <div className="bg-secondary-lightGreen py-16 lg:py-36">
-      <div className="container mx-auto px-4 sm:px-5 xl:px-14">
+      <div className="mx-auto px-4 xl:px-14">
         <h1 className="mx-auto text-center text-xl font-bold text-primary-dark sm:px-0 lg:max-w-4xl lg:px-10 lg:text-5xl xl:leading-tight">
           We hope to be the most innovative energy as a service platform across Africa.
         </h1>
@@ -36,10 +36,7 @@ const AboutInfo = () => {
                 key={info.d}
                 className="rounded-xl bg-white px-4 pt-8 pb-5 text-center lg:rounded-2xl lg:border lg:p-8 lg:text-left"
               >
-                <FontAwesomeIcon
-                  icon={faLayerGroup}
-                  className="h-5 w-5 text-xl text-primary-base"
-                />
+                <FontAwesomeIcon icon={faLayerGroup} className="h-5 w-5 text-xl text-primary-base" />
                 <p className="mt-5 text-xs lg:text-sm">{info.d}</p>
               </div>
             ))}

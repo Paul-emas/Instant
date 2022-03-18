@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { useSelector } from 'react-redux';
+import moment from 'moment';
+
 import { faFileDownload, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import moment from 'moment';
-import { useSelector } from 'react-redux';
 import { persistSelector } from '../../slices/persist';
 
-const Receipt = ({ receipt }) => {
+const Receipt = ({ close, receipt }) => {
   const { isLoggedIn } = useSelector(persistSelector);
 
   function PrintElem() {
@@ -118,9 +118,9 @@ const Receipt = ({ receipt }) => {
           <div className="mt-6">
             <p className="text-sm">
               New to Instant Energy?{' '}
-              <Link href="/sign-up">
-                <a className="font-semibold text-primary-base">Create an Account</a>
-              </Link>
+              <button onClick={() => close()} className="font-semibold text-primary-base">
+                Create an Account
+              </button>
             </p>
           </div>
         )}

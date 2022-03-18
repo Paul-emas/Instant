@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import router from 'next/router';
 import PinInput from 'react-pin-input';
 
@@ -11,6 +10,7 @@ import { createUserAuthPin, signUp } from '../../../api';
 import Modal from '../index';
 import PrimaryButton from '../../Buttons/PrimaryButton';
 import ErrorAlert from '../../forms/ErrorAlert';
+import toast from 'react-hot-toast';
 
 const ConfirmPin = ({ close, setStep }) => {
   const dispatch = useDispatch();
@@ -85,14 +85,14 @@ const ConfirmPin = ({ close, setStep }) => {
 
         if (error) {
           setIsLoading(false);
-          setErrorMessage(error.data.errors[0].message);
+          toast.success(error.data.errors[0].message);
           return;
         }
 
         if (status === 200) {
           setIsLoading(false);
-          setSuccessMessage('Successfully created pin!');
-          setTimeout(() => setStep('signIn'), 3000);
+          toast.success('Successfully created pin!');
+          setStep('signIn');
         }
       }
     } else {

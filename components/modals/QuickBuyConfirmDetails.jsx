@@ -24,6 +24,9 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
         <div className="text-center">
           <span className="text-sm font-semibold text-gray-500">Your Meter</span>
           <div className=" text-2.5xl font-bold text-secondary-green">{details?.meter?.number}</div>
+          <button className="mt-1.5 rounded-lg bg-primary-light px-3 py-1 text-xs font-bold">
+            {details?.meter?.name}
+          </button>
           <div className="mt-6">
             <div className="mb-2 flex h-10 w-full items-center justify-between rounded-xl bg-primary-light px-4 text-xs">
               <span className="font-semibold text-gray-500">Reference code</span>

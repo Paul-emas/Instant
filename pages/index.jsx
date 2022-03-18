@@ -79,7 +79,7 @@ export default function Home() {
         <FAQs />
         <People />
         <Slider />
-        <Partners />
+        {/* <Partners /> */}
         <Footer />
       </main>
     </div>

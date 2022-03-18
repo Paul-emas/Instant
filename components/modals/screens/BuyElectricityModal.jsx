@@ -48,6 +48,12 @@ const BuyElectricityModal = ({ open, setOpen }) => {
     }
   };
 
+  const receiptClose = () => {
+    setOpen(false);
+    setStep(0);
+    !isLoggedIn ? dispatch(setInitAuthentication('createPinNewUser')) : init();
+  };
+
   const onPayStackSuccess = async (reference) => {
     setStep(3);
     setOpen(true);
@@ -119,16 +125,8 @@ const BuyElectricityModal = ({ open, setOpen }) => {
       )}
 
       {open && step === 4 && (
-        <Modal
-          close={() => {
-            setOpen(false);
-            setStep(0);
-            !isLoggedIn ? dispatch(setInitAuthentication('createPinNewUser')) : init();
-          }}
-          border={false}
-          setOpen={setOpen}
-        >
-          <Receipt receipt={receipt} />
+        <Modal close={receiptClose} border={false} setOpen={setOpen}>
+          <Receipt receipt={receipt} close={receiptClose} />
         </Modal>
       )}
 
