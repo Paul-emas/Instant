@@ -100,6 +100,35 @@ export async function generateTranscationToken(payload, token) {
   }
 }
 
+export async function getTransactionTokenStatus(reference, token) {
+  try {
+    const response = await axios.post(`${baseUrl}/transaction/token/${reference}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}
+export async function getTransactionWalletStatus(reference, token) {
+  try {
+    const response = await axios.post(`${baseUrl}/transaction/wallet/${reference}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    const { data } = response.data;
+    return { data };
+  } catch (error) {
+    if (error.response) return { error: error.response.data };
+  }
+}
+
 export async function validateNewMeter(meter, providerId, token) {
   try {
     const response = await axios.get(`${baseUrl}/meter/validate/${meter}/${providerId}`, {

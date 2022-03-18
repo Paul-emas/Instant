@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector } from '../../../slices/persist';
-import { generateTranscationToken } from '../../../api';
+import { generateTranscationToken, getTransactionTokenStatus } from '../../../api';
 import useFetchTransaction from '../../../hooks/useFetchTransaction';
 
 import BuyElectricityTab from '../../tabs/BuyElectricityTab';
@@ -14,6 +14,7 @@ import Receipt from '../Receipt';
 import RequestLoader from '../../loaders/RequestLoader';
 import AddMeter from './AddMeter';
 import { setInitAuthentication } from '../../../slices/user';
+import toast from 'react-hot-toast';
 
 const BuyElectricityModal = ({ open, setOpen }) => {
   const { isLoggedIn, userPhone } = useSelector(persistSelector);
@@ -54,16 +55,33 @@ const BuyElectricityModal = ({ open, setOpen }) => {
     !isLoggedIn ? dispatch(setInitAuthentication('createPinNewUser')) : init();
   };
 
-  const onPayStackSuccess = async (reference) => {
+  const onPayStackSuccess = async (data) => {
     setStep(3);
     setOpen(true);
-    setPayStack(reference);
-    const resp = await generateTranscationToken({ reference: reference.reference }, paymentToken);
+    setPayStack(data);
+
+    const resp = await generateTranscationToken({ reference: data.reference }, paymentToken);
+
+    if (resp?.error) {
+      const res = await getTransactionTokenStatus(data.reference, paymentToken);
+
+      if (res?.error) {
+        setStep(2);
+      }
+
+      if (res?.data) {
+        setReciept(resp.data);
+        setStep(4);
+      }
+    }
+
     if (resp?.data) {
       setReciept(resp.data);
       setStep(4);
     }
   };
+
+  async function RetryTransaction() {}
 
   const PrepaidPostPaidProps = {
     setConfirmDetails,
@@ -110,8 +128,11 @@ const BuyElectricityModal = ({ open, setOpen }) => {
       )}
 
       {open && step === 2 && (
-        <Modal border={false} setOpen={setOpen}>
-          <ErrorSuccess paystack={paystack} next={() => setStep(3)} />
+        <Modal border={false} setOpen={setOpen} close={close}>
+          <ErrorSuccess
+            error="Something went wrong while trying to process your transaction kindly retry."
+            next={RetryTransaction}
+          />
         </Modal>
       )}
 

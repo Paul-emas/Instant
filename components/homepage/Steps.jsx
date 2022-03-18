@@ -18,7 +18,7 @@ const Steps = () => {
           experience
         </h1>
         <div className="mx-auto mt-20 lg:mt-32">
-          <div className="grid-cols-4 gap-y-10 gap-x-5 space-y-8 lg:grid lg:space-y-0">
+          <div className="grid-cols-4 gap-y-6 gap-x-5 space-y-8 lg:grid lg:space-y-0">
             <div className="rounded-2xl border bg-white px-8 py-12 text-center lg:text-left">
               <WalletPlusIcon className="mx-auto lg:mx-0" />
               <div className="mt-3 text-lg font-bold">Track your electricity spending</div>

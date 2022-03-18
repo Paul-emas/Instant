@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import copy from 'copy-to-clipboard';
-import toast from 'react-hot-toast';
+import Link from 'next/link';
 import gsap from 'gsap';
 
 import SuccessIcon from '../../public/svgs/success.svg';
@@ -18,7 +17,7 @@ const ErrorSuccess = ({ msg, error, next }) => {
       <div className="icon flex justify-center">{!error ? <SuccessIcon /> : <ErrorIcon />}</div>
       <div className="pb-6">
         <div className="mt-6 text-2xl font-bold">
-          <span>Transcation {!error ? 'Successful' : 'Failed'}</span>
+          <span>{!error ? 'Transcation Successful' : 'Oops!'}</span>
         </div>
         <p className="mx-auto mt-1 max-w-xs text-sm text-gray-400">
           {!error ? <span>{msg}</span> : <span>{error}</span>}
@@ -28,6 +27,14 @@ const ErrorSuccess = ({ msg, error, next }) => {
             Retry Transaction
           </Button>
         )}
+      </div>
+      <div className="mt-6">
+        <p className="text-sm">
+          <span>Still having problems?</span>
+          <Link href="/contact">
+            <button className="ml-1 font-semibold text-primary-base">Contact us</button>
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -72,7 +72,6 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
         const response = await createTranscationToken(payload, token);
         if (response?.error) {
           setIsLoading(false);
-          console.log(response?.error);
           toast.error(response?.error?.data?.errors[0]?.message);
         } else {
           setIsLoading(false);
@@ -158,14 +157,14 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
             required: true,
           })}
         />
-        <div className="flex items-end">
+        {/* <div className="flex items-end">
           <p className="relative top-0.5 text-sm font-semibold text-gray-400">
             Estimated units: <span className="text-primary-base">32.5kw/h</span>
           </p>
           <span className="ml-3 h-5 w-5 rounded-full bg-blue-600 py-0.5 text-center text-xs font-bold text-white">
             ?
           </span>
-        </div>
+        </div> */}
         <PrimaryButton size="base" loading={isLoading} className="mt-8">
           Proceed to Payment
         </PrimaryButton>

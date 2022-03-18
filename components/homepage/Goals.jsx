@@ -16,7 +16,7 @@ const Goals = () => {
           <div className="mb-3 w-1/2 pr-2 lg:mb-0 lg:w-auto lg:pr-0">
             <Image src="/images/goal-1.png" width={221} height={221} objectFit="cover" />
           </div>
-          <div className="lg:w-autolg:mb-0 mb-3 w-1/2 pl-2  lg:pl-0">
+          <div className="mb-3 w-1/2 pl-2 lg:mb-0 lg:w-auto  lg:pl-0">
             <Image src="/images/goal-2.png" width={221} height={221} objectFit="cover" />
           </div>
           <div className="w-1/2 pr-2 lg:w-auto lg:pr-0">
