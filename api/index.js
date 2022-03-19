@@ -15,7 +15,7 @@ export async function signUp(payload) {
   try {
     const response = await axios.post(`${baseUrl}/account/register`, payload);
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -25,7 +25,7 @@ export async function checkUserValidation(payload) {
   try {
     const response = await axios.post(`${baseUrl}/account/check`, payload);
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.message) return { error };
   }
@@ -54,7 +54,7 @@ export async function getProviders() {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.message) return { error };
   }
@@ -64,7 +64,7 @@ export async function getAccountToken(payload) {
   try {
     const response = await axios.post(`${baseUrl}/account/token`, payload);
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -79,7 +79,7 @@ export async function createTranscationToken(payload, token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -94,7 +94,7 @@ export async function generateTranscationToken(payload, token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -109,7 +109,7 @@ export async function getTransactionTokenStatus(reference, token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -123,7 +123,7 @@ export async function getTransactionWalletStatus(reference, token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -138,7 +138,7 @@ export async function validateNewMeter(meter, providerId, token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -153,7 +153,7 @@ export async function addNewMeter(payload, token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -168,7 +168,7 @@ export async function getUserAccount(token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -183,7 +183,7 @@ export async function getUserMeters(token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -198,7 +198,7 @@ export async function getUserTransactions(token, skip, limit) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -213,7 +213,7 @@ export async function createWalletTransaction(payload, token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -228,7 +228,7 @@ export async function fundWalletTransaction(payload, token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -243,7 +243,7 @@ export async function getUserWalletBalance(token) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }
@@ -258,7 +258,7 @@ export async function getUserWalletTransactions(token, skip, limit) {
       },
     });
     const { data } = response.data;
-    return { data, status: response?.status };
+    return { data };
   } catch (error) {
     if (error.response) return { error: error.response.data };
   }

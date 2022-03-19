@@ -1,13 +1,15 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
 import { setInitAuthentication, setUserTransactions, userSelector } from '../slices/user';
-import { persistSelector } from '../slices/persist';
+import { persistSelector, setToken } from '../slices/persist';
 import { getUserTransactions } from '../api';
 
 export default function useFetchTransaction(itemsPerPage) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { userTransactions } = useSelector(userSelector);
   const { token, isLoggedIn } = useSelector(persistSelector);
   const [transactions, setTransactions] = useState([]);
@@ -31,8 +33,12 @@ export default function useFetchTransaction(itemsPerPage) {
       setTabelLoading(true);
       const resp = await getUserTransactions(token, currentPage, itemsPerPage);
 
-      if (resp.status === 401) {
+      if (resp?.error?.status === 401) {
+        toast.error('Your login token is invalid!');
+        router.push('/');
         dispatch(setInitAuthentication('signIn'));
+        dispatch(setToken(null));
+        return;
       }
 
       if (resp?.error) {

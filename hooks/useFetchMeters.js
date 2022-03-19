@@ -1,12 +1,14 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserMeters } from '../api';
-import { persistSelector } from '../slices/persist';
+import { persistSelector, setToken } from '../slices/persist';
 import { setInitAuthentication, setUserMeter, userSelector } from '../slices/user';
 
 export default function useFetchMeters() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { userMeters } = useSelector(userSelector);
   const { token, isLoggedIn } = useSelector(persistSelector);
 
@@ -27,8 +29,12 @@ export default function useFetchMeters() {
       setPageLoading(true);
       const resp = await getUserMeters(token);
 
-      if (resp.status === 401) {
+      if (resp?.error?.status === 401) {
+        toast.error('Your login token is invalid!');
+        router.push('/');
         dispatch(setInitAuthentication('signIn'));
+        dispatch(setToken(null));
+        return;
       }
 
       if (resp?.error) {

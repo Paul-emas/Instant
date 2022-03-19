@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserWalletTransactions } from '../api';
-import { persistSelector } from '../slices/persist';
+import { persistSelector, setToken } from '../slices/persist';
 import toast from 'react-hot-toast';
-import { setUserWalletTransactions, userSelector } from '../slices/user';
+import { setInitAuthentication, setUserWalletTransactions, userSelector } from '../slices/user';
+import { useRouter } from 'next/router';
 
 export default function useFetchWalletTransactions(itemsPerPage) {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { userWalletTransactions } = useSelector(userSelector);
   const { token, isLoggedIn } = useSelector(persistSelector);
   const [transactions, setTransactions] = useState([]);
@@ -30,8 +32,12 @@ export default function useFetchWalletTransactions(itemsPerPage) {
       setTabelLoading(true);
       const resp = await getUserWalletTransactions(token, currentPage, itemsPerPage);
 
-      if (resp.status === 401) {
+      if (resp?.error?.status === 401) {
+        toast.error('Your login token is invalid!');
+        router.push('/');
         dispatch(setInitAuthentication('signIn'));
+        dispatch(setToken(null));
+        return;
       }
 
       if (resp?.error) {
