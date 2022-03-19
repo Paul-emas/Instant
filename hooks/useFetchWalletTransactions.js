@@ -34,7 +34,7 @@ export default function useFetchWalletTransactions(itemsPerPage) {
 
       if (resp?.error?.status === 401) {
         toast.error('Your login token is invalid!');
-        router.push('/');
+        router.push('/error');
         dispatch(setInitAuthentication('signIn'));
         dispatch(setToken(null));
         return;
