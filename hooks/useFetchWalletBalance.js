@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserWalletBalance } from '../api';
 
 import { persistSelector } from '../slices/persist';
-import { setWalletBalance, userSelector } from '../slices/user';
+import { setInitAuthentication, setWalletBalance, userSelector } from '../slices/user';
 
 export default function useFetchWalletBalance() {
   const dispatch = useDispatch();
@@ -18,6 +18,10 @@ export default function useFetchWalletBalance() {
 
   async function fetchWalletBalance() {
     const resp = await getUserWalletBalance(token);
+
+    if (resp.status === 401) {
+      dispatch(setInitAuthentication('signIn'));
+    }
 
     if (resp?.data?.errors) {
       dispatch(setWalletBalance(0.0));

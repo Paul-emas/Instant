@@ -2,13 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import {
-  faHome,
-  faMeteor,
-  faMoneyBillWave,
-  faSun,
-  faUser,
-} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faMeteor, faMoneyBillWave, faSun, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { setInitAuthentication, setUser, userSelector } from '../../slices/user';
@@ -36,6 +30,9 @@ const Sidebar = ({ openNav, setOpenNav }) => {
 
   async function fetchUser() {
     const resp = await getUserAccount(token);
+    if (resp.status === 401) {
+      dispatch(setInitAuthentication('signIn'));
+    }
     if (resp?.error) {
       dispatch(setUser(null));
     }
@@ -97,12 +94,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
             openNav ? 'left-0' : '-left-full lg:left-0'
           } ease fixed z-50 min-h-screen w-72 bg-primary-base bg-contain pt-5 sm:z-10 sm:w-60 2xl:w-sidebar 2xl:pt-10`}
         >
-          {openLogout && (
-            <div
-              onClick={() => setOpenLogout(false)}
-              className="fixed top-0 z-10 h-full w-full"
-            ></div>
-          )}
+          {openLogout && <div onClick={() => setOpenLogout(false)} className="fixed top-0 z-10 h-full w-full"></div>}
           <div className="h-20 pl-5 pr-5 2xl:pl-10">
             <div className="flex items-center">
               <Link href="/">
@@ -129,8 +121,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                     <span>Your IE wallet</span>
                   </div>
                   <p className="-mt-1 font-bold text-white">
-                    <span>&#x20A6;</span>{' '}
-                    <span className="ml-1">{walletBalance.toLocaleString()}</span>
+                    <span>&#x20A6;</span> <span className="ml-1">{walletBalance.toLocaleString()}</span>
                   </p>
                 </div>
               </div>

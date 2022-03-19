@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
-import { setUserTransactions, userSelector } from '../slices/user';
+import { setInitAuthentication, setUserTransactions, userSelector } from '../slices/user';
 import { persistSelector } from '../slices/persist';
 import { getUserTransactions } from '../api';
 
@@ -30,6 +30,10 @@ export default function useFetchTransaction(itemsPerPage) {
     if (token && isLoggedIn) {
       setTabelLoading(true);
       const resp = await getUserTransactions(token, currentPage, itemsPerPage);
+
+      if (resp.status === 401) {
+        dispatch(setInitAuthentication('signIn'));
+      }
 
       if (resp?.error) {
         toast.error('Something went wrong');

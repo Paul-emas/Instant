@@ -26,10 +26,13 @@ export default function useFetchWalletTransactions(itemsPerPage) {
   }, [userWalletTransactions]);
 
   async function fetchTransactions(currentPage = 0) {
-    console.log(currentPage);
     if (token && isLoggedIn) {
       setTabelLoading(true);
       const resp = await getUserWalletTransactions(token, currentPage, itemsPerPage);
+
+      if (resp.status === 401) {
+        dispatch(setInitAuthentication('signIn'));
+      }
 
       if (resp?.error) {
         toast.error('Something went wrong');

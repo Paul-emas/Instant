@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserMeters } from '../api';
 import { persistSelector } from '../slices/persist';
-import { setUserMeter, userSelector } from '../slices/user';
+import { setInitAuthentication, setUserMeter, userSelector } from '../slices/user';
 
 export default function useFetchMeters() {
   const dispatch = useDispatch();
@@ -26,6 +26,10 @@ export default function useFetchMeters() {
     if (isLoggedIn) {
       setPageLoading(true);
       const resp = await getUserMeters(token);
+
+      if (resp.status === 401) {
+        dispatch(setInitAuthentication('signIn'));
+      }
 
       if (resp?.error) {
         setPageLoading(false);
