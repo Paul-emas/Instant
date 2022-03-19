@@ -33,26 +33,14 @@ const Navbar = () => {
           <div className="-ml-3 mt-1 hidden lg:block">
             <Link href="/">
               <a>
-                <Image
-                  src="/images/logo.webp"
-                  width={200}
-                  height={46}
-                  objectFit="contain"
-                  priority={true}
-                />
+                <Image src="/images/logo.webp" width={200} height={46} objectFit="contain" priority={true} />
               </a>
             </Link>
           </div>
           <div className="mt-1 block lg:hidden">
             <Link href="/">
               <a>
-                <Image
-                  src="/images/logo.webp"
-                  width={140.13}
-                  height={40.23}
-                  objectFit="contain"
-                  priority={true}
-                />
+                <Image src="/images/logo.webp" width={140.13} height={40.23} objectFit="contain" priority={true} />
               </a>
             </Link>
           </div>
@@ -64,16 +52,16 @@ const Navbar = () => {
             </Link>
             */}
 
+            <Link href="/">
+              <a className="hidden font-semibold text-primary-darker hover:text-primary-base lg:block">Home</a>
+            </Link>
+
             <Link href="/about">
-              <a className="hidden font-semibold text-primary-darker hover:text-primary-base lg:block">
-                About us
-              </a>
+              <a className="hidden font-semibold text-primary-darker hover:text-primary-base lg:block">About us</a>
             </Link>
 
             <Link href="/contact">
-              <a className="hidden font-semibold text-primary-darker hover:text-primary-base lg:block">
-                Contact us
-              </a>
+              <a className="hidden font-semibold text-primary-darker hover:text-primary-base lg:block">Contact us</a>
             </Link>
 
             {isLoggedIn ? (
