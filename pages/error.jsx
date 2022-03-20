@@ -11,7 +11,7 @@ export default function Error() {
           <ErrorIcon className="mx-auto" />
           <div className="mt-4 text-4xl font-bold">Something went wrong</div>
           <p className="mt-3 max-w-lg px-3 text-gray-500">
-            {`We've encountered a problem trying to reach Instant Energy Services, if issue persist kindly`}{' '}
+            An error occured, if issue persist kindly{' '}
             <Link href="/contact">
               <a className="font-bold text-primary-base">Contact us</a>
             </Link>
