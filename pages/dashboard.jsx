@@ -64,7 +64,9 @@ export default function Dashboard() {
                   Recharge meter, Get visibility, Track your spending & Usage
                 </p>
               </div>
-              <Button onClick={() => setOpenBuyElectricityModal(true)}>BUY ELECTRICITY</Button>
+              <Button disabled onClick={() => setOpenBuyElectricityModal(true)}>
+                BUY ELECTRICITY
+              </Button>
             </div>
             <div className="grid lg:grid-cols-6 lg:space-x-5">
               <div className="scale-up lg:col-span-4">
@@ -81,7 +83,9 @@ export default function Dashboard() {
             <SolarCard className="scale-up hidden lg:block" />
           </div>
           <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
-            <Button onClick={() => setOpenBuyElectricityModal(true)}>Buy Electricity</Button>
+            <Button disabled onClick={() => setOpenBuyElectricityModal(true)}>
+              Buy Electricity
+            </Button>
           </div>
           <div className="scale-up">
             <TransactionsTable

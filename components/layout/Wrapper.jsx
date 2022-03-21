@@ -14,6 +14,8 @@ import Sidebar from '../layout/Sidebar';
 import PageLoader from '../loaders/PageLoader';
 import ModalController from '../modals/ModalController';
 import { setInitAuthentication } from '../../slices/user';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 const Wrapper = ({ children }) => {
   const router = useRouter();
@@ -102,7 +104,20 @@ const Wrapper = ({ children }) => {
                         <MenuIcon className="ml-1" onClick={() => setOpenNav(true)} />
                       </div>
                     </div>
-                    <div className="px-4 2xl:px-7">{children}</div>
+                    <div className="px-4 2xl:px-7">
+                      <div className="-mb-3 pt-3">
+                        <div
+                          className={`flex w-full items-center justify-center rounded-xl bg-yellow-400 py-3 px-4 text-center text-xs font-semibold duration-300 lg:text-sm`}
+                        >
+                          <FontAwesomeIcon icon={faExclamationTriangle} className="hidden h-4 w-4 text-sm lg:block" />
+                          <span className="ml-1">
+                            Welcome to the new Instant Energy website. Transactions will resume on{' '}
+                            <strong>23rd March 2022</strong>
+                          </span>
+                        </div>
+                      </div>
+                      {children}
+                    </div>
                   </main>
                 </div>
               </div>
