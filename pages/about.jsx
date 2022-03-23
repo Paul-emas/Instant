@@ -54,7 +54,7 @@ export default function About() {
       {/* <Team /> */}
       <AboutInfo />
       <Goals />
-      <FAQs />
+      {/* <FAQs /> */}
       <Footer />
     </div>
   );
