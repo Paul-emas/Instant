@@ -85,7 +85,7 @@ const QuickPayPhoneInput = () => {
           }
         }}
       />
-      <PrimaryButton loading={isLoading} className="mt-8 mb-7" type="large">
+      <PrimaryButton loading={isLoading} disabled className="mt-8 mb-7" type="large">
         Buy Electricity
       </PrimaryButton>
     </form>
