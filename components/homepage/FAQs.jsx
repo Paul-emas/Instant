@@ -5,7 +5,7 @@ const FAQs = () => {
   const questions = [
     {
       id: 0,
-      name: 'How do I buy electricity units on this plaform?',
+      name: 'How do I buy electricity units on this platform?',
       ans: `If you are a new user, kindly enter your mobile number and click buy electricity. A page will pop up for you to fill in your meter number, select your state, enter your name(optional), email address and the amount you want to purchase.`,
       ans2: `Once you have done that click proceeds to payment, a page will pop up for you to confirm that all the details you entered is correct and then you can proceed to select your payment option from the list that will be displayed on the screen.`,
     },
