@@ -30,7 +30,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
 
   async function fetchUser() {
     const resp = await getUserAccount(token);
-    if (resp.status === 401) {
+    if (resp?.status === 401) {
       dispatch(setInitAuthentication('signIn'));
     }
     if (resp?.error) {
