@@ -33,6 +33,7 @@ const Receipt = ({ close, receipt }) => {
       <div className="mt-6 text-center">
         <p className="text-sm text-primary-gray">Your Electricity Token</p>
         <div className="text-2xl font-bold">{receipt?.token}</div>
+        <div className="text-base font-bold text-secondary-green">Units: {receipt?.units} (kwh)</div>
         <img
           src={receipt?.meter?.provider?.disco?.logo}
           alt={receipt?.meter?.disco?.shortName}
@@ -59,13 +60,11 @@ const Receipt = ({ close, receipt }) => {
             <div className="text-sm font-semibold text-primary-gray">Meter name</div>
             <div className="text-sm font-semibold">{receipt?.meter?.name}</div>
           </div>
-          <div className="mb-3 flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">Meter address</div>
-            <div className="text-sm font-semibold">{receipt?.meter?.address}</div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="text-sm font-semibold text-primary-gray">Units purchased</div>
-            <div className="text-sm font-semibold">{receipt?.units} kwh</div>
+          <div className="mb-3 flex items-start justify-between">
+            <div className="text-left text-sm font-semibold text-primary-gray">Meter address</div>
+            <div className="max-w-[220px] text-right text-xs font-semibold">
+              <p>{receipt?.meter?.address}</p>
+            </div>
           </div>
         </div>
         <div className="py-4">
