@@ -19,11 +19,11 @@ const Sidebar = ({ openNav, setOpenNav }) => {
   const router = useRouter();
   const { me } = useSelector(userSelector);
   const [openLogout, setOpenLogout] = useState(false);
-  const { token } = useSelector(persistSelector);
+  const { token, isLoggedIn } = useSelector(persistSelector);
   const { walletBalance } = useFetchWalletBalance();
 
   useEffect(() => {
-    if (!me) {
+    if (!me && isLoggedIn) {
       fetchUser();
     }
   }, [me]);

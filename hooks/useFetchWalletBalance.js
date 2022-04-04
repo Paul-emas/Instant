@@ -11,7 +11,7 @@ export default function useFetchWalletBalance() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { walletBalance } = useSelector(userSelector);
-  const { token } = useSelector(persistSelector);
+  const { token, isLoggedIn } = useSelector(persistSelector);
 
   useEffect(() => {
     if (Number(walletBalance) <= 0) {
@@ -20,24 +20,26 @@ export default function useFetchWalletBalance() {
   }, [walletBalance]);
 
   async function fetchWalletBalance() {
-    const resp = await getUserWalletBalance(token);
+    if (token && isLoggedIn) {
+      const resp = await getUserWalletBalance(token);
 
-    if (resp?.error?.status === 401) {
-      toast.error('Your login token is invalid!');
-      router.push('/error');
-      dispatch(setInitAuthentication('signIn'));
-      dispatch(setToken(null));
-      return;
-    }
+      if (resp?.error?.status === 401) {
+        toast.error('Your login token is invalid!');
+        router.push('/error');
+        dispatch(setInitAuthentication('signIn'));
+        dispatch(setToken(null));
+        return;
+      }
 
-    if (resp?.data?.errors) {
-      toast.error('Error occured while fetching wallet balance');
-      dispatch(setWalletBalance(0.0));
-    }
+      if (resp?.data?.errors) {
+        toast.error('Error occured while fetching wallet balance');
+        dispatch(setWalletBalance(0.0));
+      }
 
-    if (resp?.data) {
-      const { balance } = resp?.data;
-      dispatch(setWalletBalance(balance));
+      if (resp?.data) {
+        const { balance } = resp?.data;
+        dispatch(setWalletBalance(balance));
+      }
     }
   }
 

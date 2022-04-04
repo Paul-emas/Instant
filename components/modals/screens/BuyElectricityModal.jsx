@@ -105,7 +105,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
           }}
         >
           <BuyElectricityTab tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-          <div className="overflow-y-hidden pb-1.5">
+          <div className="pb-1.5">
             <div className="slideUp">
               {activeTab === 0 && <PrePaidForm {...PrepaidPostPaidProps} />}
               {activeTab === 1 && <PostPaid {...PrepaidPostPaidProps} />}
