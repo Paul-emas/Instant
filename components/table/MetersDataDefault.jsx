@@ -34,7 +34,7 @@ const MetersDataDefault = ({ meters, setSelectedMeter, setOpenAddMeterModal }) =
           <div className="text-sm font-bold">{item?.meter?.number}</div>
         </td>
         <td className="whitespace-nowrap px-6  py-4">
-          <div className="text-sm text-font-grey">{item?.meter?.address}</div>
+          <div className="max-w-[260px] truncate text-sm text-font-grey">{item?.meter?.address}</div>
         </td>
         <td className="whitespace-nowrap px-6  py-4 text-sm text-gray-500">
           <div className="flex space-x-4">
