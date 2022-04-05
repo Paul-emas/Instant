@@ -311,3 +311,8 @@ input:checked ~ .dot {
   position: fixed !important;
   z-index: 40 !important;
 }
+
+.overlay-2 {
+  background-image: url('../public/images/overlay-2.png');
+  background-size: cover;
+}

@@ -28,19 +28,19 @@ export default function QuickBuy() {
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
 
   useEffect(() => {
-    if (quickbuy) {
-      if (!isLoggedIn) {
-        setOpenBuyElectricityModal(true);
-        setTimeout(() => {
-          dispatch(setQuickBuy(false));
-        }, 200);
-      } else {
-        router.push('/dashboard');
-      }
-    } else {
-      router.push('/');
-    }
-    fetchTransaction();
+    // if (quickbuy) {
+    //   if (!isLoggedIn) {
+    //     setOpenBuyElectricityModal(true);
+    //     setTimeout(() => {
+    //       dispatch(setQuickBuy(false));
+    //     }, 200);
+    //   } else {
+    //     router.push('/dashboard');
+    //   }
+    // } else {
+    //   router.push('/');
+    // }
+    // fetchTransaction();
   }, []);
 
   async function fetchTransaction() {
@@ -78,7 +78,7 @@ export default function QuickBuy() {
           </div>
         </Header>
         <div className="mx-auto px-4 xl:container xl:px-14">
-          <div className="mt-28 lg:-mt-96">
+          <div className="mt-36 lg:-mt-96">
             <TransactionsTable
               transactions={transactions}
               loading={tableLoading}
