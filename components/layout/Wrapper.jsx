@@ -111,8 +111,7 @@ const Wrapper = ({ children }) => {
                         >
                           <FontAwesomeIcon icon={faExclamationTriangle} className="hidden h-4 w-4 text-sm lg:block" />
                           <span className="ml-1">
-                            Welcome to the new Instant Energy website. Transactions will resume on{' '}
-                            <strong>5th April 2022 </strong>
+                            😊 Welcome to the new Instant Energy website. {`We're`} now open for business
                           </span>
                         </div>
                       </div>
