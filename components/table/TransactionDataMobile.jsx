@@ -37,7 +37,7 @@ const TransactionDataMobile = ({ setReceipt, setOpenReceiptModal, transactions }
               <div className="mt-2 px-4">
                 <div className="flex items-center justify-between">
                   <p className="max-w-xs rounded-md bg-primary-light py-1 px-3 text-xs font-semibold text-primary-base">
-                    <span className="truncate">{transaction?.meter?.address}</span>
+                    <span className="max-w-[150px] truncate">{transaction?.meter?.address}</span>
                   </p>
                   {active && (
                     <span
