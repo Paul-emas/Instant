@@ -62,12 +62,8 @@ const Wrapper = ({ children }) => {
       {!pageLoading && (
         <>
           <ModalController />
-          {!isRouteProtected && (
-            <div>
-              <WhatsAppWidget phoneNumber="2349082333376" />
-              {children}
-            </div>
-          )}
+          <WhatsAppWidget phoneNumber="2349082333376" />
+          {!isRouteProtected && <div>{children}</div>}
           {isRouteProtected && (
             <div className="min-h-screen w-full overflow-hidden bg-gray-300">
               <div className="min-h-screen">
