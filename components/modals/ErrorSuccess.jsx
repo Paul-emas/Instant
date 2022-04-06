@@ -17,7 +17,7 @@ const ErrorSuccess = ({ msg, error, next }) => {
       <div className="icon flex justify-center">{!error ? <SuccessIcon /> : <ErrorIcon />}</div>
       <div className="pb-6">
         <div className="mt-6 text-2xl font-bold">
-          <span>{!error ? 'Transcation Successful' : 'Oops!'}</span>
+          <span>{!error ? 'Transaction Successful' : 'Oops!'}</span>
         </div>
         <p className="mx-auto mt-1 max-w-xs text-sm text-gray-400">
           {!error ? <span>{msg}</span> : <span>{error}</span>}

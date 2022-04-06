@@ -118,7 +118,7 @@ const TransactionsTable = ({
 TransactionsTable.displayName = 'TransactionsTable';
 
 TransactionsTable.defaultProps = {
-  title: 'Your transcations',
+  title: 'Your transactions',
   headings: [],
   mobileView: () => null,
   meters: [],

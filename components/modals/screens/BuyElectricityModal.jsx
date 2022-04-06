@@ -42,7 +42,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
   }, [userPhone]);
 
   const close = () => {
-    const resp = confirm('Are you sure you want to cancel transcation?');
+    const resp = confirm('Are you sure you want to cancel transaction?');
     if (resp) {
       setStep(0);
       setOpen(false);
