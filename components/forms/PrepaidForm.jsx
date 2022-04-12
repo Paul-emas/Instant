@@ -27,7 +27,7 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
-  const { meters } = useFetchMeters();
+  const { meters, pageLoading } = useFetchMeters();
 
   useEffect(() => {
     if (userPhone) {
@@ -101,6 +101,7 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
               selectedOption={selectedMeter}
               setSelectedOption={setSelectedMeter}
               meters
+              loading={pageLoading}
               className="py-2.5"
             />
             <div onClick={() => setStep(5)} className="mb-2 flex w-full cursor-pointer items-center border-b pb-2">

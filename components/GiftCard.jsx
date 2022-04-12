@@ -9,7 +9,10 @@ const GiftBox = () => {
       <p className="mx-auto  mt-1 max-w-lg px-10 text-xs text-gray-400 2xl:text-sm">
         You can now send gift vouchers to friends and family
       </p>
-      <Button className="mt-6">Coming soon</Button>
+      {/* <Button className="mt-6">Coming soon</Button> */}
+      <div className="my-4 mx-auto w-[180px] rounded-lg bg-secondary-tealGreen py-2.5 px-4 text-base font-semibold uppercase text-white">
+        Coming Soon
+      </div>
     </div>
   );
 };

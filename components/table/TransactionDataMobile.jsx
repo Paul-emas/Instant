@@ -1,10 +1,31 @@
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import moment from 'moment';
+import { retryTransaction } from '../../api';
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
 
-const TransactionDataMobile = ({ setReceipt, setOpenReceiptModal, transactions }) => {
+const TransactionDataMobile = ({ setReceipt, setOpen, setTransactionReference, setStep, transactions }) => {
   const router = useRouter();
   const data = router.asPath === '/dashboard' ? transactions.slice(0, 2) : transactions;
+
+  const { token } = useSelector(persistSelector);
+  async function Retry(reference) {
+    setStep(3);
+    setOpen(true);
+    setTransactionReference(reference);
+    const resp = await retryTransaction({ reference }, token);
+
+    if (resp?.error) {
+      setStep(2);
+      return;
+    }
+
+    if (resp?.data) {
+      setReceipt(resp.data);
+      setStep(4);
+    }
+  }
 
   return (
     <>
@@ -36,14 +57,15 @@ const TransactionDataMobile = ({ setReceipt, setOpenReceiptModal, transactions }
               </div>
               <div className="mt-2 px-4">
                 <div className="flex items-center justify-between">
-                  <p className="max-w-xs rounded-md bg-primary-light py-1 px-3 text-xs font-semibold text-primary-base">
-                    <span className="max-w-[150px] truncate">{transaction?.meter?.address}</span>
+                  <p className="max-w-[150px] truncate rounded-md bg-primary-light py-1 px-3 text-xs font-semibold text-primary-base">
+                    <span className="">{transaction?.meter?.address}</span>
                   </p>
                   {active && (
                     <span
                       onClick={() => {
                         setReceipt(transaction);
-                        setOpenReceiptModal(true);
+                        setOpen(true);
+                        setStep(4);
                       }}
                       className="inline-flex cursor-pointer rounded-lg bg-green-100 px-3 py-1 text-xs font-semibold capitalize leading-5 text-font-green"
                     >
@@ -51,7 +73,10 @@ const TransactionDataMobile = ({ setReceipt, setOpenReceiptModal, transactions }
                     </span>
                   )}
                   {!active && (
-                    <span className="relative inline-flex rounded-lg bg-red-100 px-3 py-1 text-xs font-semibold capitalize leading-5 text-red-600">
+                    <span
+                      onClick={() => Retry(transaction?.reference)}
+                      className="relative inline-flex rounded-lg bg-red-100 px-3 py-1 text-xs font-semibold capitalize leading-5 text-red-600"
+                    >
                       Retry
                     </span>
                   )}

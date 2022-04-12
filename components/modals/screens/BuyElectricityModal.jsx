@@ -36,7 +36,6 @@ const BuyElectricityModal = ({
 
   const [activeTab, setActiveTab] = useState(0);
   const [confirmDetails, setConfirmDetails] = useState(null);
-  const [paystack, setPayStack] = useState(null);
   const [paymentToken, setPaymentToken] = useState(null);
   const [phone, setPhone] = useState('');
   const [selectedMeter, setSelectedMeter] = useState(null);
@@ -59,13 +58,17 @@ const BuyElectricityModal = ({
   const receiptClose = () => {
     setOpen(false);
     setStep(0);
-    !isLoggedIn ? dispatch(setInitAuthentication('createPinNewUser')) : init();
+    if (!isLoggedIn) {
+      dispatch(setInitAuthentication('createPinNewUser'));
+    } else {
+      toast.loading('Refreshing Data...');
+      init();
+    }
   };
 
   const onPayStackSuccess = async (data) => {
     setStep(3);
     setOpen(true);
-    setPayStack(data);
     setTransactionReference(data.reference);
     const resp = await generateTranscationToken({ reference: data.reference }, paymentToken);
 

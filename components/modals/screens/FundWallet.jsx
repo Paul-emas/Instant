@@ -103,6 +103,7 @@ const FundWallet = ({ setStep, close }) => {
 
       if (resp.data) {
         setPaymentStep(2);
+        toast.loading('Refreshing Data...');
         init();
         walletTransactions?.init();
       }

@@ -95,7 +95,7 @@ const TransactionDataDefault = ({ transactions, setReceipt, setTransactionRefere
                       // setReceipt(transaction);
                       // setOpenReceiptModal(true);
                     }}
-                    className="inline-flex w-[70px]  cursor-pointer justify-center rounded-lg bg-secondary-green bg-opacity-50 px-3 py-1 text-center text-xs font-semibold uppercase leading-5 text-white"
+                    className="inline-flex w-[70px] cursor-pointer justify-center rounded-lg bg-secondary-green bg-opacity-50 px-3 py-1 text-center text-xs font-bold leading-5 text-white"
                   >
                     Repeat
                   </span>
@@ -103,7 +103,7 @@ const TransactionDataDefault = ({ transactions, setReceipt, setTransactionRefere
                 {!active && (
                   <span
                     onClick={() => Retry(transaction?.reference)}
-                    className="relative inline-flex w-[70px] cursor-pointer justify-center rounded-lg bg-yellow-400 px-3 py-1 text-center text-xs font-semibold uppercase leading-5 text-gray-700"
+                    className="relative inline-flex w-[70px] cursor-pointer justify-center rounded-lg border bg-primary-light px-3 py-1 text-center text-xs font-bold leading-5 text-gray-700"
                   >
                     Retry
                   </span>

@@ -7,8 +7,6 @@ import Pagination from '../../components/table/Pagination';
 import TransactionsTable from '../../components/table/TransactionsTable';
 import TransactionDataDefault from '../../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../../components/table/TransactionDataMobile';
-import Modal from '../../components/modals';
-import Receipt from '../../components/modals/Receipt';
 
 export default function Transactions() {
   const headings = ['Meter name', 'Date', 'Distributor', 'Meter No.', 'Reference Code', 'Amount', 'Status', ''];
@@ -29,6 +27,13 @@ export default function Transactions() {
     setTransactionReference,
     receipt,
     setReceipt,
+  };
+
+  const tableDataProps = {
+    transactions,
+    setReceipt,
+    setStep,
+    setTransactionReference,
   };
 
   useEffect(() => {
@@ -68,7 +73,7 @@ export default function Transactions() {
             loading={tableLoading}
             transactions={paginatedTransactions}
             setOpenBuyElectricityModal={setOpenBuyElectricityModal}
-            mobileView={() => <TransactionDataMobile setReceipt={setReceipt} transactions={paginatedTransactions} />}
+            mobileView={() => <TransactionDataMobile setOpen={setOpenBuyElectricityModal} {...tableDataProps} />}
             paginate={() => (
               <Pagination
                 items={paginatedTransactions}
@@ -79,13 +84,7 @@ export default function Transactions() {
               />
             )}
           >
-            <TransactionDataDefault
-              transactions={transactions}
-              setOpen={setOpenBuyElectricityModal}
-              setReceipt={setReceipt}
-              setStep={setStep}
-              setTransactionReference={setTransactionReference}
-            />
+            <TransactionDataDefault setOpen={setOpenBuyElectricityModal} {...tableDataProps} />
           </TransactionsTable>
         </>
       )}

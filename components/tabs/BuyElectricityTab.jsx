@@ -21,9 +21,7 @@ const BuyElectricityTab = ({ tabs, activeTab, setActiveTab }) => {
             animate();
           }}
           className={`${
-            activeTab === index
-              ? 'active-tab font-bold duration-200'
-              : 'font-semibold text-gray-400'
+            activeTab === index ? 'active-tab font-bold duration-200' : 'font-semibold text-gray-400'
           } w-52 cursor-pointer border-b-2 border-transparent  py-2 text-center text-sm capitalize lg:text-base`}
         >
           {name}

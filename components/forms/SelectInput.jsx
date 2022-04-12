@@ -5,7 +5,7 @@ import { faCheckCircle, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 import EmptyIcon from '../../public/svgs/empty-state.svg';
 
-const SelectInput = ({ className, error, meters, label, options, selectedOption, setSelectedOption }) => {
+const SelectInput = ({ className, loading, error, meters, label, options, selectedOption, setSelectedOption }) => {
   const errorStyles = error
     ? 'border-red-600 focus:border-red-600 focus:outline-none'
     : 'focus:bg-primary-light focus:border-primary-base focus:border-skin-theme focus:outline-none';
@@ -46,7 +46,14 @@ const SelectInput = ({ className, error, meters, label, options, selectedOption,
               </span>
             </>
           ) : (
-            <div className="h-4 w-2/3 rounded-md bg-gray-200"></div>
+            <div className="relative">
+              <div className="h-4 w-2/3 rounded-md bg-gray-200"></div>
+              {loading && (
+                <div className="absolute -top-3 right-0 scale-50">
+                  <div className="spinner"></div>
+                </div>
+              )}
+            </div>
           )}
         </button>
         <ul

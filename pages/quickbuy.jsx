@@ -26,6 +26,24 @@ export default function QuickBuy() {
   const [transactions, setTransactions] = useState([]);
   const [tableLoading, setTableLoading] = useState(true);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
+  const [step, setStep] = useState(0);
+  const [receipt, setReceipt] = useState(null);
+  const [transactionReference, setTransactionReference] = useState('');
+  const modalProps = {
+    step,
+    setStep,
+    transactionReference,
+    setTransactionReference,
+    receipt,
+    setReceipt,
+  };
+
+  const tableDataProps = {
+    transactions,
+    setReceipt,
+    setStep,
+    setTransactionReference,
+  };
 
   useEffect(() => {
     if (quickbuy) {
@@ -44,12 +62,12 @@ export default function QuickBuy() {
   }, []);
 
   async function fetchTransaction() {
-    const paylaod = {
+    const payload = {
       phone: userPhone?.phone,
       country: userPhone?.country?.name,
       email: 'test@gmail.com',
     };
-    const resp = await getAccountToken(paylaod);
+    const resp = await getAccountToken(payload);
 
     if (resp?.data) {
       dispatch(setAnonymousToken(resp?.data?.authorization));
@@ -62,7 +80,7 @@ export default function QuickBuy() {
   return (
     <>
       <div className="pb-20">
-        <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
+        <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} {...modalProps} />
         <Header bg="bg-primary-light">
           <div className="relative top-20 lg:top-32">
             <Link href="/">
@@ -84,8 +102,8 @@ export default function QuickBuy() {
               loading={tableLoading}
               setOpenBuyElectricityModal={setOpenBuyElectricityModal}
             >
-              <TransactionDataDefault transactions={transactions} />
-              <TransactionDataMobile transactions={transactions} />
+              <TransactionDataDefault setOpen={setOpenBuyElectricityModal} {...tableDataProps} />
+              <TransactionDataMobile setOpen={setOpenBuyElectricityModal} {...tableDataProps} />
             </TransactionsTable>
           </div>
         </div>

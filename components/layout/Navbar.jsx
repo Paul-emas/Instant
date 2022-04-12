@@ -33,9 +33,9 @@ const Navbar = () => {
       <div
         className={`${
           isScrolling ? 'h-0 py-0 opacity-0' : 'opacity-1'
-        } flex w-full items-center justify-center bg-green-400  py-3 px-4 text-center text-xs font-semibold duration-300 lg:text-sm`}
+        } flex w-full items-center justify-center bg-green-400  py-2 px-4 text-center text-xs font-semibold duration-300 lg:text-sm`}
       >
-        <span>😊</span>
+        <span className="hidden text-2xl lg:block">👋🏿</span>
         <span className="ml-2">Welcome to the new Instant Energy website. {`We're`} now open for business</span>
       </div>
       <div

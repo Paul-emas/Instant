@@ -13,8 +13,6 @@ import DashboardSkeleton from '../components/skeletons/DashboardSkeleton';
 import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
-import Modal from '../components/modals';
-import Receipt from '../components/modals/Receipt';
 import GiftBox from '../components/GiftCard';
 
 export default function Dashboard() {
@@ -39,6 +37,13 @@ export default function Dashboard() {
     setReceipt,
   };
 
+  const tableDataProps = {
+    transactions,
+    setReceipt,
+    setStep,
+    setTransactionReference,
+  };
+
   useEffect(() => {
     if (quickbuy && !pageLoading) {
       setOpenBuyElectricityModal(true);
@@ -50,6 +55,14 @@ export default function Dashboard() {
 
   return (
     <div className="pb-10">
+      <div className="-pb-8 pt-3">
+        <div className="flex w-full items-center justify-center rounded-2xl  bg-yellow-400 py-2 px-4 text-center text-xs font-semibold duration-300 lg:text-sm">
+          <span className="hidden text-2xl lg:block">👋🏿</span>
+          <span className="ml-2">
+            Your favourite feature <b>RETRY</b> is back, now you can easily resolve failed transactions.
+          </span>
+        </div>
+      </div>
       {pageLoading && (
         <div className="2xl:pt-10">
           <DashboardSkeleton />
@@ -92,15 +105,9 @@ export default function Dashboard() {
               headings={headings}
               transactions={transactions}
               setOpenBuyElectricityModal={setOpenBuyElectricityModal}
-              mobileView={() => <TransactionDataMobile transactions={transactions} setReceipt={setReceipt} />}
+              mobileView={() => <TransactionDataMobile setOpen={setOpenBuyElectricityModal} {...tableDataProps} />}
             >
-              <TransactionDataDefault
-                transactions={transactions}
-                setOpen={setOpenBuyElectricityModal}
-                setReceipt={setReceipt}
-                setStep={setStep}
-                setTransactionReference={setTransactionReference}
-              />
+              <TransactionDataDefault setOpen={setOpenBuyElectricityModal} {...tableDataProps} />
             </TransactionsTable>
           </div>
           {isLoggedIn && <SolarCard className="block lg:hidden" />}

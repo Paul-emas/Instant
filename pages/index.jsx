@@ -59,16 +59,7 @@ export default function Home() {
             <FloatingIcon1 className="absolute top-24" />
             <FloatingIcon2 className="absolute top-32 right-0" />
             <FloatingIcon3 className="absolute bottom-32 2xl:-left-20" />
-            <div className="relative top-10 lg:top-0">
-              <Image
-                src="/images/woman.webp"
-                layout="intrinsic"
-                width={738}
-                height={910}
-                objectFit="contain"
-                priority
-              />
-            </div>
+            <Image src="/images/woman.webp" layout="intrinsic" width={738} height={910} objectFit="contain" priority />
           </div>
           <div className="relative mx-auto flex items-center pt-5 pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full lg:items-start lg:pt-40 2xl:pb-10">
             <QuickPay />
