@@ -7,7 +7,6 @@ import { userSelector } from '../slices/user';
 import SolarCard from '../components/ads/SolarCard';
 import Button from '../components/Button';
 import Chart from '../components/Chart';
-import ReferBox from '../components/ReferBox';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
 import DashboardSkeleton from '../components/skeletons/DashboardSkeleton';
 
@@ -19,16 +18,26 @@ import Receipt from '../components/modals/Receipt';
 import GiftBox from '../components/GiftCard';
 
 export default function Dashboard() {
-  const headings = ['Meter name', 'Date', 'Distributor', 'Meter No.', 'Reference Code', 'Amount', 'Status'];
+  const headings = ['Meter name', 'Date', 'Distributor', 'Meter No.', 'Reference Code', 'Amount', 'Status', ''];
   const dispatch = useDispatch();
   const { quickbuy, isLoggedIn } = useSelector(persistSelector);
   const { me } = useSelector(userSelector);
 
   const { transactions, pageLoading } = useFetchTransaction(10);
+  const [step, setStep] = useState(0);
   const [openBuyElectricityModal, setOpenBuyElectricityModal] = useState(false);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
   const [receipt, setReceipt] = useState(null);
-  const [openReceiptModal, setOpenReceiptModal] = useState(false);
+  const [transactionReference, setTransactionReference] = useState('');
+
+  const modalProps = {
+    step,
+    setStep,
+    transactionReference,
+    setTransactionReference,
+    receipt,
+    setReceipt,
+  };
 
   useEffect(() => {
     if (quickbuy && !pageLoading) {
@@ -48,12 +57,7 @@ export default function Dashboard() {
       )}
       {!pageLoading && (
         <>
-          <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} />
-          {openReceiptModal && (
-            <Modal close={() => setOpenReceiptModal(false)} border={false} setOpen={setOpenReceiptModal}>
-              <Receipt receipt={receipt} />
-            </Modal>
-          )}
+          <BuyElectricityModal open={openBuyElectricityModal} setOpen={setOpenBuyElectricityModal} {...modalProps} />
           <div className="2xl:pt-10">
             <div className="hidden items-center justify-between sm:flex">
               <div>
@@ -88,18 +92,14 @@ export default function Dashboard() {
               headings={headings}
               transactions={transactions}
               setOpenBuyElectricityModal={setOpenBuyElectricityModal}
-              mobileView={() => (
-                <TransactionDataMobile
-                  transactions={transactions}
-                  setReceipt={setReceipt}
-                  setOpenReceiptModal={setOpenReceiptModal}
-                />
-              )}
+              mobileView={() => <TransactionDataMobile transactions={transactions} setReceipt={setReceipt} />}
             >
               <TransactionDataDefault
                 transactions={transactions}
+                setOpen={setOpenBuyElectricityModal}
                 setReceipt={setReceipt}
-                setOpenReceiptModal={setOpenReceiptModal}
+                setStep={setStep}
+                setTransactionReference={setTransactionReference}
               />
             </TransactionsTable>
           </div>

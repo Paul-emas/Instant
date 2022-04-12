@@ -9,6 +9,8 @@ import { persistSelector } from '../../slices/persist';
 const Receipt = ({ close, receipt }) => {
   const { isLoggedIn } = useSelector(persistSelector);
 
+  console.log(receipt);
+
   function PrintElem() {
     var data = document.getElementById('reciept').innerHTML;
     var myWindow = window.open('', 'Instant Energy Recharge Receipt', 'height=400,width=600');

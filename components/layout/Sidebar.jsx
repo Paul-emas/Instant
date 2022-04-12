@@ -128,10 +128,10 @@ const Sidebar = ({ openNav, setOpenNav }) => {
               <button
                 type="button"
                 onClick={() => {
-                  dispatch(setInitAuthentication('fundWallet'));
-                  setOpenNav(false);
+                  // dispatch(setInitAuthentication('fundWallet'));
+                  // setOpenNav(false);
                 }}
-                className="h-8 w-fund cursor-pointer rounded-lg bg-secondary-green text-center text-xxs font-semibold text-white hover:bg-opacity-80 2xl:w-24 2xl:text-xs"
+                className="h-8 w-fund cursor-pointer rounded-lg bg-secondary-green bg-opacity-50 text-center text-xxs font-semibold text-white 2xl:w-24 2xl:text-xs"
               >
                 Fund wallet
               </button>

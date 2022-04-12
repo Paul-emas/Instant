@@ -2,14 +2,10 @@ import { useDispatch } from 'react-redux';
 import { setInitAuthentication } from '../slices/user';
 
 import PrimaryButton from '../components/Buttons/PrimaryButton';
-import AboutBanner from '../components/homepage/AboutBanner';
 import AboutInfo from '../components/homepage/AboutInfo';
 import Header from '../components/homepage/Header';
 import Recycle from '../components/homepage/Recycle';
-import Team from '../components/homepage/Team';
-import FAQs from '../components/homepage/FAQs';
 import Footer from '../components/homepage/Footer';
-import ContactCard from '../components/ContactCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
 import Goals from '../components/homepage/Goals';

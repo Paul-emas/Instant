@@ -8,9 +8,7 @@ const WalletCard = ({ className }) => {
   const { walletBalance } = useSelector(userSelector);
 
   return (
-    <div
-      className={`${className} relative w-full overflow-hidden rounded-3xl bg-primary-base pt-9 pb-24`}
-    >
+    <div className={`${className} relative w-full overflow-hidden rounded-3xl bg-primary-base pt-9 pb-24`}>
       <div className="absolute right-0 top-0 z-10 h-full w-full sm:w-446">
         <img src="/images/wallet-banner.png" className="h-full w-full object-cover" />
       </div>
@@ -33,7 +31,7 @@ const WalletCard = ({ className }) => {
           </div>
           <div>
             <button
-              onClick={() => dispatch(setInitAuthentication('fundWallet'))}
+              // onClick={() => dispatch(setInitAuthentication('fundWallet'))}
               className="hidden rounded-lg bg-white py-3 px-5 text-xs font-bold uppercase sm:block"
             >
               Fund wallet

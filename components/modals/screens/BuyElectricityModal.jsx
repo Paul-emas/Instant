@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector } from '../../../slices/persist';
-import { generateTranscationToken, getTransactionTokenStatus } from '../../../api';
+import { generateTranscationToken, getTransactionTokenStatus, retryTransaction } from '../../../api';
 import useFetchTransaction from '../../../hooks/useFetchTransaction';
 
 import BuyElectricityTab from '../../tabs/BuyElectricityTab';
@@ -16,7 +16,16 @@ import AddMeter from './AddMeter';
 import { setInitAuthentication } from '../../../slices/user';
 import toast from 'react-hot-toast';
 
-const BuyElectricityModal = ({ open, setOpen }) => {
+const BuyElectricityModal = ({
+  open,
+  step,
+  setStep,
+  setOpen,
+  receipt,
+  setReceipt,
+  transactionReference,
+  setTransactionReference,
+}) => {
   const { isLoggedIn, userPhone } = useSelector(persistSelector);
   const { init } = useFetchTransaction(10);
   const dispatch = useDispatch();
@@ -25,12 +34,10 @@ const BuyElectricityModal = ({ open, setOpen }) => {
     { id: 1, name: 'postpaid' },
   ];
 
-  const [step, setStep] = useState(0);
   const [activeTab, setActiveTab] = useState(0);
   const [confirmDetails, setConfirmDetails] = useState(null);
   const [paystack, setPayStack] = useState(null);
   const [paymentToken, setPaymentToken] = useState(null);
-  const [receipt, setReciept] = useState(null);
   const [phone, setPhone] = useState('');
   const [selectedMeter, setSelectedMeter] = useState(null);
 
@@ -59,7 +66,7 @@ const BuyElectricityModal = ({ open, setOpen }) => {
     setStep(3);
     setOpen(true);
     setPayStack(data);
-
+    setTransactionReference(data.reference);
     const resp = await generateTranscationToken({ reference: data.reference }, paymentToken);
 
     if (resp?.error) {
@@ -71,18 +78,16 @@ const BuyElectricityModal = ({ open, setOpen }) => {
       }
 
       if (res?.data) {
-        setReciept(resp.data);
+        setReceipt(resp.data);
         setStep(4);
       }
     }
 
     if (resp?.data) {
-      setReciept(resp.data);
+      setReceipt(resp.data);
       setStep(4);
     }
   };
-
-  async function RetryTransaction() {}
 
   const PrepaidPostPaidProps = {
     setConfirmDetails,
@@ -132,7 +137,8 @@ const BuyElectricityModal = ({ open, setOpen }) => {
         <Modal border={false} setOpen={setOpen} close={close}>
           <ErrorSuccess
             error="Something went wrong while trying to process your transaction kindly retry."
-            next={RetryTransaction}
+            transactionReference={transactionReference}
+            setStep={setStep}
           />
         </Modal>
       )}

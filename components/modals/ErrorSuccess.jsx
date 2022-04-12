@@ -1,16 +1,48 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 
 import SuccessIcon from '../../public/svgs/success.svg';
 import ErrorIcon from '../../public/svgs/error.svg';
 import Button from '../Button';
+import { retryTransaction } from '../../api';
+import PrimaryButton from '../Buttons/PrimaryButton';
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
+import toast from 'react-hot-toast';
 
-const ErrorSuccess = ({ msg, error, next }) => {
+const ErrorSuccess = ({ msg, error, next, setStep, transactionReference }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { token } = useSelector(persistSelector);
+
   useEffect(() => {
     const tl = gsap.timeline({});
     tl.fromTo('.icon', { scale: 0.2 }, { scale: 1, ease: 'elastic' });
   }, [error]);
+
+  async function RetryTransaction() {
+    if (!next) {
+      if (transactionReference) {
+        setIsLoading(true);
+        const resp = await retryTransaction({ reference: transactionReference }, token);
+
+        if (resp?.error) {
+          setIsLoading(false);
+          setStep(2);
+          toast.error('Transaction failed. There was an error processing your transaction');
+          return;
+        }
+
+        if (resp?.data) {
+          setIsLoading(false);
+          setReciept(resp.data);
+          setStep(4);
+        }
+      }
+    } else {
+      next();
+    }
+  }
 
   return (
     <div className="bg-white text-center">
@@ -23,9 +55,11 @@ const ErrorSuccess = ({ msg, error, next }) => {
           {!error ? <span>{msg}</span> : <span>{error}</span>}
         </p>
         {error && (
-          <Button onClick={next} className="mt-6">
-            Retry Transaction
-          </Button>
+          <div className="mx-auto w-[210px]">
+            <PrimaryButton loading={isLoading} size="base" onClick={RetryTransaction} className="mt-6">
+              Retry Transaction
+            </PrimaryButton>
+          </div>
         )}
       </div>
       {error && (

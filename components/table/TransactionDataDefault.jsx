@@ -2,8 +2,29 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import BulbIcon from '../../public/svgs/bulb-db.svg';
+import { retryTransaction } from '../../api';
+import { useSelector } from 'react-redux';
+import { persistSelector } from '../../slices/persist';
 
-const TransactionDataDefault = ({ transactions, setReceipt, setOpenReceiptModal }) => {
+const TransactionDataDefault = ({ transactions, setReceipt, setTransactionReference, setStep, setOpen }) => {
+  const { token } = useSelector(persistSelector);
+  async function Retry(reference) {
+    setStep(3);
+    setOpen(true);
+    setTransactionReference(reference);
+    const resp = await retryTransaction({ reference }, token);
+
+    if (resp?.error) {
+      setStep(2);
+      return;
+    }
+
+    if (resp?.data) {
+      setReceipt(resp.data);
+      setStep(4);
+    }
+  }
+
   return (
     <>
       {transactions.map((transaction, index) => {
@@ -51,16 +72,40 @@ const TransactionDataDefault = ({ transactions, setReceipt, setOpenReceiptModal 
                   <span
                     onClick={() => {
                       setReceipt(transaction);
-                      setOpenReceiptModal(true);
+                      setStep(4);
+                      setOpen(true);
                     }}
-                    className="inline-flex cursor-pointer rounded-lg bg-green-100 px-3 py-1 text-xs font-semibold capitalize leading-5 text-font-green"
+                    className="inline-flex w-[70px]  cursor-pointer justify-center rounded-lg bg-green-100 px-3 py-1 text-center text-xs font-semibold capitalize leading-5 text-font-green"
                   >
                     Receipt
                   </span>
                 )}
                 {!active && (
-                  <span className="relative inline-flex rounded-lg bg-red-100 px-3 py-1 text-xs font-semibold capitalize leading-5 text-red-600">
+                  <span className="relative inline-flex w-[70px]  justify-center rounded-lg bg-red-100 px-3 py-1 text-center text-xs font-semibold capitalize leading-5 text-red-600">
                     Failed
+                  </span>
+                )}
+              </div>
+            </td>
+            <td className="whitespace-nowrap px-6  py-4">
+              <div className="text-sm font-bold">
+                {active && (
+                  <span
+                    onClick={() => {
+                      // setReceipt(transaction);
+                      // setOpenReceiptModal(true);
+                    }}
+                    className="inline-flex w-[70px]  cursor-pointer justify-center rounded-lg bg-secondary-green bg-opacity-50 px-3 py-1 text-center text-xs font-semibold uppercase leading-5 text-white"
+                  >
+                    Repeat
+                  </span>
+                )}
+                {!active && (
+                  <span
+                    onClick={() => Retry(transaction?.reference)}
+                    className="relative inline-flex w-[70px] cursor-pointer justify-center rounded-lg bg-yellow-400 px-3 py-1 text-center text-xs font-semibold uppercase leading-5 text-gray-700"
+                  >
+                    Retry
                   </span>
                 )}
               </div>
