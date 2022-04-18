@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import Wrapper from '../components/layout/Wrapper';
-import '../styles/fonts.css';
 import '../styles/global.css';
 import { store, persistor } from '../store';
 
