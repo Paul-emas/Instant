@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import TimesIcon from '../../public/svgs/times.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,18 +7,25 @@ import gsap from 'gsap';
 import { isMobile } from 'react-device-detect';
 
 const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, children }) => {
+  const modalBox = useRef();
+  const modalOverlay = useRef();
+
   useEffect(() => {
     const tl = gsap.timeline();
 
     if (!isMobile) {
-      tl.fromTo('#modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
-      tl.fromTo('.modal-box', { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.2, delay: 0.1 });
+      tl.fromTo(modalOverlay.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
+      tl.fromTo(modalBox.current, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.2, delay: 0.1 });
     } else if (isMobile && isAuth) {
-      tl.fromTo('#modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
-      tl.fromTo('.modal-box', { autoAlpha: 0, scaleX: 0.9 }, { autoAlpha: 1, scaleX: 1, duration: 0.3, delay: 0.1 });
+      tl.fromTo(modalOverlay.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
+      tl.fromTo(
+        modalBox.current,
+        { autoAlpha: 0, scaleX: 0.9 },
+        { autoAlpha: 1, scaleX: 1, duration: 0.3, delay: 0.1 },
+      );
     } else {
-      tl.fromTo('#modal-overlay', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
-      tl.fromTo('.modal-box', { autoAlpha: 0, y: '40%' }, { autoAlpha: 1, y: 0, duration: 0.3, delay: 0.1 }, '<');
+      tl.fromTo(modalOverlay.current, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 });
+      tl.fromTo(modalBox.current, { autoAlpha: 0, y: '40%' }, { autoAlpha: 1, y: 0, duration: 0.3, delay: 0.1 }, '<');
     }
 
     return () => {
@@ -55,12 +62,14 @@ const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, ch
           className={`${
             isAuth ? 'bg-white lg:bg-secondary-modal lg:bg-opacity-70' : 'bg-secondary-modal bg-opacity-70'
           } modal-overlay absolute min-h-screen w-full`}
+          ref={modalOverlay}
         ></div>
         <div className={`${isAuth ? 'px-3 pt-10 sm:px-0 sm:pt-0' : ''} w-full xs:w-modal`}>
           <div
             className={`${
               isAuth ? 'rounded-2xl' : 'modal-card rounded-t-2xl sm:rounded-2xl'
-            } modal-box shadow-soft w-full overflow-y-auto bg-white pt-5 pb-12 xl:overflow-auto`}
+            } shadow-soft w-full overflow-y-auto bg-white pt-5 pb-12 xl:overflow-auto`}
+            ref={modalBox}
           >
             <div className={`${border && 'border-b border-gray-100'} h-14 text-xl`}>
               <div className="px-4 sm:px-8">

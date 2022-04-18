@@ -13,12 +13,8 @@ const ChangePhone = ({ setStep }) => {
     <form className="px-8">
       <div className="mt-6">
         <div className="text-center">
-          <div className="text-2xl font-bold text-primary-darker">
-            Change phone number
-          </div>
-          <p className="text-sm font-semibold text-gray-400">
-            Your token will be sent to this number
-          </p>
+          <div className="text-2xl font-bold text-primary-darker">Change phone number</div>
+          <p className="text-sm font-semibold text-gray-400">Your token will be sent to this number</p>
         </div>
         <div className="mt-6">
           <FormInput
@@ -27,16 +23,7 @@ const ChangePhone = ({ setStep }) => {
             id="phone"
             label="Phone number"
             value={phone}
-            isValid={(value, country) => {
-              if (value.match(/12345/)) {
-                return 'Invalid value: ' + value + ', ' + country.name;
-              } else if (value.match(/1234/)) {
-                return false;
-              } else {
-                return true;
-              }
-            }}
-            onChange={value => setPhone(value)}
+            onChange={(value) => setPhone(value)}
           />
           <div className="mt-10">
             <PrimaryButton onClick={onSubmit} size="base">

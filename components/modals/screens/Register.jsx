@@ -48,9 +48,7 @@ const Register = ({ close, setStep }) => {
     <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 lg:px-8">
         <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">Create an account</h1>
-        <p className="mt-3 text-center text-sm text-gray-700">
-          Buy electricity units easily with Instant Energy
-        </p>
+        <p className="mt-3 text-center text-sm text-gray-700">Buy electricity units easily with Instant Energy</p>
         {errorMessage && <ErrorAlert error={errorMessage} setError={setErrorMessage} />}
         <form className="mt-5" onSubmit={handleSubmit(onSubmit)} autoComplete="off">
           <FormInput
@@ -83,16 +81,6 @@ const Register = ({ close, setStep }) => {
             id="phone"
             label="Phone number"
             value={phone}
-            isValid={(value, country) => {
-              if (value.match(/12345/)) {
-                return 'Invalid value: ' + value + ', ' + country.name;
-              } else if (value.match(/1234/)) {
-                return false;
-              } else {
-                setCountry(country);
-                return true;
-              }
-            }}
             onChange={(value) => setPhone(value)}
           />
           <FormInput

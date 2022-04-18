@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
-const FormInput = forwardRef(({ as, type, label, font, error, control, children, className, ...props }, ref) => {
+const FormInput = ({ as, type, label, font, error, control, children, className, ...props }) => {
   const As = as;
 
   const errorStyles =
@@ -24,7 +24,6 @@ const FormInput = forwardRef(({ as, type, label, font, error, control, children,
       {type !== 'phone' && type !== 'currency' && type !== 'textarea' && (
         <As
           name={label}
-          ref={ref}
           type={type}
           className={`${className} ${errorStyles} form-input`}
           autoComplete="false"
@@ -56,7 +55,6 @@ const FormInput = forwardRef(({ as, type, label, font, error, control, children,
             fontFamily: 'Red Hat Display',
           }}
           {...props}
-          ref={ref}
         />
       )}
 
@@ -68,7 +66,6 @@ const FormInput = forwardRef(({ as, type, label, font, error, control, children,
             type="number"
             placeholder="0.00"
             autoComplete="false"
-            ref={ref}
             className={`${
               error ? 'focus:bg-white' : 'focus:bg-primary-light'
             } ml-4 w-full font-bold focus:outline-none`}
@@ -78,7 +75,6 @@ const FormInput = forwardRef(({ as, type, label, font, error, control, children,
       {type === 'textarea' && (
         <textarea
           className={`${className} ${errorStyles} form-input mt-2 pt-2.5 pb-9`}
-          ref={ref}
           placeholder="Enter your message here.."
           {...props}
         ></textarea>
@@ -86,9 +82,7 @@ const FormInput = forwardRef(({ as, type, label, font, error, control, children,
       {children}
     </div>
   );
-});
-
-FormInput.displayName = 'FormInput';
+};
 
 FormInput.defaultProps = {
   type: 'text',

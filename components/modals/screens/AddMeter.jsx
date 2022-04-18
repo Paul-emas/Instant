@@ -134,16 +134,6 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
                 id="phone"
                 label="Phone number"
                 value={phone}
-                isValid={(value, country) => {
-                  if (value.match(/12345/)) {
-                    return 'Invalid value: ' + value + ', ' + country.name;
-                  } else if (value.match(/1234/)) {
-                    return false;
-                  } else {
-                    setCountry(country);
-                    return true;
-                  }
-                }}
                 onChange={(value) => setPhone(value)}
               />
               <FormInput
