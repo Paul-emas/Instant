@@ -91,3 +91,11 @@ export default function Transactions() {
     </div>
   );
 }
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+    },
+  };
+}

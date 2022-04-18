@@ -67,12 +67,7 @@ export default function Solar() {
     },
   };
 
-  const tabsData = [
-    { name: 'Paid' },
-    { name: 'Upcoming' },
-    { name: 'Recurring' },
-    { name: 'Overdue' },
-  ];
+  const tabsData = [{ name: 'Paid' }, { name: 'Upcoming' }, { name: 'Recurring' }, { name: 'Overdue' }];
   const [activeTab, setActiveTab] = useState(0);
   const [chartSelectedMonth, setChartSelectedMonth] = useState(null);
   const [pageLoading, setPageLoading] = useState(false);
@@ -97,10 +92,7 @@ export default function Solar() {
           <div className="modal-soon absolute inset-0 z-30 flex min-h-screen w-full  justify-center bg-white bg-opacity-60 pt-60 lg:pt-96">
             <div className="text-4xl font-bold text-primary-dark 2xl:mt-10">
               <span className="flex justify-center">
-                <FontAwesomeIcon
-                  icon={faCogs}
-                  className="mx-auto mb-4 h-28 w-28 text-center text-7xl"
-                />
+                <FontAwesomeIcon icon={faCogs} className="mx-auto mb-4 h-28 w-28 text-center text-7xl" />
               </span>
               <span>Coming Soon...</span>
             </div>
@@ -109,9 +101,7 @@ export default function Solar() {
             <div className="hidden items-center justify-between sm:flex">
               <div>
                 <h1 className="text-heading font-bold">Your Solar Plan</h1>
-                <p className="text-md font-medium text-font-muted">
-                  Always turn off unused appliances
-                </p>
+                <p className="text-md font-medium text-font-muted">Always turn off unused appliances</p>
               </div>
               <Button>NEW REQUEST</Button>
             </div>
@@ -138,18 +128,12 @@ export default function Solar() {
                     <tr className="last:-white py-4 pl-6 hover:bg-gray-50" key={index}>
                       <td className="whitespace-nowrap py-4  pl-6">
                         <div className="flex items-center">
-                          <div
-                            className={`${
-                              active ? 'bg-font-green' : 'bg-red-600'
-                            } h-12 w-12 rounded-2xl`}
-                          >
+                          <div className={`${active ? 'bg-font-green' : 'bg-red-600'} h-12 w-12 rounded-2xl`}>
                             <SunIcon className="mx-auto my-3" />
                           </div>
                           <div className="ml-8">
                             <div>
-                              <div className="text-sm font-bold text-font-dark">
-                                Electricity Units
-                              </div>
+                              <div className="text-sm font-bold text-font-dark">Electricity Units</div>
                             </div>
                           </div>
                         </div>
@@ -193,4 +177,12 @@ export default function Solar() {
       )}
     </div>
   );
+}
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+    },
+  };
 }

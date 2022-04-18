@@ -6,8 +6,10 @@ const HomeBanners = () => {
       <div className="absolute h-full w-full overflow-hidden">
         <Image
           src="/images/banners/banner-2.webp"
+          blurDataURL="/images/banners/banner-2.webp"
           layout="fill"
           objectFit="cover"
+          placeholder="blur"
           className="banner-image"
           priority
         />

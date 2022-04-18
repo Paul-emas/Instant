@@ -107,3 +107,11 @@ export default function Profile() {
     </div>
   );
 }
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+    },
+  };
+}

@@ -67,3 +67,11 @@ export default function Meters() {
     </div>
   );
 }
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+    },
+  };
+}

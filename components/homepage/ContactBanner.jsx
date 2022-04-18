@@ -6,6 +6,8 @@ const ContactBanner = () => {
       <div className="absolute h-full w-full overflow-hidden bg-fixed">
         <Image
           src="/images/banners/banner-3.webp"
+          blurDataURL="/images/banners/banner-3.webp"
+          placeholder="blur"
           layout="fill"
           objectFit="cover"
           className="banner-image"
@@ -18,8 +20,8 @@ const ContactBanner = () => {
             We ensure you have the best experience
           </div>
           <p className="mt-2 text-sm text-gray-300">
-            Our goal is to ensure you get only the best service, our customer support reps are
-            available 24/7 to attend to you.
+            Our goal is to ensure you get only the best service, our customer support reps are available 24/7 to attend
+            to you.
           </p>
         </div>
       </div>

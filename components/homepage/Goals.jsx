@@ -14,16 +14,44 @@ const Goals = () => {
         </p>
         <div className="mt-12 flex flex-wrap justify-center lg:mt-20 lg:space-x-10">
           <div className="mb-3 w-1/2 pr-2 lg:mb-0 lg:w-auto lg:pr-0">
-            <Image src="/images/goal-1.png" width={221} height={221} objectFit="cover" />
+            <Image
+              src="/images/goal-1.png"
+              blurDataURL="/images/goal-1.png"
+              placeholder="blur"
+              width={221}
+              height={221}
+              objectFit="cover"
+            />
           </div>
           <div className="mb-3 w-1/2 pl-2 lg:mb-0 lg:w-auto  lg:pl-0">
-            <Image src="/images/goal-2.png" width={221} height={221} objectFit="cover" />
+            <Image
+              src="/images/goal-2.png"
+              blurDataURL="/images/goal-2.png"
+              placeholder="blur"
+              width={221}
+              height={221}
+              objectFit="cover"
+            />
           </div>
           <div className="w-1/2 pr-2 lg:w-auto lg:pr-0">
-            <Image src="/images/goal-3.png" width={221} height={221} objectFit="cover" />
+            <Image
+              src="/images/goal-3.png"
+              blurDataURL="/images/goal-3.png"
+              placeholder="blur"
+              width={221}
+              height={221}
+              objectFit="cover"
+            />
           </div>
           <div className="w-1/2 pl-2 lg:w-auto lg:pl-0">
-            <Image src="/images/goal-4.png" width={221} height={221} objectFit="cover" />
+            <Image
+              src="/images/goal-4.png"
+              blurDataURL="/images/goal-4.png"
+              placeholder="blur"
+              width={221}
+              height={221}
+              objectFit="cover"
+            />
           </div>
         </div>
       </div>

@@ -14,47 +14,34 @@ import Sidebar from '../layout/Sidebar';
 import PageLoader from '../loaders/PageLoader';
 import ModalController from '../modals/ModalController';
 import { setInitAuthentication } from '../../slices/user';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-const Wrapper = ({ children }) => {
+const Wrapper = ({ children, pageProps }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector(persistSelector);
-  const protectedRoutes = ['/dashboard', '/transactions', '/meters', '/solar', '/profile'];
+  const { isLoggedIn, userPhone } = useSelector(persistSelector);
   const [pageLoading, setPageLoading] = useState(false);
   const [openNav, setOpenNav] = useState(false);
 
-  let isRouteProtected = false;
-
-  protectedRoutes.forEach((route) => {
-    if (router.asPath.includes(route)) {
-      isRouteProtected = true;
-    }
-    return isRouteProtected;
-  });
-
   useEffect(() => {
-    const handleStart = (url) => url !== router.pathname && !isRouteProtected && setPageLoading(true);
-    const handleComplete = (url) => {
-      url !== router.pathname && setPageLoading(false);
-      window.scrollTo(0, 0);
-    };
-
-    if (!isLoggedIn && isRouteProtected) {
-      router.push('/');
-      dispatch(setInitAuthentication('login'));
-    }
+    authCheck();
+    const handleStart = (url) => url !== router.pathname && !pageProps?.protected && setPageLoading(true);
+    const handleComplete = (url) => url !== router.pathname && setPageLoading(false);
 
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
+
     return () => {
       router.events.off('routeChangeStart', handleStart);
       router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
     };
-  }, [isRouteProtected]);
+  }, []);
+
+  function authCheck() {
+    if (!isLoggedIn && pageProps?.protected) {
+      router.push('/');
+      userPhone ? dispatch(setInitAuthentication('signIn')) : dispatch(setInitAuthentication('login'));
+    }
+  }
 
   return (
     <>
@@ -63,8 +50,8 @@ const Wrapper = ({ children }) => {
         <>
           <ModalController />
           <WhatsAppWidget phoneNumber="2349082333376" />
-          {!isRouteProtected && <div>{children}</div>}
-          {isRouteProtected && (
+          {!pageProps?.protected && <div>{children}</div>}
+          {pageProps?.protected && (
             <div className="min-h-screen w-full overflow-hidden bg-gray-300">
               <div className="min-h-screen">
                 <Sidebar openNav={openNav} setOpenNav={setOpenNav} />

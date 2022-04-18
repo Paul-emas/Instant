@@ -63,7 +63,7 @@ const SelectInput = ({ className, loading, error, meters, label, options, select
           aria-activedescendant="listbox-option-3"
           className={`${
             openOption ? 'visible opacity-100' : 'invisible opacity-0'
-          } shadow-soft absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-2 text-base transition duration-100 ease-in focus:outline-none sm:text-sm`}
+          } shadow-soft dropdown absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-2 text-base transition duration-100 ease-in focus:outline-none sm:text-sm`}
         >
           {options?.length > 0 &&
             options?.map((option, index) => (

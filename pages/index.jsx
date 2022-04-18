@@ -61,13 +61,14 @@ export default function Home() {
             <FloatingIcon3 className="absolute bottom-32 2xl:-left-20" />
             <Image
               src="/images/woman.webp"
-              layout="intrinsic"
+              layout="responsive"
               blurDataURL="/images/woman.webp"
-              width={738}
-              height={910}
+              width={680}
+              height={970}
               placeholder="blur"
-              objectFit="contain"
+              objectFit="cover"
               priority
+              quality={100}
             />
           </div>
           <div className="relative mx-auto flex items-center pt-5 pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full lg:items-start lg:pt-40 2xl:pb-10">

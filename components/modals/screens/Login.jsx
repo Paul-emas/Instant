@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import { persistSelector, setAnonymousToken, setUserPhone } from '../../../slices/persist';
 import { setInitAuthentication } from '../../../slices/user';
 import { checkUserValidation } from '../../../api';
@@ -12,6 +13,7 @@ import SocialCard from '../../SocialCard';
 const Login = ({ close, setStep }) => {
   const dispatch = useDispatch();
   const { userPhone } = useSelector(persistSelector);
+  const { handleSubmit } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
@@ -24,7 +26,7 @@ const Login = ({ close, setStep }) => {
   }, [userPhone]);
 
   const onSubmit = async (formData) => {
-    if (formData) {
+    if (phone) {
       if (!navigator.onLine) {
         dispatch(setInitAuthentication('offline'));
         return;
@@ -65,19 +67,9 @@ const Login = ({ close, setStep }) => {
   return (
     <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 sm:px-10">
-        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
-          Hey there, Welcome to Instant Energy
-        </h1>
-        <p className="mt-3 text-center text-sm text-gray-700">
-          Enter your phone number to continue
-        </p>
-        <form
-          className="mt-10"
-          onSubmit={(e) => {
-            e.preventDefault();
-            onSubmit();
-          }}
-        >
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">Hey there, Welcome to Instant Energy</h1>
+        <p className="mt-3 text-center text-sm text-gray-700">Enter your phone number to continue</p>
+        <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
             className="mt-2 py-2 px-4"
             type="phone"
@@ -96,13 +88,7 @@ const Login = ({ close, setStep }) => {
             }}
             onChange={(value) => setPhone(value)}
           />
-          <PrimaryButton
-            className="mt-8"
-            size="base"
-            onClick={onSubmit}
-            disabled={isLoading}
-            loading={isLoading}
-          >
+          <PrimaryButton className="mt-8" size="base" disabled={isLoading} loading={isLoading}>
             Continue
           </PrimaryButton>
         </form>
