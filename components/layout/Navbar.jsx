@@ -81,7 +81,9 @@ const Navbar = () => {
 
               {isLoggedIn ? (
                 <Link href="/dashboard">
-                  <Button>My Dashboard</Button>
+                  <a>
+                    <Button>My Dashboard</Button>
+                  </a>
                 </Link>
               ) : (
                 <Button onClick={() => dispatch(setInitAuthentication('login'))}>Get started</Button>

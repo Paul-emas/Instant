@@ -46,7 +46,9 @@ const TransactionsTable = ({
                 <>
                   {!router.asPath.includes('/wallet') && (
                     <Link href="/transactions/wallet">
-                      <Button>Wallet History</Button>
+                      <a>
+                        <Button>Wallet History</Button>
+                      </a>
                     </Link>
                   )}
                 </>
