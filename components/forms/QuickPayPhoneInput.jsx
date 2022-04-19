@@ -74,6 +74,16 @@ const QuickPayPhoneInput = () => {
         label="Phone number"
         value={phone}
         onChange={(value) => setPhone(value)}
+        isValid={(value, country) => {
+          if (value.match(/12345/)) {
+            return 'Invalid value: ' + value + ', ' + country.name;
+          } else if (value.match(/1234/)) {
+            return false;
+          } else {
+            setCountry(country);
+            return true;
+          }
+        }}
       />
       <PrimaryButton loading={isLoading} className="mt-8 mb-7" type="large">
         Buy Electricity
