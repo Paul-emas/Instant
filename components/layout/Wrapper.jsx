@@ -23,25 +23,22 @@ const Wrapper = ({ children, pageProps }) => {
   const [pageLoading, setPageLoading] = useState(false);
 
   useEffect(() => {
-    authCheck();
     const handleStart = (url) => url !== router.pathname && !pageProps?.protected && setPageLoading(true);
     const handleComplete = (url) => url !== router.pathname && setPageLoading(false);
 
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleComplete);
 
+    if (!isLoggedIn && pageProps?.protected) {
+      router.push('/');
+      userPhone ? dispatch(setInitAuthentication('signIn')) : dispatch(setInitAuthentication('login'));
+    }
+
     return () => {
       router.events.off('routeChangeStart', handleStart);
       router.events.off('routeChangeComplete', handleComplete);
     };
   }, [pageProps.protected]);
-
-  function authCheck() {
-    if (!isLoggedIn && pageProps?.protected) {
-      router.push('/');
-      userPhone ? dispatch(setInitAuthentication('signIn')) : dispatch(setInitAuthentication('login'));
-    }
-  }
 
   return (
     <>
