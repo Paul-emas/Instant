@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { userSelector } from '../../slices/user';
 import { persistSelector } from '../../slices/persist';
-import { createTranscationToken, getAccountToken } from '../../api';
 import PlusIcon from '../../public/svgs/plus-meter.svg';
 
-import PrimaryButton from '../Buttons/PrimaryButton';
+import SecondaryButton from '../Button/SecondaryButton';
 import FormInput from './FormInput';
 import SelectInput from './SelectInput';
 import ProviderSelectInput from './ProviderSelectInput';
@@ -114,9 +111,9 @@ const PostPaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, 
             ?
           </span>
         </div> */}
-        <PrimaryButton size="base" loading={isLoading} className="mt-8">
+        <SecondaryButton size="base" loading={isLoading} className="mt-8">
           Proceed to Payment
-        </PrimaryButton>
+        </SecondaryButton>
       </form>
     </>
   );

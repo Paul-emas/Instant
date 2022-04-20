@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { faBolt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const PrimaryButton = ({ loading, disabled, className, size = 'large', children, onClick, transparent }) => {
+const SecondaryButton = ({ loading, disabled, className, size = 'large', children, onClick, transparent }) => {
   let height = '';
   if (size === 'large') {
     height = 'h-14 lg:h-16 text-sm lg:text-base';
@@ -30,9 +30,9 @@ const PrimaryButton = ({ loading, disabled, className, size = 'large', children,
   );
 };
 
-PrimaryButton.propType = {
+SecondaryButton.propType = {
   loading: PropTypes.bool,
   className: PropTypes.string,
 };
 
-export default PrimaryButton;
+export default SecondaryButton;

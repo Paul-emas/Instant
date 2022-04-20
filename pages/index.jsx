@@ -55,21 +55,36 @@ export default function Home() {
       {firstTimeUser && <Confetti width={width} height={height} />}
       <Header bg="pb-32 bg-primary-light">
         <div className="justify-between lg:flex">
-          <div className="relative top-16 max-w-3xl sm:top-20 lg:w-1/2">
-            <FloatingIcon1 className="absolute top-24" />
+          <div className="relative top-8 max-w-3xl sm:top-20 lg:w-1/2">
+            <FloatingIcon1 className="absolute top-8 scale-75 lg:top-24 lg:scale-100" />
             <FloatingIcon2 className="absolute top-32 right-0" />
             <FloatingIcon3 className="absolute bottom-32 2xl:-left-20" />
-            <Image
-              src="/images/woman.webp"
-              layout="responsive"
-              blurDataURL="/images/woman.webp"
-              width={680}
-              height={970}
-              placeholder="blur"
-              objectFit="cover"
-              priority
-              quality={100}
-            />
+            <div className="hidden lg:block">
+              <Image
+                src="/images/woman.webp"
+                layout="responsive"
+                blurDataURL="/images/blue.png"
+                width={680}
+                height={970}
+                placeholder="blur"
+                objectFit="cover"
+                priority
+                quality={100}
+              />
+            </div>
+            <div className="block px-4 lg:hidden">
+              <Image
+                src="/images/woman.webp"
+                layout="responsive"
+                blurDataURL="/images/woman.webp"
+                width={201}
+                height={326.35}
+                placeholder="blur"
+                objectFit="contain"
+                priority
+                quality={100}
+              />
+            </div>
           </div>
           <div className="relative mx-auto flex items-center pt-5 pb-16 md:max-w-lg lg:w-1/2 lg:max-w-full lg:items-start lg:pt-40 2xl:pb-10">
             <QuickPay />

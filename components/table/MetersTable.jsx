@@ -6,7 +6,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Table from './index';
 import Tabs from '../tabs';
 import MetersEmptyState from './empty-states/MetersEmptyState';
-import Button from '../Button';
+import BaseButton from '../Button/BaseButton';
 
 const MetersTable = ({ title, headings, mobileView, meters, setOpenAddMeterModal, loading, paginate, children }) => {
   const tabsData = [{ name: 'Prepaid' }, { name: 'Postpaid' }];
@@ -17,12 +17,12 @@ const MetersTable = ({ title, headings, mobileView, meters, setOpenAddMeterModal
     loading,
     viewAll: function view() {
       return (
-        <Button onClick={() => setOpenAddMeterModal(true)}>
+        <BaseButton onClick={() => setOpenAddMeterModal(true)}>
           <span className="flex items-center uppercase">
             <FontAwesomeIcon icon={faPlus} className="h-3 w-3 text-white text-opacity-70" />{' '}
             <span className="ml-2">Add new meter</span>
           </span>
-        </Button>
+        </BaseButton>
       );
     },
     tabs: function view() {

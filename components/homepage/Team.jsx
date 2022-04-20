@@ -11,30 +11,22 @@ const Team = () => {
           <div className="flex flex-col items-center justify-center space-y-10 lg:flex-row lg:space-y-0 lg:space-x-10">
             <div className="">
               <Image src="/images/team/profile-1.jpg" width={210} height={201} />
-              <div className="mt-4 text-center text-base font-bold lg:text-left">
-                Firstname Surname
-              </div>
+              <div className="mt-4 text-center text-base font-bold lg:text-left">Firstname Surname</div>
               <div className="text-center text-sm lg:text-left">Founder, CEO</div>
             </div>
             <div className="">
               <Image src="/images/team/profile-2.jpg" width={210} height={201} />
-              <div className="mt-4 text-center text-base font-bold lg:text-left">
-                Firstname Surname
-              </div>
+              <div className="mt-4 text-center text-base font-bold lg:text-left">Firstname Surname</div>
               <div className="text-center text-sm lg:text-left">Founder, CEO</div>
             </div>
             <div className="">
               <Image src="/images/team/profile-3.jpg" width={210} height={201} />
-              <div className="mt-4 text-center text-base font-bold lg:text-left">
-                Firstname Surname
-              </div>
+              <div className="mt-4 text-center text-base font-bold lg:text-left">Firstname Surname</div>
               <div className="text-center text-sm lg:text-left">Founder, CEO</div>
             </div>
             <div className="">
               <Image src="/images/team/profile-4.jpg" width={210} height={201} />
-              <div className="mt-4 text-center text-base font-bold lg:text-left">
-                Firstname Surname
-              </div>
+              <div className="mt-4 text-center text-base font-bold lg:text-left">Firstname Surname</div>
               <div className="text-center text-sm lg:text-left">Founder, CEO</div>
             </div>
           </div>

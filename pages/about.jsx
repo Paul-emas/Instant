@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { setInitAuthentication } from '../slices/user';
 
-import PrimaryButton from '../components/Buttons/PrimaryButton';
+import SecondaryButton from '../components/Button/SecondaryButton';
 import AboutInfo from '../components/homepage/AboutInfo';
 import Header from '../components/homepage/Header';
 import Recycle from '../components/homepage/Recycle';
@@ -23,14 +23,14 @@ export default function About() {
               affordable
             </div>
             <div className="mt-8 lg:w-56">
-              <PrimaryButton onClick={() => dispatch(setInitAuthentication('register'))}>Get Started</PrimaryButton>
-              <PrimaryButton
+              <SecondaryButton onClick={() => dispatch(setInitAuthentication('register'))}>Get Started</SecondaryButton>
+              <SecondaryButton
                 onClick={() => dispatch(setInitAuthentication('login'))}
                 className="mt-5 block lg:hidden"
                 transparent
               >
                 Login
-              </PrimaryButton>
+              </SecondaryButton>
 
               <div className="relative mt-6 flex items-center justify-center lg:hidden">
                 <div className="flex h-6 w-6 items-center rounded-full bg-secondary-green text-center text-white">

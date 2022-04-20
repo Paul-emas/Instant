@@ -5,7 +5,7 @@ import { persistSelector, setQuickBuy } from '../slices/persist';
 import { userSelector } from '../slices/user';
 
 import SolarCard from '../components/ads/SolarCard';
-import Button from '../components/Button';
+import BaseButton from '../components/Button/BaseButton';
 import Chart from '../components/Chart';
 import BuyElectricityModal from '../components/modals/screens/BuyElectricityModal';
 import DashboardSkeleton from '../components/skeletons/DashboardSkeleton';
@@ -54,8 +54,8 @@ export default function Dashboard() {
   }, [pageLoading]);
 
   return (
-    <div className="pb-10">
-      <div className="-pb-8 pt-3">
+    <div className="pt-12 pb-10 lg:pt-0">
+      <div className="-pb-8 pt-5">
         <div className="flex w-full items-center justify-center rounded-2xl  bg-yellow-400 py-2 px-4 text-center text-xs font-semibold duration-300 lg:text-sm">
           <span className="hidden text-2xl lg:block">👋🏿</span>
           <span className="ml-2">
@@ -81,7 +81,7 @@ export default function Dashboard() {
                   Recharge meter, Get visibility, Track your spending & Usage
                 </p>
               </div>
-              <Button onClick={() => setOpenBuyElectricityModal(true)}>BUY ELECTRICITY</Button>
+              <BaseButton onClick={() => setOpenBuyElectricityModal(true)}>BUY ELECTRICITY</BaseButton>
             </div>
             <div className="grid lg:grid-cols-6 lg:space-x-5">
               <div className="scale-up lg:col-span-4">
@@ -98,7 +98,7 @@ export default function Dashboard() {
             <SolarCard className="scale-up hidden lg:block" />
           </div>
           <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
-            <Button onClick={() => setOpenBuyElectricityModal(true)}>Buy Electricity</Button>
+            <BaseButton onClick={() => setOpenBuyElectricityModal(true)}>Buy Electricity</BaseButton>
           </div>
           <div className="scale-up">
             <TransactionsTable

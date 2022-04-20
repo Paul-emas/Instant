@@ -6,16 +6,18 @@ import { setInitAuthentication } from '../../../slices/user';
 import { checkUserValidation } from '../../../api';
 
 import Modal from '../index';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import SecondaryButton from '../../Button/SecondaryButton';
 import FormInput from '../../forms/FormInput';
 import SocialCard from '../../SocialCard';
+import { validateMobileNo } from '../../../utils';
 
 const Login = ({ close, setStep }) => {
   const dispatch = useDispatch();
   const { userPhone } = useSelector(persistSelector);
   const { handleSubmit } = useForm();
-  const [isLoading, setIsLoading] = useState(false);
   const [phone, setPhone] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isNoValid, setNoIsValid] = useState(true);
   const [country, setCountry] = useState('');
 
   useEffect(() => {
@@ -25,19 +27,32 @@ const Login = ({ close, setStep }) => {
     }
   }, [userPhone]);
 
-  const onSubmit = async (formData) => {
-    if (phone) {
+  function validate(num, country) {
+    console.log(country);
+    const isValid = validateMobileNo(num);
+    if (isValid) {
+      setNoIsValid(true);
+      setPhone(num);
+      setCountry(country);
+    } else {
+      setNoIsValid(false);
+      setPhone(num);
+    }
+  }
+
+  const onSubmit = async () => {
+    if (phone?.length && isNoValid) {
       if (!navigator.onLine) {
         dispatch(setInitAuthentication('offline'));
         return;
       }
 
       setIsLoading(true);
-      const formattedPhone = phone.replace(country.countryCode, '');
+      const formattedPhone = phone.replace(country.dialCode, '');
       const payload = {
         phone: {
           number: phone,
-          code: country.countryCode,
+          code: country.dialCode,
           value: formattedPhone,
         },
       };
@@ -76,21 +91,12 @@ const Login = ({ close, setStep }) => {
             id="phone"
             label="Phone number"
             value={phone}
-            onChange={(value) => setPhone(value)}
-            isValid={(value, country) => {
-              if (value.match(/12345/)) {
-                return 'Invalid value: ' + value + ', ' + country.name;
-              } else if (value.match(/1234/)) {
-                return false;
-              } else {
-                setCountry(country);
-                return true;
-              }
-            }}
+            error={!isNoValid}
+            onChange={(num, country) => validate(num, country)}
           />
-          <PrimaryButton className="mt-8" size="base" disabled={isLoading} loading={isLoading}>
+          <SecondaryButton className="mt-8" size="base" disabled={isLoading} loading={isLoading}>
             Continue
-          </PrimaryButton>
+          </SecondaryButton>
         </form>
         <div className="text-blue mt-3.5 text-sm text-gray-500 lg:text-sm">
           Dont have an account?{' '}

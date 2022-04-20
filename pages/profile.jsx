@@ -26,7 +26,7 @@ export default function Profile() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div>
+    <div className="pt-12 lg:pt-0">
       {!me && (
         <div className="pt-5 sm:pt-10">
           <div className="min-h-screen w-full rounded-xl bg-primary-light sm:bg-white"></div>

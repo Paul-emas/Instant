@@ -11,7 +11,7 @@ import Pagination from '../../components/table/Pagination';
 import TransactionsTable from '../../components/table/TransactionsTable';
 import TransactionDataWallet from '../../components/table/TransactionDataWallet';
 import TransactionWalletMobile from '../../components/table/TransactionWalletMobile';
-import Button from '../../components/Button';
+import BaseButton from '../../components/Button/BaseButton';
 import { setInitAuthentication } from '../../slices/user';
 
 export default function Transactions() {
@@ -81,7 +81,7 @@ export default function Transactions() {
             <TransactionDataWallet transactions={paginatedTransactions} />
           </TransactionsTable>
           <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
-            <Button onClick={() => dispatch(setInitAuthentication('fundWallet'))}>Fund Wallet</Button>
+            <BaseButton onClick={() => dispatch(setInitAuthentication('fundWallet'))}>Fund Wallet</BaseButton>
           </div>
         </>
       )}

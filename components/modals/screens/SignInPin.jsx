@@ -8,7 +8,7 @@ import { logIn } from '../../../api';
 
 import Modal from '../index';
 import ErrorAlert from '../../forms/ErrorAlert';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import SecondaryButton from '../../Button/SecondaryButton';
 import BottomDownload from '../BottomDownload';
 
 const SignInPin = ({ close, setStep }) => {
@@ -69,9 +69,9 @@ const SignInPin = ({ close, setStep }) => {
             initialValue=""
             regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
           />
-          <PrimaryButton size="base" className="mt-8" loading={isLoading}>
+          <SecondaryButton size="base" className="mt-8" loading={isLoading}>
             Continue
-          </PrimaryButton>
+          </SecondaryButton>
         </form>
         <div className="mt-5 text-center">
           <button className="text-sm">

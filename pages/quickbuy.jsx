@@ -17,7 +17,7 @@ import TransactionsTable from '../components/table/TransactionsTable';
 import TransactionDataDefault from '../components/table/TransactionDataDefault';
 import TransactionDataMobile from '../components/table/TransactionDataMobile';
 import Footer from '../components/homepage/Footer';
-import Button from '../components/Button';
+import BaseButton from '../components/Button/BaseButton';
 
 export default function QuickBuy() {
   const dispatch = useDispatch();
@@ -114,7 +114,9 @@ export default function QuickBuy() {
                 Having trouble with a transaction?
               </div>
               <div className="mt-12">
-                <Button white>Talk to customer care</Button>
+                <a href="https://api.whatsapp.com/send?phone=2349082333376">
+                  <BaseButton white>Talk to customer care</BaseButton>
+                </a>
               </div>
             </div>
           </div>

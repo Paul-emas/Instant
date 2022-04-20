@@ -1,7 +1,7 @@
 import LockIcon from '../../../public/svgs/lock.svg';
 
 import Modal from '../index';
-import Button from '../../Button';
+import BaseButton from '../../Button/BaseButton';
 
 const CreatePinMessage = ({ setStep, close }) => {
   return (
@@ -15,7 +15,7 @@ const CreatePinMessage = ({ setStep, close }) => {
           We improved our systems to be safe and secure for all our customers by creating a 4-digit login Pin.
         </p>
         <div className="mt-5 mb-4 flex justify-center">
-          <Button onClick={() => setStep('createPin')}>Create a Pin</Button>
+          <BaseButton onClick={() => setStep('createPin')}>Create a Pin</BaseButton>
         </div>
       </div>
     </Modal>

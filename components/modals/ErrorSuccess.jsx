@@ -4,9 +4,8 @@ import gsap from 'gsap';
 
 import SuccessIcon from '../../public/svgs/success.svg';
 import ErrorIcon from '../../public/svgs/error.svg';
-import Button from '../Button';
 import { retryTransaction } from '../../api';
-import PrimaryButton from '../Buttons/PrimaryButton';
+import SecondaryButton from '../Button/SecondaryButton';
 import { useSelector } from 'react-redux';
 import { persistSelector } from '../../slices/persist';
 import toast from 'react-hot-toast';
@@ -56,9 +55,9 @@ const ErrorSuccess = ({ msg, error, next, setStep, transactionReference }) => {
         </p>
         {error && (
           <div className="mx-auto w-[210px]">
-            <PrimaryButton loading={isLoading} size="base" onClick={RetryTransaction} className="mt-6">
+            <SecondaryButton loading={isLoading} size="base" onClick={RetryTransaction} className="mt-6">
               Retry Transaction
-            </PrimaryButton>
+            </SecondaryButton>
           </div>
         )}
       </div>

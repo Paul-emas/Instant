@@ -74,20 +74,21 @@ input[type='number']::-webkit-outer-spin-button {
   background: #fff !important;
 }
 
-.PhoneInputInput:focus {
-  @apply bg-primary-light;
-}
-
 .modal-card {
   max-height: 90vh;
 }
 
 .form-input {
-  @apply w-full rounded-lg border border-gray-200 text-sm font-bold placeholder-gray-400 placeholder:font-semibold;
+  @apply w-full rounded-lg border text-sm font-bold placeholder-gray-400 placeholder:font-semibold;
+}
+
+.react-tel-input .country-list {
+  border-radius: 8px;
+  box-shadow: -3px 3px 40px rgba(0, 0, 0, 0.06);
 }
 
 .btn {
-  @apply w-full rounded-xl px-5 py-3.5 text-center font-semibold duration-300 lg:px-7 lg:py-4 xl:py-5;
+  @apply w-full rounded-xl px-5 py-3.5 text-center font-bold duration-300 lg:px-7 lg:py-4 xl:py-5;
 }
 
 .btn-white {

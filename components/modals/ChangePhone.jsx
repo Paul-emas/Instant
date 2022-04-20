@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import PrimaryButton from '../Buttons/PrimaryButton';
+import SecondaryButton from '../Button/SecondaryButton';
 import FormInput from '../forms/FormInput';
 
 const ChangePhone = ({ setStep }) => {
@@ -26,9 +26,9 @@ const ChangePhone = ({ setStep }) => {
             onChange={(value) => setPhone(value)}
           />
           <div className="mt-10">
-            <PrimaryButton onClick={onSubmit} size="base">
+            <SecondaryButton onClick={onSubmit} size="base">
               Confirm details
-            </PrimaryButton>
+            </SecondaryButton>
           </div>
         </div>
       </div>

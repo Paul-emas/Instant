@@ -8,9 +8,7 @@ const SolarCard = ({ className }) => {
   return (
     <>
       {open && (
-        <div
-          className={`${className} mt-8 rounded-xl bg-secondary-paleBlue py-6 px-1 sm:mt-5 sm:py-4`}
-        >
+        <div className={`${className} mt-5 rounded-xl bg-secondary-paleBlue py-6 px-1 sm:mt-5 sm:py-4 lg:mt-8`}>
           <div className="container px-5">
             <div className="relative items-center justify-between sm:flex">
               <FontAwesomeIcon

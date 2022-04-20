@@ -6,7 +6,7 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import gsap from 'gsap';
 import { isMobile } from 'react-device-detect';
 
-const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, children }) => {
+const Modal = ({ isAuth, title, close, border = true, goBack, children }) => {
   const modalBox = useRef();
   const modalOverlay = useRef();
 
@@ -33,22 +33,6 @@ const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, ch
     };
   }, []);
 
-  useEffect(() => {
-    if (successMessage && !isMobile) {
-      gsap.from('.successAlert', {
-        y: '1000%',
-        autoAlpha: 0,
-        duration: 0.5,
-      });
-    } else {
-      gsap.from('.successAlert', {
-        y: '-1000%',
-        autoAlpha: 0,
-        duration: 0.5,
-      });
-    }
-  }, [successMessage]);
-
   return (
     <div className="fixed top-0 left-0 z-50 min-h-full w-full overflow-hidden">
       <div
@@ -67,7 +51,7 @@ const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, ch
         <div className={`${isAuth ? 'px-3 pt-10 sm:px-0 sm:pt-0' : ''} w-full xs:w-modal`}>
           <div
             className={`${
-              isAuth ? 'rounded-2xl' : 'modal-card rounded-t-2xl sm:rounded-2xl'
+              isAuth ? 'rounded-2xl' : 'modal-card rounded-t-3xl sm:rounded-3xl'
             } shadow-soft w-full overflow-y-auto bg-white pt-5 pb-12 xl:overflow-auto`}
             ref={modalBox}
           >
@@ -99,17 +83,6 @@ const Modal = ({ isAuth, title, close, border = true, successMessage, goBack, ch
             {children}
           </div>
         </div>
-
-        {successMessage && (
-          <>
-            <div className="successAlert absolute z-10 hidden rounded-lg bg-secondary-green py-2.5 px-6 text-sm text-white sm:bottom-5 sm:block 2xl:bottom-10">
-              {successMessage}
-            </div>
-            <div className="successAlert absolute top-0 z-10 block w-full bg-secondary-green py-2.5 px-4 text-center text-sm text-white sm:hidden">
-              {successMessage}
-            </div>
-          </>
-        )}
       </div>
     </div>
   );

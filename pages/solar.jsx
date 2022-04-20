@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Button from '../components/Button';
+import BaseButton from '../components/Button/BaseButton';
 import Chart from '../components/Chart';
 import SolarAmountCard from '../components/solar/SolarAmountCard';
 import SolarPanelStatus from '../components/solar/SolarPanelStatus';
@@ -80,7 +80,7 @@ export default function Solar() {
   // }, []);
 
   return (
-    <div className="">
+    <div className="pt-12 lg:pt-0">
       {pageLoading && (
         <div className="pt-5 2xl:pt-10">
           <SolarSkeleton />
@@ -103,7 +103,7 @@ export default function Solar() {
                 <h1 className="text-heading font-bold">Your Solar Plan</h1>
                 <p className="text-md font-medium text-font-muted">Always turn off unused appliances</p>
               </div>
-              <Button>NEW REQUEST</Button>
+              <BaseButton>NEW REQUEST</BaseButton>
             </div>
             <div className="grid lg:grid-cols-6 lg:space-x-5">
               <div className="lg:col-span-2">

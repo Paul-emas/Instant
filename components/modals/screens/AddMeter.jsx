@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { addNewMeter, validateNewMeter } from '../../../api';
 
 import FormInput from '../../forms/FormInput';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import SecondaryButton from '../../Button/SecondaryButton';
 import BuyElectricityTab from '../../tabs/BuyElectricityTab';
 import Modal from '..';
 import ProviderSelectInput from '../../forms/ProviderSelectInput';
@@ -13,6 +13,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { persistSelector, setUserPhone } from '../../../slices/persist';
 import useFetchMeters from '../../../hooks/useFetchMeters';
+import { validateMobileNo } from '../../../utils';
 
 const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
   const [country, setCountry] = useState('');
   const [activeTab, setActiveTab] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isNoValid, setNoIsValid] = useState(true);
 
   useEffect(() => {
     if (userPhone) {
@@ -38,20 +40,31 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
     }
   }, [userPhone]);
 
+  function validate(num, country) {
+    const isValid = validateMobileNo(num);
+    if (isValid) {
+      setNoIsValid(true);
+      setPhone(num);
+      setCountry(country);
+    } else {
+      setNoIsValid(false);
+      setPhone(num);
+    }
+  }
+
   async function onSubmit(formData) {
     if (formData) {
       setIsLoading(true);
       const { label, meter } = formData;
 
       const response = await validateNewMeter(meter, selectedProvider._id, token);
-
       const { data, error } = response;
 
       dispatch(
         setUserPhone({
           phone: {
             number: phone,
-            code: country.countryCode,
+            code: country.dialCode,
             value: phone,
           },
           country,
@@ -69,7 +82,7 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
           label,
           recipient: {
             number: phone,
-            code: country.countryCode,
+            code: country.dialCode,
             value: phone,
           },
         };
@@ -134,17 +147,8 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
                 id="phone"
                 label="Phone number"
                 value={phone}
-                onChange={(value) => setPhone(value)}
-                isValid={(value, country) => {
-                  if (value.match(/12345/)) {
-                    return 'Invalid value: ' + value + ', ' + country.name;
-                  } else if (value.match(/1234/)) {
-                    return false;
-                  } else {
-                    setCountry(country);
-                    return true;
-                  }
-                }}
+                error={!isNoValid}
+                onChange={(num, country) => validate(num, country)}
               />
               <FormInput
                 className="mt-2 py-2.5 px-5"
@@ -158,9 +162,9 @@ const AddMeter = ({ open, setOpen, goBack, selectedMeter, setSelectedMeter }) =>
                 })}
               />
               <div className="mt-10">
-                <PrimaryButton loading={isLoading} size="base">
+                <SecondaryButton loading={isLoading} size="base">
                   {selectedMeter ? 'Save' : 'Add Meter'}
-                </PrimaryButton>
+                </SecondaryButton>
               </div>
             </form>
           </div>

@@ -9,7 +9,7 @@ import { createTranscationToken, getAccountToken } from '../../api';
 import useFetchMeters from '../../hooks/useFetchMeters';
 import PlusIcon from '../../public/svgs/plus-meter.svg';
 
-import PrimaryButton from '../Buttons/PrimaryButton';
+import SecondaryButton from '../Button/SecondaryButton';
 import FormInput from './FormInput';
 import SelectInput from './SelectInput';
 import ProviderSelectInput from './ProviderSelectInput';
@@ -38,6 +38,7 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
   }, [userPhone]);
 
   async function onSubmit(formData) {
+    console.log(formData);
     if (formData) {
       if (isLoggedIn && !selectedMeter) {
         toast.error('Kindly add a meter to proceed');
@@ -108,6 +109,17 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
               <PlusIcon />
               <span className="ml-1.5 text-sm font-semibold text-primary-base">Add a new meter</span>
             </div>
+            <FormInput
+              className="mt-2 px-5"
+              type="currency"
+              id="amount"
+              errors={errors}
+              label="How much will you like to purchase?"
+              error={errors.amount ?? false}
+              {...register('amount', {
+                required: true,
+              })}
+            />
           </>
         )}
         {!isLoggedIn && (
@@ -153,19 +165,19 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
                 required: true,
               })}
             />
+            <FormInput
+              className="mt-2 px-5"
+              type="currency"
+              id="amount"
+              errors={errors}
+              label="How much will you like to purchase?"
+              error={errors.amount ?? false}
+              ref={register('amount', {
+                required: true,
+              })}
+            />
           </>
         )}
-        <FormInput
-          className="mt-2 px-5"
-          type="currency"
-          id="amount"
-          errors={errors}
-          label="How much will you like to purchase?"
-          error={errors.amount ?? false}
-          {...register('amount', {
-            required: true,
-          })}
-        />
         {/* <div className="flex items-end">
           <p className="relative top-0.5 text-sm font-semibold text-gray-400">
             Estimated units: <span className="text-primary-base">32.5kw/h</span>
@@ -174,9 +186,9 @@ const PrePaid = ({ setConfirmDetails, setStep, setPaymentToken, selectedMeter, s
             ?
           </span>
         </div> */}
-        <PrimaryButton size="base" loading={isLoading} className="mt-8">
+        <SecondaryButton size="base" loading={isLoading} className="mt-8">
           Proceed to Payment
-        </PrimaryButton>
+        </SecondaryButton>
       </form>
     </>
   );

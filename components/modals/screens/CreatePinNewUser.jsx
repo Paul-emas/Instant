@@ -5,7 +5,7 @@ import Confetti from 'react-confetti';
 import ConfettiIcon from '../../../public/svgs/confetti.svg';
 
 import Modal from '../index';
-import Button from '../../Button';
+import BaseButton from '../../Button/BaseButton';
 
 const CreatePinNewUser = ({ setStep, close }) => {
   const { width, height } = useWindowSize();
@@ -28,7 +28,7 @@ const CreatePinNewUser = ({ setStep, close }) => {
           4-digit login Pin.
         </p>
         <div className="mt-5 mb-4 flex justify-center">
-          <Button onClick={() => setStep('createPin')}>Create a Pin</Button>
+          <BaseButton onClick={() => setStep('createPin')}>Create a Pin</BaseButton>
         </div>
       </div>
     </Modal>

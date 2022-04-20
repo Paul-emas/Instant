@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setAuthPin } from '../../../slices/user';
 
 import Modal from '../index';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import SecondaryButton from '../../Button/SecondaryButton';
 import BottomDownload from '../BottomDownload';
 
 const CreatePin = ({ close, setStep }) => {
@@ -28,9 +28,7 @@ const CreatePin = ({ close, setStep }) => {
   return (
     <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 lg:px-8">
-        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
-          Secure your account by creating a PIN
-        </h1>
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">Secure your account by creating a PIN</h1>
         <p className="mx-auto mt-3 max-w-xs text-center text-sm text-gray-700">
           Choose a 4-digit number as your pin to secure your account
         </p>
@@ -44,9 +42,9 @@ const CreatePin = ({ close, setStep }) => {
             inputMode="number"
             autoSelect={true}
           />
-          <PrimaryButton size="base" className="mt-8">
+          <SecondaryButton size="base" className="mt-8">
             Next
-          </PrimaryButton>
+          </SecondaryButton>
         </form>
         <div className="mt-5 text-center">
           <button className="text-sm">

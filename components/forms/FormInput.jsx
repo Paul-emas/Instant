@@ -1,7 +1,8 @@
+import { forwardRef } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 
-const FormInput = ({ as, type, label, font, error, control, children, className, ...props }) => {
+const FormInput = forwardRef(({ as, type, label, font, error, control, children, className, ...props }, ref) => {
   const As = as;
 
   const errorStyles =
@@ -9,13 +10,9 @@ const FormInput = ({ as, type, label, font, error, control, children, className,
       ? `${
           error
             ? 'border-red-600 focus:border-red-600 focus:outline-none'
-            : 'focus:bg-primary-light focus:border-primary-base focus:border-skin-theme focus:outline-none'
+            : 'border-gray-200 focus:bg-primary-light focus:border-primary-base focus:border-skin-theme focus:outline-none'
         }`
-      : `${
-          error
-            ? 'border-red-600 focus:border-red-600 focus:outline-none'
-            : 'focus-within:bg-primary-light focus-within:border-primary-base focus:outline-none '
-        }`;
+      : `${error ? 'border-red-600 focus:border-red-600 focus:outline-none' : 'border-gray-200'}`;
 
   return (
     <div className="mb-2.5 2xl:mb-4">
@@ -25,15 +22,16 @@ const FormInput = ({ as, type, label, font, error, control, children, className,
           name={label}
           type={type}
           className={`${className} ${errorStyles} form-input`}
-          autoComplete="false"
+          autoComplete="off"
           {...props}
+          ref={ref}
         />
       )}
 
       {type === 'phone' && (
         <PhoneInput
           country={'ng'}
-          containerClass={`${className} form-input`}
+          containerClass={`${className} ${errorStyles} form-input`}
           inputStyle={{
             border: 'none',
             fontFamily: 'Red Hat Display',
@@ -54,6 +52,7 @@ const FormInput = ({ as, type, label, font, error, control, children, className,
             fontFamily: 'Red Hat Display',
           }}
           {...props}
+          ref={ref}
         />
       )}
 
@@ -62,12 +61,11 @@ const FormInput = ({ as, type, label, font, error, control, children, className,
           <div className="text capitalize text-primary-base">NGN</div>
           <input
             {...props}
+            ref={ref}
             type="number"
             placeholder="0.00"
-            autoComplete="false"
-            className={`${
-              error ? 'focus:bg-white' : 'focus:bg-primary-light'
-            } ml-4 w-full font-bold focus:outline-none`}
+            autoComplete="off"
+            className={`ml-4 w-full font-bold focus:outline-none`}
           />
         </div>
       )}
@@ -76,12 +74,15 @@ const FormInput = ({ as, type, label, font, error, control, children, className,
           className={`${className} ${errorStyles} form-input mt-2 pt-2.5 pb-9`}
           placeholder="Enter your message here.."
           {...props}
+          ref={ref}
         ></textarea>
       )}
       {children}
     </div>
   );
-};
+});
+
+FormInput.displayName = 'FormInput';
 
 FormInput.defaultProps = {
   type: 'text',

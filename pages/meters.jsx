@@ -7,7 +7,7 @@ import useFetchMeters from '../hooks/useFetchMeters';
 
 import AddMeter from '../components/modals/screens/AddMeter';
 import MetersTable from '../components/table/MetersTable';
-import Button from '../components/Button';
+import BaseButton from '../components/Button/BaseButton';
 import MetersDataDefault from '../components/table/MetersDataDefault';
 import MetersDataMobile from '../components/table/MetersDataMobile';
 
@@ -18,7 +18,7 @@ export default function Meters() {
   const [selectedMeter, setSelectedMeter] = useState(null);
 
   return (
-    <div className="pb-10">
+    <div className="pt-12 pb-10 lg:pt-0">
       {pageLoading && (
         <div className="pt-5 sm:pt-10">
           <div className="min-h-screen w-full rounded-xl bg-primary-light sm:bg-white"></div>
@@ -54,12 +54,12 @@ export default function Meters() {
           </div>
           {meters.length > 0 && (
             <div className="fixed bottom-0 left-0 z-30 mt-5 flex w-full justify-center py-5 sm:hidden">
-              <Button onClick={() => setOpenAddMeterModal(true)}>
+              <BaseButton onClick={() => setOpenAddMeterModal(true)}>
                 <span className="flex items-center uppercase">
                   <FontAwesomeIcon icon={faPlus} className="h-3 w-3 text-white text-opacity-70" />{' '}
                   <span className="ml-2">Add new meter</span>
                 </span>
-              </Button>
+              </BaseButton>
             </div>
           )}
         </>

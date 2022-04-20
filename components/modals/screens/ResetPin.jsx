@@ -7,7 +7,7 @@ import { persistSelector } from '../../../slices/persist';
 
 import Modal from '../index';
 import ErrorAlert from '../../forms/ErrorAlert';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import SecondaryButton from '../../Button/SecondaryButton';
 import BottomDownload from '../BottomDownload';
 
 const ResetPin = ({ close, setStep }) => {
@@ -33,9 +33,7 @@ const ResetPin = ({ close, setStep }) => {
   return (
     <Modal border={false} close={close} isAuth>
       <div className="-mt-4 px-6 lg:px-8">
-        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
-          {`We've sent you an OTP to reset your PIN`}
-        </h1>
+        <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">{`We've sent you an OTP to reset your PIN`}</h1>
         <p className="mx-auto mt-3 max-w-xs text-center text-sm text-gray-700">
           An OTP has been set to your phone, kindly enter OTP to continue
         </p>
@@ -50,9 +48,9 @@ const ResetPin = ({ close, setStep }) => {
             inputMode="number"
             autoSelect={true}
           />
-          <PrimaryButton size="base" className="mt-8" loading={isLoading}>
+          <SecondaryButton size="base" className="mt-8" loading={isLoading}>
             Continue
-          </PrimaryButton>
+          </SecondaryButton>
         </form>
         <div className="mt-5 text-center">
           <button className="text-sm">

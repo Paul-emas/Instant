@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setInitAuthentication } from '../../slices/user';
-import PrimaryButton from '../Buttons/PrimaryButton';
+import SecondaryButton from '../Button/SecondaryButton';
 
 const Buy = () => {
   const dispatch = useDispatch();
@@ -23,16 +23,15 @@ const Buy = () => {
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitred
                   </div>
                   <p className="mt-5 text-sm text-gray-500 sm:text-base">
-                    At Instant Energy, we make Energy accessible and affordable in emerging,
-                    underserved markets across Nigeria and Africa by providing energy as a service
-                    platform and also facilitating access to clean renewable energy for residential
-                    and commercial clusters.
+                    At Instant Energy, we make Energy accessible and affordable in emerging, underserved markets across
+                    Nigeria and Africa by providing energy as a service platform and also facilitating access to clean
+                    renewable energy for residential and commercial clusters.
                   </p>
                 </div>
                 <div className="mt-10 sm:mt-6 sm:w-56">
-                  <PrimaryButton onClick={() => dispatch(setInitAuthentication('register'))}>
+                  <SecondaryButton onClick={() => dispatch(setInitAuthentication('register'))}>
                     Get Started
-                  </PrimaryButton>
+                  </SecondaryButton>
                 </div>
               </div>
             </div>

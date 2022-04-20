@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import ContactCard from '../ContactCard';
 import Accordion from './Accordion';
 
@@ -49,7 +50,7 @@ const FAQs = () => {
         <div className="mt-8 text-center lg:mt-24">
           <p className="text-sm font-semibold text-primary-darker lg:text-base">
             <span>Need help? talk to our</span>
-            <a href="" className="ml-2 text-primary-base">
+            <a href="https://api.whatsapp.com/send?phone=2349082333376" className="ml-2 text-primary-base">
               Customer support
             </a>
           </p>

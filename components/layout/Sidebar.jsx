@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { faHome, faMeteor, faMoneyBillWave, faSun, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
-import { setInitAuthentication, setUser, userSelector } from '../../slices/user';
+import { setInitAuthentication, setUser, setOpenNav, userSelector } from '../../slices/user';
 import useFetchWalletBalance from '../../hooks/useFetchWalletBalance';
 import { getUserAccount } from '../../api';
 import { persistSelector } from '../../slices/persist';
@@ -14,10 +14,10 @@ import WalletIcon from '../../public/svgs/wallet-sm.svg';
 
 import UserCard from '../UserCard';
 
-const Sidebar = ({ openNav, setOpenNav }) => {
+const Sidebar = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { me } = useSelector(userSelector);
+  const { me, openNav } = useSelector(userSelector);
   const [openLogout, setOpenLogout] = useState(false);
   const { token, isLoggedIn } = useSelector(persistSelector);
   const { walletBalance } = useFetchWalletBalance();
@@ -26,6 +26,10 @@ const Sidebar = ({ openNav, setOpenNav }) => {
     if (!me && isLoggedIn) {
       fetchUser();
     }
+
+    return () => {
+      dispatch(setOpenNav(false));
+    };
   }, [me]);
 
   async function fetchUser() {
@@ -76,7 +80,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
   return (
     <aside className="relative">
       <div
-        onClick={() => setOpenNav(false)}
+        onClick={() => dispatch(setOpenNav(false))}
         className={`${
           openNav ? 'visible opacity-100' : 'invisible opacity-0'
         } modal-overlay fixed top-0 left-0 z-40 min-h-screen w-full bg-secondary-modal bg-opacity-70 duration-200`}
@@ -85,7 +89,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
         <div
           className={`${
             openNav ? 'left-0' : '-left-full lg:left-0'
-          } ease fixed z-50 min-h-screen w-72 bg-white bg-contain pt-5 sm:z-10 sm:w-60 2xl:w-sidebar 2xl:pt-10`}
+          } ease fixed left-0 top-0 z-50 min-h-screen w-72 bg-white bg-contain pt-5 sm:z-10 sm:w-60 2xl:w-sidebar 2xl:pt-10`}
         ></div>
       )}
       {me && (
@@ -129,7 +133,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                 type="button"
                 onClick={() => {
                   // dispatch(setInitAuthentication('fundWallet'));
-                  // setOpenNav(false);
+                  // dispatch(setOpenNav(false));
                 }}
                 className="h-8 w-fund cursor-pointer rounded-lg bg-secondary-green bg-opacity-50 text-center text-xxs font-semibold text-white 2xl:w-24 2xl:text-xs"
               >
@@ -144,7 +148,7 @@ const Sidebar = ({ openNav, setOpenNav }) => {
                   <button
                     onClick={() => {
                       router.push(url);
-                      setOpenNav(false);
+                      dispatch(setOpenNav(false));
                     }}
                     className={`${
                       router.asPath.includes(url)

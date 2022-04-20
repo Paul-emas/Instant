@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUserPhone, setQuickBuy, persistSelector, setAnonymousToken } from '../../slices/persist';
 import { setInitAuthentication } from '../../slices/user';
 import { checkUserValidation } from '../../api';
+import { validateMobileNo } from '../../utils';
 
 import FormInput from './FormInput';
-import PrimaryButton from '../Buttons/PrimaryButton';
+import SecondaryButton from '../Button/SecondaryButton';
 
 const QuickPayPhoneInput = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const QuickPayPhoneInput = () => {
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isNoValid, setNoIsValid] = useState(true);
 
   useEffect(() => {
     if (userPhone) {
@@ -25,18 +27,18 @@ const QuickPayPhoneInput = () => {
 
   async function onSubmit(e) {
     e !== undefined && e.preventDefault();
-    if (phone.length) {
+    if (isNoValid && phone?.length) {
       if (!navigator.onLine) {
         dispatch(setInitAuthentication('offline'));
         return;
       }
 
       setIsLoading(true);
-      const formattedPhone = phone.replace(country.countryCode, '');
+      const formattedPhone = phone.replace(country.dialCode, '');
       const payload = {
         phone: {
           number: phone,
-          code: country.countryCode,
+          code: country.dialCode,
           value: formattedPhone,
         },
       };
@@ -65,29 +67,32 @@ const QuickPayPhoneInput = () => {
     }
   }
 
+  function validate(num, country) {
+    const isValid = validateMobileNo(num);
+    if (isValid) {
+      setNoIsValid(true);
+      setPhone(num);
+      setCountry(country);
+    } else {
+      setNoIsValid(false);
+      setPhone(num);
+    }
+  }
+
   return (
-    <form className="px-6 pt-4 lg:px-8 2xl:px-8 2xl:pt-0" onSubmit={onSubmit}>
+    <form className="px-5 pt-4 lg:px-8 2xl:px-8 2xl:pt-0" onSubmit={onSubmit}>
       <FormInput
         className="mt-2 py-2.5 px-5"
         type="phone"
         id="phone"
         label="Phone number"
         value={phone}
-        onChange={(value) => setPhone(value)}
-        isValid={(value, country) => {
-          if (value.match(/12345/)) {
-            return 'Invalid value: ' + value + ', ' + country.name;
-          } else if (value.match(/1234/)) {
-            return false;
-          } else {
-            setCountry(country);
-            return true;
-          }
-        }}
+        error={!isNoValid}
+        onChange={(num, country) => validate(num, country)}
       />
-      <PrimaryButton loading={isLoading} className="mt-8 mb-7" type="large">
+      <SecondaryButton loading={isLoading} className="mt-8 mb-7" type="large">
         Buy Electricity
-      </PrimaryButton>
+      </SecondaryButton>
     </form>
   );
 };

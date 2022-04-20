@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { usePaystackPayment } from 'react-paystack';
-import PrimaryButton from '../Buttons/PrimaryButton';
+import SecondaryButton from '../Button/SecondaryButton';
 import FormInput from '../forms/FormInput';
 import { setUserPhone } from '../../slices/persist';
 import { useDispatch } from 'react-redux';
+import { validateMobileNo } from '../../utils';
 
 const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackSuccess, close }) => {
   const config = {
@@ -16,7 +16,20 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
   const dispatch = useDispatch();
   const initializePayment = usePaystackPayment(config);
   const [isLoading, setIsLoading] = useState(false);
+  const [isNoValid, setNoIsValid] = useState(true);
   const [country, setCountry] = useState('');
+
+  function validate(num, country) {
+    const isValid = validateMobileNo(num);
+    if (isValid) {
+      setNoIsValid(true);
+      setPhone(num);
+      setCountry(country);
+    } else {
+      setNoIsValid(false);
+      setPhone(num);
+    }
+  }
 
   return (
     <div>
@@ -60,21 +73,12 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
           id="phone"
           label="Phone number"
           value={phone}
-          onChange={(value) => setPhone(value)}
-          isValid={(value, country) => {
-            if (value.match(/12345/)) {
-              return 'Invalid value: ' + value + ', ' + country.name;
-            } else if (value.match(/1234/)) {
-              return false;
-            } else {
-              setCountry(country);
-              return true;
-            }
-          }}
+          error={!isNoValid}
+          onChange={(num, country) => validate(num, country)}
         />
         <div className="-mt-1 text-xs font-semibold text-primary-dark">Token generated will be sent to this number</div>
         <div className="mt-10">
-          <PrimaryButton
+          <SecondaryButton
             loading={isLoading}
             onClick={() => {
               setIsLoading(true);
@@ -82,8 +86,8 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
                 setUserPhone({
                   phone: {
                     number: phone,
-                    code: country.countryCode,
-                    value: phone.replace(country.countryCode, ''),
+                    code: country.dialCode,
+                    value: phone.replace(country.dialCode, ''),
                   },
                   country,
                 }),
@@ -94,7 +98,7 @@ const QuickBuyConfirmDetails = ({ setOpen, details, phone, setPhone, onPayStackS
             size="base"
           >
             Confirm details
-          </PrimaryButton>
+          </SecondaryButton>
         </div>
       </div>
     </div>

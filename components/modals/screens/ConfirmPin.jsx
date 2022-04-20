@@ -8,7 +8,7 @@ import { userSelector, setUser, setInitAuthentication } from '../../../slices/us
 import { createUserAuthPin, signUp } from '../../../api';
 
 import Modal from '../index';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import SecondaryButton from '../../Button/SecondaryButton';
 import ErrorAlert from '../../forms/ErrorAlert';
 import toast from 'react-hot-toast';
 
@@ -20,7 +20,6 @@ const ConfirmPin = ({ close, setStep }) => {
   const [confirmPin, setConfirmPin] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     if (confirmPin?.length === 4) {
@@ -39,11 +38,11 @@ const ConfirmPin = ({ close, setStep }) => {
       if (registerData) {
         setIsLoading(true);
         const { name, phone, country, email, referral_no } = registerData;
-        const formattedPhone = phone.replace(country.countryCode, '');
+        const formattedPhone = phone.replace(country.dialCode, '');
         const selectedNumber = {
           phone: {
             number: phone,
-            code: country.countryCode,
+            code: country.dialCode,
             value: formattedPhone,
           },
         };
@@ -101,7 +100,7 @@ const ConfirmPin = ({ close, setStep }) => {
   }
 
   return (
-    <Modal successMessage={successMessage} border={false} goBack={() => setStep('createPin')} close={close} isAuth>
+    <Modal border={false} goBack={() => setStep('createPin')} close={close} isAuth>
       <div className="mt-2 px-6 lg:px-8">
         <h1 className="mx-auto max-w-xs text-center text-2xl font-bold">
           {`Let's make sure you don't forget, confirm your PIN`}
@@ -119,9 +118,9 @@ const ConfirmPin = ({ close, setStep }) => {
             inputMode="number"
             autoSelect={true}
           />
-          <PrimaryButton size="base" className="mt-8" loading={isLoading}>
+          <SecondaryButton size="base" className="mt-8" loading={isLoading}>
             Create PIN
-          </PrimaryButton>
+          </SecondaryButton>
         </form>
         <div className="mt-5 text-center">
           <button className="text-sm">

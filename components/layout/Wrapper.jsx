@@ -13,14 +13,14 @@ import MenuIcon from '../../public/svgs/menu.svg';
 import Sidebar from '../layout/Sidebar';
 import PageLoader from '../loaders/PageLoader';
 import ModalController from '../modals/ModalController';
-import { setInitAuthentication } from '../../slices/user';
+import { setInitAuthentication, setOpenNav } from '../../slices/user';
+import Navbar from './Navbar';
 
 const Wrapper = ({ children, pageProps }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { isLoggedIn, userPhone } = useSelector(persistSelector);
   const [pageLoading, setPageLoading] = useState(false);
-  const [openNav, setOpenNav] = useState(false);
 
   useEffect(() => {
     authCheck();
@@ -34,7 +34,7 @@ const Wrapper = ({ children, pageProps }) => {
       router.events.off('routeChangeStart', handleStart);
       router.events.off('routeChangeComplete', handleComplete);
     };
-  }, []);
+  }, [pageProps.protected]);
 
   function authCheck() {
     if (!isLoggedIn && pageProps?.protected) {
@@ -54,38 +54,11 @@ const Wrapper = ({ children, pageProps }) => {
           {pageProps?.protected && (
             <div className="min-h-screen w-full overflow-hidden bg-gray-300">
               <div className="min-h-screen">
-                <Sidebar openNav={openNav} setOpenNav={setOpenNav} />
+                <Sidebar />
                 <div className="bg-white p-0 sm:bg-primary-light">
                   <main className="main-content min-h-screen">
-                    <div className="flex h-14 items-center justify-between px-4 sm:hidden">
-                      <div className="container mx-auto">
-                        <div className="relative top-1">
-                          <Link href="/">
-                            <a>
-                              <Image
-                                src="/images/logo.webp"
-                                width={140.13}
-                                height={40.23}
-                                className="object-contain"
-                                priority={true}
-                              />
-                            </a>
-                          </Link>
-                        </div>
-                      </div>
-                      <div className="flex">
-                        <div onClick={() => router.push('/profile')}>
-                          <Image
-                            src="/images/profile.jpg"
-                            width={26}
-                            height={26}
-                            alt="user profile image"
-                            objectFit="cover"
-                            className="rounded-full"
-                          />
-                        </div>
-                        <MenuIcon className="ml-1" onClick={() => setOpenNav(true)} />
-                      </div>
+                    <div className="block lg:hidden">
+                      <Navbar isPageProtected={pageProps?.protected} />
                     </div>
                     <div className="px-4 2xl:px-7">{children}</div>
                   </main>

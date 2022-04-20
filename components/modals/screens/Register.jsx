@@ -6,9 +6,10 @@ import { persistSelector } from '../../../slices/persist';
 import { setInitAuthentication, setRegisterData } from '../../../slices/user';
 
 import Modal from '../index';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import SecondaryButton from '../../Button/SecondaryButton';
 import ErrorAlert from '../../forms/ErrorAlert';
 import FormInput from '../../forms/FormInput';
+import { validateMobileNo } from '../../../utils';
 
 const Register = ({ close, setStep }) => {
   const {
@@ -19,6 +20,7 @@ const Register = ({ close, setStep }) => {
   const dispatch = useDispatch();
   const { userPhone } = useSelector(persistSelector);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [isNoValid, setNoIsValid] = useState(true);
 
   const [phone, setPhone] = useState('');
   const [country, setCountry] = useState('');
@@ -29,6 +31,18 @@ const Register = ({ close, setStep }) => {
       setPhone(phone?.number);
     }
   }, [userPhone]);
+
+  function validate(num, country) {
+    const isValid = validateMobileNo(num);
+    if (isValid) {
+      setNoIsValid(true);
+      setPhone(num);
+      setCountry(country);
+    } else {
+      setNoIsValid(false);
+      setPhone(num);
+    }
+  }
 
   const onSubmit = async (formData) => {
     if (!navigator.onLine) {
@@ -81,17 +95,8 @@ const Register = ({ close, setStep }) => {
             id="phone"
             label="Phone number"
             value={phone}
-            onChange={(value) => setPhone(value)}
-            isValid={(value, country) => {
-              if (value.match(/12345/)) {
-                return 'Invalid value: ' + value + ', ' + country.name;
-              } else if (value.match(/1234/)) {
-                return false;
-              } else {
-                setCountry(country);
-                return true;
-              }
-            }}
+            error={!isNoValid}
+            onChange={(num, country) => validate(num, country)}
           />
           <FormInput
             className="mt-2 py-2.5 px-5"
@@ -106,9 +111,9 @@ const Register = ({ close, setStep }) => {
             <strong className="text-black">Privacy Policy</strong> and{' '}
             <strong className="text-black">Terms & Condition</strong>
           </div>
-          <PrimaryButton size="base" className="mt-8">
+          <SecondaryButton size="base" className="mt-8">
             Create account
-          </PrimaryButton>
+          </SecondaryButton>
         </form>
         <div className="text-blue mt-3.5 text-sm text-gray-500">
           Already a user?{' '}

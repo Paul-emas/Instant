@@ -35,7 +35,7 @@ const Receipt = ({ close, receipt }) => {
       <div className="mt-6 text-center">
         <p className="text-sm text-primary-gray">Your Electricity Token</p>
         <div className="text-2xl font-bold">{receipt?.token}</div>
-        <div className="my-2 mx-auto w-[130px] rounded-xl bg-yellow-200 py-2 text-sm font-bold text-black">
+        <div className="my-2 mx-auto max-w-[150px] rounded-xl bg-yellow-200 py-2 text-sm font-bold text-black">
           Units: {receipt?.units} (kwh)
         </div>
         <img

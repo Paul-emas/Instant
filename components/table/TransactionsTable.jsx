@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import TransactionEmptyState from './empty-states/TransactionEmptyState';
-import Button from '../Button';
+import BaseButton from '../Button/BaseButton';
 
 import Table from './index';
 import Tabs from '../tabs';
@@ -47,7 +47,7 @@ const TransactionsTable = ({
                   {!router.asPath.includes('/wallet') && (
                     <Link href="/transactions/wallet">
                       <a>
-                        <Button>Wallet History</Button>
+                        <BaseButton>Wallet History</BaseButton>
                       </a>
                     </Link>
                   )}

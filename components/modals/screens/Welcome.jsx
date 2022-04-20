@@ -1,7 +1,7 @@
 import BallonIcon from '../../../public/svgs/ballon.svg';
 
 import Modal from '../index';
-import Button from '../../Button';
+import BaseButton from '../../Button/BaseButton';
 
 const Welcome = ({ close }) => {
   return (
@@ -14,7 +14,7 @@ const Welcome = ({ close }) => {
           your electricity spending.
         </p>
         <div className="flex justify-center lg:mb-5">
-          <Button onClick={() => close()}>Okay, Got it</Button>
+          <BaseButton onClick={() => close()}>Okay, Got it</BaseButton>
         </div>
       </div>
     </Modal>

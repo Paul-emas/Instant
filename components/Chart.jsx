@@ -116,8 +116,8 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
               fontWeight={'semibold'}
               margin={{
                 top: 10,
-                right: 5,
-                left: 5,
+                right: 10,
+                left: 10,
                 bottom: 0,
               }}
             >
@@ -131,7 +131,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
                   <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="name" tick={{ fill: '#989898' }} axisLine={false} tickLine={false} tickMargin={8} />
+              <XAxis dataKey="name" tick={{ fill: '#989898' }} axisLine={false} tickLine={false} tickMargin={0} />
               <Tooltip
                 wrapperStyle={{
                   color: 'red',
@@ -180,7 +180,7 @@ const Chart = ({ title, selectedMonth, setSelectedMonth }) => {
             key={`${name}${index}`}
             className={`${
               activeRange === index ? 'border-primary-base text-primary-base' : 'border-gray-200'
-            } rounded-lg border py-2  px-4 text-sm font-semibold`}
+            } rounded-lg border py-2 px-4 text-xs font-semibold`}
           >
             {name}
           </div>

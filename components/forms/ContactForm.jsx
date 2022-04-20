@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import FormInput from './FormInput';
 import { sendEnquiry } from '../../api';
 
-import PrimaryButton from '../Buttons/PrimaryButton';
+import SecondaryButton from '../Button/SecondaryButton';
 import SocialCard from '../SocialCard';
 
 const ContactForm = () => {
@@ -63,9 +63,9 @@ const ContactForm = () => {
             {...register('message', { required: true })}
           />
           <div className="mt-6">
-            <PrimaryButton size="base" loading={isLoading}>
+            <SecondaryButton size="base" loading={isLoading}>
               Send message
-            </PrimaryButton>
+            </SecondaryButton>
           </div>
         </form>
       </div>

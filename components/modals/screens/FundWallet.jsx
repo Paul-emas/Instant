@@ -12,7 +12,7 @@ import WalletIcon from '../../../public/svgs/wallet.svg';
 
 import Modal from '../index';
 import FormInput from '../../forms/FormInput';
-import PrimaryButton from '../../Buttons/PrimaryButton';
+import SecondaryButton from '../../Button/SecondaryButton';
 import RequestLoader from '../../loaders/RequestLoader';
 import ErrorSuccess from '../ErrorSuccess';
 import toast from 'react-hot-toast';
@@ -133,9 +133,9 @@ const FundWallet = ({ setStep, close }) => {
               })}
             />
             <div className="mt-8">
-              <PrimaryButton size="base" loading={isLoading}>
+              <SecondaryButton size="base" loading={isLoading}>
                 Proceed to Payment
-              </PrimaryButton>
+              </SecondaryButton>
             </div>
           </form>
         </Modal>
